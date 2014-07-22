@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexAction {
 	@RequestMapping("/index.html")
 	public String to_index(){
+		System.out.println("test");
 		return "index";
 	}
 
