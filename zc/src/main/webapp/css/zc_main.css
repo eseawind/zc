@@ -1,0 +1,151 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	font-family: "Microsoft Yahei";
+	font-size: 12px;
+}
+#header {
+	Z-INDEX: 1000; POSITION: fixed; BACKGROUND-COLOR: #343434; WIDTH: 100%; HEIGHT: 49px; COLOR: #fff; TOP: 0px; LEFT: 0px
+}
+#header .header-container {
+	POSITION: relative; MARGIN: 0px auto; WIDTH: 960px; HEIGHT: 49px
+}
+ 
+#header .logo {
+	POSITION: absolute; TOP: 9px; LEFT: 0px;border: 0px;border-color: none;
+}
+#header .nav-bar {
+	POSITION: absolute; PADDING-BOTTOM: 0px; LINE-HEIGHT: 49px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 500px; PADDING-RIGHT: 0px; HEIGHT: 49px; TOP: 0px; PADDING-TOP: 0px; LEFT: 127px
+}
+#header .nav-bar li{
+	list-style: none;display: block;
+}
+#header .nav-bar li a{
+	text-decoration: none;color: white;font-family: "Microsoft Yahei";font-size: 16px;display: block;
+}
+#header .nav_bar li a:hover{
+	background: gray;cursor: pointer;border:1px solid blue;color: red;
+}
+#header LI {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 11px; PADDING-RIGHT: 11px; FLOAT: left; COLOR: #cdcbcb; MARGIN-RIGHT: 25px; PADDING-TOP: 0px
+}
+#header LI.active {
+	COLOR: #fff
+}
+#header .nav-bar .add-entity {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-POSITION: -179px -56px; FLOAT: right; MARGIN-RIGHT: 25px; PADDING-TOP: 0px
+}
+#header .nav-bar .add-entity A {
+	MARGIN-TOP: 12px; WIDTH: 22px; DISPLAY: block; BACKGROUND: url(../images/toolkit.png) no-repeat -179px -56px; HEIGHT: 22px
+}
+#header .nav-bar A:hover {
+	COLOR: #fff
+}
+#header .nav-bar .add-entity A:hover {
+	BACKGROUND-POSITION: -206px -56px
+}
+#header .icon-menu {
+	POSITION: absolute; MARGIN: 12px; WIDTH: 22px; BACKGROUND: url(../images/toolkit.png) no-repeat; HEIGHT: 22px
+}
+
+#header .user {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FLOAT: right !important; PADDING-TOP: 0px
+}
+#header .user LI {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px;list-style: none;
+	
+}
+#header .user LI SPAN {
+	LINE-HEIGHT: 49px; DISPLAY: block
+}
+#header .user LI A {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 49px; PADDING-LEFT: 6px; PADDING-RIGHT: 6px; DISPLAY: block; TEXT-DECORATION: none; PADDING-TOP: 0px
+	;color: white;font-size: 16px;
+}
+#header .user LI A:hover {
+	COLOR: #fff
+}
+#header .user .user-avatar {
+	POSITION: relative; LINE-HEIGHT: 0; PADDING-RIGHT: 40px; DISPLAY: table-cell; HEIGHT: 49px; VERTICAL-ALIGN: middle
+}
+#header .user IMG {
+	border-radius: 50%
+}
+#header .user LI .icon-menu {
+	POSITION: absolute; MARGIN: 12px 0px; BACKGROUND-POSITION: -52px -55px; TOP: 0px; RIGHT: 10px
+}
+#header .user .menu {
+	POSITION: absolute; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; RIGHT: 15px; PADDING-TOP: 0px
+}
+#header .user .menu LI {
+	BORDER-BOTTOM: #ddd 1px solid; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 135px; PADDING-RIGHT: 0px; FLOAT: none; HEIGHT: 50px; PADDING-TOP: 0px
+}
+#header .user .menu .icon-guoku {
+	BACKGROUND-POSITION: -79px -56px
+}
+#header .user .menu .icon-setting {
+	BACKGROUND-POSITION: -111px -56px
+}
+#header .user .menu .icon-signout {
+	BACKGROUND-POSITION: -144px -56px
+}
+#header .user .menu LI A {
+	LINE-HEIGHT: 50px; BACKGROUND-COLOR: #fff; PADDING-LEFT: 50px; DISPLAY: block; COLOR: #666; TEXT-DECORATION: none
+}
+#header .user .menu LI A:hover {
+	BACKGROUND-COLOR: #eee; COLOR: #222
+}
+#header .user LI UL {
+	POSITION: absolute; DISPLAY: none
+}
+#header .user LI:hover UL {
+	DISPLAY: block
+}
+#header FORM {
+	POSITION: absolute; HEIGHT: 49px; TOP: 0px; RIGHT: 135px
+}
+#header .search {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 8px; OUTLINE-STYLE: none; OUTLINE-COLOR: invert; PADDING-LEFT: 5px; OUTLINE-WIDTH: 0px; WIDTH: 145px; PADDING-RIGHT: 5px; BACKGROUND: #fbfbfb; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 6px; border-radius: 3px
+}
+#header FORM INPUT:focus {
+	BORDER-BOTTOM-COLOR: #ade0b3; BACKGROUND-COLOR: #f8f8f8; BORDER-TOP-COLOR: #ade0b3; BORDER-RIGHT-COLOR: #ade0b3; BORDER-LEFT-COLOR: #ade0b3
+}
+#header .search-submit {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 10px 0px 9px -32px; PADDING-LEFT: 0px; WIDTH: 30px; PADDING-RIGHT: 0px; BACKGROUND: url(../images/toolkit.png) no-repeat -16px -54px; HEIGHT: 30px; VERTICAL-ALIGN: middle; BORDER-TOP: 0px; BORDER-RIGHT: 0px; PADDING-TOP: 0px
+}
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+/**
+*bottom
+*
+*
+*/
+.bottom {
+	text-align: center;
+	font-size: 12px;
+	color: #999;
+	background: #edf2f8;
+	clear: both;
+	width: 100%;
+	bottom:0px;
+	position:absolute;
+}
+
+.bottom a {
+	text-decoration: none;
+	color: black;
+	display: inline;
+}
+
+.bottom a:hover {
+	text-decoration: underline;
+	color: red;
+}
