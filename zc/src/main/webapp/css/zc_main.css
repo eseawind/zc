@@ -5,7 +5,7 @@
 	font-size: 12px;
 }
 #header {
-	Z-INDEX: 1000; POSITION: fixed; BACKGROUND-COLOR: #343434; WIDTH: 100%; HEIGHT: 49px; COLOR: #fff; TOP: 0px; LEFT: 0px
+	Z-INDEX: 1000;  BACKGROUND-COLOR: #343434; WIDTH: 100%; HEIGHT: 49px; COLOR: #fff; TOP: 0px; LEFT: 0px;
 }
 #header .header-container {
 	POSITION: relative; MARGIN: 0px auto; WIDTH: 960px; HEIGHT: 49px
@@ -18,20 +18,17 @@
 	POSITION: absolute; PADDING-BOTTOM: 0px; LINE-HEIGHT: 49px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 500px; PADDING-RIGHT: 0px; HEIGHT: 49px; TOP: 0px; PADDING-TOP: 0px; LEFT: 127px
 }
 #header .nav-bar li{
-	list-style: none;display: block;
+	list-style: none;display: block; position: relative;
 }
+ 
 #header .nav-bar li a{
-	text-decoration: none;color: white;font-family: "Microsoft Yahei";font-size: 16px;display: block;
+	text-decoration: none;color: white;font-family: "Microsoft Yahei";font-size: 16px;display: block; width: 100%;
 }
-#header .nav_bar li a:hover{
-	background: gray;cursor: pointer;border:1px solid blue;color: red;
-}
+
 #header LI {
 	PADDING-BOTTOM: 0px; PADDING-LEFT: 11px; PADDING-RIGHT: 11px; FLOAT: left; COLOR: #cdcbcb; MARGIN-RIGHT: 25px; PADDING-TOP: 0px
 }
-#header LI.active {
-	COLOR: #fff
-}
+
 #header .nav-bar .add-entity {
 	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND-POSITION: -179px -56px; FLOAT: right; MARGIN-RIGHT: 25px; PADDING-TOP: 0px
 }
@@ -39,14 +36,13 @@
 	MARGIN-TOP: 12px; WIDTH: 22px; DISPLAY: block; BACKGROUND: url(../images/toolkit.png) no-repeat -179px -56px; HEIGHT: 22px
 }
 #header .nav-bar A:hover {
-	COLOR: #fff
+	COLOR: #fff;
 }
 #header .nav-bar .add-entity A:hover {
 	BACKGROUND-POSITION: -206px -56px
+	;color:red;
 }
-#header .icon-menu {
-	POSITION: absolute; MARGIN: 12px; WIDTH: 22px; BACKGROUND: url(../images/toolkit.png) no-repeat; HEIGHT: 22px
-}
+
 
 #header .user {
 	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FLOAT: right !important; PADDING-TOP: 0px
@@ -116,6 +112,11 @@
  
  
  
+ .zcbanner{
+ width: 100%;
+ height: 450px;
+ }
+ 
  
 
 
@@ -136,7 +137,6 @@
 	clear: both;
 	width: 100%;
 	bottom:0px;
-	position:absolute;
 }
 
 .bottom a {
