@@ -19,10 +19,11 @@
 	font-size: 12px;
 }
 body{
-background-color: #F8F8F8;
+
 }
 #header{
  background-color: #343434;width:  100%;height: 49px;top: 0px;position: fixed;z-index: 99999;
+ background: none repeat scroll 0 0 #000;
 }
 #header .header-container{
  margin: 0px auto; width: 100%; height: 49px; min-width: 1024px;position: relative;line-height: 49px;
@@ -54,7 +55,7 @@ min-width: 100px;position: relative;margin-right: 20px;margin-left: 20px;
 #header .login li{
 display: inline-block;float: left;
 }
-#header .login li a,span{
+#header .login li a{
 color: white;font-family: "Microsoft Yahei";font-size: 16px;text-decoration: none;display: block;
 }
 #header .search-submit {
@@ -101,20 +102,158 @@ cursor: pointer;background: url(images/2.jpg) 50% 0% no-repeat;height: 450px;
 cursor: pointer;background: url(images/3.jpg) 50% 0% no-repeat;height: 450px;
 }
 #content #tShirts .TshortsLi{
-width: 100%;text-align: center;vertical-align: middle;margin: 0 auto;height: 365px;margin-top: 20px;
+width: 100%;text-align: center;vertical-align: middle;margin: 0 auto;height: 465px;margin-top: 20px;
 }
 #content #tShirts .TshortsLi ul{
 margin: 0 auto;position: relative;width: 1024px;display: inline-block; 
 }
 
 #content #tShirts .TshortsLi ul li{
-border:1px solid red;list-style: none;float: left;overflow: hidden;width: 320px;display: inline-block;height: 360px;margin: 0 auto;margin-left: 15px;
+list-style: none;float: left;overflow: hidden;width: 320px;display: inline-block;height: 450px;margin: 0 auto;margin-left: 15px;
 }
 
 #content #tShirts .TshortsLi ul li:hover{
     background: none repeat scroll 0 0 #e5e5e5;
 }
- 
+
+#content #tShirts .TshortsLi ul a{
+color: black;text-decoration: none;
+}
+.pageDiv{
+  background: none repeat scroll 0 0 #fafafa;border: 1px solid #cfd6e0;border-radius: 6px;box-shadow: 1px 1px 8px #e0e0e0;margin: 20px auto;width: 1198px;
+}
+.pageDiv .TshortsLi{
+width: 100%;text-align: center;vertical-align: middle;margin: 0 auto;height: 465px;margin-top: 20px;
+}
+.pageDiv .TshortsLi ul{
+margin: 0 auto;position: relative;width: 1188px;display: inline-block; 
+}
+.pageDiv .TshortsLi ul a{
+color: #666; 
+}
+.pageDiv .TshortsLi ul li{
+list-style: none;float: left;overflow: hidden;width: 350px;display: inline-block;height: 450px;margin: 0 auto;margin-left: 35px;background-color: #fff;
+}
+.pageDiv .TshortsLi ul li:hover{
+    background: none repeat scroll 0 0 #e5e5e5;
+}
+.zcProject{
+padding: 5px 0;
+padding-left: 23px;
+}
+.zcProject span{
+	color: #666;
+    display: block;
+    line-height: 22px;
+    margin: 0;
+    text-align: left;
+    font-size: 16px;font-family: "宋体";font-weight: bold;
+}
+
+.progress-bar { padding-left: 23px;
+	width: 270px;
+	height: 5px;
+	line-height: 0px;
+	font-size: 0px;
+	background: #F2F2F2;
+	overflow: hidden;
+}
+
+.progress {
+	height: 3px;
+	line-height: 0px;
+	font-size: 0px;
+	display: block;
+}
+.item-rate {
+	padding: 8px 12px 0px;
+	line-height: 18px;
+	color: #A4A4A4;
+	position: relative;
+}
+
+.item-rate em {
+	color: #555;
+}
+
+.item-rate em.red {
+	color: #ED5E58;
+}
+
+.rate1 {
+	display: block;
+	float: left;
+	text-align: left;
+	width: 50px;
+}
+
+.rate2 {
+	display: block;
+	float: left;
+	text-align: center;
+	width: 76px;
+}
+
+.rate3 {
+	display: block;
+	float: right;
+	text-align: right;
+	width: 70px;
+}
+
+
+
+.bottom{
+margin: 0px auto;min-width: 960px;width: 800px;text-align: center;color: #666666;margin-top: -4px;font-size: 16px;font-family: "微软雅黑";
+}
+.bottom p{
+font-size: 16px;font-family: "微软雅黑";
+}
+.bottom a{
+color: #666666;font-size: 16px;font-family: "微软雅黑";text-decoration: none;padding-left: 10px;padding-right: 10px;
+}
+.bottom a:hover{
+color: #fff;
+}
+
+.footer {
+    background: none repeat scroll 0 0 #000;
+    font-size: 12px;
+    padding: 20px 0;
+    width: 100%;
+}
+.foot_main {
+    margin: auto;
+    width: 967px;
+}
+.footer p {
+    line-height: 25px;
+    text-align: left;
+}
+.footer span {
+    margin-left: 10px;color: #666;
+}
+.footer a {
+    color: #666;
+    text-decoration: none;
+}
+.footlogo {
+    display: inline;
+    float: left;
+    height: 50px;
+    margin-right: 10px;
+    width: 50px;
+}
+.footlogo:hover {
+    background: url("images/logonew.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+.tz_wm a {
+    margin-right: 10px;
+    padding-left: 10px;
+}
+.tz_wm a:hover {
+    color: #fff;
+}
 </style>
 <script type="text/javascript">
 	$(function(){
@@ -178,61 +317,101 @@ border:1px solid red;list-style: none;float: left;overflow: hidden;width: 320px;
 	</div>
  	<!-- 图片轮播  end -->
 </div>
-<div style="width: 100%;position: relative;">
-	<div id="tShirts" style="width: 1024px;margin: 20px auto;text-align: center;">
-		<div class="TshortsLi">
+
+</div>
+
+<!-- page begin-->
+<!-- <div class="pageDiv">  
+<div class="TshortsLi">
 			<ul>
 				<a href="javascript:void(0)" target="_blank"><li>
 				<div>
-					<div><img alt="" src=""> </div>
+					<div style="margin-top: 16px;"><img alt="" src="images/ts.png" width="300" height="320"> </div>
+					<div class="zcProject">
+						<span>我就是最好的设计师</span>
+						<span style="font-size: 12px;">目标:15天  1000件 </span>
+						<div class="progress-bar"><span class="progress bg-red" style="width:10%;"></span></div>
+						<div class="item-rate clearfix">
+							<span class="rate1"><em>0%</em><br>已达</span>
+							<span class="rate2"><em>￥10</em><br>已筹资</span>
+							<span class="rate3"><em>29天</em><br>剩余时间</span>
+						</div>
+					</div>
 				</div>
-				
-				
 				</li></a>
-				<a href="javascript:void(0)" target="_blank"><li>&nbsp;</li></a>
-				<a href="javascript:void(0)" target="_blank"><li>&nbsp;</li></a>
+				<a href="javascript:void(0)" target="_blank"><li>
+				<div>
+					<div style="margin-top: 16px;"><img alt="" src="images/ts.png" width="300" height="320"> </div>
+					<div class="zcProject">
+						<span>我就是最好的设计师</span>
+						<span style="font-size: 12px;">目标:15天  1000件 </span>
+						<div class="progress-bar"><span class="progress bg-red" style="width:10%;"></span></div>
+						<div class="item-rate clearfix">
+							<span class="rate1"><em>0%</em><br>已达</span>
+							<span class="rate2"><em>￥10</em><br>已筹资</span>
+							<span class="rate3"><em>29天</em><br>剩余时间</span>
+						</div>
+					</div>
+				</div>
+				</li></a>
+				<a href="javascript:void(0)" target="_blank"><li>
+				<div>
+					<div style="margin-top: 16px;"><img alt="" src="images/ts.png" width="300" height="320"> </div>
+					<div class="zcProject">
+						<span>我就是最好的设计师</span>
+						<span style="font-size: 12px;">目标:15天  1000件 </span>
+						<div class="progress-bar"><span class="progress bg-red" style="width:10%;"></span></div>
+						<div class="item-rate clearfix">
+							<span class="rate1"><em>0%</em><br>已达</span>
+							<span class="rate2"><em>￥10</em><br>已筹资</span>
+							<span class="rate3"><em>29天</em><br>剩余时间</span>
+						</div>
+					</div>
+				</div>
+				</li></a>
 			</ul>
-		</div>
-		<div class="TshortsLi">
-			<ul>
-				<li>&nbsp;</li>
-				<li>&nbsp;</li>
-				<li>&nbsp;</li>
-			</ul>
-		</div>
-		<div class="TshortsLi">
-			<ul>
-				<li>&nbsp;</li>
-				<li>&nbsp;</li>
-				<li>&nbsp;</li>
-			</ul>
-		</div>
-		<div class="TshortsLi">
-			<ul>
-				<li>&nbsp;</li>
-				<li>&nbsp;</li>
-				<li>&nbsp;</li>
-			</ul>
-		</div>
-		<div class="TshortsLi">
-			<ul>
-				<li>&nbsp;</li>
-				<li>&nbsp;</li>
-				<li>&nbsp;</li>
-			</ul>
-		</div>
-		<div class="TshortsLi">
-			<ul>
-				<li>&nbsp;</li>
-				<li>&nbsp;</li>
-				<li>&nbsp;</li>
-			</ul>
-		</div>
-	</div>
 </div>
+</div> -->
+<!-- page end-->
+<div class="pageDiv">
+<c:forEach var="name" items="${reqData }"  varStatus="idx">
+<c:if test="${idx.index%3==0}">
+	<div class="TshortsLi"><ul>
+</c:if>
+
+<a href="javascript:void(0)" target="_blank"><li>
+				<div>
+					<div style="margin-top: 16px;"><img alt="" src="images/ts.png" width="300" height="320"> </div>
+					<div class="zcProject">
+						<span><c:out value="${name }"></c:out> </span>
+						<span style="font-size: 12px;">目标:15天  1000件 </span>
+						<div class="progress-bar"><span class="progress bg-red" style="width:10%;"></span></div>
+						<div class="item-rate clearfix">
+							<span class="rate1"><em>0%</em><br>已达</span>
+							<span class="rate2"><em>￥10</em><br>已筹资</span>
+							<span class="rate3"><em>29天</em><br>剩余时间</span>
+						</div>
+					</div>
+				</div>
+				</li></a>
+
+<!-- 恰好  换行 -->
+<c:if test="${idx.index%3==2 && idx.last==false }" >
+</ul></div> 
+</c:if>
+<!-- 不满足  最后一行 换行 -->
+<c:if test="${idx.index%3!=2 && idx.last==true }" >
+</ul></div> 
+</c:if>
+
+</c:forEach>
+</div>
+<div class="footer">
+  <div class="foot_main"> <a class="footlogo" href="javascript:void(0);"></a>
+    <p class="tz_wm"><a href="about.html">关于我们</a>|<a href="join.html">加入我们</a>|<a href="contact.html">联系我们</a></p>
+    <p><span>Copyright &copy; 2013-2014 <a href="http://www.xxxcdfdf.cn">www.xxxcdfdf.cn</a> All Rights Reserved</span><span>版权所有：杭州XXXX网络科技有限公司：备232323121号</span></p>
+  </div>
 </div>
  
-
-<div style="height: 40px;background: gray;">这里是底部</div>
 </body>
 </html>
