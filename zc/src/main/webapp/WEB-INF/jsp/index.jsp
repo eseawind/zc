@@ -7,7 +7,8 @@
 <meta name="Keywords" content="众筹">
 <meta name="Description" content="">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>众筹T恤平台</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>众筹T恤平台ss</title>
 <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="js/jquery.kinMaxShow-1.1.min.js"></script>
 <!-- <link href="css/zc_main.css" rel="StyleSheet" /> -->
@@ -244,9 +245,6 @@ color: #fff;
     margin-right: 10px;
     width: 50px;
 }
-.footlogo:hover {
-    background: url("images/logonew.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-}
 .tz_wm a {
     margin-right: 10px;
     padding-left: 10px;
@@ -407,7 +405,7 @@ color: #fff;
 </c:forEach>
 </div>
 <div class="footer">
-  <div class="foot_main"> <a class="footlogo" href="javascript:void(0);"></a>
+  <div class="foot_main">
     <p class="tz_wm"><a href="about.html">关于我们</a>|<a href="join.html">加入我们</a>|<a href="contact.html">联系我们</a></p>
     <p><span>Copyright &copy; 2013-2014 <a href="http://www.xxxcdfdf.cn">www.xxxcdfdf.cn</a> All Rights Reserved</span><span>版权所有：杭州XXXX网络科技有限公司：备232323121号</span></p>
   </div>
