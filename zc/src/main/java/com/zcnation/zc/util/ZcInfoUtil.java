@@ -1,12 +1,26 @@
 /*************************************************************
- * º¼ÖÝèÉÐÛ¿Æ¼¼ÍøÂçÓÐÏÞ¹«Ë¾  @2014
- * ×÷Õß:xiaoymin@foxmail.com Ð¤ÓñÃñ
- * Ê±¼ä:2014-7-21 22:37:34
- * ÃèÊö£º
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Û¿Æ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¹ï¿½Ë¾  @2014
+ * ï¿½ï¿½ï¿½ï¿½:xiaoymin@foxmail.com Ð¤ï¿½ï¿½ï¿½ï¿½
+ * Ê±ï¿½ï¿½:2014-7-21 22:37:34
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  *************************************************************/
 
 package com.zcnation.zc.util;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.zcnation.zc.domain.ZcUserInfo;
+import com.zcnation.zc.service.ZcUserInfoService;
+
 public class ZcInfoUtil {
 
+	public static void main(String[] args) {
+		System.out.println("sdsd");
+		ApplicationContext cx=new ClassPathXmlApplicationContext("classpath:applicationContext*.xml");
+		ZcUserInfoService obj=cx.getBean("zcUserInfoService",ZcUserInfoService.class);
+		ZcUserInfo zcUserInfo=new ZcUserInfo();
+		zcUserInfo.setUserPhone("13586552493");
+		System.out.println(obj.queryUserInfoByPhone(zcUserInfo));
+	}
 }

@@ -1,4 +1,6 @@
 package com.zcnation.zc.dao;
+import java.util.List;
+
 import org.springframework.data.repository.Repository;
 
 import com.zcnation.zc.domain.ZcUserInfo;
@@ -11,6 +13,9 @@ public interface ZcUserInfoDao extends Repository<ZcUserInfo, Integer> {
 	 * @return
 	 */
 	 public ZcUserInfo save(ZcUserInfo zcUserInfo);
+	 
+	 
+	 public List<ZcUserInfo> findByUserPhone(String userPhone);
 	 /**
 	  * 通过ID得到客户信息
 	  * @param userCode
