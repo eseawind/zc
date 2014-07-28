@@ -4,11 +4,13 @@
 	<persistence-unit name="SimplePU" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>com.xiaoymin.spfw.domain.AccountInfo</class>
+		<class>com.xiaoymin.spfw.domain.ZcOrdersInfo</class>
+		<class>com.xiaoymin.spfw.domain.ZcUserInfo</class>
 		<properties>
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/spring_data_jpa?characterEncoding=utf-8" />
 			<property name="hibernate.connection.username" value="root" />
-			<property name="hibernate.connection.password" value="1234" />
+			<property name="hibernate.connection.password" value="root" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
