@@ -1,6 +1,7 @@
 package com.zcnation.zc.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,6 +27,8 @@ public class ZcUserInfo implements Serializable {
 	private String userNname;
 	private String remarks;
 	private String userType;
+	private Date regTime;
+	private String regIp;
 	public int getUserCode() {
 		return userCode;
 	}
@@ -73,6 +76,18 @@ public class ZcUserInfo implements Serializable {
 	}
 	public void setUserType(String userType) {
 		this.userType = userType;
+	}
+	public Date getRegTime() {
+		return regTime;
+	}
+	public void setRegTime(Date regTime) {
+		this.regTime = regTime;
+	}
+	public String getRegIp() {
+		return regIp;
+	}
+	public void setRegIp(String regIp) {
+		this.regIp = regIp;
 	}
 
 	
