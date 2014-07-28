@@ -22,7 +22,7 @@ public class ZcOrdersInfo implements Serializable {
 	private String bmType;
 	private double orderMoney;
 	private int userAddress;
-
+	private int orderStatus;
 	public String getOrderCode() {
 		return orderCode;
 	}
@@ -87,6 +87,6 @@ public class ZcOrdersInfo implements Serializable {
 		this.orderStatus = orderStatus;
 	}
 
-	private int orderStatus;
+	
 
 }
