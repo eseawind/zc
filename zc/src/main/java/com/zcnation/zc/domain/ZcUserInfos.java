@@ -9,7 +9,6 @@ import javax.persistence.Id;
 @Entity(name="zc_user_infos")
 public class ZcUserInfos implements Serializable {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userCode;
 	private String userAddress;
 	
