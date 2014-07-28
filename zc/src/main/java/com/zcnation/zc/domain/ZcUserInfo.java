@@ -3,10 +3,21 @@ package com.zcnation.zc.domain;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.Generated;
 
 @Entity(name = "zc_user_info")
 public class ZcUserInfo implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8465823412125942590L;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int userCode;
 	private String userPhone;
 	private String email;

@@ -3,9 +3,8 @@
 	version="2.0">
 	<persistence-unit name="SimplePU" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>com.xiaoymin.spfw.domain.AccountInfo</class>
-		<class>com.xiaoymin.spfw.domain.ZcOrdersInfo</class>
-		<class>com.xiaoymin.spfw.domain.ZcUserInfo</class>
+		<class>com.zcnation.zc.domain.ZcOrdersInfo</class>
+		<class>com.zcnation.zc.domain.ZcUserInfo</class>
 		<properties>
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/spring_data_jpa?characterEncoding=utf-8" />

@@ -15,11 +15,14 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class IndexAction {
+	private Logger logger=Logger.getLogger(IndexAction.class);
+	
 	@RequestMapping("/index.html")
 	public String to_index(HttpServletRequest request){
 		//List<Map<String, String>> list=new ArrayList<Map<String,String>>();
@@ -29,6 +32,7 @@ public class IndexAction {
 		}
 		request.setAttribute("reqData", list);
 		System.out.println("test");
+		logger.info("首页测试.///");
 		return "index";
 	}
 
