@@ -2,6 +2,7 @@ package com.zcnation.zc.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,13 +13,21 @@ public class ZcProjectInfo implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int proCode;
+	@Column(name="USER_CODE")
 	private String userCode;
+	@Column(name="PRO_NAME")
 	private String proName;
+	@Column(name="PRO_DAYS")
 	private int proDays;
+	@Column(name="PRO_UNIT")
 	private double proUnit;
+	@Column(name="PRO_IMAG")
 	private int proImag;
+	@Column(name="PRO_REMARKS")
 	private String proRemarks;
+	@Column(name="PRO_SH_STATUS")
 	private String proShStatus;
+	@Column(name="PRO_EXE_STATUS")
 	private String proExeStatus;
 	public int getProCode() {
 		return proCode;

@@ -2,6 +2,7 @@ package com.zcnation.zc.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,12 +17,19 @@ public class ZcOrdersInfo implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String orderCode;
+	@Column(name="USER_CODE")
 	private int userCode;
+	@Column(name="PRO_CODE")
 	private int proCode;
+	@Column(name="ORDER_NUMBERS")
 	private int orderNumbers;
+	@Column(name="BM_TYPE")
 	private String bmType;
+	@Column(name="ORDER_MONEY")
 	private double orderMoney;
+	@Column(name="USER_ADDRESS")
 	private int userAddress;
+	@Column(name="ORDER_STATUS")
 	private int orderStatus;
 	public String getOrderCode() {
 		return orderCode;

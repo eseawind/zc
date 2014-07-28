@@ -3,6 +3,7 @@ package com.zcnation.zc.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,15 +20,25 @@ public class ZcUserInfo implements Serializable {
 	private static final long serialVersionUID = -8465823412125942590L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="USER_CODE")
 	private int userCode;
+	@Column(name="USER_PHONE")
 	private String userPhone;
+	@Column(name="EMAIL")
 	private String email;
-	private String passwork;
+	@Column(name="PASSWORD")
+	private String password;
+	@Column(name="USER_NAME")
 	private String userName;
+	@Column(name="USER_NNAME")
 	private String userNname;
+	@Column(name="REMARKS")
 	private String remarks;
+	@Column(name="USER_TYPE")
 	private String userType;
+	@Column(name="REG_TIME")
 	private Date regTime;
+	@Column(name="REG_IP")
 	private String regIp;
 	public int getUserCode() {
 		return userCode;
@@ -47,11 +58,12 @@ public class ZcUserInfo implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPasswork() {
-		return passwork;
+	 
+	public String getPassword() {
+		return password;
 	}
-	public void setPasswork(String passwork) {
-		this.passwork = passwork;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getUserName() {
 		return userName;

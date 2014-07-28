@@ -3,6 +3,7 @@ package com.zcnation.zc.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,13 +11,22 @@ import javax.persistence.Id;
 
 @Entity(name = "zc_resource_info")
 public class ZcResourceInfo implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int resourceCode;
+	@Column(name="UPT_DATE")
 	private Date uptDate;
+	@Column(name="UPT_IP")
 	private String uptIp;
+	@Column(name="RESOURCE_NAME")
 	private String resourceName;
+	@Column(name="RESOURCE_URL")
 	private String resourceUrl;
+	@Column(name="RSTATUS")
 	private String rstatus;
 
 	public int getResourceCode() {
