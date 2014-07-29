@@ -27,4 +27,11 @@ public class ZcUserInfoServiceImpl implements ZcUserInfoService {
 		return g.toJson(list);
 	}
 
+	@Override
+	public void save(ZcUserInfo zcUserInfo) {
+		// TODO Auto-generated method stub
+		zcUserInfoDao.save(zcUserInfo);
+		
+	}
+
 }
