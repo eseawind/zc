@@ -12,7 +12,6 @@
 		var phoneRegex=/^((13[0-9])|(15[0-9])|(18[0-9]))[0-9]{8}$/;
 		var register={
 				initButtonRegister:function(){
-					console.log("注册事件")
 					$("#btnRegister").bind('click',function(){
 						if(register.checkRegForm()){
 							var formJson=$("#regForm").serializeArray();
@@ -23,8 +22,6 @@
 								}else{
 									alert("注册失败");
 								}
-								console.log(d);
-								console.log(data);
 							})
 						}
 					})
