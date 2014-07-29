@@ -15,9 +15,9 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-		<groupId>commons-lang</groupId>
-  <artifactId>commons-lang</artifactId>
-  <version>2.6</version>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.persistence</groupId>
@@ -88,6 +88,11 @@
 			<artifactId>spring-aspects</artifactId>
 			<version>3.0.4.RELEASE</version>
 		</dependency>
+		<dependency>
+			<groupId> org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version> 1.6.11</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>zc</finalName>
@@ -98,7 +103,7 @@
 				<version>6.1.10</version>
 				<configuration>
 					<webDefaultXml>webdefault.xml</webDefaultXml>
-					<scanIntervalSeconds>0</scanIntervalSeconds>
+					<scanIntervalSeconds>10</scanIntervalSeconds>
 					<connectors>
 						<!-- org.eclipse.jetty.server.nio.SelectChannelConnector -->
 						<!-- <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector"> -->
