@@ -60,7 +60,7 @@
             
                 <li><a href="#">登录</a></li>
                 <li><span>&#124;</span></li>
-                <li><a href="#">注册</a></li>
+                <li><a href="../zc/zcuserinfo/zcuserinfo_register.html">注册</a></li>
             
         </ul>
  
