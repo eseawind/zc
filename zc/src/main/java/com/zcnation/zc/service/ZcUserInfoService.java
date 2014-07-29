@@ -12,5 +12,7 @@ import com.zcnation.zc.domain.ZcUserInfo;
 public interface ZcUserInfoService {
 	
 	public String queryUserInfoByPhone(ZcUserInfo zcUserInfo);
+	
+	 public void save(ZcUserInfo zcUserInfo);
 
 }
