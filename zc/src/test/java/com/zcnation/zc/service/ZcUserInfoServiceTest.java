@@ -18,10 +18,10 @@ import com.zcnation.zc.domain.ZcUserInfo;
 public class ZcUserInfoServiceTest extends AbstractJUnit38SpringContextTests{
 
 	public void testFindPhone(){
-		ZcUserInfoService service=applicationContext.getBean("zcUserInfoService", ZcUserInfoService.class);
+		/*ZcUserInfoService service=applicationContext.getBean("zcUserInfoService", ZcUserInfoService.class);
 		ZcUserInfo z=new ZcUserInfo(); 
 		z.setUserPhone("13586552493");
 		ZcUserInfo json=service.queryUserInfoByPhone(z);
-		System.out.println(json);
+		System.out.println(json);*/
 	}
 }

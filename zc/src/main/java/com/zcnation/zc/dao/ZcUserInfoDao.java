@@ -14,7 +14,11 @@ public interface ZcUserInfoDao extends Repository<ZcUserInfo, Integer> {
 	 */
 	 public ZcUserInfo save(ZcUserInfo zcUserInfo);
 	 
-	 
+	 /***
+	  * 根据电话查找用户
+	  * @param userPhone
+	  * @return
+	  */
 	 public List<ZcUserInfo> findByUserPhone(String userPhone);
 	 /**
 	  * 通过ID得到客户信息
@@ -22,6 +26,10 @@ public interface ZcUserInfoDao extends Repository<ZcUserInfo, Integer> {
 	  * @return
 	  */
 	 public ZcUserInfo findByUserCode(int userCode);
-	 
+	 /***
+	  * 根据邮箱查找用户
+	  * @param email
+	  * @return
+	  */
 	 public List<ZcUserInfo> findByEmail(String email);
 }
