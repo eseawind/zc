@@ -36,4 +36,8 @@ public class IndexAction {
 		return "index";
 	}
 
+	@RequestMapping("/dotest.do")
+	public String dotest(){
+		return "dotest";
+	}
 }
