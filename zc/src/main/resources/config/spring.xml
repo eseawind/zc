@@ -12,7 +12,10 @@
     <context:annotation-config />
     <context:component-scan base-package="com.zcnation.zc">
     </context:component-scan>
-    
+    <aop:config>
+    	<aop:pointcut expression="execution(* comn.zcnation.*.service.*.*(..))" id="zcwebservice"/>
+    	<aop:advisor advice-ref="txAdvice" pointcut-ref="zcwebservice"/>
+    </aop:config>
 	<b:bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<b:property name="order" value="3"></b:property>

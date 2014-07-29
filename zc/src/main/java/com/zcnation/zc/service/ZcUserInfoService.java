@@ -11,8 +11,24 @@ import com.zcnation.zc.domain.ZcUserInfo;
 
 public interface ZcUserInfoService {
 	
-	public String queryUserInfoByPhone(ZcUserInfo zcUserInfo);
+	/****
+	 * 根据电话查找用户
+	 * @param zcUserInfo
+	 * @return
+	 */
+	public ZcUserInfo queryUserInfoByPhone(ZcUserInfo zcUserInfo);
 	
-	 public void save(ZcUserInfo zcUserInfo);
+	/****
+	 * 邮箱查询
+	 * @param email
+	 * @return
+	 */
+	public ZcUserInfo queryUserInfoByEmail(String email);
+	/****
+	 * 注册
+	 * @param zcUserInfo
+	 * @return
+	 */
+	public String save(ZcUserInfo zcUserInfo);
 
 }

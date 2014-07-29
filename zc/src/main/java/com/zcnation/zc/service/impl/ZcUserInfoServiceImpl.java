@@ -12,7 +12,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.google.gson.Gson;
+import com.zcnation.zc.common.Result;
 import com.zcnation.zc.dao.ZcUserInfoDao;
 import com.zcnation.zc.domain.ZcUserInfo;
 import com.zcnation.zc.service.ZcUserInfoService;
@@ -21,17 +21,23 @@ import com.zcnation.zc.service.ZcUserInfoService;
 public class ZcUserInfoServiceImpl implements ZcUserInfoService {
 	@Autowired ZcUserInfoDao zcUserInfoDao;
 
-	public String queryUserInfoByPhone(ZcUserInfo zcUserInfo) {
+	public ZcUserInfo queryUserInfoByPhone(ZcUserInfo zcUserInfo) {
 		List<ZcUserInfo> list=zcUserInfoDao.findByUserPhone(zcUserInfo.getUserPhone());
-		Gson g=new Gson();
-		return g.toJson(list);
+		return (list!=null&&list.size()>0)?list.get(0):null;
 	}
 
 	@Override
-	public void save(ZcUserInfo zcUserInfo) {
-		// TODO Auto-generated method stub
+	public String save(ZcUserInfo zcUserInfo) {
+		Result r=new Result();
 		zcUserInfoDao.save(zcUserInfo);
-		
+		r.setSuccess(true);
+		return r.toJson();
+	}
+
+	@Override
+	public ZcUserInfo queryUserInfoByEmail(String email) {
+		List<ZcUserInfo> list=zcUserInfoDao.findByEmail(email);
+		return (list!=null&&list.size()>0)?list.get(0):null;
 	}
 
 }

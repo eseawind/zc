@@ -21,7 +21,7 @@ public class ZcUserInfoServiceTest extends AbstractJUnit38SpringContextTests{
 		ZcUserInfoService service=applicationContext.getBean("zcUserInfoService", ZcUserInfoService.class);
 		ZcUserInfo z=new ZcUserInfo(); 
 		z.setUserPhone("13586552493");
-		String json=service.queryUserInfoByPhone(z);
+		ZcUserInfo json=service.queryUserInfoByPhone(z);
 		System.out.println(json);
 	}
 }

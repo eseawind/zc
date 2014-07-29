@@ -21,7 +21,7 @@ public interface ZcUserInfoDao extends Repository<ZcUserInfo, Integer> {
 	  * @param userCode
 	  * @return
 	  */
-	 
 	 public ZcUserInfo findByUserCode(int userCode);
-
+	 
+	 public List<ZcUserInfo> findByEmail(String email);
 }
