@@ -1,7 +1,11 @@
 @charset "utf-8"; 
-
+html, body, head, div, ul, ol, li, iframe, frameset, frame, p, h1, h2, h3, h4, form, dl, dt, dd, table, tbody, thead, tfoot, tr, th, td, col, a, b, em, i, label, span, legend, fieldset, button, input, select, option, map, img, textarea, br {
+	padding: 0px;
+margin: 0px;
+}
 HTML {
 	WIDTH: 100%; HEIGHT: 100%
+
 }
 BODY {
 	BACKGROUND-COLOR: #fff; FONT: 14px "Helvetica Neue", Helvetica, Arial, sans-serif; HEIGHT: 100%; COLOR: #666
