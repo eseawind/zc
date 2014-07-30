@@ -47,7 +47,7 @@
         </div>
  
         <ul class="nav-bar">
-            <li class="active"><a href="http://localhost:9090/only/index.html">首页</a></li>
+            <li class="active"><a href="../zc/index.html">首页</a></li>
             <li ><a href="#">精选项目</a></li>
             <li ><a href="#">热门项目</a></li>
             <li ><a href="#">关于我们</a></li>
@@ -59,7 +59,7 @@
             
                 <li><a href="#">登录</a></li>
                 <li><span>&#124;</span></li>
-                <li><a href="../zc/zcuserinfo/zcuserinfo_register.html">注册</a></li>
+                <li><a href="../zc/userinfo/register.html">注册</a></li>
             
         </ul>
  
