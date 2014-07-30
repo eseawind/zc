@@ -1,0 +1,356 @@
+@charset "utf-8"; 
+ul, li {
+list-style: none;
+margin: 0px;
+padding: 0px;
+}
+user agent stylesheetli {
+display: list-item;
+text-align: -webkit-match-parent;
+}
+
+.clear {
+clear: both;
+font-size: 0;
+line-height: 0;
+height: 0;
+}
+.Validform_wrong, .Validform_right, .Validform_loading {
+display: block;
+}
+.Validform_checktip {
+display: none;
+line-height: 38px;
+height: 38px;
+}
+.Validform_wrong {
+color: red;
+padding-left: 20px;
+white-space: nowrap;
+background: url(../images/error.gif) no-repeat left center;
+float: left;
+height: 40px;
+line-height: 40px;
+}
+.Validform_checktip {
+margin-left: 8px;
+overflow: hidden;
+color: red;
+font-size: 12px;
+}
+
+.info {
+margin-left: 8px;
+border: 1px solid #ccc;
+padding: 8px 20px 8px 10px;
+color: #666;
+float: left;
+position: relative;
+display: none;
+line-height: 20px;
+}
+.sj_cont ul li span {
+line-height: 40px;
+}
+.sj_cont span {
+color: #ba0909;
+padding: 5px;
+}
+.dec {
+top: 9px;
+display: block;
+height: 17px;
+overflow: hidden;
+position: absolute;
+left: -8px;
+width: 8px;
+}
+.dec .dec1 {
+color: #ccc;
+}
+.dec s {
+font-family: simsun;
+font-size: 16px;
+height: 19px;
+left: 0;
+line-height: 21px;
+position: absolute;
+text-decoration: none;
+top: 0;
+width: 17px;
+}
+
+.dec .dec2 {
+color: #fff;
+left: 1px;
+}
+.Validform_checktip {
+display: none;
+line-height: 38px;
+height: 38px;
+}
+.Validform_checktip {
+margin-left: 8px;
+overflow: hidden;
+color: red;
+font-size: 12px;
+}
+element.style {
+color: rgb(51, 51, 51);
+}
+#username {
+padding-left: 5px;
+line-height: 30px;
+width: 261px;
+}
+.sj_cont li input {
+line-height: 30px;
+padding-left: 2px;
+outline: none;
+}
+.inputBg1 {
+border: 1px solid #cccccc;
+height: 28px;
+font-size: 14px;
+line-height: 30px;
+padding: 3px;
+margin-top: 2px;
+float: left;
+width: 261px;
+}
+.Validform_error {
+background-color: #ffe7e7;
+}
+input, select {
+vertical-align: middle;
+}
+.sj_cont li input {
+line-height: 30px;
+padding-left: 2px;
+outline: none;
+}
+.inputBg0 {
+border: 1px solid #cccccc;
+height: 28px;
+font-size: 14px;
+line-height: 30px;
+padding: 3px;
+margin-top: 2px;
+float: left;
+width: 261px;
+}
+.Validform_error {
+background-color: #ffe7e7;
+}
+input, select {
+vertical-align: middle;
+}
+.sj_cont li input {
+line-height: 30px;
+padding-left: 2px;
+outline: none;
+}
+.inputBg0 {
+border: 1px solid #cccccc;
+height: 28px;
+font-size: 14px;
+line-height: 30px;
+padding: 3px;
+margin-top: 2px;
+float: left;
+width: 261px;
+}
+input, select {
+vertical-align: middle;
+}
+element.style {
+position: absolute;
+width: 200px;
+height: 30px;
+left: 10px;
+top: 5px;
+
+}
+
+.inputBg1 {
+border: 1px solid #cccccc;
+height: 28px;
+font-size: 14px;
+line-height: 30px;
+padding: 3px;
+margin-top: 2px;
+float: left;
+width: 261px;
+}
+input, select {
+vertical-align: middle;
+}
+.layout-width{width:990px;margin-left:auto;margin-right:auto;}
+.mt18{margin-top:68px;}
+.clearfix{zoom:1;}
+.bag{width:988px;border:1px solid #e5e5e5;background-color:#fff;}
+.about-nipic {
+width: 377px;
+border-left: 1px solid #e5e5e5;
+vertical-align: top;
+height: 496px;
+}
+.relative {
+position: relative;
+}
+.fr {
+float: right;
+display: inline;
+}
+.bag-aside {
+width: 610px;
+height: 496px;
+}
+.fl {
+float: left;
+display: inline;
+}
+.bag-aside-hd {
+padding: 0px 60px 0px 40px;
+height: 66px;
+line-height: 66px;
+}
+.mr15{margin-right:15px;}
+.reg-tip {
+font-size: 14px;
+color: #555;
+font-family: microsoft yahei;
+}
+element.style {
+}
+.underline {
+text-decoration: underline;
+}
+.red1 {
+color: #eb0064;
+}
+a {
+text-decoration: none;
+
+outline: none;
+}
+
+
+#register {
+margin-left: 20px;
+}
+.bag-aside-box {
+color: #555;
+}
+ul, ol, li {
+list-style-type: none;
+}
+.bag-aside-item {
+padding: 6px 0px;
+}
+.relative {
+position: relative;
+}
+#register .bag-label {
+width: 75px;
+text-align: right;
+}
+.bag-label {
+width: 60px;
+height: 20px;
+line-height: 20px;
+text-align: left;
+font-size: 14px;
+}
+
+.mr1 {
+margin-right: 1px;
+}
+.clearfix:after {
+content: ".";
+display: block;
+clear: both;
+height: 0px;
+font-size: 0px;
+line-height: 0px;
+visibility: hidden;
+}
+.bag-label {
+width: 60px;
+height: 20px;
+line-height: 20px;
+text-align: left;
+font-size: 14px;
+}
+.mt7 {
+margin-top: 7px;
+}
+.bag-item-input {
+width: 278px;
+height: 18px;
+padding: 5px 10px;
+line-height: 18px;
+border: 1px solid #acbcc7;
+background-color: #fff;
+border-radius: 2px;
+box-shadow: 1px 1px 3px #dedede inset;
+}
+.mr5 {
+margin-right: 5px;
+}
+.field-validation-valid {
+display: none;
+}
+.underline {
+text-decoration: underline;
+}
+.blue3 {
+color: #0075d9;
+}
+.register-btn {
+width: 239px;
+height: 46px;
+padding-bottom: 4px;
+color: #fff;
+background: url(../images/bg_png24.png) no-repeat 0px -206px transparent;
+font-size: 22px;
+font-weight: bold;
+font-family: microsoft yahei;
+cursor: pointer;
+}
+.field-validation-valid {
+display: none;
+}
+.about-nipic-link {
+right: 35px;
+bottom: 52px;
+color: #445968;
+}
+.font-simsun {
+font-family: simsun;
+}
+.absolute {
+position: absolute;
+}
+.Validform_right {
+DISPLAY: block;
+}
+.Validform_checktip {
+LINE-HEIGHT: 38px;
+DISPLAY: none;
+HEIGHT: 38px;
+}
+.Validform_right {
+LINE-HEIGHT: 40px;
+PADDING-LEFT: 20px;
+BACKGROUND: url(../images/right.png) no-repeat left center;
+FLOAT: left;
+HEIGHT: 40px;
+COLOR: #71b83d;
+}
+.Validform_checktip {
+COLOR: red;
+MARGIN-LEFT: 8px;
+FONT-SIZE: 12px;
+OVERFLOW: hidden;
+}
