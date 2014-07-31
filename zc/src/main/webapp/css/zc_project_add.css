@@ -1,0 +1,138 @@
+@charset "utf-8"; 
+.main {
+padding-top: 70px;
+padding-bottom: 30px;
+background-image: url(images/phoenix/common/main-bg.jpg);
+background-repeat: no-repeat;
+background-position: 50% 0;
+}
+.clearfix {
+display: block;
+}
+.wrap {
+width: 960px;
+margin: 0 auto;
+}
+.project-edit {
+padding: 20px 10px;
+}
+.project-edit-nav {
+width: 960px;
+height: 30px;
+background: #fdfdfd;
+margin-bottom: 20px;
+}
+.project-edit-nav .steps-1 {
+background-position: 0 0;
+}
+.main .content {
+width: 715px;
+}
+.content {
+width: 630px;
+}
+.fl {
+float: left;
+}
+.radius-hd, .radius-ft {
+width: 100%;
+height: 5px;
+}
+.radius-hl, .radius-hr, .radius-fl, .radius-fr {
+width: 5px;
+height: 5px;
+line-height: 0px;
+font-size: 0px;
+}
+.common-sprite {
+background-image: url('images/phoenix/icon/icon_sprite.png');
+background-repeat: no-repeat;
+}
+.radius-hc, .radius-fc {
+float: left;
+height: 4px;
+line-height: 0px;
+font-size: 0px;
+background-color: #FFF;
+}
+.w705 {
+width: 705px;
+}
+.radius-bd {
+background-color: #FFF;
+border-left: 1px solid #E5E5E5;
+border-right: 1px solid #E5E5E5;
+}
+.w713 {
+width: 713px;
+}
+.radius-hd, .radius-ft {
+width: 100%;
+height: 5px;
+}
+.main .sidebar {
+width: 225px;
+}
+.sidebar {
+width: 310px;
+}
+.fr {
+float: right;
+}
+.block-list {
+margin: 0 0 20px;
+}
+.list-item {
+height: auto !important;
+padding-bottom: 5px;
+}
+.list-item {
+width: 223px;
+height: 311px;
+position: relative;
+background: #FFF;
+border: 1px solid #E6E6E6;
+border-radius: 5px;
+
+}
+.item-figure {
+width: 223px;
+height: 168px;
+display: block;
+overflow: hidden;
+border-radius: 5px 5px 0px 0px;
+}
+
+a {
+outline: none;
+}
+a, a:hover {
+text-decoration: none;
+}
+a, button {
+cursor: pointer;
+}
+user agent stylesheeta:-webkit-any-link {
+color: -webkit-link;
+text-decoration: underline;
+cursor: auto;
+}
+.item-caption .caption-title {
+float: left;
+}
+Inherited from div.item-caption
+.item-caption {
+padding: 0px 12px 8px;
+height: 20px;
+line-height: 20px;
+color: #A4A4A4;
+}
+.tit-wrap h3 {
+font-size: 20px;
+line-height: 30px;
+color: #000;
+text-indent: 20px;
+}
+.project-edit .form-item {
+padding: 10px 0px;
+}
