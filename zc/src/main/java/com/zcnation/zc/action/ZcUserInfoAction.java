@@ -24,6 +24,12 @@ public class ZcUserInfoAction {
 		return "userinfo/user_register";
 	}
 	
+	
+	@RequestMapping("/login.html")
+	public String to_login(HttpServletRequest request) {
+		return "userinfo/user_login";
+	}
+	
 	@RequestMapping("/beginRegister.html")
 	@ResponseBody
 	public String beginRegister(HttpServletRequest request,@ModelAttribute ZcUserInfo userinfo,@RequestParam(value="passwordagin") String passwordagin){
