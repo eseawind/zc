@@ -266,7 +266,7 @@ padding-left: 23px;
 	PADDING-BOTTOM: 15px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; CLEAR: both; FONT-SIZE: 12px; BORDER-TOP: #dedede 1px solid; PADDING-TOP: 15px
 }
 #footer .container {
-	MARGIN: 0px auto; WIDTH: 960px
+	MARGIN: 0px  auto 100px; WIDTH: 960px
 }
 #footer .site-info {
 	FLOAT: right
@@ -292,4 +292,40 @@ padding-left: 23px;
 }
 #RightMenu A.ewm SPAN {
 	Z-INDEX: 9999999; POSITION: absolute; WIDTH: 279px; BOTTOM: -50px; DISPLAY: block; BACKGROUND: url(2wm.png) no-repeat; HEIGHT: 309px; LEFT: -279px
+}
+
+ .layout-width {
+width: 990px;
+margin-left: auto;
+margin-right: auto;
+}
+.layout-width {
+width: 1130px;
+margin-left: auto;
+margin-right: auto;
+}
+.nipic-footer {
+padding: 25px 0px;
+border-top: 1px solid #d2d2d2;
+}
+.mt40 {
+margin-top: 40px;
+}
+.align-center {
+text-align: center;
+}
+
+.sepline {
+color: #bbb;
+font-family: arial;
+margin: 0px 8px;
+}
+.mt10 {
+margin-top: 10px;
+}
+.gray {
+color: #666;
+}
+.font-tahoma {
+font-family: tahoma;
 }
