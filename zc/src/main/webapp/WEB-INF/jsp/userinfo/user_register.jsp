@@ -4,6 +4,7 @@
 <html>
 <head>
 <%@include file="/WEB-INF/jsp/include.jsp"%>
+<%@include file="/WEB-INF/jsp/index_title.jsp" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户注册</title>
 
@@ -173,7 +174,7 @@ height: 55px;text-align: right;
 </style>
 </head>
 <body>
-<%@include file="/WEB-INF/jsp/index_title.jsp" %>
+
 <div class="layout-width mt18 clearfix" >
     <div class="bag clearfix">
         <div class="relative fr ">
