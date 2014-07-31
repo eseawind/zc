@@ -5,10 +5,13 @@
 <head>
 <%@include file="/WEB-INF/jsp/include.jsp"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>用户注册</title>
+<title>用户登录</title>
 
  <link href="../css/main.css" rel="StyleSheet" />
- <link href="../css/zc_register.css" rel="StyleSheet" />
+ <link href="../css/zc_login.css" rel="StyleSheet" />
+ <style type="text/css">
+
+ </style>
 
 <script type="text/javascript">
 	$(function(){
@@ -140,9 +143,9 @@
  
         <ul class="user">
             
-                <li><a href="../userinfo/login.html">登录</a></li>
+                <li><a href="#">登录</a></li>
                 <li><span>&#124;</span></li>
-                <li><a href="./userinfo/register.html">注册</a></li>
+                <li><a href="../userinfo/register.html">注册</a></li>
             
         </ul>
  
@@ -158,13 +161,15 @@
         <div class="relative fr about-nipic">
             <img ondragstart="return false;" style="display:block;margin-top:85px;" src="../images/about_nipic.jpg">
             <div class="absolute" style="top: 27px; left: 0px; width: 377px; font-size: 18px;">在众筹网你可以</div>
-            
-            <a href="http://service.nipic.com/site/aboutus.html" title="了解更多什么是信息网？" hidefocus="true" class="absolute font-simsun about-nipic-link">了解更多"xxx？"&gt;&gt;</a>
+            <ul class="absolute">
+               
+            </ul>
+            <a href="#" title="了解更多什么是信息网？" hidefocus="true" class="absolute font-simsun about-nipic-link">了解更多"xxx？"&gt;&gt;</a>
         </div>
         <div class="fl bag-aside">
             <div class="bag-aside-hd">
-                <h2 class="fl mr15">注册新用户</h2>
-                <div class="fl reg-tip">已有帐号？去<a href="../userinfo/login.html" class="red1 underline" hidefocus="true" target="_self">登录</a>&gt;</div>
+                <h2 class="fl mr15">用户登录</h2>
+                <div class="fl reg-tip">还没有账号？去<a href="../userinfo/register.html" class="red1 underline" hidefocus="true" target="_self">注册</a>&gt;</div>
             </div>
             
           
@@ -173,7 +178,7 @@
 <UL>
  <LI>
   <P><FONT id=registResult color=red></FONT></P>
-  <P style="margin-left:10px;margin-top: 20px;">帐户名 </P>
+  <P style="margin-left:10px;margin-top: 20px;">登录名 </P>
   <DIV style="POSITION: relative;margin-left:10px;">
   <DIV 
   style="POSITION: absolute; LINE-HEIGHT: 30px; WIDTH: 200px; HEIGHT: 30px; COLOR: #999; TOP: 5px; LEFT: 10px" 
@@ -183,54 +188,13 @@
   autocomplete="off"></DIV>
   <DIV>
   <DIV id=valid1 class=Validform_checktip></DIV>
-  <DIV class=info>用户名至少4个字符,最多20个字符<SPAN class=dec><S class=dec1>◆</S><S 
+  <DIV class=info>用户名可以是昵称、邮箱或者手机号<SPAN class=dec><S class=dec1>◆</S><S 
   class=dec2>◆</S></SPAN></DIV></DIV>
   <DIV 
   style="DISPLAY: none; FLOAT: left; HEIGHT: 20px; _padding-top: 10px"></DIV>
   <DIV class=clear></DIV></LI>
-  
-  
-<LI>
-  <P><FONT id=registResult color=red></FONT></P>
-  <P style="margin-left:10px;margin-top: 20px;">邮箱 </P>
-  <DIV style="POSITION: relative;margin-left:10px;">
-  <DIV 
-  style="POSITION: absolute; LINE-HEIGHT: 30px; WIDTH: 200px; HEIGHT: 30px; COLOR: #999; TOP: 5px; LEFT: 10px" 
-  id=usernametishi></DIV><INPUT style="COLOR: rgb(51,51,51)" 
-  id=email class=inputBg1  type=text name=email 
-  datatype="email" nullmsg="邮箱不能为空" 
-  autocomplete="off"></DIV>
-  <DIV>
-  <DIV id=valid11 class=Validform_checktip></DIV>
-  <DIV class=info>邮箱至少4个字符,最多20个字符<SPAN class=dec><S class=dec1>◆</S><S 
-  class=dec2>◆</S></SPAN></DIV></DIV>
-  <DIV 
-  style="DISPLAY: none; FLOAT: left; HEIGHT: 20px; _padding-top: 10px"></DIV>
-  <DIV class=clear></DIV></LI>
-  
   <LI>
-  <P><FONT id=registResult color=red></FONT></P>
-  <P style="margin-left:10px;margin-top: 20px;">手机号号码</P>
-  <DIV style="POSITION: relative;margin-left:10px;">
-  <DIV 
-  style="POSITION: absolute; LINE-HEIGHT: 30px; WIDTH: 200px; HEIGHT: 30px; COLOR: #999; TOP: 5px; LEFT: 10px" 
-  id=usernametishi></DIV><INPUT style="COLOR: rgb(51,51,51)" 
-  id=userPhone class=inputBg1  type=text name=userPhone 
-  datatype="email" nullmsg="手机号码不能为空" 
-  autocomplete="off"></DIV>
-  <DIV>
-  <DIV id=valid112 class=Validform_checktip></DIV>
-  <DIV class=info>手机号KKOO11位<SPAN class=dec><S class=dec1>◆</S><S 
-  class=dec2>◆</S></SPAN></DIV></DIV>
-  <DIV 
-  style="DISPLAY: none; FLOAT: left; HEIGHT: 20px; _padding-top: 10px"></DIV>
-  <DIV class=clear></DIV></LI>
-  
-  
-  
-  
-  
-  <LI>
+ 
   <P style="margin-left:10px;margin-top: 20px;">密码 </P><!--<p>-->
   <DIV style="margin-left:10px;"><INPUT 
   onkeydown="if(event.keyCode==32||event.keyCode==188||event.keyCode==222){return false;}" 
@@ -239,21 +203,11 @@
   </DIV>
   <DIV style="FLOAT: left">
   <DIV id=checkPwdAndName class=Validform_checktip></DIV>
-  <DIV class=info>密码至少8个字符,最多20个字符<SPAN class=dec><S class=dec1>◆</S><S 
+  <DIV class=info>在输入密码时请保证您的电脑是安全的<SPAN class=dec><S class=dec1>◆</S><S 
   class=dec2>◆</S></SPAN></DIV></DIV>
   <DIV class=clear></DIV></LI>
-  <LI>
-  <P style="margin-left:10px;margin-top: 20px;">确认密码 </P><!--<p>-->
-  <DIV style="margin-left:10px;"><INPUT 
-  onkeydown="if(event.keyCode==32||event.keyCode==188||event.keyCode==222){return false;}" 
-  id=passwordagin name=passwordagin class=inputBg0 onpaste="return false" maxLength=20 type=password 
-  datatype="*4-20" nullmsg="请再输入一次密码！" errormsg="您两次输入的账号密码不一致！" recheck="_pwd"> 
-  </DIV>
-  <DIV>
-  
-  <DIV class=clear></DIV></LI>
-  <!--  <LI id=pt_yzm>
-  <P style="margin-left:10px;">验证码 </P>
+    <LI id=pt_yzm>
+  <P style="margin-left:10px;margin-top: 20px;">验证码 </P>
   <DIV id=tupianyzm>
   <DIV style="margin-left:10px;"><INPUT 
   style="OUTLINE-STYLE: none; OUTLINE-COLOR: invert; PADDING-LEFT: 2px; OUTLINE-WIDTH: medium; WIDTH: 137px; FLOAT: left; HEIGHT: 30px" 
@@ -274,42 +228,22 @@
   id=_captchaImage tabIndex=-1 href="javascript:void(0)">换一张</A> </SPAN></DIV>
   
   
-  <DIV class=clear></DIV></LI>-->
- 
+  <DIV class=clear></DIV></LI>
+   
   <LI style="PADDING-TOP: 30px">
-  <H4><SPAN 
-  style="PADDING-BOTTOM: 10px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; DISPLAY: block; COLOR: #333; FONT-SIZE: 12px; FONT-WEIGHT: normal; PADDING-TOP: 10px; margin-left:10px;" 
-  id=tiaokuan><INPUT 
-  style="POSITION: relative; VERTICAL-ALIGN: middle; MARGIN-RIGHT: 5px; _top: -2px" 
-  CHECKED type=checkbox name=tiaokuan datatype="xieyi">我已阅读并同意<A 
-  style="COLOR: #003399" tabIndex=-1 
-  href="#" target=_blank>《xx网用户注册协议》</A><B 
-  style="PADDING-LEFT: 40px; DISPLAY: none; COLOR: #999; FONT-WEIGHT: normal" 
-  id=xieyitishi><IMG style="VERTICAL-ALIGN: middle" 
-  src="../images/tan.gif" width=18 
-  height=19>&nbsp;&nbsp;请接受服务条款</B></SPAN> </H4><SPAN style="CURSOR: pointer ;margin-left:10px;" 
-  id=reg><IMG id=btnRegister src="../images/ty.gif" 
-  width=251 height=40></SPAN> 
-  </LI></UL></FORM>
-</div>
-    </div>
-</div>
-
-<!--  <div id="footer">
-    <div class="container">
-        <span>浙ICP备11036615号-1 浙公网安备11010502019958</span>
+  
+  <input type="submit" value="登录" style="CURSOR: pointer ;margin-left:10px;" >
+  
  
-        <div class="site-info">
-            
-            <a href="mailto:xhymmc@163.com" alt="Keep in touch :)">邮件反馈</a>
-            <a href="#">关于我们</a>
-            <a href="#">用户协议</a>
-            <span>&#169; 2014 众筹</span>
-        </div>
+  </LI>
+  </DIV>
+  <DIV>
+  </UL></FORM>
+</div>
     </div>
-</div>-->
+</div>
 
-<div class="nipic-footer align-center mt40">
+ <div class="nipic-footer align-center mt40">
     <div class="layout-width layout-width990">
         <a hidefocus="true" title="关于众筹" href="#">关于众筹</a><span class="sepline">|</span><a hidefocus="true" title="网站公约" href="#">网站公约</a><span class="sepline">|</span><a hidefocus="true" title="网站声明" href="#">网站声明</a><span class="sepline">|</span><a hidefocus="true" title="帮助中心" href="#">帮助中心</a><span class="sepline">|</span><a hidefocus="true" title="联系我们" href="http://service.nipic.com/site/contact.html">联系我们</a><span class="sepline">|</span><a hidefocus="true" title="常见问题" href="#">常见问题</a><span class="sepline">
         <p class="gray mt10"><span class="font-tahoma">Copyright © 2014 NiPic.com All Rights Reserved</span>　版权所有·众筹网　增值电信业务经营许可证 ：浙B2-20140130  </p>
@@ -317,6 +251,7 @@
         <p class="mt10"><img height="52" ondragstart="return false;" src="../images/ppaa.gif" /></p>
     </div>
 </div>  
+
 
 <DIV id=RightMenu><A href="../userinfo/register.html#top"><IMG 
 src="../images/right1.png" width=47 height=56></A><A title=产品反馈 
