@@ -4,7 +4,6 @@
 <html>
 <head>
 <%@include file="/WEB-INF/jsp/include.jsp"%>
-<%@include file="/WEB-INF/jsp/index_title.jsp" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户注册</title>
 
@@ -13,40 +12,20 @@
 
 <script type="text/javascript">
 	$(function(){
-		var getInfoObj=function(){
-			return 	$(this).parents("div").next().find(".info");
-		}
-	
-	$("[datatype]").focusin(function(){
-		if(this.timeout){clearTimeout(this.timeout);}
-		var infoObj=getInfoObj.call(this);
-		if(infoObj.siblings(".Validform_right").length!=0){
-			return;	
-		}
-		infoObj.show().siblings().hide();
-		
-	}).focusout(function(){
-		var infoObj=getInfoObj.call(this);
-		this.timeout=setTimeout(function(){
-		
-			infoObj.hide().siblings(".Validform_wrong,.Validform_loading").show();
-		},0);
-		
-	});
-		
 		var emailRegex=/^[a-z0-9_\-]+(\.[_a-z0-9\-]+)*@([_a-z0-9\-]+\.)+([a-z]{2}|aero|arpa|biz|com|coop|edu|gov|info|int|jobs|mil|museum|name|nato|net|org|pro|travel)$/;
 		var phoneRegex=/^((13[0-9])|(15[0-9])|(18[0-9]))[0-9]{8}$/;
-		var register={
+		var register={};
+		register={
 				initButtonRegister:function(){
 					$("#btnRegister").bind('click',function(){
 						if(register.checkRegForm()){
 							var formJson=$("#regForm").serializeArray();
-							$.post("beginRegister.html",formJson,function(data){
+							$.post("userinfo/beginRegister.html",formJson,function(data){
 								var d=$.eval2(data);
 								if(d.success){
-									alert("注册成功");
+									$.alert("提示信息","注册成功");
 								}else{
-									alert("注册失败");
+									$.alert("注册提示",d.errorMsgs[0]);
 								}
 							})
 						}
@@ -54,64 +33,130 @@
 					
 				},
 				checkRegForm:function(){//验证表单
-					var email=$("input[name=email]").val();
-					var password=$("input[name=password]").val();
-					var agpassword=$("input[name=passwordagin]").val();
-					var ncname=$("input[name=userNname]").val();
-					var phone=$("input[name=userPhone]").val();
-					if(!emailRegex.test(email)){
-						
-						
-						$("#valid11").addClass("Validform_wrong");
-						$("#valid11").html("邮箱验证不通过");
-						$("#email").addClass("Validform_error");
-						$("#valid11").show();
+					if(!register.validateInput($("#userNname"), "validAccount", "请输入您的用户名", "请输入6-20位用户名", true, 6, 20, false)){
 						return false;
 					}
-					if(!phoneRegex.test(phone)){
-						alert("手机格式不正确");
+					else if(!register.validateInput($("#email"), "validEmail", "请输入您的邮箱", "邮箱格式不正确", false, 0, 0, emailRegex)){
 						return false;
 					}
-					if(!password){
-						alert("密码不能为空");
+					else if(!register.validateInput($("#userPhone"), "validPhone", "请输入您的手机号", "手机格式不正确", false, 0, 0, phoneRegex)){
 						return false;
 					}
-					if(agpassword!=password){
-						alert("两次密码输入不一致");
+					else if(!register.validateInput($("#password"), "validPassword", "请输入密码", "请输入6-20位密码", true, 6, 20, false)){
 						return false;
-					}
-					if(!ncname){
-						alert("必须输入昵称");
+					}else if($("#passwordagin").val()!=$("#password").val()){
+						$("#validpasswordAgain").addClass("Validform_wrong").html("两次密码输入不一致");
+						$("#validpasswordAgain").show();
+						$("#passwordagin").addClass("Validform_error");
 						return false;
 					}
 					return true;
+				},
+				blurInput:function(){
+					register.commonBlurInput($("#userNname"), "validAccount", "请输入您的用户名", "请输入6-20位用户名", true, 6, 20, false);
+					register.commonBlurInput($("#email"), "validEmail", "请输入您的邮箱", "邮箱格式不正确", false, 0, 0, emailRegex);
+					register.commonBlurInput($("#userPhone"), "validPhone", "请输入您的手机号", "手机格式不正确", false, 0, 0, phoneRegex);
+					register.commonBlurInput($("#password"), "validPassword", "请输入密码", "请输入6-20位密码", true, 6, 20, false);
+					$("#passwordagin").blur(function(){
+						var that=$(this);
+						if(that.val()!=$("#password").val()){
+							$("#validpasswordAgain").addClass("Validform_wrong").html("两次密码输入不一致");
+							$("#validpasswordAgain").show();
+							that.addClass("Validform_error");
+						}else{
+							$("#validpasswordAgain").hide();
+							that.removeClass("Validform_error");
+						}
+						
+					})
+				},
+				/**
+				* obj:注册blur事件对象
+				* validateId:验证信息id
+				* errmsg1：错误信息1
+				* errmsg2：错误信息2
+ 				**/
+				commonBlurInput:function(obj,validateId,nullerrMsg,errMsg2,isvalidateLen,minlen,maxlen,regex){
+					var t=$(obj);
+					t.blur(function(){
+						var that=$(this);
+						if(!that.val()){
+							$("#"+validateId+"").addClass("Validform_wrong").html(nullerrMsg);
+							$("#"+validateId+"").show();
+							that.addClass("Validform_error");
+						}else{
+							if(isvalidateLen){//验证长度
+								var len=that.val().length;
+								if(len<minlen||len>maxlen){
+									$("#"+validateId+"").addClass("Validform_wrong").html(errMsg2);
+									$("#"+validateId+"").show();
+									that.addClass("Validform_error");
+								}else{
+									$("#"+validateId+"").hide();
+									that.removeClass("Validform_error");
+								}
+							}else{
+								if(regex){
+									if(!regex.test(that.val())){
+										$("#"+validateId+"").addClass("Validform_wrong").html(errMsg2);
+										$("#"+validateId+"").show();
+										that.addClass("Validform_error");
+									}else{
+										$("#"+validateId+"").hide();
+										that.removeClass("Validform_error");
+									}
+								}else{
+									$("#"+validateId+"").hide();
+									that.removeClass("Validform_error");
+								}
+							}
+						}
+					})
+				},validateInput:function(obj,validateId,nullerrMsg,errMsg2,isvalidateLen,minlen,maxlen,regex){
+					var that=$(obj);
+					if(!that.val()){
+						$("#"+validateId+"").addClass("Validform_wrong").html(nullerrMsg);
+						$("#"+validateId+"").show();
+						that.addClass("Validform_error");
+						return false;
+					}else{
+						if(isvalidateLen){//验证长度
+							var len=that.val().length;
+							if(len<minlen||len>maxlen){
+								$("#"+validateId+"").addClass("Validform_wrong").html(errMsg2);
+								$("#"+validateId+"").show();
+								that.addClass("Validform_error");
+								return false;
+							}else{
+								$("#"+validateId+"").hide();
+								that.removeClass("Validform_error");
+								return true;
+							}
+						}else{
+							if(regex){
+								if(!regex.test(that.val())){
+									$("#"+validateId+"").addClass("Validform_wrong").html(errMsg2);
+									$("#"+validateId+"").show();
+									that.addClass("Validform_error");
+									return false;
+								}else{
+									$("#"+validateId+"").hide();
+									that.removeClass("Validform_error");
+									return true;
+								}
+							}else{
+								$("#"+validateId+"").hide();
+								that.removeClass("Validform_error");
+								return true;
+							}
+						}
+					}
 				}
-		}
-		
-		jQuery("#email").focus(function(){
-			$("#email").removeClass("Validform_error");
-			$("#valid11").hide();
-		});
-		jQuery("#valid11").click(function(){
-			$("#valid11").hide();
-			$("#email").focus();
-		});
-		$("#email").blur(function(){
-			if(this.value==""){
-				$("#valid11").addClass("Validform_wrong");
-				$("#email").addClass("Validform_error");
-				$("#valid11").html("邮箱不能为空");
-				
-				$("#valid11").show();
-			}else{
-				$("#valid11").removeClass("Validform_wrong");
-				$("#email").removeClass("Validform_error");
-				$("#valid11").hide();
-			}
-		});
+		};
 		function main(){
 			//注册事件
 			register.initButtonRegister();
+			register.blurInput();
 		}
 		
 		main();
@@ -120,124 +165,69 @@
 </script>
 </head>
 <body>
-
+<%@include file="/WEB-INF/jsp/index_title.jsp" %>
 <div class="layout-width mt18 clearfix">
     <div class="bag clearfix">
         <div class="relative fr about-nipic">
             <img ondragstart="return false;" style="display:block;margin-top:85px;" src="images/about_nipic.jpg">
-            <div class="absolute" style="top: 27px; left: 0px; width: 377px; font-size: 18px;">在众筹网你可以</div>
+            <div class="absolute" style="top: 27px; left: 0px; width: 377px; font-size: 18px;">在设计师平台你可以</div>
             
-            <a href="#" title="了解更多什么是信息网？" hidefocus="true" class="absolute font-simsun about-nipic-link">了解更多"xxx？"&gt;&gt;</a>
+            <a href="http://service.nipic.com/site/aboutus.html" title="了解更多什么是信息网？" hidefocus="true" class="absolute font-simsun about-nipic-link">了解更多"xxx？"&gt;&gt;</a>
         </div>
         <div class="fl bag-aside">
             <div class="bag-aside-hd">
                 <h2 class="fl mr15">注册新用户</h2>
-                <div class="fl reg-tip">已有帐号？去<a href="../userinfo/login.html" class="red1 underline" hidefocus="true" target="_self">登录</a>&gt;</div>
+                <div class="fl reg-tip">已有帐号？去<a href="userinfo/login.html" class="red1 underline" hidefocus="true" target="_self">登录</a>&gt;</div>
             </div>
-            
+            <div style="margin-left: 30px;">
           
            <FORM class=registerform method=post action="" id="regForm">
 
-<UL>
+<UL >
  <LI>
   <P><FONT id=registResult color=red></FONT></P>
-  <P style="margin-left:10px;margin-top: 20px;">帐户名 </P>
-  <DIV style="POSITION: relative;margin-left:10px;">
-  <INPUT style="COLOR: rgb(51,51,51)" 
-  id=userNname class=inputBg1  type=text name=userNname 
-  datatype="userNname" nullmsg="账号不能为空" ajaxurl="check_uname.htm" 
-  autocomplete="off"></DIV>
-  <DIV>
-  <DIV id=valid1 class=Validform_checktip></DIV>
-  <DIV class=info>用户名至少4个字符,最多20个字符<SPAN class=dec><S class=dec1>◆</S><S 
-  class=dec2>◆</S></SPAN></DIV></DIV>
-  <DIV 
-  style="DISPLAY: none; FLOAT: left; HEIGHT: 20px; _padding-top: 10px"></DIV>
-  <DIV class=clear></DIV></LI>
+  <P style="margin-left:10px;margin-top: 20px;">用户名 </P>
+  <DIV style="POSITION: relative;margin-left:10px;"> 
+  <input  style="COLOR: rgb(51,51,51)"  id=userNname class=inputBg1  type=text name=userNname  placeholder="请输入6-20位用户名" > 
+   </DIV>
+  <DIV id=validAccount class=Validform_checktip></DIV> 
+  <DIV class=clear></DIV>
+  </LI>
   
   
 <LI>
   <P><FONT id=registResult color=red></FONT></P>
   <P style="margin-left:10px;margin-top: 20px;">邮箱 </P>
   <DIV style="POSITION: relative;margin-left:10px;">
-  <INPUT style="COLOR: rgb(51,51,51)" 
-  id=email class=inputBg1  type=text name=email 
-  datatype="email" nullmsg="邮箱不能为空" 
-  autocomplete="off"></DIV>
-  <DIV>
-  <DIV id=valid11 class=Validform_checktip></DIV>
-  <DIV class=info>邮箱至少4个字符,最多20个字符<SPAN class=dec><S class=dec1>◆</S><S 
-  class=dec2>◆</S></SPAN></DIV></DIV>
-  <DIV 
-  style="DISPLAY: none; FLOAT: left; HEIGHT: 20px; _padding-top: 10px"></DIV>
-  <DIV class=clear></DIV></LI>
+ <INPUT style="COLOR: rgb(51,51,51)"  id=email class=inputBg1  type=text name=email placeholder="请输入您的邮箱"  ></DIV>
+  <DIV id=validEmail class=Validform_checktip></DIV>
+  <DIV class=clear></DIV>
+  </LI>
   
   <LI>
   <P><FONT id=registResult color=red></FONT></P>
-  <P style="margin-left:10px;margin-top: 20px;">手机号号码</P>
+  <P style="margin-left:10px;margin-top: 20px;">手机号</P>
   <DIV style="POSITION: relative;margin-left:10px;">
-  <INPUT style="COLOR: rgb(51,51,51)" 
-  id=userPhone class=inputBg1  type=text name=userPhone 
-  datatype="email" nullmsg="手机号码不能为空" 
-  autocomplete="off"></DIV>
-  <DIV>
-  <DIV id=valid112 class=Validform_checktip></DIV>
-  <DIV class=info>手机号KKOO11位<SPAN class=dec><S class=dec1>◆</S><S 
-  class=dec2>◆</S></SPAN></DIV></DIV>
-  <DIV 
-  style="DISPLAY: none; FLOAT: left; HEIGHT: 20px; _padding-top: 10px"></DIV>
+  <INPUT style="COLOR: rgb(51,51,51)"   id=userPhone class=inputBg1  type=text name=userPhone  placeholder="请输入您的手机号" ></DIV>
+  <DIV id=validPhone class=Validform_checktip></DIV> 
   <DIV class=clear></DIV></LI>
   
-  
-  
-  
-  
-  <LI>
-  <P style="margin-left:10px;margin-top: 20px;">密码 </P><!--<p>-->
-  <DIV style="margin-left:10px;"><INPUT 
-  onkeydown="if(event.keyCode==32||event.keyCode==188||event.keyCode==222){return false;}" 
-  id=password class=inputBg0 onpaste="return false" maxLength=20 type=password 
-  name=password datatype="username_pwd" nullmsg="密码不能为空！" plugin="passwordStrength"> 
-  </DIV>
-  <DIV style="FLOAT: left">
-  <DIV id=checkPwdAndName class=Validform_checktip></DIV>
-  <DIV class=info>密码至少8个字符,最多20个字符<SPAN class=dec><S class=dec1>◆</S><S 
-  class=dec2>◆</S></SPAN></DIV></DIV>
+    <LI>
+  <P><FONT id=registResult color=red></FONT></P>
+  <P style="margin-left:10px;margin-top: 20px;">密码</P>
+  <DIV style="POSITION: relative;margin-left:10px;">
+  <INPUT style="COLOR: rgb(51,51,51)"   id=password class=inputBg1  type=password name=password  placeholder="请输入6-20位密码" ></DIV>
+  <DIV id=validPassword class=Validform_checktip></DIV> 
   <DIV class=clear></DIV></LI>
-  <LI>
-  <P style="margin-left:10px;margin-top: 20px;">确认密码 </P><!--<p>-->
-  <DIV style="margin-left:10px;"><INPUT 
-  onkeydown="if(event.keyCode==32||event.keyCode==188||event.keyCode==222){return false;}" 
-  id=passwordagin name=passwordagin class=inputBg0 onpaste="return false" maxLength=20 type=password 
-  datatype="*4-20" nullmsg="请再输入一次密码！" errormsg="您两次输入的账号密码不一致！" recheck="_pwd"> 
-  </DIV>
-  <DIV>
   
+   <LI>
+  <P><FONT id=registResult color=red></FONT></P>
+  <P style="margin-left:10px;margin-top: 20px;">确认密码</P>
+  <DIV style="POSITION: relative;margin-left:10px;">
+  <INPUT style="COLOR: rgb(51,51,51)"   id=passwordagin class=inputBg1  type=password name=passwordagin  placeholder="请再次输入密码" ></DIV>
+  <DIV id=validpasswordAgain class=Validform_checktip></DIV> 
   <DIV class=clear></DIV></LI>
-  <!--  <LI id=pt_yzm>
-  <P style="margin-left:10px;">验证码 </P>
-  <DIV id=tupianyzm>
-  <DIV style="margin-left:10px;"><INPUT 
-  style="OUTLINE-STYLE: none; OUTLINE-COLOR: invert; PADDING-LEFT: 2px; OUTLINE-WIDTH: medium; WIDTH: 137px; FLOAT: left; HEIGHT: 30px" 
-  id=captcha class=inputBg0 maxLength=5 size=8 type=text name=j_captcha 
-  datatype="*" nullmsg="验证码不能为空" ajaxurl="check_valid_code.htm" 
-  autocomplete="off" errormsg="验证码错误"> </DIV>
-  <DIV style="POSITION: relative">
-  <DIV style="POSITION: absolute; TOP: 0px; LEFT: 280px" 
-  class=Validform_checktip></DIV>
-  <DIV style="POSITION: absolute; TOP: 0px; LEFT: 280px" id=yzm 
-  class=info>填写图片中的字符不区分大小写<SPAN class=dec><S class=dec1>◆</S><S 
-  class=dec2>◆</S></SPAN></DIV></DIV></DIV>
   
-  <DIV style="FLOAT: left" id=tpyzm><SPAN><IMG 
-  style="PADDING-LEFT: 5px; DISPLAY: inline-block; VERTICAL-ALIGN: middle; _position: relative; _top: 5px" 
-  id=captchaImage alt=captcha src=""> <A 
-  style="POSITION: absolute; MARGIN: 0px 0px 0px 5px; COLOR: rgb(41,83,166)" 
-  id=_captchaImage tabIndex=-1 href="javascript:void(0)">换一张</A> </SPAN></DIV>
-  
-  
-  <DIV class=clear></DIV></LI>-->
- 
   <LI style="PADDING-TOP: 30px">
   <H4><SPAN 
   style="PADDING-BOTTOM: 10px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; DISPLAY: block; COLOR: #333; FONT-SIZE: 12px; FONT-WEIGHT: normal; PADDING-TOP: 10px; margin-left:10px;" 
@@ -248,28 +238,15 @@
   href="#" target=_blank>《xx网用户注册协议》</A><B 
   style="PADDING-LEFT: 40px; DISPLAY: none; COLOR: #999; FONT-WEIGHT: normal" 
   id=xieyitishi><IMG style="VERTICAL-ALIGN: middle" 
-  src="../images/tan.gif" width=18 
+  src="images/tan.gif" width=18 
   height=19>&nbsp;&nbsp;请接受服务条款</B></SPAN> </H4><SPAN style="CURSOR: pointer ;margin-left:10px;" 
   id=reg><IMG id=btnRegister src="images/ty.gif" 
   width=251 height=40></SPAN> 
-  </LI></UL></FORM>
+  </LI></UL></FORM></div>
 </div>
     </div>
 </div>
 
-<!--  <div id="footer">
-    <div class="container">
-        <span>浙ICP备11036615号-1 浙公网安备11010502019958</span>
- 
-        <div class="site-info">
-            
-            <a href="mailto:xhymmc@163.com" alt="Keep in touch :)">邮件反馈</a>
-            <a href="#">关于我们</a>
-            <a href="#">用户协议</a>
-            <span>&#169; 2014 众筹</span>
-        </div>
-    </div>
-</div>-->
 
 <div class="nipic-footer align-center mt40">
     <div class="layout-width layout-width990">
@@ -280,17 +257,17 @@
     </div>
 </div>  
 
-<DIV id=RightMenu><A href="../userinfo/register.html#top"><IMG 
-src="../images/right1.png" width=47 height=56></A><A title=产品反馈 
+<DIV id=RightMenu><A href="userinfo/register.html#header"><IMG 
+src="images/right1.png" width=47 height=56></A><A title=产品反馈 
 onclick=User.show(this); href="javascript:void(0);" rel=Dialog_Alert 
 url="/Feedback/" mode="iframe" showbg="true" showborder="false" 
 showtitle="false" height="500" width="750"><IMG 
-src="../images/right2.png" width=47 height=56></A><A title=在线客服 
+src="images/right2.png" width=47 height=56></A><A title=在线客服 
 href="http://wpa.qq.com/msgrd?v=3&amp;uin=2787064043&amp;site=qq&amp;menu=yes" 
-target=_blank><IMG src="../images/right3.png" width=47 
+target=_blank><IMG src="images/right3.png" width=47 
 height=56></A><A id=code class=ewm href="javascript:void(0);"><SPAN 
 style="DISPLAY: none" id=code_img></SPAN><IMG 
-src="../images/right4.png" width=47 height=56></A></DIV>
+src="images/right4.png" width=47 height=56></A></DIV>
 <DIV style="DISPLAY: none" class=ui_btn_min></DIV>
 
 </body>

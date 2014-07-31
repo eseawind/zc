@@ -25,10 +25,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
         <ul class="nav-bar">
             <li class="active"><a href="index.html">首页</a></li>
-            <li ><a href="#">精选项目</a></li>
-            <li ><a href="#">热门项目</a></li>
+            <li ><a href="#">精选设计</a></li>
+            <li ><a href="#">热门设计</a></li>
             <li ><a href="#">关于我们</a></li>
-            <li class="add-entity"><a href="http://localhost:9090/only/adddress.html"></a></li>
+            <li class="add-entity"><a href="http://localhost:9090/only/adddress.html" title="发起设计"></a></li>
         </ul>
  
  

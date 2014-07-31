@@ -137,7 +137,7 @@
         <div class="fl bag-aside">
             <div class="bag-aside-hd">
                 <h2 class="fl mr15">用户登录</h2>
-                <div class="fl reg-tip">还没有账号？去<a href="../userinfo/register.html" class="red1 underline" hidefocus="true" target="_self">注册</a>&gt;</div>
+                <div class="fl reg-tip">还没有账号？去<a href="userinfo/register.html" class="red1 underline" hidefocus="true" target="_self">注册</a>&gt;</div>
             </div>
             
           
@@ -214,22 +214,22 @@
         <a hidefocus="true" title="关于众筹" href="#">关于众筹</a><span class="sepline">|</span><a hidefocus="true" title="网站公约" href="#">网站公约</a><span class="sepline">|</span><a hidefocus="true" title="网站声明" href="#">网站声明</a><span class="sepline">|</span><a hidefocus="true" title="帮助中心" href="#">帮助中心</a><span class="sepline">|</span><a hidefocus="true" title="联系我们" href="http://service.nipic.com/site/contact.html">联系我们</a><span class="sepline">|</span><a hidefocus="true" title="常见问题" href="#">常见问题</a><span class="sepline">
         <p class="gray mt10"><span class="font-tahoma">Copyright © 2014 NiPic.com All Rights Reserved</span>　版权所有·众筹网　增值电信业务经营许可证 ：浙B2-20140130  </p>
         <p class="gray mt10">众筹网是网络服务平台方，若您发现您的权利被侵害，请发起知识产权投诉，<span class="font-tahoma">xhymmc@163.com</span></p>
-        <p class="mt10"><img height="52" ondragstart="return false;" src="../images/ppaa.gif" /></p>
+        <p class="mt10"><img height="52" ondragstart="return false;" src="images/ppaa.gif" /></p>
     </div>
 </div>  
 
 
 <DIV id=RightMenu><A href="../userinfo/register.html#top"><IMG 
-src="../images/right1.png" width=47 height=56></A><A title=产品反馈 
+src="images/right1.png" width=47 height=56></A><A title=产品反馈 
 onclick=User.show(this); href="javascript:void(0);" rel=Dialog_Alert 
 url="/Feedback/" mode="iframe" showbg="true" showborder="false" 
 showtitle="false" height="500" width="750"><IMG 
-src="../images/right2.png" width=47 height=56></A><A title=在线客服 
+src="images/right2.png" width=47 height=56></A><A title=在线客服 
 href="http://wpa.qq.com/msgrd?v=3&amp;uin=2787064043&amp;site=qq&amp;menu=yes" 
-target=_blank><IMG src="../images/right3.png" width=47 
+target=_blank><IMG src="images/right3.png" width=47 
 height=56></A><A id=code class=ewm href="javascript:void(0);"><SPAN 
 style="DISPLAY: none" id=code_img></SPAN><IMG 
-src="../images/right4.png" width=47 height=56></A></DIV>
+src="images/right4.png" width=47 height=56></A></DIV>
 <DIV style="DISPLAY: none" class=ui_btn_min></DIV>
 
 </body>
