@@ -25,7 +25,7 @@
 			try{
 			data=eval("("+data+")");
 			}catch(e){ }
-			if(data){
+			/***if(data){
 				if(typeof data.success){
 					if(data.success==false){
 						var match=/: (?!java)(.*)/;
@@ -42,10 +42,29 @@
 				}
 			}else{
 				alert("服务器内部错误")
-			}
+			}***/
 			return data;
+		},
+		alert:function(title,msg){
+			if($("#_validateMessageDialog").length==0){//不存在,创建该div
+				var div=$("<div title='"+title+"' id='_validateMessageDialog'>"+msg+"</div>");
+				$("body").append(div);
+				$( "#_validateMessageDialog" ).dialog({
+					modal: true,
+					show: "blind",
+					buttons: {
+						"确定": function() {
+							$( this ).dialog( "close" );
+						}
+					}
+				});
+			}else{
+				$( "#_validateMessageDialog" ).attr("title",title);
+				$( "#_validateMessageDialog" ).html(msg);
+				$( "#_validateMessageDialog" ).dialog("open");
+			}
 		}
-	})
+	});
 	
 	$.ajaxSetup({
 		error : function(jqXHR, textStatus, errorThrown) {
