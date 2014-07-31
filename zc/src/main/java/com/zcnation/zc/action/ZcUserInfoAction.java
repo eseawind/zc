@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.zcnation.zc.common.exception.NotValidateCorrectException;
 import com.zcnation.zc.domain.ZcUserInfo;
 import com.zcnation.zc.service.ZcUserInfoService;
 

@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 
 import com.zcnation.zc.common.exception.NotLoginException;
+import com.zcnation.zc.common.exception.NotValidateCorrectException;
 
 public class CustomSimpleMappingExceptionResolver extends SimpleMappingExceptionResolver {
 	private Logger logger=Logger.getLogger(CustomSimpleMappingExceptionResolver.class);
@@ -34,6 +35,12 @@ public class CustomSimpleMappingExceptionResolver extends SimpleMappingException
 					//用户未登录
 					if (ex instanceof NotLoginException) {
 							response.getWriter().write("用户未登录");
+					}else if(ex instanceof NotValidateCorrectException){//验证异常
+						r.setSuccess(false);
+						r.getErrorMsgs().add(ex.getMessage());
+						response.setStatus(HttpServletResponse.SC_OK);
+						response.setContentType("text/html;charset=UTF-8");
+						response.getWriter().write(r.toJson());
 					}else{
 						System.out.println("响应内容：");
 						r.setSuccess(false);
