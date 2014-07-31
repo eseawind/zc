@@ -4,6 +4,7 @@
 <html>
 <head>
 <%@include file="/WEB-INF/jsp/include.jsp"%>
+<%@include file="/WEB-INF/jsp/index_title.jsp" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户登录</title>
 
@@ -122,7 +123,7 @@
 </script>
 </head>
 <body>
-<%@include file="/WEB-INF/jsp/index_title.jsp" %>
+
 <div class="layout-width mt18 clearfix">
     <div class="bag clearfix">
         <div class="relative fr about-nipic">
@@ -147,9 +148,7 @@
   <P><FONT id=registResult color=red></FONT></P>
   <P style="margin-left:10px;margin-top: 20px;">登录名 </P>
   <DIV style="POSITION: relative;margin-left:10px;">
-  <DIV 
-  style="POSITION: absolute; LINE-HEIGHT: 30px; WIDTH: 200px; HEIGHT: 30px; COLOR: #999; TOP: 5px; LEFT: 10px" 
-  id=usernametishi></DIV><INPUT style="COLOR: rgb(51,51,51)" 
+  <INPUT style="COLOR: rgb(51,51,51)" 
   id=userNname class=inputBg1  type=text name=userNname 
   datatype="userNname" nullmsg="账号不能为空" ajaxurl="check_uname.htm" 
   autocomplete="off"></DIV>

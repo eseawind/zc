@@ -34,9 +34,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
         <ul class="user">
             
-                <li><a href="../zc/userinfo/login.html">登录</a></li>
+                <li><a href="userinfo/login.html">登录</a></li>
                 <li><span>&#124;</span></li>
-                <li><a href="../zc/userinfo/register.html">注册</a></li>
+                <li><a href="userinfo/register.html">注册</a></li>
             
         </ul>
  

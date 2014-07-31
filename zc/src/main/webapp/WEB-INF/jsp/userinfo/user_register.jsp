@@ -4,6 +4,7 @@
 <html>
 <head>
 <%@include file="/WEB-INF/jsp/include.jsp"%>
+<%@include file="/WEB-INF/jsp/index_title.jsp" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户注册</title>
 
@@ -119,14 +120,14 @@
 </script>
 </head>
 <body>
-<%@include file="/WEB-INF/jsp/index_title.jsp" %>
+
 <div class="layout-width mt18 clearfix">
     <div class="bag clearfix">
         <div class="relative fr about-nipic">
-            <img ondragstart="return false;" style="display:block;margin-top:85px;" src="../images/about_nipic.jpg">
+            <img ondragstart="return false;" style="display:block;margin-top:85px;" src="images/about_nipic.jpg">
             <div class="absolute" style="top: 27px; left: 0px; width: 377px; font-size: 18px;">在众筹网你可以</div>
             
-            <a href="http://service.nipic.com/site/aboutus.html" title="了解更多什么是信息网？" hidefocus="true" class="absolute font-simsun about-nipic-link">了解更多"xxx？"&gt;&gt;</a>
+            <a href="#" title="了解更多什么是信息网？" hidefocus="true" class="absolute font-simsun about-nipic-link">了解更多"xxx？"&gt;&gt;</a>
         </div>
         <div class="fl bag-aside">
             <div class="bag-aside-hd">
@@ -142,9 +143,7 @@
   <P><FONT id=registResult color=red></FONT></P>
   <P style="margin-left:10px;margin-top: 20px;">帐户名 </P>
   <DIV style="POSITION: relative;margin-left:10px;">
-  <DIV 
-  style="POSITION: absolute; LINE-HEIGHT: 30px; WIDTH: 200px; HEIGHT: 30px; COLOR: #999; TOP: 5px; LEFT: 10px" 
-  id=usernametishi></DIV><INPUT style="COLOR: rgb(51,51,51)" 
+  <INPUT style="COLOR: rgb(51,51,51)" 
   id=userNname class=inputBg1  type=text name=userNname 
   datatype="userNname" nullmsg="账号不能为空" ajaxurl="check_uname.htm" 
   autocomplete="off"></DIV>
@@ -161,9 +160,7 @@
   <P><FONT id=registResult color=red></FONT></P>
   <P style="margin-left:10px;margin-top: 20px;">邮箱 </P>
   <DIV style="POSITION: relative;margin-left:10px;">
-  <DIV 
-  style="POSITION: absolute; LINE-HEIGHT: 30px; WIDTH: 200px; HEIGHT: 30px; COLOR: #999; TOP: 5px; LEFT: 10px" 
-  id=usernametishi></DIV><INPUT style="COLOR: rgb(51,51,51)" 
+  <INPUT style="COLOR: rgb(51,51,51)" 
   id=email class=inputBg1  type=text name=email 
   datatype="email" nullmsg="邮箱不能为空" 
   autocomplete="off"></DIV>
@@ -179,9 +176,7 @@
   <P><FONT id=registResult color=red></FONT></P>
   <P style="margin-left:10px;margin-top: 20px;">手机号号码</P>
   <DIV style="POSITION: relative;margin-left:10px;">
-  <DIV 
-  style="POSITION: absolute; LINE-HEIGHT: 30px; WIDTH: 200px; HEIGHT: 30px; COLOR: #999; TOP: 5px; LEFT: 10px" 
-  id=usernametishi></DIV><INPUT style="COLOR: rgb(51,51,51)" 
+  <INPUT style="COLOR: rgb(51,51,51)" 
   id=userPhone class=inputBg1  type=text name=userPhone 
   datatype="email" nullmsg="手机号码不能为空" 
   autocomplete="off"></DIV>
@@ -255,7 +250,7 @@
   id=xieyitishi><IMG style="VERTICAL-ALIGN: middle" 
   src="../images/tan.gif" width=18 
   height=19>&nbsp;&nbsp;请接受服务条款</B></SPAN> </H4><SPAN style="CURSOR: pointer ;margin-left:10px;" 
-  id=reg><IMG id=btnRegister src="../images/ty.gif" 
+  id=reg><IMG id=btnRegister src="images/ty.gif" 
   width=251 height=40></SPAN> 
   </LI></UL></FORM>
 </div>
@@ -281,7 +276,7 @@
         <a hidefocus="true" title="关于众筹" href="#">关于众筹</a><span class="sepline">|</span><a hidefocus="true" title="网站公约" href="#">网站公约</a><span class="sepline">|</span><a hidefocus="true" title="网站声明" href="#">网站声明</a><span class="sepline">|</span><a hidefocus="true" title="帮助中心" href="#">帮助中心</a><span class="sepline">|</span><a hidefocus="true" title="联系我们" href="http://service.nipic.com/site/contact.html">联系我们</a><span class="sepline">|</span><a hidefocus="true" title="常见问题" href="#">常见问题</a><span class="sepline">
         <p class="gray mt10"><span class="font-tahoma">Copyright © 2014 NiPic.com All Rights Reserved</span>　版权所有·众筹网　增值电信业务经营许可证 ：浙B2-20140130  </p>
         <p class="gray mt10">众筹网是网络服务平台方，若您发现您的权利被侵害，请发起知识产权投诉，<span class="font-tahoma">xhymmc@163.com</span></p>
-        <p class="mt10"><img height="52" ondragstart="return false;" src="../images/ppaa.gif" /></p>
+        <p class="mt10"><img height="52" ondragstart="return false;" src="images/ppaa.gif" /></p>
     </div>
 </div>  
 
