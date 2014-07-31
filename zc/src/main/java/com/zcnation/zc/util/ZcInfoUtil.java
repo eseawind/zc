@@ -12,5 +12,6 @@ public class ZcInfoUtil {
 
 	public static void main(String[] args) {
 		System.out.println("sdsd");
+		System.out.println(ConstantUtil.attr("zc.Email.port"));
 	}
 }

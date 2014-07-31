@@ -7,8 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户注册</title>
 
- <link href="../css/main.css" rel="StyleSheet" />
- <link href="../css/zc_register.css" rel="StyleSheet" />
+ <!-- <link href="../css/main.css" rel="StyleSheet" />
+ <link href="../css/zc_register.css" rel="StyleSheet" /> -->
 
 <script type="text/javascript">
 	$(function(){
@@ -119,40 +119,7 @@
 </script>
 </head>
 <body>
-<div id="header">
-    <div class="overlay"></div>
-    <div class="header-container">
-        
-      
-        <div class="title">
-            <h1 style="display: none"><a href="#">果库</a></h1>
-            <a href="/selected/" class="logo"><img src="../images/logonew.png"></a>
-        </div>
- 
-        <ul class="nav-bar">
-            <li class="active"><a href="../index.html">首页</a></li>
-            <li ><a href="#">精选项目</a></li>
-            <li ><a href="#">热门项目</a></li>
-            <li ><a href="#">关于我们</a></li>
-            <li class="add-entity"><a href="http://localhost:9090/only/adddress.html"></a></li>
-        </ul>
- 
- 
-        <ul class="user">
-            
-                <li><a href="../userinfo/login.html">登录</a></li>
-                <li><span>&#124;</span></li>
-                <li><a href="./userinfo/register.html">注册</a></li>
-            
-        </ul>
- 
-            <form action="#" method="GET">
-                <input type="text" placeholder="搜你想要的" name="q" class="search">
-                <input class="search-submit" type="submit" value="">
-            </form>
-        
-    </div>
-</div>
+<%@include file="/WEB-INF/jsp/index_title.jsp" %>
 <div class="layout-width mt18 clearfix">
     <div class="bag clearfix">
         <div class="relative fr about-nipic">
