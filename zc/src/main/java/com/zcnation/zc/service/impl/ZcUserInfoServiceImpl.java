@@ -68,15 +68,15 @@ public class ZcUserInfoServiceImpl implements ZcUserInfoService {
 		if (StringUtils.isBlank(userinfo.getPassword())) {
 			throw new NotValidateCorrectException("密码不能为空");
 		} else {
-			if (StringUtils.length(userinfo.getPassword()) < 6) {
-				throw new NotValidateCorrectException("密码必须6个字符");
+			if (StringUtils.length(userinfo.getPassword()) < 6||StringUtils.length(userinfo.getPassword())>20) {
+				throw new NotValidateCorrectException("密码必须6-20个字符");
 			}
 			if (!StringUtils.equals(userinfo.getPassword(), passwordagin)) {
 				throw new NotValidateCorrectException("两次密码输入不一致");
 			}
 		}
-		if (StringUtils.isBlank(userinfo.getUserNname())) {
-			throw new NotValidateCorrectException("昵称不能为空");
+		if (StringUtils.isBlank(userinfo.getUserName())) {
+			throw new NotValidateCorrectException("用户名不能为空");
 		}
 	}
 

@@ -9,7 +9,6 @@
 
  <!-- <link href="../css/main.css" rel="StyleSheet" />
  <link href="../css/zc_register.css" rel="StyleSheet" /> -->
-
 <script type="text/javascript">
 	$(function(){
 		var emailRegex=/^[a-z0-9_\-]+(\.[_a-z0-9\-]+)*@([_a-z0-9\-]+\.)+([a-z]{2}|aero|arpa|biz|com|coop|edu|gov|info|int|jobs|mil|museum|name|nato|net|org|pro|travel)$/;
@@ -23,7 +22,7 @@
 							$.post("userinfo/beginRegister.html",formJson,function(data){
 								var d=$.eval2(data);
 								if(d.success){
-									$.alert("提示信息","注册成功");
+									$.alert("注册提示","注册成功");
 								}else{
 									$.alert("注册提示",d.errorMsgs[0]);
 								}
@@ -33,7 +32,7 @@
 					
 				},
 				checkRegForm:function(){//验证表单
-					if(!register.validateInput($("#userNname"), "validAccount", "请输入您的用户名", "请输入6-20位用户名", true, 6, 20, false)){
+					if(!register.validateInput($("#userName"), "validAccount", "请输入您的用户名", "请输入6-20位用户名", true, 6, 20, false)){
 						return false;
 					}
 					else if(!register.validateInput($("#email"), "validEmail", "请输入您的邮箱", "邮箱格式不正确", false, 0, 0, emailRegex)){
@@ -53,7 +52,7 @@
 					return true;
 				},
 				blurInput:function(){
-					register.commonBlurInput($("#userNname"), "validAccount", "请输入您的用户名", "请输入6-20位用户名", true, 6, 20, false);
+					register.commonBlurInput($("#userName"), "validAccount", "请输入您的用户名", "请输入6-20位用户名", true, 6, 20, false);
 					register.commonBlurInput($("#email"), "validEmail", "请输入您的邮箱", "邮箱格式不正确", false, 0, 0, emailRegex);
 					register.commonBlurInput($("#userPhone"), "validPhone", "请输入您的手机号", "手机格式不正确", false, 0, 0, phoneRegex);
 					register.commonBlurInput($("#password"), "validPassword", "请输入密码", "请输入6-20位密码", true, 6, 20, false);
@@ -163,75 +162,69 @@
 		
 	})
 </script>
+<style type="text/css">
+.registerform table{
+width: 550px;
+}
+.registerform table td{
+height: 55px;text-align: right;
+}
+
+</style>
 </head>
 <body>
 <%@include file="/WEB-INF/jsp/index_title.jsp" %>
-<div class="layout-width mt18 clearfix">
+<div class="layout-width mt18 clearfix" >
     <div class="bag clearfix">
-        <div class="relative fr about-nipic">
+        <div class="relative fr ">
             <img ondragstart="return false;" style="display:block;margin-top:85px;" src="images/about_nipic.jpg">
             <div class="absolute" style="top: 27px; left: 0px; width: 377px; font-size: 18px;">在设计师平台你可以</div>
             
             <a href="http://service.nipic.com/site/aboutus.html" title="了解更多什么是信息网？" hidefocus="true" class="absolute font-simsun about-nipic-link">了解更多"xxx？"&gt;&gt;</a>
         </div>
         <div class="fl bag-aside">
-            <div class="bag-aside-hd">
-                <h2 class="fl mr15">注册新用户</h2>
-                <div class="fl reg-tip">已有帐号？去<a href="userinfo/login.html" class="red1 underline" hidefocus="true" target="_self">登录</a>&gt;</div>
-            </div>
+           
             <div style="margin-left: 30px;">
           
            <FORM class=registerform method=post action="" id="regForm">
-
-<UL >
- <LI>
-  <P><FONT id=registResult color=red></FONT></P>
-  <P style="margin-left:10px;margin-top: 20px;">用户名 </P>
-  <DIV style="POSITION: relative;margin-left:10px;"> 
-  <input  style="COLOR: rgb(51,51,51)"  id=userNname class=inputBg1  type=text name=userNname  placeholder="请输入6-20位用户名" > 
-   </DIV>
-  <DIV id=validAccount class=Validform_checktip></DIV> 
-  <DIV class=clear></DIV>
-  </LI>
-  
-  
-<LI>
-  <P><FONT id=registResult color=red></FONT></P>
-  <P style="margin-left:10px;margin-top: 20px;">邮箱 </P>
-  <DIV style="POSITION: relative;margin-left:10px;">
- <INPUT style="COLOR: rgb(51,51,51)"  id=email class=inputBg1  type=text name=email placeholder="请输入您的邮箱"  ></DIV>
-  <DIV id=validEmail class=Validform_checktip></DIV>
-  <DIV class=clear></DIV>
-  </LI>
-  
-  <LI>
-  <P><FONT id=registResult color=red></FONT></P>
-  <P style="margin-left:10px;margin-top: 20px;">手机号</P>
-  <DIV style="POSITION: relative;margin-left:10px;">
-  <INPUT style="COLOR: rgb(51,51,51)"   id=userPhone class=inputBg1  type=text name=userPhone  placeholder="请输入您的手机号" ></DIV>
-  <DIV id=validPhone class=Validform_checktip></DIV> 
-  <DIV class=clear></DIV></LI>
-  
-    <LI>
-  <P><FONT id=registResult color=red></FONT></P>
-  <P style="margin-left:10px;margin-top: 20px;">密码</P>
-  <DIV style="POSITION: relative;margin-left:10px;">
-  <INPUT style="COLOR: rgb(51,51,51)"   id=password class=inputBg1  type=password name=password  placeholder="请输入6-20位密码" ></DIV>
-  <DIV id=validPassword class=Validform_checktip></DIV> 
-  <DIV class=clear></DIV></LI>
-  
-   <LI>
-  <P><FONT id=registResult color=red></FONT></P>
-  <P style="margin-left:10px;margin-top: 20px;">确认密码</P>
-  <DIV style="POSITION: relative;margin-left:10px;">
-  <INPUT style="COLOR: rgb(51,51,51)"   id=passwordagin class=inputBg1  type=password name=passwordagin  placeholder="请再次输入密码" ></DIV>
-  <DIV id=validpasswordAgain class=Validform_checktip></DIV> 
-  <DIV class=clear></DIV></LI>
-  
-  <LI style="PADDING-TOP: 30px">
-  <H4><SPAN 
-  style="PADDING-BOTTOM: 10px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; DISPLAY: block; COLOR: #333; FONT-SIZE: 12px; FONT-WEIGHT: normal; PADDING-TOP: 10px; margin-left:10px;" 
-  id=tiaokuan><INPUT 
+<table>
+<tr>
+<td colspan="3">
+ <div class="bag-aside-hd">
+                <h2 class="fl mr15">注册新用户</h2>
+                <div class="fl reg-tip">已有帐号？去<a href="userinfo/login.html" class="red1 underline" hidefocus="true" target="_self">登录</a>&gt;</div>
+            </div>
+</td>
+</tr>
+<tr>
+	<td  style="width:80px; ">用户名:</td>
+	<td style=" width: 180px;"> <input  style="COLOR: rgb(51,51,51)"  id=userName class=inputBg1  type=text name=userName  placeholder="请输入6-20位用户名" > </td>
+	<td style="width:170px; ">&nbsp;<DIV id=validAccount class=Validform_checktip  > </DIV> </td>
+</tr>
+<tr>
+	<td>邮箱:</td>
+	<td><INPUT style="COLOR: rgb(51,51,51)"  id=email class=inputBg1  type=text name=email placeholder="请输入您的邮箱"  > </td>
+	<td>  <DIV id=validEmail class=Validform_checktip></DIV> </td>
+</tr>
+<tr>
+	<td>手机号:</td>
+	<td><INPUT style="COLOR: rgb(51,51,51)"   id=userPhone class=inputBg1  type=text name=userPhone  placeholder="请输入您的手机号" > </td>
+	<td>  <DIV id=validPhone class=Validform_checktip></DIV>  </td>
+</tr>
+<tr>
+	<td>密码:</td>
+	<td><INPUT style="COLOR: rgb(51,51,51)"   id=password class=inputBg1  type=password name=password  placeholder="请输入6-20位密码" > </td>
+	<td>  <DIV id=validPassword class=Validform_checktip></DIV>  </td>
+</tr>
+<tr>
+	<td>确认密码:</td>
+	<td> <INPUT style="COLOR: rgb(51,51,51)"   id=passwordagin class=inputBg1  type=password name=passwordagin  placeholder="请再次输入密码" > </td>
+	<td> <DIV id=validpasswordAgain class=Validform_checktip></DIV>   </td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td colspan="2" style="text-align: left;">
+<INPUT 
   style="POSITION: relative; VERTICAL-ALIGN: middle; MARGIN-RIGHT: 5px; _top: -2px" 
   CHECKED type=checkbox name=tiaokuan datatype="xieyi">我已阅读并同意<A 
   style="COLOR: #003399" tabIndex=-1 
@@ -239,10 +232,17 @@
   style="PADDING-LEFT: 40px; DISPLAY: none; COLOR: #999; FONT-WEIGHT: normal" 
   id=xieyitishi><IMG style="VERTICAL-ALIGN: middle" 
   src="images/tan.gif" width=18 
-  height=19>&nbsp;&nbsp;请接受服务条款</B></SPAN> </H4><SPAN style="CURSOR: pointer ;margin-left:10px;" 
+  height=19>&nbsp;&nbsp;请接受服务条款</B></SPAN> </H4>
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+	<td colspan="2" style="text-align: left;"><SPAN style="CURSOR: pointer ;margin-left:10px;" 
   id=reg><IMG id=btnRegister src="images/ty.gif" 
-  width=251 height=40></SPAN> 
-  </LI></UL></FORM></div>
+  width=251 height=40></SPAN> </td>
+</tr>
+</table>
+ </FORM></div>
 </div>
     </div>
 </div>

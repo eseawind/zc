@@ -45,7 +45,8 @@
 			}***/
 			return data;
 		},
-		alert:function(title,msg){
+		//依赖于jQueryUI
+		alert:function(title,msg,callback){
 			if($("#_validateMessageDialog").length==0){//不存在,创建该div
 				var div=$("<div title='"+title+"' id='_validateMessageDialog'>"+msg+"</div>");
 				$("body").append(div);
@@ -55,6 +56,11 @@
 					buttons: {
 						"确定": function() {
 							$( this ).dialog( "close" );
+							if(callback){
+								if(typeof callback=="function"){
+									callback();
+								}
+							}
 						}
 					}
 				});
