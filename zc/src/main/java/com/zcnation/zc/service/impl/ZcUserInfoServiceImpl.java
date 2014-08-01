@@ -10,23 +10,30 @@ package com.zcnation.zc.service.impl;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zcnation.zc.common.Result;
+import com.zcnation.zc.common.ThreadLocalSession;
 import com.zcnation.zc.common.exception.NotValidateCorrectException;
+import com.zcnation.zc.context.ZcContext;
 import com.zcnation.zc.dao.ZcUserInfoDao;
 import com.zcnation.zc.domain.ZcUserInfo;
 import com.zcnation.zc.service.ZcUserInfoService;
 
 @Service(value = "zcUserInfoService")
 public class ZcUserInfoServiceImpl implements ZcUserInfoService {
+	private Logger logger=Logger.getLogger(ZcUserInfoServiceImpl.class);
 	@Autowired private ZcUserInfoDao zcUserInfoDao;
 
 	public String save(ZcUserInfo userinfo, String passwordagin, String reqIp) {
 		Result r = new Result();
 		// 后台验证
 		validate(userinfo, passwordagin);
+		if (zcUserInfoDao.countUserName(userinfo.getUserName())>0) {
+			throw new NotValidateCorrectException("该用户名已注册");
+		}
 		List<ZcUserInfo> list = zcUserInfoDao.findByEmail(userinfo.getEmail());
 		if (list != null && list.size() > 0) {
 			throw new NotValidateCorrectException("该邮箱已注册");
@@ -80,5 +87,37 @@ public class ZcUserInfoServiceImpl implements ZcUserInfoService {
 		}
 	}
 
+	@Override
+	public Result login(String userName, String password) {
+		Result r=new Result();
+		logger.info("登录用户名："+userName+" 登录密码："+password);
+		if (zcUserInfoDao.countByUerOrEmailOrPhone(userName, userName, userName)>0) {
+			List<ZcUserInfo> loginLst=zcUserInfoDao.findByUserNameAndPassword(userName, password);
+			if (loginLst!=null&&loginLst.size()>0) {
+				//登录成功
+				r.setSuccess(true);
+				r.setReturnValue(loginLst.get(0));
+			}else{
+				loginLst=zcUserInfoDao.findByEmailAndPassword(userName, password);
+				if (loginLst!=null&&loginLst.size()>0) {
+					r.setSuccess(true);
+					r.setReturnValue(loginLst.get(0));
+				}else{
+					loginLst=zcUserInfoDao.findByUserPhoneAndPassword(userName, password);
+					if (loginLst!=null&&loginLst.size()>0) {
+						r.setSuccess(true);
+						r.setReturnValue(loginLst.get(0));
+					}else{
+						r.setSuccess(false);
+						r.getErrorMsgs().add("用户名或密码错误");
+					}
+				}
+			}
+		}else{
+			r.setSuccess(false);
+			r.getErrorMsgs().add("用户不存在");
+		}
+		return r;
+	}
 
 }

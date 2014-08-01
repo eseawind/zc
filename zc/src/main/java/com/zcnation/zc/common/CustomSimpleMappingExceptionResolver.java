@@ -35,6 +35,15 @@ public class CustomSimpleMappingExceptionResolver extends SimpleMappingException
 					//用户未登录
 					if (ex instanceof NotLoginException) {
 							response.getWriter().write("用户未登录");
+							//用户未登录
+							//响应到登录页面
+							Integer codeStatus=determineStatusCode(request, viewName);
+							logger.info("用户未登录，跳转>>"+viewName);
+							if (codeStatus!=null) {
+								applyStatusCodeIfPossible(request, response, codeStatus);
+							}
+							request.setAttribute("error", ex.getMessage());
+							return getModelAndView(viewName, ex,request);
 					}else if(ex instanceof NotValidateCorrectException){//验证异常
 						r.setSuccess(false);
 						r.getErrorMsgs().add(ex.getMessage());

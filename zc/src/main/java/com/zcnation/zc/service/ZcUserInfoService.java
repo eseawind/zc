@@ -7,6 +7,7 @@
  **********************************************/
 package com.zcnation.zc.service;
 
+import com.zcnation.zc.common.Result;
 import com.zcnation.zc.domain.ZcUserInfo;
 
 public interface ZcUserInfoService {
@@ -19,5 +20,13 @@ public interface ZcUserInfoService {
 	 * @return
 	 */
 	public String save(ZcUserInfo zcUserInfo,String agaPass,String reqIp);
+	
+	/***
+	 * 用户登录
+	 * @param userName  用户名/邮箱/手机号
+	 * @param password  密码
+	 * @return
+	 */
+	public Result login(String userName,String password);
 
 }
