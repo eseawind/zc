@@ -24,7 +24,11 @@
 								var d=$.eval2(data);
 								if(d.success){
 									$.alert("注册提示","注册成功",function(){
-										window.location="userinfo/login.html";
+										url="userinfo/login.html";
+										if($.browser.msie) {
+											url="login.html";
+										}
+										window.location=url;
 									});
 								}else{
 									$.alert("注册提示",d.errorMsgs[0]);
@@ -176,7 +180,6 @@ height: 55px;text-align: right;
 </style>
 </head>
 <body>
-
 <div class="layout-width mt18 clearfix" >
     <div class="bag clearfix">
         <div class="relative fr ">

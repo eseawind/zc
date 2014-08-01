@@ -4,7 +4,7 @@
 <html>
 <head>
 <%@include file="/WEB-INF/jsp/include.jsp"%>
-
+<%@include file="/WEB-INF/jsp/index_title.jsp" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户登录</title>
 
@@ -99,7 +99,11 @@ height: 75px;text-align: right;
 								var d=$.eval2(data);
 								if(d.success){
 									//login success;
-									window.location="index.html";
+									url="index.html";
+									if($.browser.msie) {
+										url="../index.html";
+									}
+									window.location=url;
 								}else{
 									$.alert("登录提示",d.errorMsgs[0]);
 								}
@@ -120,7 +124,6 @@ height: 75px;text-align: right;
  
 </head>
 <body>
-<%@include file="/WEB-INF/jsp/index_title.jsp" %>
 <div class="layout-width mt18 clearfix">
     <div class="bag clearfix">
         <div class="relative fr  ">
