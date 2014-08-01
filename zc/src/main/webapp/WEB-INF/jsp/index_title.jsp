@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -33,13 +34,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
  
         <ul class="user">
-            
-                <li><a href="userinfo/login.html">登录</a></li>
-                <li><span>&#124;</span></li>
-                <li><a href="userinfo/register.html">注册</a></li>
-            
+            	<c:if test="${empty sessionScope.USER_INFO }">
+	            	<li><a href="userinfo/login.html">登录</a></li>
+	                <li><span>&#124;</span></li>
+	                <li><a href="userinfo/register.html">注册</a></li>
+            	</c:if>
+            	<c:if test="${sessionScope.USER_INFO!=null }" var="userinfo" scope="session">
+            		<li><a href="javascript:void(0)"><c:out value="${sessionScope.USER_INFO.userName }"></c:out> 欢迎您 </a> </li>
+            		<li><span>&#124;</span></li>
+            		<li><a href="userinfo/exit.html">退出</a></li>
+            	</c:if>
         </ul>
- 
             <form action="#" method="GET">
                 <input type="text" placeholder="搜你想要的" name="q" class="search">
                 <input class="search-submit" type="submit" value="">

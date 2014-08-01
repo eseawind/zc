@@ -23,7 +23,9 @@
 							$.post("userinfo/beginRegister.html",formJson,function(data){
 								var d=$.eval2(data);
 								if(d.success){
-									$.alert("注册提示","注册成功");
+									$.alert("注册提示","注册成功",function(){
+										window.location="userinfo/login.html";
+									});
 								}else{
 									$.alert("注册提示",d.errorMsgs[0]);
 								}

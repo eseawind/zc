@@ -4,207 +4,163 @@
 <html>
 <head>
 <%@include file="/WEB-INF/jsp/include.jsp"%>
-<%@include file="/WEB-INF/jsp/index_title.jsp" %>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户登录</title>
 
 <!--  <link href="../css/main.css" rel="StyleSheet" />
  <link href="../css/zc_login.css" rel="StyleSheet" /> -->
- <style type="text/css">
-
- </style>
-
+<style type="text/css">
+.registerform table{
+width: 550px;
+}
+.registerform table td{
+height: 75px;text-align: right;
+}
+</style>
 <script type="text/javascript">
 	$(function(){
-		var getInfoObj=function(){
-			return 	$(this).parents("div").next().find(".info");
-		}
-	
-	$("[datatype]").focusin(function(){
-		if(this.timeout){clearTimeout(this.timeout);}
-		var infoObj=getInfoObj.call(this);
-		if(infoObj.siblings(".Validform_right").length!=0){
-			return;	
-		}
-		infoObj.show().siblings().hide();
-		
-	}).focusout(function(){
-		var infoObj=getInfoObj.call(this);
-		this.timeout=setTimeout(function(){
-		
-			infoObj.hide().siblings(".Validform_wrong,.Validform_loading").show();
-		},0);
-		
-	});
-		
-		var emailRegex=/^[a-z0-9_\-]+(\.[_a-z0-9\-]+)*@([_a-z0-9\-]+\.)+([a-z]{2}|aero|arpa|biz|com|coop|edu|gov|info|int|jobs|mil|museum|name|nato|net|org|pro|travel)$/;
-		var phoneRegex=/^((13[0-9])|(15[0-9])|(18[0-9]))[0-9]{8}$/;
-		var register={
-				initButtonRegister:function(){
-					$("#btnRegister").bind('click',function(){
-						if(register.checkRegForm()){
-							var formJson=$("#regForm").serializeArray();
-							$.post("beginRegister.html",formJson,function(data){
-								var d=$.eval2(data);
-								if(d.success){
-									alert("注册成功");
+		var login={};
+		login={
+			validate:function(){
+					//验证用户名
+					var userName=$("#userName");
+					var passwd=$("#password");
+					if(!userName.val()){
+						$("#validAccount").addClass("Validform_wrong").html("用户名不能为空");
+						$("#validAccount").show();
+						userName.addClass("Validform_error");
+						return false;
+					}else{
+						userName.removeClass("Validform_error");	
+						$("#validAccount").hide();
+					} 
+					if(!passwd.val()){
+						$("#validPassword").addClass("Validform_wrong").html("请输入6-20位密码");
+						$("#validPassword").show();
+						passwd.addClass("Validform_error");
+						return false;
+					}else{
+						var len=passwd.val().length;
+						if(len<6||len>20){
+							$("#validPassword").addClass("Validform_wrong").html("请输入6-20位密码");
+							$("#validPassword").show();
+							passwd.addClass("Validform_error");
+							return false;
+						}else{
+							passwd.removeClass("Validform_error");
+							$("#validPassword").hide();
+						}
+						return true;
+					}
+				},commonBlurInput:function(obj,validateId,nullerrMsg,errMsg2,isvalidateLen,minlen,maxlen,regex){
+					var t=$(obj);
+					t.blur(function(){
+						var that=$(this);
+						if(!that.val()){
+							$("#"+validateId+"").addClass("Validform_wrong").html(nullerrMsg);
+							$("#"+validateId+"").show();
+							that.addClass("Validform_error");
+						}else{
+							if(isvalidateLen){//验证长度
+								var len=that.val().length;
+								if(len<minlen||len>maxlen){
+									$("#"+validateId+"").addClass("Validform_wrong").html(errMsg2);
+									$("#"+validateId+"").show();
+									that.addClass("Validform_error");
 								}else{
-									alert("注册失败");
+									$("#"+validateId+"").hide();
+									that.removeClass("Validform_error");
 								}
-							})
+							}else{
+								if(regex){
+									if(!regex.test(that.val())){
+										$("#"+validateId+"").addClass("Validform_wrong").html(errMsg2);
+										$("#"+validateId+"").show();
+										that.addClass("Validform_error");
+									}else{
+										$("#"+validateId+"").hide();
+										that.removeClass("Validform_error");
+									}
+								}else{
+									$("#"+validateId+"").hide();
+									that.removeClass("Validform_error");
+								}
+							}
 						}
 					})
-					
 				},
-				checkRegForm:function(){//验证表单
-					var email=$("input[name=email]").val();
-					var password=$("input[name=password]").val();
-					var agpassword=$("input[name=passwordagin]").val();
-					var ncname=$("input[name=userNname]").val();
-					var phone=$("input[name=userPhone]").val();
-					if(!emailRegex.test(email)){
-						
-						
-						$("#valid11").addClass("Validform_wrong");
-						$("#valid11").html("邮箱验证不通过");
-						$("#email").addClass("Validform_error");
-						$("#valid11").show();
-						return false;
-					}
-					if(!phoneRegex.test(phone)){
-						alert("手机格式不正确");
-						return false;
-					}
-					if(!password){
-						alert("密码不能为空");
-						return false;
-					}
-					if(agpassword!=password){
-						alert("两次密码输入不一致");
-						return false;
-					}
-					if(!ncname){
-						alert("必须输入昵称");
-						return false;
-					}
-					return true;
+				initlogin:function(){
+					//登录
+					$("#btnLogin").bind('click',function(){
+						if(login.validate()){
+							var formJson=$("#loginForm").serializeArray();
+							$.post("userinfo/beginLogin.html",formJson,function(data){
+								var d=$.eval2(data);
+								if(d.success){
+									//login success;
+									window.location="index.html";
+								}else{
+									$.alert("登录提示",d.errorMsgs[0]);
+								}
+							});
+						}
+					});
 				}
-		}
+		};
 		
-		jQuery("#email").focus(function(){
-			$("#email").removeClass("Validform_error");
-			$("#valid11").hide();
-		});
-		jQuery("#valid11").click(function(){
-			$("#valid11").hide();
-			$("#email").focus();
-		});
-		$("#email").blur(function(){
-			if(this.value==""){
-				$("#valid11").addClass("Validform_wrong");
-				$("#email").addClass("Validform_error");
-				$("#valid11").html("邮箱不能为空");
-				
-				$("#valid11").show();
-			}else{
-				$("#valid11").removeClass("Validform_wrong");
-				$("#email").removeClass("Validform_error");
-				$("#valid11").hide();
-			}
-		});
 		function main(){
-			//注册事件
-			register.initButtonRegister();
+			login.commonBlurInput($("#password"), "validPassword", "请输入密码", "请输入6-20位密码", true, 6, 20, false);
+			login.initlogin();
 		}
 		
 		main();
-		
 	})
 </script>
+ 
 </head>
 <body>
-
+<%@include file="/WEB-INF/jsp/index_title.jsp" %>
 <div class="layout-width mt18 clearfix">
     <div class="bag clearfix">
-        <div class="relative fr about-nipic">
+        <div class="relative fr  ">
             <img ondragstart="return false;" style="display:block;margin-top:85px;" src="images/about_nipic.jpg">
-            <div class="absolute" style="top: 27px; left: 0px; width: 377px; font-size: 18px;">在众筹网你可以</div>
+            <div class="absolute" style="top: 27px; left: 0px; width: 377px; font-size: 18px;">在设计师平台你可以</div>
             <ul class="absolute">
                
             </ul>
             <a href="#" title="了解更多什么是信息网？" hidefocus="true" class="absolute font-simsun about-nipic-link">了解更多"xxx？"&gt;&gt;</a>
         </div>
         <div class="fl bag-aside">
-            <div class="bag-aside-hd">
-                <h2 class="fl mr15">用户登录</h2>
-                <div class="fl reg-tip">还没有账号？去<a href="userinfo/register.html" class="red1 underline" hidefocus="true" target="_self">注册</a>&gt;</div>
-            </div>
             
-          
-           <FORM class=registerform method=post action="" id="regForm">
-
-<UL>
- <LI>
-  <P><FONT id=registResult color=red></FONT></P>
-  <P style="margin-left:10px;margin-top: 20px;">登录名 </P>
-  <DIV style="POSITION: relative;margin-left:10px;">
-  <INPUT style="COLOR: rgb(51,51,51)" 
-  id=userNname class=inputBg1  type=text name=userNname 
-  datatype="userNname" nullmsg="账号不能为空" ajaxurl="check_uname.htm" 
-  autocomplete="off"></DIV>
-  <DIV>
-  <DIV id=valid1 class=Validform_checktip></DIV>
-  <DIV class=info>用户名可以是昵称、邮箱或者手机号<SPAN class=dec><S class=dec1>◆</S><S 
-  class=dec2>◆</S></SPAN></DIV></DIV>
-  <DIV 
-  style="DISPLAY: none; FLOAT: left; HEIGHT: 20px; _padding-top: 10px"></DIV>
-  <DIV class=clear></DIV></LI>
-  <LI>
- 
-  <P style="margin-left:10px;margin-top: 20px;">密码 </P><!--<p>-->
-  <DIV style="margin-left:10px;"><INPUT 
-  onkeydown="if(event.keyCode==32||event.keyCode==188||event.keyCode==222){return false;}" 
-  id=password class=inputBg0 onpaste="return false" maxLength=20 type=password 
-  name=password datatype="username_pwd" nullmsg="密码不能为空！" plugin="passwordStrength"> 
-  </DIV>
-  <DIV style="FLOAT: left">
-  <DIV id=checkPwdAndName class=Validform_checktip></DIV>
-  <DIV class=info>在输入密码时请保证您的电脑是安全的<SPAN class=dec><S class=dec1>◆</S><S 
-  class=dec2>◆</S></SPAN></DIV></DIV>
-  <DIV class=clear></DIV></LI>
-    <LI id=pt_yzm>
-  <P style="margin-left:10px;margin-top: 20px;">验证码 </P>
-  <DIV id=tupianyzm>
-  <DIV style="margin-left:10px;"><INPUT 
-  style="OUTLINE-STYLE: none; OUTLINE-COLOR: invert; PADDING-LEFT: 2px; OUTLINE-WIDTH: medium; WIDTH: 137px; FLOAT: left; HEIGHT: 30px" 
-  id=captcha class=inputBg0 maxLength=5 size=8 type=text name=j_captcha 
-  datatype="*" nullmsg="验证码不能为空" ajaxurl="check_valid_code.htm" 
-  autocomplete="off" errormsg="验证码错误"> </DIV>
-  <DIV style="POSITION: relative">
-  <DIV style="POSITION: absolute; TOP: 0px; LEFT: 280px" 
-  class=Validform_checktip></DIV>
-  <DIV style="POSITION: absolute; TOP: 0px; LEFT: 280px" id=yzm 
-  class=info>填写图片中的字符不区分大小写<SPAN class=dec><S class=dec1>◆</S><S 
-  class=dec2>◆</S></SPAN></DIV></DIV></DIV>
-  
-  <DIV style="FLOAT: left" id=tpyzm><SPAN><IMG 
-  style="PADDING-LEFT: 5px; DISPLAY: inline-block; VERTICAL-ALIGN: middle; _position: relative; _top: 5px" 
-  id=captchaImage alt=captcha src=""> <A 
-  style="POSITION: absolute; MARGIN: 0px 0px 0px 5px; COLOR: rgb(41,83,166)" 
-  id=_captchaImage tabIndex=-1 href="javascript:void(0)">换一张</A> </SPAN></DIV>
-  
-  
-  <DIV class=clear></DIV></LI>
-   
-  <LI style="PADDING-TOP: 30px">
-  
-  <input type="submit" value="登录" style="CURSOR: pointer ;margin-left:10px;" >
-  
- 
-  </LI>
-  </DIV>
-  <DIV>
-  </UL></FORM>
+            
+          <div style="margin-left: 30px;">
+           <FORM class=registerform method=post action="" id="loginForm">
+<table>
+<tr>
+<td colspan="3">
+ <div class="bag-aside-hd">
+                <h2 class="fl mr15">注册新用户</h2>
+                <div class="fl reg-tip">还没有账号？立即<a href="userinfo/register.html" class="red1 underline" hidefocus="true" target="_self">注册</a>&gt;</div>
+            </div>
+</td>
+</tr>
+<tr>
+	<td  style="width:80px; ">用户名:</td>
+	<td style=" width: 180px;"> <input  style="COLOR: rgb(51,51,51)"  id=userName class=inputBg1  type=text name=userName  placeholder="请输入用户名/邮箱/手机号码" > </td>
+	<td style="width:170px; ">&nbsp;<DIV id=validAccount class=Validform_checktip  > </DIV> </td>
+</tr> 
+<tr>
+	<td>密码:</td>
+	<td><INPUT style="COLOR: rgb(51,51,51)"   id=password class=inputBg1  type=password name=password  placeholder="请输入6-20位密码" > </td>
+	<td>  <DIV id=validPassword class=Validform_checktip></DIV>  </td>
+</tr> 
+<tr>
+<td>&nbsp;</td>
+	<td colspan="2" style="text-align: left;"> <input type="button" value="登   录" id="btnLogin"  style="width: 266px;height: 37px;border-radius:5px 6px 7px 8px;background: url(images/btn.png);color: white;font-family: 微软雅黑;font-size: 16px;"/> </td>
+</tr>
+</table>
+ </FORM></div>
 </div>
     </div>
 </div>
