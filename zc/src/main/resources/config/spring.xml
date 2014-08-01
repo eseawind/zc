@@ -44,7 +44,7 @@
 		<b:property name="defaultErrorView" value="exception"></b:property>
 		<b:property name="exceptionMappings">
 			<b:props>
-				<b:prop key="com.zcnation.zc.common.exception.NotLoginException">not_login</b:prop>
+				<b:prop key="com.zcnation.zc.common.exception.NotLoginException">userinfo/user_login</b:prop>
 			</b:props>
 		</b:property>
 	</b:bean>
