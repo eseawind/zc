@@ -219,7 +219,7 @@
 </div>  
 
 
-<DIV id=RightMenu><A href="../userinfo/register.html#top"><IMG 
+<DIV id=RightMenu><A href="userinfo/register.html#top"><IMG 
 src="images/right1.png" width=47 height=56></A><A title=产品反馈 
 onclick=User.show(this); href="javascript:void(0);" rel=Dialog_Alert 
 url="/Feedback/" mode="iframe" showbg="true" showborder="false" 
