@@ -23,6 +23,9 @@ public class ZcProjectInfoAction {
 	}
 	
 	
-
+	@RequestMapping("/project_show.html")
+	public String to_show(HttpServletRequest request) {
+		return "projectinfo/project_show";
+	}
 	
 }
