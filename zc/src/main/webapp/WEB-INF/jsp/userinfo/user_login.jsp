@@ -137,7 +137,7 @@ height: 75px;text-align: right;
         <div class="fl bag-aside">
             
             
-          <div style="margin-left: 30px;">
+          <div style="margin-left: 30px;border-right: 1px #E5E5E5 solid;height: 100%">
            <FORM class=registerform method=post action="" id="loginForm">
 <table>
 <tr>
