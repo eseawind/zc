@@ -6,6 +6,7 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,10 +23,11 @@ public class ZcProjectInfoAction {
 		return "projectinfo/project_add";
 	}
 	
-	
-	@RequestMapping("/project_show.html")
-	public String to_show(HttpServletRequest request) {
+	@RequestMapping("/project_{detailid}.html")
+	public String to_show(@PathVariable("detailid") String detailId){
+		System.out.println("detailid:"+detailId);
 		return "projectinfo/project_show";
 	}
+ 
 	
 }

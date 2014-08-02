@@ -58,7 +58,7 @@
 	<div class="TshortsLi"><ul>
 </c:if>
 
-<a href="projectinfo/project_show.html" ><li>
+<a href="projectinfo/project_${idx.index }.html" ><li>
 				<div>
 					<div style="margin-top: 16px;"><img alt="11111" src="images/ts.png" width="300" height="320"> </div>
 					<div class="zcProject">
