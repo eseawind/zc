@@ -30,7 +30,7 @@
 <tr>
 <td colspan="3" style="height: 58px;">
  <div style="border-bottom: 1px dashed #e7e7e7;">
-                <h2 style="text-align: left;">项目信息</h2>
+                <h2 style="text-align: left;">作品信息</h2>
                
             </div>
 </td>
@@ -41,7 +41,7 @@
 	<td style="width:170px; ">&nbsp;<DIV id=validAccount class=Validform_checktip  > </DIV> </td>
 </tr>
 <tr>
-	<td>筹资数量:</td>
+	<td>目标:</td>
 	<td><INPUT style="COLOR: rgb(51,51,51);width: 35%" value="不少于100件"   id=limit_qty class=inputBg1  type=text name=limit_qty> </td>
 	<td>  <DIV id=validEmail class=Validform_checktip></DIV> </td>
 </tr>
@@ -93,7 +93,7 @@
 </tr>
 
 <tr>
-	<td colspan="3" align="right"><a class="btn btn-primary" href="#">发布项目</a></td>
+	<td colspan="3" align="right"><a class="btn btn-primary" href="#">发布作品</a></td>
 	
 </tr>
 
@@ -115,6 +115,7 @@
     
     <div class="itMyPicShow">
       <div class="tabBoxR ">
+       <span>选择颜色</span>
       <span color="white" class="blocks" style="background:#FFF"></span>
         <span color="black" class="blocks" style="background:#000"></span><span color="gray" class="blocks" style="background:#D0D0D0"></span>
        <!--<p>预览底衫<select class="shirts"><option>短袖T恤</option></select></p>
