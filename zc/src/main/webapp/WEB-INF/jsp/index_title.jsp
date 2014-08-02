@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       
         <div class="title">
             <h1 style="display: none"><a href="#">果库</a></h1>
-            <a href="/selected/" class="logo"><img src="images/logonew.png"></a>
+            <a href="index.html" class="logo"><img src="images/logonew.png"></a>
         </div>
  
         <ul class="nav-bar">
