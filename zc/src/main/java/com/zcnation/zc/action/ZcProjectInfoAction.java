@@ -24,8 +24,9 @@ public class ZcProjectInfoAction {
 	}
 	
 	@RequestMapping("/project_{detailid}.html")
-	public String to_show(@PathVariable("detailid") String detailId){
+	public String to_show(@PathVariable("detailid") String detailId,HttpServletRequest request){
 		System.out.println("detailid:"+detailId);
+		request.setAttribute("zc_title", "我是最好的设计师"+detailId);
 		return "projectinfo/project_show";
 	}
  

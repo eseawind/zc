@@ -405,7 +405,7 @@ margin-bottom: 15px;
                 
                     <img itemprop="image" src="images/ts.png" alt="马头墙面装饰挂钩">
                 </a>
-                <h2><span itemprop="">鹅鹅鹅鹅鹅鹅饿</span></h2>
+                <h2><span itemprop=""><c:out value="${zc_title }"></c:out> </span></h2>
 
                 
                 
