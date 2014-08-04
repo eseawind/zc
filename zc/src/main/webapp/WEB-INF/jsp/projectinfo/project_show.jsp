@@ -385,9 +385,9 @@ margin-bottom: 15px;
             <li><a href="index.html">精选</a></li>
             <li>⁄</li>
             
-            <li><a href="index.html">壁饰</a></li>
+            <li><a href="index.html">衣服</a></li>
             <li>⁄</li>
-            <li>马头墙面装饰挂钩</li>
+            <li><c:out value="${zc_title }"></c:out></li>
         </ul>
         </div>
         <div class="main">
@@ -458,7 +458,7 @@ margin-bottom: 15px;
             </div>
 
             <p class="category">
-                <a href="index.html">壁饰</a>
+                <a href="index.html">衣服</a>
             </p>
 
             
