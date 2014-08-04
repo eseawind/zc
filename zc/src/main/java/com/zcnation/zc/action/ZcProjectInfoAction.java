@@ -11,12 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.zcnation.zc.domain.ZcProjectInfo;
 import com.zcnation.zc.domain.ZcUserInfo;
+import com.zcnation.zc.service.ZcProjectInfoService;
 import com.zcnation.zc.service.ZcUserInfoService;
 
 @Controller
 @RequestMapping("/projectinfo")
 public class ZcProjectInfoAction {
+	@Autowired private ZcProjectInfoService zcProjectInfoService;
 	
 	@RequestMapping("/project_add.html")
 	public String to_add(HttpServletRequest request) {
@@ -30,5 +33,11 @@ public class ZcProjectInfoAction {
 		return "projectinfo/project_show";
 	}
  
+	
+	@RequestMapping("/beginAdd.html")
+	@ResponseBody
+	public String beginRegister(HttpServletRequest request,@ModelAttribute ZcProjectInfo zcProjectInfo){
+		return zcProjectInfoService.save(zcProjectInfo);
+	}
 	
 }
