@@ -19,18 +19,17 @@ import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 
 import com.zcnation.zc.common.exception.NotLoginException;
 import com.zcnation.zc.common.exception.NotValidateCorrectException;
+import com.zcnation.zc.common.util.RootLogger;
 
 public class CustomSimpleMappingExceptionResolver extends SimpleMappingExceptionResolver {
-	private Logger logger=Logger.getLogger(CustomSimpleMappingExceptionResolver.class);
 
 	protected ModelAndView doResolveException(HttpServletRequest request,
 			HttpServletResponse response, Object handler, Exception ex) {
 		String viewName=determineViewName(ex, request);
 		Result r=new Result();
-		logger.info("viewName:"+viewName);
 		if (viewName!=null) {
 			if (StringUtils.indexOf(request.getHeader("Accept"), "application/json") > -1 || StringUtils.indexOf(request.getHeader("X-Requested-With"), "XMLHttpRequest") > -1) {// 如果不是异步请求
-				logger.info("用户json请求");
+				RootLogger.info("用户json请求");
 				try {
 					//用户未登录
 					if (ex instanceof NotLoginException) {
@@ -38,7 +37,7 @@ public class CustomSimpleMappingExceptionResolver extends SimpleMappingException
 							//用户未登录
 							//响应到登录页面
 							Integer codeStatus=determineStatusCode(request, viewName);
-							logger.info("用户未登录，跳转>>"+viewName);
+							RootLogger.info("用户未登录，跳转>>"+viewName);
 							if (codeStatus!=null) {
 								applyStatusCodeIfPossible(request, response, codeStatus);
 							}
@@ -62,11 +61,11 @@ public class CustomSimpleMappingExceptionResolver extends SimpleMappingException
 				} catch (Exception e) {
 					logger.error(e);
 				}
-				System.out.println("异常："+ex.getMessage());
+				RootLogger.info("异常："+ex.getMessage());
 				return new ModelAndView();
 			}else{
 				Integer codeStatus=determineStatusCode(request, viewName);
-				logger.info("jsp格式返回："+viewName+" code:"+codeStatus);
+				RootLogger.info("jsp格式返回："+viewName+" code:"+codeStatus);
 				if (codeStatus!=null) {
 					applyStatusCodeIfPossible(request, response, codeStatus);
 				}

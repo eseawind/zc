@@ -19,6 +19,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.zcnation.zc.common.exception.NotLoginException;
+import com.zcnation.zc.common.util.RootLogger;
 import com.zcnation.zc.context.ZcContext;
 
 /****
@@ -33,7 +34,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 			HttpServletResponse response, Object handler) throws Exception {
 		boolean flag=true;
 		String url=request.getRequestURI();
-		logger.info("用户请求地址URL:"+url);
+		RootLogger.info("用户请求地址URL:"+url);
 		Pattern p=Pattern.compile("(.*)\\.do(.*)?");
 		Matcher m=p.matcher(url);
 		if (m.matches()) {
