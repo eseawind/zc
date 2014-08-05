@@ -49,6 +49,8 @@
 					}
 					else if(!register.validateInput($("#proUnit"), "validUnit", "请输入您的作品价格", "作品格式不正确", true, 100, 120,false)){
 						return false;
+					}else if(!register.validateInput($("#proDays"), "validDays", "请输入您的作品价格", "请输入10-30天", true, 100, 120,false)){
+						return false;
 					}
 					
 					return true;
@@ -57,7 +59,8 @@
 					register.commonBlurInput($("#proName"), "validName", "请输入您的作品名", "请输入10-40位作品名", true, 10, 40, false);
 					register.commonBlurInput($("#proTarget"), "validTarget", "请输入您的目标", "目标不能少于100件", true, 100, 120,false);
 					register.commonBlurInput($("#proUnit"), "validUnit", "请输入您的作品价格", "作品格式不正确", true, 100, 120,false);
-					
+					register.commonBlurInput($("#proDays"), "validDays", "请输入您的筹集天数", "请输入10-30天", true, 10, 120,false);
+					register.commonBlurInput($("#proType"), "validType", "请输入您的筹集天数", "请输入10-30天", true, 10, 120,false);
 					
 				},
 				/**
@@ -160,7 +163,7 @@
   <div class="itMyUpBox" style="background-color:#FFF;" id="editord">
   
   
-    <div class="picFile itMyPicFile" style="height:490px;">
+    <div class="picFile itMyPicFile" style="height:530px;">
     
         <div style="margin-left: 30px;">
           
@@ -192,7 +195,7 @@
 <tr>
 	<td>筹集天数:</td>
 	<td><INPUT style="COLOR: rgb(51,51,51);width: 60%" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" value=""   id=proDays class=inputBg1  type=text name=proDays > </td>
-	<td>  <DIV id=validPhone class=Validform_checktip></DIV>  </td>
+	<td>  <DIV id=validDays class=Validform_checktip></DIV>  </td>
 </tr>
 <tr>
 	<td>类别:</td>
@@ -202,7 +205,7 @@
 													<option value="2">短袖</option>	
 														<option value="3">短袖</option>				
 																	</select> </td>
-	<td>  <DIV id=validPassword class=Validform_checktip></DIV>  </td>
+	<td>  <DIV id=validType class=Validform_checktip></DIV>  </td>
 </tr>
 
 <tr>
@@ -229,12 +232,12 @@
 </tr>
 <tr>
 	<td>项目地点:</td>
-	<td>	<select name="proProvince" id="proProvince"  style="COLOR: rgb(51,51,51);width: 63%"  class=inputBg1 >
+	<td>	<select name="proProvince" id="proProvince"  style="COLOR: rgb(51,51,51);width: 50%"  class=inputBg1 >
 									<option >请选择省份</option>
 									<option >浙江省</option>
 																	
 																	</select>
-								<select name="proCity" id="proCity"   style="COLOR: rgb(51,51,51);width: 63%"  class=inputBg1 >
+								<select name="proCity" id="proCity"   style="COLOR: rgb(51,51,51);width:50%"  class=inputBg1 >
 									<option >请选择城市</option>
 									<option >杭州市</option>
 									<option >宁波市</option>
