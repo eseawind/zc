@@ -5,7 +5,7 @@
  * 时间：2014年8月1日 下午10:44:02
  * 说明：
  **********************************************/
-package com.zcnation.zc.util;
+package com.zcnation.zc.common.util;
 
 import java.util.Map;
 

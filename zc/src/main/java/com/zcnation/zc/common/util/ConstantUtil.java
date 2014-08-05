@@ -5,7 +5,7 @@
  * 时间：2014年7月30日 上午10:42:09
  * 说明：
  **********************************************/
-package com.zcnation.zc.util;
+package com.zcnation.zc.common.util;
 
 import java.io.File;
 import java.io.FilenameFilter;

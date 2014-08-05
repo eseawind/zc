@@ -5,7 +5,7 @@
  * ������
  *************************************************************/
 
-package com.zcnation.zc.util;
+package com.zcnation.zc.common.util;
 
 
 public class ZcInfoUtil {

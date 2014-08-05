@@ -5,7 +5,7 @@
  * 时间：2014年7月30日 上午10:33:54
  * 说明：
  **********************************************/
-package com.zcnation.zc.util;
+package com.zcnation.zc.common.util;
 
 import java.util.Properties;
 
