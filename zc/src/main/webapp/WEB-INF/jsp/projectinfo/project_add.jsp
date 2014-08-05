@@ -319,7 +319,7 @@ onclick=User.show(this); href="javascript:void(0);" rel=Dialog_Alert
 url="/Feedback/" mode="iframe" showbg="true" showborder="false" 
 showtitle="false" height="500" width="750"><IMG 
 src="images/right2.png" width=47 height=56></A><A title=在线客服 
-href="http://wpa.qq.com/msgrd?v=3&amp;uin=2787064043&amp;site=qq&amp;menu=yes" 
+href="http://wpa.qq.com/msgrd?v=3&amp;uin=361663126&amp;site=qq&amp;menu=yes" 
 target=_blank><IMG src="images/right3.png" width=47 
 height=56></A><A id=code class=ewm href="javascript:void(0);"><SPAN 
 style="DISPLAY: none" id=code_img></SPAN><IMG 
