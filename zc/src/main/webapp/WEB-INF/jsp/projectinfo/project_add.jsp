@@ -60,7 +60,21 @@
 					register.commonBlurInput($("#proTarget"), "validTarget", "请输入您的目标", "目标不能少于100件", true, 100, 120,false);
 					register.commonBlurInput($("#proUnit"), "validUnit", "请输入您的作品价格", "作品格式不正确", true, 100, 120,false);
 					register.commonBlurInput($("#proDays"), "validDays", "请输入您的筹集天数", "请输入10-30天", true, 10, 120,false);
-					register.commonBlurInput($("#proType"), "validType", "请输入您的筹集天数", "请输入10-30天", true, 10, 120,false);
+					
+					$("#proType").blur(function(){
+						var that=$(this);
+						if(that.val()==0){
+							$("#validType").addClass("Validform_wrong").html("请选择类别");
+							$("#validType").show();
+							that.addClass("Validform_error");
+						}else{
+							$("#validType").hide();
+							that.removeClass("Validform_error");
+						}
+						
+					})
+					
+					
 					
 				},
 				/**
