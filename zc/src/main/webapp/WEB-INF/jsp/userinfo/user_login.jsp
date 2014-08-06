@@ -143,7 +143,7 @@ height: 75px;text-align: right;
 <tr>
 <td colspan="3">
  <div class="bag-aside-hd">
-                <h2 class="fl mr15">注册新用户</h2>
+                <h2 class="fl mr15">用户登录</h2>
                 <div class="fl reg-tip">还没有账号？立即<a href="userinfo/register.html" class="red1 underline" hidefocus="true" target="_self">注册</a>&gt;</div>
             </div>
 </td>
