@@ -58,8 +58,17 @@ public class ZcProjectInfo implements Serializable {
 	private String proTag;
 	
 	
+	@Column(name="RESOURCE_CODE")
+	private int resourceCode;
 	
 	
+	
+	public int getResourceCode() {
+		return resourceCode;
+	}
+	public void setResourceCode(int resourceCode) {
+		this.resourceCode = resourceCode;
+	}
 	public int getProTarget() {
 		return proTarget;
 	}

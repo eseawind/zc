@@ -7,13 +7,11 @@
  **********************************************/
 package com.zcnation.zc.common;
 
-import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 
@@ -59,7 +57,8 @@ public class CustomSimpleMappingExceptionResolver extends SimpleMappingException
 						response.getWriter().write(r.toJson());
 					}
 				} catch (Exception e) {
-					logger.error(e);
+					RootLogger.error(e);
+					//logger.error(e);
 				}
 				RootLogger.info("异常："+ex.getMessage());
 				return new ModelAndView();
@@ -69,6 +68,7 @@ public class CustomSimpleMappingExceptionResolver extends SimpleMappingException
 				if (codeStatus!=null) {
 					applyStatusCodeIfPossible(request, response, codeStatus);
 				}
+				System.out.println("错误："+ex.getMessage());
 				request.setAttribute("error", ex.getMessage());
 				return getModelAndView(viewName, ex,request);
 			}

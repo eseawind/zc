@@ -35,4 +35,7 @@ public class RootLogger {
 			root.error(msg);
 		}
 	}
+	public static void main(String[] args) {
+		RootLogger.info("你好");
+	}
 }

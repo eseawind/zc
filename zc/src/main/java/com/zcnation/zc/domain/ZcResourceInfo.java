@@ -17,6 +17,7 @@ public class ZcResourceInfo implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="RESOURCE_CODE")
 	private int resourceCode;
 	@Column(name="UPT_DATE")
 	private Date uptDate;

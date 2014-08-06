@@ -40,4 +40,5 @@ public class IndexAction {
 	public String dotest(){
 		return "dotest";
 	}
+	
 }
