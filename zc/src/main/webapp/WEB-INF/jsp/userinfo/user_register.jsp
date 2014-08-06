@@ -20,6 +20,7 @@
 					$("#btnRegister").bind('click',function(){
 						if(register.checkRegForm()){
 							var formJson=$("#regForm").serializeArray();
+							
 							$.post("userinfo/beginRegister.html",formJson,function(data){
 								var d=$.eval2(data);
 								if(d.success){
@@ -40,6 +41,7 @@
 				},
 				checkRegForm:function(){//验证表单
 					if(!register.validateInput($("#userName"), "validAccount", "请输入您的用户名", "请输入6-20位用户名", true, 6, 20, false)){
+						
 						return false;
 					}
 					else if(!register.validateInput($("#email"), "validEmail", "请输入您的邮箱", "邮箱格式不正确", false, 0, 0, emailRegex)){
