@@ -42,7 +42,7 @@ $(function(){
 				},
 				checkRegForm:function(){//验证表单
 					if(!register.validateInput($("#proName"), "validName", "请输入您的作品名", "请输入10-40位作品名", true, 10, 40, false)){
-						alert(11114);
+						
 						return false;
 					}
 					else if(!register.validateInput($("#proTarget"), "validTarget", "请输入您的目标", "目标不能少于100件", true, 100, 120,false)){
