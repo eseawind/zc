@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <li ><a href="#">精选设计</a></li>
             <li ><a href="#">热门设计</a></li>
             <li ><a href="#">关于我们</a></li>
-            <li class="add-entity"><a href="projectinfo/project_add.html" title="发起设计"></a></li>
+            <li class="add-entity"><a href="projectinfo/project_add.do" title="发起设计"></a></li>
         </ul>
  
  
