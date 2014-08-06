@@ -12,15 +12,16 @@
  </style>
 
 <script type="text/javascript">
-	$(function(){
-		var emailRegex=/^[a-z0-9_\-]+(\.[_a-z0-9\-]+)*@([_a-z0-9\-]+\.)+([a-z]{2}|aero|arpa|biz|com|coop|edu|gov|info|int|jobs|mil|museum|name|nato|net|org|pro|travel)$/;
-		var phoneRegex=/^((13[0-9])|(15[0-9])|(18[0-9]))[0-9]{8}$/;
+$(function(){
 		var register={};
 		register={
 				initButtonRegister:function(){
 					$("#btnAdd").bind('click',function(){
-						if(register.checkRegForm()){
+						 
+						if(register.checkRegForm()==true){
+							
 							var formJson=$("#addForm").serializeArray();
+						
 							$.post("projectinfo/beginAdd.html",formJson,function(data){
 								var d=$.eval2(data);
 								if(d.success){
@@ -41,7 +42,7 @@
 				},
 				checkRegForm:function(){//验证表单
 					if(!register.validateInput($("#proName"), "validName", "请输入您的作品名", "请输入10-40位作品名", true, 10, 40, false)){
-						
+						alert(11114);
 						return false;
 					}
 					else if(!register.validateInput($("#proTarget"), "validTarget", "请输入您的目标", "目标不能少于100件", true, 100, 120,false)){
@@ -51,6 +52,28 @@
 						return false;
 					}else if(!register.validateInput($("#proDays"), "validDays", "请输入您的作品价格", "请输入10-30天", true, 100, 120,false)){
 						return false;
+					}else if($("#proType").val==0){
+						$("#validType").addClass("Validform_wrong").html("请选择类别");
+						$("#validType").show();
+						that.addClass("Validform_error");
+						return false;
+					}else if($("#proFabric").val==0){
+						$("#validFabric").addClass("Validform_wrong").html("请选择面料");
+						$("#validFabric").show();
+						that.addClass("Validform_error");
+						return false;
+					}else if($("#proSample").val==0){
+						$("#validSample").addClass("Validform_wrong").html("请选择打样");
+						$("#validSample").show();
+						that.addClass("Validform_error");
+						return false;
+					}else if($("#proCity").val=='请选择城市'||$('#proProvince')=='请选择省份'){
+						$("#validPoint").addClass("Validform_wrong").html("请选择项目地点");
+						$("#validPoint").show();
+						that.addClass("Validform_error");
+						return false;
+					}else{
+						
 					}
 					
 					return true;
@@ -72,8 +95,93 @@
 							that.removeClass("Validform_error");
 						}
 						
-					})
+					});
 					
+					
+					$("#proFabric").blur(function(){
+						var that=$(this);
+						if(that.val()==0){
+							$("#validFabric").addClass("Validform_wrong").html("请选择面料");
+							$("#validFabric").show();
+							that.addClass("Validform_error");
+						}else{
+							$("#validFabric").hide();
+							that.removeClass("Validform_error");
+						}
+						
+					});
+					
+					$("#proSample").blur(function(){
+						var that=$(this);
+						if(that.val()==0){
+							$("#validSample").addClass("Validform_wrong").html("请选择打样");
+							$("#validSample").show();
+							that.addClass("Validform_error");
+						}else{
+							$("#validSample").hide();
+							that.removeClass("Validform_error");
+						}
+						
+					});
+					
+					
+					
+					
+					$("#proProvince").blur(function(){
+						var that=$(this);
+						var city=$('#proCity');
+						if(that.val()=='请选择省份'||city.val()=='请选择城市'){
+							$("#validPoint").addClass("Validform_wrong").html("请选择项目地点");
+							$("#validPoint").show();
+							that.addClass("Validform_error");
+						}else{
+							$("#validPoint").hide();
+							that.removeClass("Validform_error");
+						}
+						
+					});
+					
+					$("#proCity").blur(function(){
+						var that=$(this);
+						var province=$('#proProvince');
+						if(that.val()=='请选择城市'||province.val()=='请选择省份'){
+							$("#validPoint").addClass("Validform_wrong").html("请选择项目地点");
+							$("#validPoint").show();
+							that.addClass("Validform_error");
+						}else{
+							$("#validPoint").hide();
+							that.removeClass("Validform_error");
+						}
+						
+					});
+					
+					$("#proCity").blur(function(){
+						var that=$(this);
+						var province=$('#proProvince');
+						if(that.val()=='请选择城市'||province.val()=='请选择省份'){
+							$("#validPoint").addClass("Validform_wrong").html("请选择项目地点");
+							$("#validPoint").show();
+							that.addClass("Validform_error");
+						}else{
+							$("#validPoint").hide();
+							that.removeClass("Validform_error");
+						}
+						
+					});
+					
+
+					$("#proRemarks").blur(function(){
+						var that=$(this);
+						if(that.val()==0){
+							$("#validRemarks").addClass("Validform_wrong").html("请输入作品简介");
+							$("#validRemarks").show();
+							that.addClass("Validform_error");
+						}else{
+							$("#validRemarks").hide();
+							that.removeClass("Validform_error");
+						}
+						
+					});
 					
 					
 				},
@@ -193,7 +301,8 @@
 </tr>
 <tr> 
 	<td  style="width:80px; ">项目名称:</td>
-	<td style=" width: 180px;"> <input  style="COLOR: rgb(51,51,51)" maxlength="40"  id=proName class=inputBg1  type=text name=proName value=""  > </td>
+	
+	<td style=" width: 180px;"> <input  style="COLOR: rgb(51,51,51)" maxlength="40"  id=proName class=inputBg1   type=text name=proName value=""  > </td>
 	<td style="width:170px; ">&nbsp;<DIV id=validName class=Validform_checktip  > </DIV> </td>
 </tr>
 <tr>
@@ -230,19 +339,19 @@
 													<option value="2">棉</option>	
 														
 																	</select> </td>
-	<td>  <DIV id=validPassword class=Validform_checktip></DIV>  </td>
+	<td>  <DIV id=validFabric class=Validform_checktip></DIV>  </td>
 </tr>
 
 
 <tr>
-	<td>打样:</td>
+	<td><span>*</span>打样:</td>
 	<td><select name="proSample" id="proSample" style="COLOR: rgb(51,51,51);width: 63%"  class=inputBg1  >
 									<option value="0">请选择打样</option>
 									<option value="1">是</option>
 													<option value="2">否</option>	
 														
 																	</select> </td>
-	<td>  <DIV id=validPassword class=Validform_checktip></DIV>  </td>
+	<td>  <DIV id=validSample class=Validform_checktip></DIV>  </td>
 </tr>
 <tr>
 	<td>项目地点:</td>
@@ -256,7 +365,7 @@
 									<option >杭州市</option>
 									<option >宁波市</option>
 																	</select> </td>
-	<td> <DIV id=validpasswordAgain class=Validform_checktip></DIV>   </td>
+	<td> <DIV id=validPoint class=Validform_checktip></DIV>   </td>
 </tr>
 
 
@@ -264,18 +373,21 @@
 	<td>项目简介:</td>
 	<td><textarea style="width:100%;height:40px;COLOR: rgb(51,51,51)" class=inputBg1 id="proRemarks"  name="proRemarks"  maxlength="75"></textarea>
 						</td>
-	<td>  <DIV id=validPhone class=Validform_checktip></DIV>  </td>
+	<td>  <DIV id=validRemarks class=Validform_checktip></DIV>  </td>
 </tr>
 
 <tr>
 	<td>标签:</td>
 	<td><input type="text"  style="COLOR: rgb(51,51,51)" class=inputBg1  id="proTag" name="proTag" value="">
 						</td>
-	<td>  <DIV id=validPhone class=Validform_checktip></DIV>  </td>
+	<td>  <DIV id=validTag class=Validform_checktip></DIV>  </td>
 </tr>
 
 <tr>
-	<td colspan="3" align="right"><a class="btn btn-primary" id="btnAdd" href="#">发布作品</a></td>
+	<td colspan="3" align="right">
+	
+	
+	<a class="btn btn-primary" id="btnAdd" href="javascript:void(0); ">发布作品</a></td>
 	
 </tr>
 
