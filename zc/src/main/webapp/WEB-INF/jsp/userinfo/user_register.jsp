@@ -182,101 +182,153 @@ height: 55px;text-align: right;
 </style>
 </head>
 <body>
-<div class="layout-width mt18 clearfix" >
-    <div class="bag clearfix">
-        <div class="relative fr ">
-            <img ondragstart="return false;" style="display:block;margin-top:85px;" src="images/about_nipic.jpg">
-            <div class="absolute" style="top: 27px; left: 0px; width: 377px; font-size: 18px;">在设计师平台你可以</div>
-            
-            <a href="http://service.nipic.com/site/aboutus.html" title="了解更多什么是信息网？" hidefocus="true" class="absolute font-simsun about-nipic-link">了解更多"xxx？"&gt;&gt;</a>
-        </div>
-        <div class="fl bag-aside">
-           
-          <div style="margin-left: 30px;border-right: 1px #E5E5E5 solid;height: 100%">
-          
-           <FORM class=registerform method=post action="" id="regForm">
-<table>
-<tr>
-<td colspan="3">
- <div class="bag-aside-hd">
-                <h2 class="fl mr15">注册新用户</h2>
-                <div class="fl reg-tip">已有帐号？去<a href="userinfo/login.html" class="red1 underline" hidefocus="true" target="_self">登录</a>&gt;</div>
-            </div>
-</td>
-</tr>
-<tr>
-	<td  style="width:80px; ">用户名:</td>
-	<td style=" width: 180px;"> <input  style="COLOR: rgb(51,51,51)"  id=userName class=inputBg1  type=text name=userName  placeholder="请输入6-20位用户名" > </td>
-	<td style="width:170px; ">&nbsp;<DIV id=validAccount class=Validform_checktip  > </DIV> </td>
-</tr>
-<tr>
-	<td>邮箱:</td>
-	<td><INPUT style="COLOR: rgb(51,51,51)"  id=email class=inputBg1  type=text name=email placeholder="请输入您的邮箱"  > </td>
-	<td>  <DIV id=validEmail class=Validform_checktip></DIV> </td>
-</tr>
-<tr>
-	<td>手机号:</td>
-	<td><INPUT style="COLOR: rgb(51,51,51)"   id=userPhone class=inputBg1  type=text name=userPhone  placeholder="请输入您的手机号" > </td>
-	<td>  <DIV id=validPhone class=Validform_checktip></DIV>  </td>
-</tr>
-<tr>
-	<td>密码:</td>
-	<td><INPUT style="COLOR: rgb(51,51,51)"   id=password class=inputBg1  type=password name=password  placeholder="请输入6-20位密码" > </td>
-	<td>  <DIV id=validPassword class=Validform_checktip></DIV>  </td>
-</tr>
-<tr>
-	<td>确认密码:</td>
-	<td> <INPUT style="COLOR: rgb(51,51,51)"   id=passwordagin class=inputBg1  type=password name=passwordagin  placeholder="请再次输入密码" > </td>
-	<td> <DIV id=validpasswordAgain class=Validform_checktip></DIV>   </td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td colspan="2" style="text-align: left;">
-<INPUT 
-  style="POSITION: relative; VERTICAL-ALIGN: middle; MARGIN-RIGHT: 5px; _top: -2px" 
-  CHECKED type=checkbox name=tiaokuan datatype="xieyi">我已阅读并同意<A 
-  style="COLOR: #003399" tabIndex=-1 
-  href="#" target=_blank>《xx网用户注册协议》</A><B 
-  style="PADDING-LEFT: 40px; DISPLAY: none; COLOR: #999; FONT-WEIGHT: normal" 
-  id=xieyitishi><IMG style="VERTICAL-ALIGN: middle" 
-  src="images/tan.gif" width=18 
-  height=19>&nbsp;&nbsp;请接受服务条款</B></SPAN> </H4>
-</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-	<td colspan="2" style="text-align: left;"><SPAN style="CURSOR: pointer ;margin-left:10px;" 
+ 
+  
+  <div class="clear"></div>
+  
+  <section id="main" class="entire_width">
+    <div class="container_12">      
+       <div id="content">
+		<div class="grid_12">
+			<h1 class="page_title">注册</h1>
+		</div><!-- .grid_12 -->
+		
+		<div class="grid_6 new_customers">
+			<h2>New Customers</h2>
+			<p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+			<div class="clear"></div>
+			<button class="account">Create An Account</button>
+                </div><!-- .grid_6 -->
+		
+		<div class="grid_6">
+		 <FORM class=registed method=post action="" id="loginForm">
+		
+		
+				<h2>注册</h2>
+							
+				<p>已有账号？立即<a href="userinfo/login.html" class="red1 underline" hidefocus="true" target="_self">登录</a></p>
+							
+				<div class="email">
+					<strong>用户名:</strong><sup class="surely">*</sup><br/>
+					<input type="text" id="userName" name="userName" class="" value="" /><DIV id=validAccount class=Validform_checktip  > </DIV>
+				</div><!-- .email -->
+							
+				<div class="password">
+					<strong>邮箱:</strong><sup class="surely">*</sup><br/>
+					<input id=email  type=text name=email class="" value="" /><DIV id=validEmail class=Validform_checktip></DIV>
+				
+				</div><!-- .password -->
+							
+				<div class="password">
+					<strong>手机号:</strong><sup class="surely">*</sup><br/>
+					<input id=userPhone  type=text name=userPhone class="" value="" /> <DIV id=validPhone class=Validform_checktip></DIV> 
+				
+				</div><!-- .password -->
+				
+				<div class="password">
+					<strong>密码:</strong><sup class="surely">*</sup><br/>
+					<input id=password  type=password name=password class="" value="" /> <DIV id=validPassword class=Validform_checktip></DIV>
+				
+				</div>
+				
+				<div class="password">
+					<strong>确认密码:</strong><sup class="surely">*</sup><br/>
+					<input id=passwordagin  type=password name=passwordagin class="" value="" /> <DIV id=validpasswordAgain class=Validform_checktip></DIV>
+				
+				</div>
+				
+				
+				<div class="remember">
+					<input class="niceCheck" type="checkbox" name="Remember_password" />
+					<span class="rem">记住密码</span>
+				</div><!-- .remember -->
+				
+				<div class="submit">										
+					<SPAN style="CURSOR: pointer ;margin-left:10px;" 
   id=reg><IMG id=btnRegister src="images/ty.gif" 
-  width=251 height=40></SPAN> </td>
-</tr>
-</table>
- </FORM></div>
-</div>
-    </div>
-</div>
-
-
-<div class="nipic-footer align-center mt40">
-    <div class="layout-width layout-width990">
-        <a hidefocus="true" title="关于众筹" href="#">关于众筹</a><span class="sepline">|</span><a hidefocus="true" title="网站公约" href="#">网站公约</a><span class="sepline">|</span><a hidefocus="true" title="网站声明" href="#">网站声明</a><span class="sepline">|</span><a hidefocus="true" title="帮助中心" href="#">帮助中心</a><span class="sepline">|</span><a hidefocus="true" title="联系我们" href="http://service.nipic.com/site/contact.html">联系我们</a><span class="sepline">|</span><a hidefocus="true" title="常见问题" href="#">常见问题</a><span class="sepline">
-        <p class="gray mt10"><span class="font-tahoma">Copyright © 2014 NiPic.com All Rights Reserved</span>　版权所有·众筹网　增值电信业务经营许可证 ：浙B2-20140130  </p>
-        <p class="gray mt10">众筹网是网络服务平台方，若您发现您的权利被侵害，请发起知识产权投诉，<span class="font-tahoma">xhymmc@163.com</span></p>
-        <p class="mt10"><img height="52" ondragstart="return false;" src="images/ppaa.gif" /></p>
-    </div>
-</div>  
-
-<DIV id=RightMenu><A href="userinfo/register.html#top"><IMG 
-src="images/right1.png" width=47 height=56></A><A title=产品反馈 
-onclick=User.show(this); href="javascript:void(0);" rel=Dialog_Alert 
-url="/Feedback/" mode="iframe" showbg="true" showborder="false" 
-showtitle="false" height="500" width="750"><IMG 
-src="images/right2.png" width=47 height=56></A><A title=在线客服 
-href="http://wpa.qq.com/msgrd?v=3&amp;uin=361663126&amp;site=qq&amp;menu=yes" 
-target=_blank><IMG src="images/right3.png" width=47 
-height=56></A><A id=code class=ewm href="javascript:void(0);"><SPAN 
-style="DISPLAY: none" id=code_img></SPAN><IMG 
-src="images/right4.png" width=47 height=56></A></DIV>
-<DIV style="DISPLAY: none" class=ui_btn_min></DIV>
-
+  width=251 height=40></SPAN>
+				</div><!-- .submit -->
+			</form><!-- .registed -->
+                </div><!-- .grid_6 -->
+       </div><!-- #content -->
+       
+      <div class="clear"></div>
+    </div><!-- .container_12 -->
+  </section><!-- #main -->
+  
+  <div class="clear"></div>
+    
+  <footer>
+    <div class="f_navigation">
+      <div class="container_12">
+        <div class="grid_3">
+          <h3>Contact Us</h3>
+          <ul class="f_contact">
+            <li>49 Archdale, 2B Charlestone</li>
+            <li>+777 (100) 1234</li>
+            <li>mail@example.com</li>
+          </ul><!-- .f_contact -->
+        </div><!-- .grid_3 -->
+      
+        <div class="grid_3">
+          <h3>Information</h3>
+          <nav class="f_menu">
+            <ul>
+              <li><a href="#">About As</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms & Conditions</a></li>
+              <li><a href="#">Secure payment</a></li>
+            </ul>
+          </nav><!-- .private -->
+        </div><!-- .grid_3 -->
+        
+        <div class="grid_3">
+          <h3>Costumer Servise</h3>
+          <nav class="f_menu">
+            <ul>
+              <li><a href="contact_us.html">Contact As</a></li>
+              <li><a href="#">Return</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Site Map</a></li>
+            </ul>
+          </nav><!-- .private -->
+        </div><!-- .grid_3 -->
+        
+        <div class="grid_3">
+          <h3>My Account</h3>
+          <nav class="f_menu">
+            <ul>
+              <li><a href="#">My Account</a></li>
+              <li><a href="#">Order History</a></li>
+              <li><a href="#">Wish List</a></li>
+              <li><a href="#">Newsletter</a></li>
+            </ul>
+          </nav><!-- .private -->
+        </div><!-- .grid_3 -->
+        
+        <div class="clear"></div>
+      </div><!-- .container_12 -->
+    </div><!-- .f_navigation -->
+    
+    <div class="f_info">
+      <div class="container_12">
+        <div class="grid_6">
+          <p class="copyright">Copyright &copy; 2014.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+        </div><!-- .grid_6 -->
+        
+        <div class="grid_6">
+          <div class="soc">
+            <a class="google" href="#"></a>
+            <a class="twitter" href="#"></a>
+            <a class="facebook" href="#"></a>
+          </div><!-- .soc -->
+        </div><!-- .grid_6 -->
+        
+        <div class="clear"></div>
+      </div><!-- .container_12 -->
+    </div><!-- .f_info -->
+  </footer>
+ 
+<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
 </body>
 </html>
