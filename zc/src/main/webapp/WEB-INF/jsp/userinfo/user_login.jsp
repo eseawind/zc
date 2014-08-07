@@ -1,24 +1,72 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE HTML>
 <html>
-<head>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <%@include file="/WEB-INF/jsp/include.jsp"%>
 <%@include file="/WEB-INF/jsp/index_title.jsp" %>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>用户登录</title>
+<head>
+  <meta charset="UTF-8">
+ 
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+ 
+  <title>Login</title>
+ 
 
-<!--  <link href="../css/main.css" rel="StyleSheet" />
- <link href="../css/zc_login.css" rel="StyleSheet" /> -->
-<style type="text/css">
-.registerform table{
-width: 550px;
-}
-.registerform table td{
-height: 75px;text-align: right;
-}
-</style>
-<script type="text/javascript">
+ 
+  <script>
+	$(document).ready(function() {
+		$("select").selectBox();
+	});
+  </script>
+ 
+  <script>
+	$(document).ready(function(){
+		$("#myController").jFlow({
+			controller: ".control", // must be class, use . sign
+			slideWrapper : "#jFlowSlider", // must be id, use # sign
+			slides: "#slider",  // the div where all your sliding divs are nested in
+			selectedWrapper: "jFlowSelected",  // just pure text, no sign
+			width: "984px",  // this is the width for the content-slider
+			height: "480px",  // this is the height for the content-slider
+			duration: 400,  // time in miliseconds to transition one slide
+			prev: ".slidprev", // must be class, use . sign
+			next: ".slidnext", // must be class, use . sign
+			auto: true	
+		});
+	});
+  </script>
+  <script>
+	$(function() {
+	  $('#list_product').carouFredSel({
+		prev: '#prev_c1',
+		next: '#next_c1',
+		auto: false
+	  });
+          $('#list_product2').carouFredSel({
+		prev: '#prev_c2',
+		next: '#next_c2',
+		auto: false
+	  });
+	  $('#list_banners').carouFredSel({
+		prev: '#ban_prev',
+		next: '#ban_next',
+		scroll: 1,
+		auto: false
+	  });
+	  $(window).resize();
+	});
+  </script>
+  <script>
+       $(document).ready(function(){
+	      $("button").click(function(){
+		     $(this).addClass('click')
+	      });             
+       })
+  </script>
+    <script type="text/javascript">
 	$(function(){
 		var login={};
 		login={
@@ -32,9 +80,20 @@ height: 75px;text-align: right;
 						userName.addClass("Validform_error");
 						return false;
 					}else{
+						var len=userName.val().length;
+						if(len<6||len>20){
+							$("#validAccount").addClass("Validform_wrong").html("请输入6-20位用户名");
+							$("#validAccount").show();
+							passwd.addClass("Validform_error");
+							return false;
+						}else{
+						
 						userName.removeClass("Validform_error");	
 						$("#validAccount").hide();
-					} 
+						}
+						return true;
+					}
+					
 					if(!passwd.val()){
 						$("#validPassword").addClass("Validform_wrong").html("请输入6-20位密码");
 						$("#validPassword").show();
@@ -114,6 +173,7 @@ height: 75px;text-align: right;
 		};
 		
 		function main(){
+			login.commonBlurInput($("#userName"), "validAccount", "请输入用户名", "请输入6-20位用户名", true, 6, 20, false);
 			login.commonBlurInput($("#password"), "validPassword", "请输入密码", "请输入6-20位密码", true, 6, 20, false);
 			login.initlogin();
 		}
@@ -121,75 +181,135 @@ height: 75px;text-align: right;
 		main();
 	})
 </script>
- 
 </head>
 <body>
-<div class="layout-width mt18 clearfix">
-    <div class="bag clearfix">
-        <div class="relative fr  ">
-            <img ondragstart="return false;" style="display:block;margin-top:85px;" src="images/about_nipic.jpg">
-            <div class="absolute" style="top: 27px; left: 0px; width: 377px; font-size: 18px;">在设计师平台你可以</div>
-            <ul class="absolute">
-               
+  
+  
+  <div class="clear"></div>
+  
+  <section id="main" class="entire_width">
+    <div class="container_12">      
+       <div id="content">
+		<div class="grid_12">
+			<h1 class="page_title">登录</h1>
+		</div><!-- .grid_12 -->
+		
+		<div class="grid_6 new_customers">
+			<h2>New Customers</h2>
+			<p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+			<div class="clear"></div>
+			<button class="account">Create An Account</button>
+                </div><!-- .grid_6 -->
+		
+		<div class="grid_6">
+		 <FORM class=registed method=post action="" id="loginForm">
+		
+		
+				<h2>登录</h2>
+							
+				<p>还没有账号？立即<a href="userinfo/register.html" class="red1 underline" hidefocus="true" target="_self">注册</a></p>
+							
+				<div class="email">
+					<strong>用户名:</strong><sup class="surely">*</sup><br/>
+					<input type="text" id="userName" name="userName" class="" value="" /><DIV id=validAccount class=Validform_checktip  >
+				</div><!-- .email -->
+							
+				<div class="password">
+					<strong>密码:</strong><sup class="surely">*</sup><br/>
+					<input id=password  type=password name=password class="" value="" /><DIV id=validPassword class=Validform_checktip></DIV>
+					<a class="forgot" href="#">忘记密码?</a>
+				</div><!-- .password -->
+				
+				<div class="remember">
+					<input class="niceCheck" type="checkbox" name="Remember_password" />
+					<span class="rem">记住密码</span>
+				</div><!-- .remember -->
+				
+				<div class="submit">										
+					<input type="button" value="登   录" id="btnLogin"  style="width: 266px;height: 37px;border-radius:5px 6px 7px 8px;background: url(images/btn.png);color: white;font-family: 微软雅黑;font-size: 16px;"/>
+					
+				</div><!-- .submit -->
+			</form><!-- .registed -->
+                </div><!-- .grid_6 -->
+       </div><!-- #content -->
+       
+      <div class="clear"></div>
+    </div><!-- .container_12 -->
+  </section><!-- #main -->
+  
+  <div class="clear"></div>
+    
+  <footer>
+    <div class="f_navigation">
+      <div class="container_12">
+        <div class="grid_3">
+          <h3>Contact Us</h3>
+          <ul class="f_contact">
+            <li>49 Archdale, 2B Charlestone</li>
+            <li>+777 (100) 1234</li>
+            <li>mail@example.com</li>
+          </ul><!-- .f_contact -->
+        </div><!-- .grid_3 -->
+      
+        <div class="grid_3">
+          <h3>Information</h3>
+          <nav class="f_menu">
+            <ul>
+              <li><a href="#">About As</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms & Conditions</a></li>
+              <li><a href="#">Secure payment</a></li>
             </ul>
-            <a href="#" title="了解更多什么是信息网？" hidefocus="true" class="absolute font-simsun about-nipic-link">了解更多"xxx？"&gt;&gt;</a>
-        </div>
-        <div class="fl bag-aside">
-            
-            
-          <div style="margin-left: 30px;border-right: 1px #E5E5E5 solid;height: 100%">
-           <FORM class=registerform method=post action="" id="loginForm">
-<table>
-<tr>
-<td colspan="3">
- <div class="bag-aside-hd">
-                <h2 class="fl mr15">用户登录</h2>
-                <div class="fl reg-tip">还没有账号？立即<a href="userinfo/register.html" class="red1 underline" hidefocus="true" target="_self">注册</a>&gt;</div>
-            </div>
-</td>
-</tr>
-<tr>
-	<td  style="width:80px; ">用户名:</td>
-	<td style=" width: 180px;"> <input  style="COLOR: rgb(51,51,51)"  id=userName class=inputBg1  type=text name=userName  placeholder="请输入用户名/邮箱/手机号码" > </td>
-	<td style="width:170px; ">&nbsp;<DIV id=validAccount class=Validform_checktip  > </DIV> </td>
-</tr> 
-<tr>
-	<td>密码:</td>
-	<td><INPUT style="COLOR: rgb(51,51,51)"   id=password class=inputBg1  type=password name=password  placeholder="请输入6-20位密码" > </td>
-	<td>  <DIV id=validPassword class=Validform_checktip></DIV>  </td>
-</tr> 
-<tr>
-<td>&nbsp;</td>
-	<td colspan="2" style="text-align: left;"> <input type="button" value="登   录" id="btnLogin"  style="width: 266px;height: 37px;border-radius:5px 6px 7px 8px;background: url(images/btn.png);color: white;font-family: 微软雅黑;font-size: 16px;"/> </td>
-</tr>
-</table>
- </FORM></div>
-</div>
-    </div>
-</div>
-
- <div class="nipic-footer align-center mt40">
-    <div class="layout-width layout-width990">
-        <a hidefocus="true" title="关于众筹" href="#">关于众筹</a><span class="sepline">|</span><a hidefocus="true" title="网站公约" href="#">网站公约</a><span class="sepline">|</span><a hidefocus="true" title="网站声明" href="#">网站声明</a><span class="sepline">|</span><a hidefocus="true" title="帮助中心" href="#">帮助中心</a><span class="sepline">|</span><a hidefocus="true" title="联系我们" href="http://service.nipic.com/site/contact.html">联系我们</a><span class="sepline">|</span><a hidefocus="true" title="常见问题" href="#">常见问题</a><span class="sepline">
-        <p class="gray mt10"><span class="font-tahoma">Copyright © 2014 NiPic.com All Rights Reserved</span>　版权所有·众筹网　增值电信业务经营许可证 ：浙B2-20140130  </p>
-        <p class="gray mt10">众筹网是网络服务平台方，若您发现您的权利被侵害，请发起知识产权投诉，<span class="font-tahoma">xhymmc@163.com</span></p>
-        <p class="mt10"><img height="52" ondragstart="return false;" src="images/ppaa.gif" /></p>
-    </div>
-</div>  
-
-
-<DIV id=RightMenu><A href="userinfo/register.html#top"><IMG 
-src="images/right1.png" width=47 height=56></A><A title=产品反馈 
-onclick=User.show(this); href="javascript:void(0);" rel=Dialog_Alert 
-url="/Feedback/" mode="iframe" showbg="true" showborder="false" 
-showtitle="false" height="500" width="750"><IMG 
-src="images/right2.png" width=47 height=56></A><A title=在线客服 
-href="http://wpa.qq.com/msgrd?v=3&amp;uin=361663126&amp;site=qq&amp;menu=yes" 
-target=_blank><IMG src="images/right3.png" width=47 
-height=56></A><A id=code class=ewm href="javascript:void(0);"><SPAN 
-style="DISPLAY: none" id=code_img></SPAN><IMG 
-src="images/right4.png" width=47 height=56></A></DIV>
-<DIV style="DISPLAY: none" class=ui_btn_min></DIV>
-
+          </nav><!-- .private -->
+        </div><!-- .grid_3 -->
+        
+        <div class="grid_3">
+          <h3>Costumer Servise</h3>
+          <nav class="f_menu">
+            <ul>
+              <li><a href="contact_us.html">Contact As</a></li>
+              <li><a href="#">Return</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Site Map</a></li>
+            </ul>
+          </nav><!-- .private -->
+        </div><!-- .grid_3 -->
+        
+        <div class="grid_3">
+          <h3>My Account</h3>
+          <nav class="f_menu">
+            <ul>
+              <li><a href="#">My Account</a></li>
+              <li><a href="#">Order History</a></li>
+              <li><a href="#">Wish List</a></li>
+              <li><a href="#">Newsletter</a></li>
+            </ul>
+          </nav><!-- .private -->
+        </div><!-- .grid_3 -->
+        
+        <div class="clear"></div>
+      </div><!-- .container_12 -->
+    </div><!-- .f_navigation -->
+    
+    <div class="f_info">
+      <div class="container_12">
+        <div class="grid_6">
+          <p class="copyright">Copyright &copy; 2014.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+        </div><!-- .grid_6 -->
+        
+        <div class="grid_6">
+          <div class="soc">
+            <a class="google" href="#"></a>
+            <a class="twitter" href="#"></a>
+            <a class="facebook" href="#"></a>
+          </div><!-- .soc -->
+        </div><!-- .grid_6 -->
+        
+        <div class="clear"></div>
+      </div><!-- .container_12 -->
+    </div><!-- .f_info -->
+  </footer>
+ 
+<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
 </body>
 </html>
