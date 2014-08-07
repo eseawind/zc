@@ -211,7 +211,8 @@ input[type="submit"]:focus{
 }
 /*** Input **/
 input[type="email"],
-input[type="text"]{
+input[type="text"],
+input[type="password"]{
 	height: 33px;
 	padding: 0 10px;
 	border: 1px solid #ccc;
@@ -223,6 +224,7 @@ input[type="text"]{
 }
 input[type="email"]:focus,
 input[type="text"]:focus,
+input[type="password"],
 textarea:focus{
 	outline:none;
 	border: 1px solid #59b7c2;
@@ -1811,6 +1813,7 @@ a.more:hover{text-decoration: underline!important;}
 }
 .add_comments input[type="text"],
 .add_comments input[type="email"],
+.add_comments input[type="password"],
 .add_comments textarea{
 	margin: 10px 0 0 0;
 }
@@ -1872,7 +1875,8 @@ form.registed strong{
 	font: bold 13px/13px Segoeui-Bold, Myriad Pro, Verdana, serif;
 }
 form.registed input[type="text"],
-form.registed input[type="email"]{
+form.registed input[type="email"],
+form.registed input[type="password"]{
 	width: 255px;
 	margin: 5px 0 13px 0;
 }
@@ -2108,7 +2112,8 @@ form.contact {
 form.contact .name{float: left;}
 form.contact .email{float: right;}
 form.contact input[type="text"],
-form.contact input[type="email"]{
+form.contact input[type="email"],
+form.contact input[type="password"]{
 	width: 255px;
 	margin: 5px 0 20px 0;
 }
@@ -2324,7 +2329,8 @@ form.registed strong{
 	font: bold 13px/13px Segoeui-Bold, Myriad Pro, Verdana, serif;
 }
 ul.checkout_list li.active .list_body form.login input[type="text"],
-ul.checkout_list li.active .list_body form.login input[type="email"]{
+ul.checkout_list li.active .list_body form.login input[type="email"],
+ul.checkout_list li.active .list_body form.login input[type="password"]{
 	width: 312px;
 	margin: 5px 0 13px 0;
 }
@@ -2733,4 +2739,32 @@ ul.f_contact li+li+li{background: url(../images/li_let.png) no-repeat 0px 50%;}
 	width:118px;
 	float: left;
 	margin: 0 22px 0 0;
+}
+
+
+.Validform_wrong, .Validform_right, .Validform_loading {
+display: block;
+}
+.Validform_checktip {
+display: none;
+line-height: 38px;
+height: 38px;
+}
+.Validform_wrong {
+color: red;
+padding-left: 20px;
+white-space: nowrap;
+background: url(../images/error.gif) no-repeat left center;
+float: right;
+height: 40px;
+line-height: 40px;
+}
+.Validform_checktip {
+margin-left: 8px;
+overflow: hidden;
+color: red;
+font-size: 12px;
+}
+.Validform_error {
+background-color: #ffe7e7;
 }
