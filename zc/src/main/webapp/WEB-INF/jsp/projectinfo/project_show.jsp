@@ -1,532 +1,621 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE HTML>
 <html>
-<head>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <%@include file="/WEB-INF/jsp/include.jsp"%>
 <%@include file="/WEB-INF/jsp/index_title.jsp" %>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>设计详细</title>
- <style type="text/css">
- #detail .entity-img {
-display: table-cell;
-width: 580px;
-height: 580px;
-text-align: center;
-vertical-align: middle;
-}
- #detail .main {
-float: left;
-width: 630px;
-margin-bottom: 45px;
-}
-#detail .breadcrumb {
-font-size: 16px;
-color: #898989;
-}
-#detail .aside .price {
-display: inline-block;
-margin-bottom: 20px;
-padding: 6px 15px;
-border-radius: 3px;
-font-size: 16px;
-color: #fff;
-background-color: #427ec0;
-text-decoration: none;
-}
-#detail .share .weibo_icon {
-width: 30px;
-height: 30px;
-display: inline-block;
-background: url(images/toolkit.png);
-background-position: -18px -8px;
-position: relative;
-top: 5px;
-}
-user agent stylesheetdiv {
-display: block;
-}
-#detail .breadcrumb ul {
-padding: 0;
-list-style: none;
-}
-menu, ol, ul {
-padding: 0 0 0 40px;
-}
-dl, menu, ol, ul {
-margin: 1em 0;
-}
-#detail .entity-img {
-display: table-cell;
-width: 580px;
-height: 580px;
-text-align: center;
-vertical-align: middle;
-}
-a:active, a:hover {
-outline: 0;
-}
-#detail .recommend img {
-max-width: 100%;
-max-height: 100%;
-}
-#detail .entity {
-padding: 25px;
-border: 1px solid #eee;
-}
-a {
-text-decoration: none;
-color: inherit;
-}
-user agent stylesheeta:-webkit-any-link {
-color: -webkit-link;
-text-decoration: underline;
-cursor: auto;
-}
-#detail .breadcrumb li {
-display: inline-block;
-margin: 0 5px 0 5px;
-}
-user agent stylesheetli {
-display: list-item;
-text-align: -webkit-match-parent;
-}
-#detail .main {
-float: left;
-width: 630px;
-margin-bottom: 45px;
-}
-#detail .entity {
-padding: 25px;
-border: 1px solid #eee;
-}
-#detail .entity-img {
-display: table-cell;
-width: 580px;
-height: 580px;
-text-align: center;
-vertical-align: middle;
-}
-a:active, a:hover {
-outline: 0;
-}
-a {
-text-decoration: none;
-color: inherit;
-}
-.note-item .selection-icon {
-display: inline-block;
-float: right;
-width: 19px;
-height: 19px;
-background: url(images/toolkit.png) no-repeat;
-background-position: -155px -141px;
-margin: 2px 5px 0 0;
-}
-Inherited from div.note-item
-.note-item {
-position: relative;
-font-size: 14px;
-color: #666;
-}
-user agent stylesheeta:-webkit-any-link {
-color: -webkit-link;
-text-decoration: underline;
-cursor: auto;
-}
-#detail h2 {
-margin: 30px 0;
-color: #333;
-font-weight: 400;
-font-size: 18px;
-}
-h2 {
-font-size: 1.5em;
-margin: .83em 0;
-}
-user agent stylesheeth2 {
-display: block;
-font-size: 1.5em;
--webkit-margin-before: 0.83em;
--webkit-margin-after: 0.83em;
--webkit-margin-start: 0px;
--webkit-margin-end: 0px;
-font-weight: bold;
-}
-#detail .like {
-display: inline-block;
-padding: 8px 15px;
-border: 1px solid #eee;
-border-radius: 5px;
-text-decoration: none;
-}
-.like {
-text-decoration: none;
-}
-#detail .selection-note {
-margin-top: 30px;
-padding-top: 20px;
-border-top: 1px solid #eee;
-}
-.note-item {
-position: relative;
-font-size: 14px;
-color: #666;
-}
-.note-item .avatar {
-float: left;
-}
-a {
-text-decoration: none;
-color: inherit;
-}
-.note-item .note-detail {
-overflow: hidden;
-}
-.note-item .nickname {
-margin-right: 10px;
-color: #333;
-}
-.note-item .bio {
-color: #999;
-}
-small {
-font-size: 80%;
-}
-.note-item .note-content {
-margin: 10px 0 15px;
-line-height: 1.5;
-}
-p, pre {
-margin: 1em 0;
-}
-user agent stylesheetp {
-display: block;
--webkit-margin-before: 1em;
--webkit-margin-after: 1em;
--webkit-margin-start: 0px;
--webkit-margin-end: 0px;
-}
-.note-item .note-operate {
-position: relative;
-}
-#detail .breadcrumb .home {
-display: inline-block;
-height: 14px;
-width: 14px;
-background: url(images/toolkit.png);
-background-position: -19px -144px;
-}
-.note-item .poke {
-display: inline-block;
-padding-right: 15px;
-border-right: 1px solid #eee;
-}
-.note-item .poke, .note-item .poke, .note-item .create-time, .note-item .my-note, .note-item .update-note, .note-item .add-comment {
-color: #999;
-font-size: 12px;
-}
-.note-item .poke, .note-item .poke, .note-item .create-time, .note-item .my-note, .note-item .update-note, .note-item .add-comment {
-color: #999;
-font-size: 12px;
-}
-.note-item .poke span {
-display: inline-block;
-vertical-align: middle;
-width: 19px;
-height: 19px;
-margin-right: 5px;
-background: url(images/toolkit.png) no-repeat;
-background-position: -50px -141px;
-}
-.note-item .add-comment {
-display: inline-block;
-margin: 0 15px;
-}
-.note-item .create-time {
-margin-top: 5px;
-float: right;
-}
-.note-item .selection-icon {
-display: inline-block;
-float: right;
-width: 19px;
-height: 19px;
-background: url(images/toolkit.png) no-repeat;
-background-position: -155px -141px;
-margin: 2px 5px 0 0;
-}
-.like .icon {
-display: inline-block;
-position: relative;
-top: 3px;
-width: 20px;
-height: 18px;
-margin-right: 5px;
-background: url(images/toolkit.png) no-repeat;
-background-position: -19px -102px;
-}
-.like .count {
-margin-right: 5px;
-}
-#detail .aside {
-float: right;
-width: 285px;
-}
-#detail .aside .entity-info {
-border: 1px solid #eee;
-padding: 25px 20px;
-}
-#detail .likes {
-padding: 25px 20px;
-border: 1px solid #eee;
-border-top: 0;
-}
-#detail .aside h3 {
-margin: 0;
-font-size: 16px;
-font-weight: 400;
-color: #666;
-}
-h3 {
-font-size: 1.17em;
-margin: 1em 0;
-}
-user agent stylesheeth3 {
-display: block;
-font-size: 1.17em;
--webkit-margin-before: 1em;
--webkit-margin-after: 1em;
--webkit-margin-start: 0px;
--webkit-margin-end: 0px;
-font-weight: bold;
-}
-#detail .likes div {
-margin-top: 10px;
-}
-#detail .category {
-height: 50px;
-margin: 0;
-line-height: 50px;
-padding: 0 20px;
-border: 1px solid #eee;
-border-top: 0;
-color: #427ec0;
-background-color: #fbfbfb;
-}
-p, pre {
-margin: 1em 0;
-}
-user agent stylesheetp {
-display: block;
--webkit-margin-before: 1em;
--webkit-margin-after: 1em;
--webkit-margin-start: 0px;
--webkit-margin-end: 0px;
-}
-#detail .share {
-padding: 25px 20px;
-border: 1px solid #eee;
-border-top: 0;
-font-size: 14px;
-}
-#detail .download {
-padding: 25px 20px;
-border: 1px solid #eee;
-border-top: 0;
-}
-#detail .aside h3 {
-margin: 0;
-font-size: 16px;
-font-weight: 400;
-color: #666;
-}
-#detail .download div {
-margin-top: 10px;
-}
-#detail .recommend {
-clear: both;
-width: 630px;
-}
-#detail .recommend h2 {
-margin: 0 0 10px;
-}
-#detail h2 {
-margin: 30px 0;
-color: #333;
-font-weight: 400;
-font-size: 18px;
-}
-#detail .recommend div {
-margin-right: -15px;
-font-size: 0;
-}
-#detail .recommend a {
-display: inline-block;
-width: 146px;
-height: 146px;
-margin-right: 15px;
-margin-bottom: 15px;
-}
- </style>
+<head>
+  <meta charset="UTF-8">
 
-<script type="text/javascript">
-	
-</script>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <title>Product view</title>
+
+  <link rel="shortcut icon" href="favicon.ico">
+  <link href="css/style.css" media="screen" rel="stylesheet" type="text/css">
+  <link href="css/grid.css" media="screen" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/jquery.jqzoom.css" type="text/css">
+
+  <script src="js/jquery-1.7.2.min.js" ></script>
+  <script src="js/html5.js" ></script>
+  <script src="js/jflow.plus.js" ></script>
+  <script src="js/jquery.carouFredSel-5.2.2-packed.js"></script>
+  <script src="js/checkbox.js"></script>
+  <script src="js/radio.js"></script>
+  <script src="js/selectBox.js"></script>
+  <script src="js/jquery.jqzoom-core.js" ></script>
+
+  <script>
+	$(document).ready(function() {
+		$('.jqzoom').jqzoom({
+			zoomType: 'standard',
+			lens:true,
+			preloadImages: true,
+			alwaysOn:false
+		});
+	});
+  </script>
+
+  <script>
+	$(document).ready(function() {
+		$("select").selectBox();
+	});
+  </script>
+
+  <script>
+	$(document).ready(function() {
+		$('#wrapper_tab a').click(function() {
+			if ($(this).attr('class') != $('#wrapper_tab').attr('class') ) {
+				$('#wrapper_tab').attr('class',$(this).attr('class'));
+			}
+			return false;
+		});
+	});
+  </script>
+
+  <script>
+	$(function() {
+	  $('#list_product').carouFredSel({
+		prev: '#prev_c1',
+		next: '#next_c1',
+		auto: false
+	  });
+          $('#list_banners').carouFredSel({
+		prev: '#ban_prev',
+		next: '#ban_next',
+		scroll: 1,
+		auto: false
+	  });
+	  $('#thumblist').carouFredSel({
+		prev: '#img_prev',
+		next: '#img_next',
+		scroll: 1,
+		auto: false,
+		circular: false,
+	  });
+	  $(window).resize();
+	});
+  </script>
+  <script>
+       $(document).ready(function(){
+	      $("button").click(function(){
+		     $(this).addClass('click')
+	      });
+       })
+  </script>
+
 </head>
 <body>
 
-<div id="main" class="clearfix">
-<div id="detail" style="" itemscope="" itemtype="http://data-vocabulary.org/Product">
-        <div class="breadcrumb">
-        <ul>
-            <li><span class="home"></span></li>
-            
-            <li><a href="index.html">精选</a></li>
-            <li>⁄</li>
-            
-            <li><a href="index.html">衣服</a></li>
-            <li>⁄</li>
-            <li><c:out value="${zc_title }"></c:out></li>
-        </ul>
-        </div>
-        <div class="main">
-            <div class="entity">
-                
-                    <a href="#" class="like" style="float: right">
-                
-                    <span class="icon"></span>
-                    <span class="count">278</span>喜爱
-                   
-                </a>
-                    
-                    <a class="entity-img" href="#" data-itemid="21154095832" data-unid="" target="_blank" bi="btn_taobao" onclick="logClick('53d5e429a2128a7d46463dc9');">
-                    
-                
-                    <img itemprop="image" src="images/ts.png" alt="马头墙面装饰挂钩">
-                </a>
-                <h2><span itemprop=""><c:out value="${zc_title }"></c:out> </span></h2>
 
-                
-                
-                    <div class="selection-note">
-                        
+  <div class="clear"></div>
 
-<div class="note-item"><a href="/u/173660/" class="avatar" target="_blank"><img src="http://imgcdn.guoku.com/avatar/small_173660_ba16ab03382aaa2f4e8827f5975f9e0c.jpg" width="50" height="50"></a><div class="note-detail"><a class="nickname" href="/u/173660/" target="_blank">
-          设计师  ：  胡阿尤
-            </a><small class="bio">黛丝开逮</small><p class="with-tag note-content">华国锋好几个擐甲挥戈价格价格将规划局规划局</p><div class="note-operate"><a href="javascript:;" class="poke" data-note="509560" data-target-status="1"><span></span></a><a href="javascript:;" class="add-comment" data-note="509560"><span></span></a><span class="create-time">2014 年 7 月 28 日</span><span class="selection-icon"></span></div></div></div>
+  <div class="container_12">
+    <div class="grid_12">
+       <div class="breadcrumbs">
+	      <a href="index.html">首页</a><span>&#8250;</span><a href="#">长袖</a><span>&#8250;</span><span class="current">长袖</span>
+       </div><!-- .breadcrumbs -->
+    </div><!-- .grid_12 -->
+  </div><!-- .container_12 -->
 
-                    </div>
-                
-            </div>
+  <div class="clear"></div>
 
-            
-             
+  <section id="main">
+    <div class="container_12">
+       <div id="sidebar" class="grid_3">
+	      <aside id="categories_nav">
+		     <h3>类别</h3>
 
-        </div>
-        
+		     <nav class="left_menu">
+			    <ul>
+				   <li><a href="#">上衣<span>(21)</span></a></li>
+				   <li><a href="#">长袖<span> (27)</span></a></li>
+				   <li><a href="#">裤子<span>(33)</span></a></li>
+				   <li class="last"><a href="#">其它<span>(135)</span></a></li>
+			    </ul>
+		     </nav><!-- .left_menu -->
+	      </aside><!-- #categories_nav -->
 
-        <div class="aside">
-            <div class="entity-info" itemprop="offerDetails" itemscope="" itemtype="http://data-vocabulary.org/Offer">
-                
-                    
-                    <a class="price" href="#" data-unid="" target="_blank" bi="btn_taobao" onclick="logClick('53d5e429a2128a7d46463dc9');">
-                    
-                
-                    <meta itemprop="currency" content="RMB">
-                    购买<span itemprop="price">￥49.00</span>
-                </a>
+	      <aside id="specials" class="specials">
+		     <h3>推荐</h3>
 
+		     <ul>
+			    <li>
+				   <div class="prev">
+					  <a href="#"><img src="images/special1.png" alt="" title="" /></a>
+				   </div>
 
-                
-            </div>
+				   <div class="cont">
+					  <a href="#">xxxxx长袖</a>
+					  <div class="prise"><span class="old">$177.00</span>$75.00</div>
+				   </div>
+			    </li>
 
-            <div class="likes">
-                <h3>278人喜爱</h3>
-                <div>
-                    
-                    <a href="/u/135412/liked/" target="_blank">
-                        <img alt="iwantamonetbag" src="images/ts.png" height="25" width="25">
-                    </a>
-                    
-                    <a href="/u/109767/liked/" target="_blank">
-                        <img alt="幽幽" src="images/ts.png" height="25" width="25">
-                    </a>
-                    
-                   
-                </div>
-            </div>
+			     <li>
+				   <div class="prev">
+					  <a href="#"><img src="images/special2.png" alt="" title="" /></a>
+				   </div>
 
-            <p class="category">
-                <a href="index.html">衣服</a>
-            </p>
+				   <div class="cont">
+					  <a href="#">我我我我我我</a>
+					  <div class="prise"><span class="old">$177.00</span>$75.00</div>
+				   </div>
+			    </li>
+		     </ul>
+	      </aside><!-- #specials -->
 
-            
-            
-            
-            
+	      <aside id="newsletter_signup">
+		     <h3>kkkk</h3>
+		     <p>hjkhjkjhkjkkl.</p>
 
-            <div class="share">
-                <a href="javascript:;"><span class="weibo_icon"></span>分享到微博</a>
-            </div>
-        
-          
-            
-        </div>
+		     <form class="newsletter">
+			    <input type="email" name="newsletter" class="your_email" value="" placeholder="Enter your email address..."/>
+			    <input type="submit" id="submit" value="Subscribe" />
+		     </form>
+	      </aside><!-- #newsletter_signup -->
 
-        <div class="recommend">
-            <h2>相似推荐</h2>
-            <div>
-                
-                    <a href="/detail/16699172/" target="_blank">
-                        <img src="images/ts.png" alt="">
-                    </a>
-                
-                    <a href="/detail/7ce4c692/" target="_blank">
-                        <img src="images/ts.png" alt="">
-                    </a>
-                
-                    <a href="/detail/82f2dd2d/" target="_blank">
-                        <img src="images/ts.png" alt="">
-                    </a>
-                
-                    <a href="/detail/74d0ccdb/" target="_blank">
-                        <img src="images/ts.png" alt="">
-                    </a>
-                
-            </div>
-        </div>
+	      <aside id="banners">
+		<a id="ban_next" class="next arows" href="#"><span>Next</span></a>
+		<a id="ban_prev" class="prev arows" href="#"><span>Prev</span></a>
 
+		<h3>Banners</h3>
 
+		<div class="list_carousel">
+			<ul id="list_banners">
+				<li class="banner"><a href="#">
+					<div class="prev">
+						<img src="images/banner.png" alt="" title="" />
+					</div><!-- .prev -->
 
+					<h2>New smells</h2>
 
-</div>
-</div>
+					<p>in the next series</p>
+ 			        </a></li>
 
+				<li class="banner"><a href="#">
+					<div class="prev">
+						<img src="images/banner.png" alt="" title="" />
+					</div><!-- .prev -->
 
-<div class="nipic-footer align-center mt40">
-    <div class="layout-width layout-width990">
-        <a hidefocus="true" title="关于众筹" href="#">关于众筹</a><span class="sepline">|</span><a hidefocus="true" title="网站公约" href="#">网站公约</a><span class="sepline">|</span><a hidefocus="true" title="网站声明" href="#">网站声明</a><span class="sepline">|</span><a hidefocus="true" title="帮助中心" href="#">帮助中心</a><span class="sepline">|</span><a hidefocus="true" title="联系我们" href="http://service.nipic.com/site/contact.html">联系我们</a><span class="sepline">|</span><a hidefocus="true" title="常见问题" href="#">常见问题</a><span class="sepline">
-        <p class="gray mt10"><span class="font-tahoma">Copyright © 2014 NiPic.com All Rights Reserved</span>　版权所有·众筹网　增值电信业务经营许可证 ：浙B2-20140130  </p>
-        <p class="gray mt10">众筹网是网络服务平台方，若您发现您的权利被侵害，请发起知识产权投诉，<span class="font-tahoma">xhymmc@163.com</span></p>
-        <p class="mt10"><img height="52" ondragstart="return false;" src="images/ppaa.gif" /></p>
-    </div>
-</div>  
+					<h2>New smells</h2>
 
-<DIV id=RightMenu><A href="projectinfo/project_show.html#top"><IMG 
-src="images/right1.png" width=47 height=56></A><A title=产品反馈 
-onclick=User.show(this); href="javascript:void(0);" rel=Dialog_Alert 
-url="/Feedback/" mode="iframe" showbg="true" showborder="false" 
-showtitle="false" height="500" width="750"><IMG 
-src="images/right2.png" width=47 height=56></A><A title=在线客服 
-href="http://wpa.qq.com/msgrd?v=3&amp;uin=361663126&amp;site=qq&amp;menu=yes" 
-target=_blank><IMG src="images/right3.png" width=47 
-height=56></A><A id=code class=ewm href="javascript:void(0);"><SPAN 
-style="DISPLAY: none" id=code_img></SPAN><IMG 
-src="images/right4.png" width=47 height=56></A></DIV>
-<DIV style="DISPLAY: none" class=ui_btn_min></DIV>
+					<p>in the next series</p>
+ 			        </a></li>
 
+				<li class="banner"><a href="#">
+					<div class="prev">
+						<img src="images/banner.png" alt="" title="" />
+					</div><!-- .prev -->
 
+					<h2>New smells</h2>
 
+					<p>in the next series</p>
+ 			        </a></li>
+
+			</ul>
+		</div><!-- .list_carousel -->
+	      </aside><!-- #banners -->
+
+	      <aside id="tags">
+		     <h3>标签</h3>
+		     <a class="t1" href="#">长袖</a>
+		     <a class="t2" href="#">特色</a>
+		     <a class="t3" href="#">仅有</a>
+		     <a class="t4" href="#">特殊t</a>
+		     <a class="t5" href="#">chicago</a>
+		     <a class="t6" href="#">christmas</a>
+		     <a class="t7" href="#">mars</a>
+		     <a class="t8" href="#">church</a>
+		     <a class="t9" href="#">city</a>
+		     <a class="t10" href="#">居家</a>
+		     <a class="t11" href="#">color</a>
+		     <a class="t12" href="#">concert</a>
+		     <a class="t13" href="#">dance</a>
+		     <a class="t14" href="#">day</a>
+		     <a class="t15" href="#">dog</a>
+		     <a class="t16" href="#">england</a>
+		     <a class="t17" href="#">europe</a>
+	      </aside><!-- #community_poll -->
+       </div><!-- .sidebar -->
+
+       <div id="content" class="grid_9">
+	      <h1 class="page_title">少时诵诗书</h1>
+
+		<div class="product_page">
+			<div class="grid_4 img_slid" id="products">
+				<img class="sale" src="images/sale.png" alt="Sale"/>
+				<div class="preview slides_container">
+					<div class="prev_bg">
+						<a href="images/ts.png" class="jqzoom" rel='gal1' title="">
+							<img src="images/ts.png"  title="" alt=""/>
+						</a>
+					</div>
+				</div><!-- .prev -->
+
+				<ul class="pagination clearfix" id="thumblist">
+					<li><a class="zoomThumbActive" href='javascript:void(0);' rel="{gallery: 'gal1', smallimage: './images/ts.png',largeimage: './images/ts.png'}"><img src='images/ts.png' alt=""></a></li>
+
+				</ul>
+
+				<div class="next_prev">
+					<a id="img_prev" class="arows" href="#"><span>Prev</span></a>
+					<a id="img_next" class="arows" href="#"><span>Next</span></a>
+				</div><!-- . -->
+			</div><!-- .grid_4 -->
+
+			<div class="grid_5">
+				<div class="entry_content">
+					<div class="review">
+						<a class="plus" href="#"></a>
+						<a class="plus" href="#"></a>
+						<a class="plus" href="#"></a>
+						<a href="#"></a>
+						<a href="#"></a>
+						<span>1 评论</span>
+						<a class="add_review" href="#">评论</a>
+					</div>
+					<p>Xssssssssssssssssssssssss1</p>
+					<div class="ava_price">
+						<div class="availability_sku">
+							<div class="availability">
+								Availability: <span>In stock</span>
+							</div>
+							<div class="sku">
+								SKU: <span>Candles OV</span>
+							</div>
+						</div><!-- .availability_sku -->
+
+						<div class="price">
+							<div class="price_new">$550.00</div>
+							<div class="price_old">$725.00</div>
+						</div><!-- .price -->
+					</div><!-- .ava_price -->
+
+					<div class="block_cart">
+						<div class="obn_like">
+							<div class="obn"><a href="#" class="obn">Add to Compare</a></div>
+							<div class="like"><a href="#" class="like">喜欢</a></div>
+						</div>
+
+						<div class="cart">
+							<a href="#" class="bay">购买</a>
+							<input type="text" name="" class="number" value="1" />
+							<span>数量:</span>
+						</div>
+						<div class="clear"></div>
+					</div><!-- .block_cart -->
+					<div class="soc">
+						<img src="images/soc.png" alt="Soc"/>
+					</div><!-- .soc -->
+				</div><!-- .entry_content -->
+
+			</div><!-- .grid_5 -->
+
+			<div class="clear"></div>
+
+			<div class="grid_9" >
+				<div id="wrapper_tab" class="tab1">
+					<!--  <a href="#" class="tab1 tab_link">Description</a>-->
+					<a href="#" class="tab1 tab_link">评价</a>
+					<a href="#" class="tab3 tab_link">购买客户</a>
+
+					<div class="clear"></div>
+
+				<!-- 	<div class="tab1 tab_body">
+						<h4>Tables Style</h4>
+						<p>Suspendisse at placerat turpis. Duis luctus erat vel magna pharetra aliquet. Maecenas tincidunt feugiat ultricies. Phasellus et dui risus. Vestibulum adipiscing, eros quis lobortis dictum. Etiam mollis volutpat odio, id euismod justo gravida a. Aliquam erat volutpat. Phasellus faucibus venenatis lorem, vitae commodo elit pretium et. Duis rhoncus lobortis congue. Vestibulum et purus dui, vel porta lectus. Sed vulputate pulvinar adipiscing.</p>
+						<ul>
+							<li>She was walking to the mall.</li>
+							<li>Ted might eat the cake.</li>
+							<li>You must go right now.</li>
+							<li>Words were spoken.</li>
+							<li>The teacher is writing a report.</li>
+						</ul>
+
+						<p>Here are some verb phrase examples where the verb phrase is the predicate of a sentence. In this case, the verb phrase consists of the main verb plus any auxiliary, or helping, verbs. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede.</p>
+						<ol>
+							<li>Shipping & Delivery.</li>
+							<li>Privacy & Security.</li>
+							<li>Returns & Replacements.</li>
+							<li>Payment, Pricing & Promotions.</li>
+							<li>Viewing Orders.</li>
+						</ol>
+
+						<p>Next are some verb phrase examples of verb phrases where the phrase has a single function which means it can act like an adverb or an adjective. The phrase would include the verb and any modifiers, complements, or objects. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec posuere odio. Proin vel ultrices erat. </p>
+
+						<table>
+							<tr>
+								<th class="bg">First Column</th><th>Second Column</th><th class="bg">Third Column</th><th>Fourth Column</th>
+							</tr>
+							<tr>
+								<td class="bg">One</td><td>no</td><td class="bg">yes</td><td>yes, all</td>
+							</tr>
+							<tr>
+								<td class="bg">Two</td><td>0</td><td class="bg">1</td><td>all</td>
+							</tr>
+							<tr>
+								<td class="bg">Three</td><td>$399</td><td class="bg">$599</td><td>$799</td>
+							</tr>
+							<tr>
+								<td class="bg">Four</td><td><a href="#">Call action</a></td><td class="bg"><a href="#">Call action</a></td><td><a href="#">Call action</a></td>
+							</tr>
+						</table>
+					<div class="clear"></div>
+					</div> --><!-- .tab1 .tab_body -->
+
+					<div class="tab1 tab_body">
+						<h4>Customer reviews</h4>
+						<ul class="comments">
+						
+
+							<li>
+								<div class="autor">Mike Example</div>, <time datetime="2012-11-03">03.11.2012</time>
+
+								<div class="evaluation">
+									<div class="quality">
+										<strong>Quality</strong>
+										<a class="plus" href="#"></a>
+										<a class="plus" href="#"></a>
+										<a class="plus" href="#"></a>
+										<a class="plus" href="#"></a>
+										<a class="plus_minus" href="#"></a>
+									</div>
+									<div class="price">
+										<strong>Price</strong>
+										<a class="plus" href="#"></a>
+										<a class="plus" href="#"></a>
+										<a class="plus" href="#"></a>
+										<a class="plus" href="#"></a>
+										<a href="#"></a>
+									</div>
+									<div class="clear"></div>
+								</div><!-- .evaluation -->
+
+								<p>ddqdqorta lectus.dqdsdfsd.</p>
+							</li>
+						</ul><!-- .comments -->
+
+						<form class="add_comments">
+							<h4>评论</h4>
+
+							<div class="evaluation">
+								<div class="quality">
+									<strong>数量</strong><sup class="surely">*</sup>
+									<input class="niceRadio" type="radio" name="quality" value="1" /><span class="eva_num">1</span>
+									<input class="niceRadio" type="radio" name="quality" value="2" /><span class="eva_num">2</span>
+									<input class="niceRadio" type="radio" name="quality" value="3" /><span class="eva_num">3</span>
+									<input class="niceRadio" type="radio" name="quality" value="4" /><span class="eva_num">4</span>
+									<input class="niceRadio" type="radio" name="quality" value="5" /><span class="eva_num">5</span>
+								</div>
+								<div class="price">
+									<strong>价格</strong><sup class="surely">*</sup>
+									<input class="niceRadio" type="radio" name="price" value="1" /><span class="eva_num">1</span>
+									<input class="niceRadio" type="radio" name="price" value="2" /><span class="eva_num">2</span>
+									<input class="niceRadio" type="radio" name="price" value="3" /><span class="eva_num">3</span>
+									<input class="niceRadio" type="radio" name="price" value="4" /><span class="eva_num">4</span>
+									<input class="niceRadio" type="radio" name="price" value="5" /><span class="eva_num">5</span>
+								</div>
+								<div class="clear"></div>
+							</div><!-- .evaluation -->
+
+							<div class="nickname">
+								<strong>昵称</strong><sup class="surely">*</sup><br/>
+								<input type="text" name="" class="" value="" />
+							</div><!-- .nickname -->
+
+							<div class="your_review">
+								<strong>标题</strong><sup class="surely">*</sup><br/>
+								<input type="text" name="" class="" value="" />
+							</div><!-- .your_review -->
+
+							<div class="clear"></div>
+
+							<div class="text_review">
+								<strong>内容</strong><sup class="surely">*</sup><br/>
+								<textarea name="text"></textarea>
+								<i>Note: HTML is not translated!</i>
+							</div><!-- .text_review -->
+
+							<input type="submit" value="提交评论" />
+						</form><!-- .add_comments -->
+					<div class="clear"></div>
+					</div><!-- .tab2 .tab_body -->
+
+					<div class="tab3 tab_body">
+						<h4>购买列表</h4>
+					<div class="clear"></div>
+					</div><!-- .tab3 .tab_body -->
+					<div class="clear"></div>
+				</div>​<!-- #wrapper_tab -->
+				<div class="clear"></div>
+			</div><!-- .grid_9 -->
+
+			<div class="clear"></div>
+
+			<div class="related">
+				<div class="c_header">
+					<div class="grid_7">
+						<h2>相似推荐</h2>
+					</div><!-- .grid_7 -->
+
+					<div class="grid_2">
+						<a id="next_c1" class="next arows" href="#"><span>Next</span></a>
+						<a id="prev_c1" class="prev arows" href="#"><span>Prev</span></a>
+					</div><!-- .grid_2 -->
+				</div><!-- .c_header -->
+
+				<div class="list_carousel">
+
+				<ul id="list_product" class="list_product">
+					<li class="">
+						<div class="grid_3 product">
+							<img class="sale" src="images/sale.png" alt="Sale"/>
+							<div class="prev">
+								<a href="product_page.html"><img src="images/product_1.png" alt="" title="" /></a>
+							</div><!-- .prev -->
+							<h3 class="title">我我我我</h3>
+							<div class="cart">
+								<div class="price">
+									<div class="vert">
+										<div class="price_new">$550.00</div>
+										<div class="price_old">$725.00</div>
+									</div>
+								</div>
+								<a href="#" class="obn"></a>
+								<a href="#" class="like"></a>
+								<a href="#" class="bay"></a>
+							</div><!-- .cart -->
+						</div><!-- .grid_3 -->
+					</li>
+
+					<li class="">
+						<div class="grid_3 product">
+							<div class="prev">
+								<a href="product_page.html"><img src="images/product_2.png" alt="" title="" /></a>
+							</div><!-- .prev -->
+							<h3 class="title">灌灌灌灌</h3>
+							<div class="cart">
+								<div class="price">
+									<div class="vert">
+										<div class="price_new">$550.00</div>
+										<div class="price_old">$725.00</div>
+									</div>
+								</div>
+								<a href="#" class="obn"></a>
+								<a href="#" class="like"></a>
+								<a href="#" class="bay"></a>
+							</div><!-- .cart -->
+						</div><!-- .grid_3 -->
+					</li>
+
+					<li class="">
+						<div class="grid_3 product">
+							<div class="prev">
+								<a href="product_page.html"><img src="images/product_3.png" alt="" title="" /></a>
+							</div><!-- .prev -->
+							<h3 class="title">Febreze Air Effects New Zealand Springs</h3>
+							<div class="cart">
+								<div class="price">
+									<div class="vert">
+										<div class="price_new">$550.00</div>
+										<div class="price_old">$725.00</div>
+									</div>
+								</div>
+								<a href="#" class="obn"></a>
+								<a href="#" class="like"></a>
+								<a href="#" class="bay"></a>
+							</div><!-- .cart -->
+						</div><!-- .grid_3 -->
+					</li>
+
+					<li class="">
+						<div class="grid_3 product">
+							<div class="prev">
+								<a href="product_page.html"><img src="images/product_4.png" alt="" title="" /></a>
+							</div><!-- .prev -->
+							<h3 class="title">Febreze Air Effects New Zealand Springs</h3>
+							<div class="cart">
+								<div class="price">
+									<div class="vert">
+										<div class="price_new">$550.00</div>
+										<div class="price_old">$725.00</div>
+									</div>
+								</div>
+								<a href="#" class="obn"></a>
+								<a href="#" class="like"></a>
+								<a href="#" class="bay"></a>
+							</div><!-- .cart -->
+						</div><!-- .grid_3 -->
+					</li>
+			        </ul><!-- #list_product -->
+				</div><!-- .list_carousel -->
+			</div><!-- .carousel -->
+		</div><!-- .product_page -->
+		<div class="clear"></div>
+
+       </div><!-- #content -->
+
+      <div class="clear"></div>
+
+    </div><!-- .container_12 -->
+  </section><!-- #main -->
+
+  <div class="clear"></div>
+
+  <footer>
+    <div class="f_navigation">
+      <div class="container_12">
+        <div class="grid_3">
+          <h3>Contact Us</h3>
+          <ul class="f_contact">
+            <li>49 Archdale, 2B Charlestone</li>
+            <li>+777 (100) 1234</li>
+            <li>mail@example.com</li>
+          </ul><!-- .f_contact -->
+        </div><!-- .grid_3 -->
+
+        <div class="grid_3">
+          <h3>Information</h3>
+          <nav class="f_menu">
+            <ul>
+              <li><a href="#">About As</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms & Conditions</a></li>
+              <li><a href="#">Secure payment</a></li>
+            </ul>
+          </nav><!-- .private -->
+        </div><!-- .grid_3 -->
+
+        <div class="grid_3">
+          <h3>Costumer Servise</h3>
+          <nav class="f_menu">
+            <ul>
+              <li><a href="contact_us.html">Contact As</a></li>
+              <li><a href="#">Return</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Site Map</a></li>
+            </ul>
+          </nav><!-- .private -->
+        </div><!-- .grid_3 -->
+
+        <div class="grid_3">
+          <h3>My Account</h3>
+          <nav class="f_menu">
+            <ul>
+              <li><a href="#">My Account</a></li>
+              <li><a href="#">Order History</a></li>
+              <li><a href="#">Wish List</a></li>
+              <li><a href="#">Newsletter</a></li>
+            </ul>
+          </nav><!-- .private -->
+        </div><!-- .grid_3 -->
+
+        <div class="clear"></div>
+      </div><!-- .container_12 -->
+    </div><!-- .f_navigation -->
+
+    <div class="f_info">
+      <div class="container_12">
+        <div class="grid_6">
+          <p class="copyright">Copyright &copy; 2014.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+        </div><!-- .grid_6 -->
+
+        <div class="grid_6">
+          <div class="soc">
+            <a class="google" href="#"></a>
+            <a class="twitter" href="#"></a>
+            <a class="facebook" href="#"></a>
+          </div><!-- .soc -->
+        </div><!-- .grid_6 -->
+
+        <div class="clear"></div>
+      </div><!-- .container_12 -->
+    </div><!-- .f_info -->
+  </footer>
+
+<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
 </body>
 </html>
