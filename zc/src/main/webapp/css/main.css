@@ -10,6 +10,105 @@ HTML {
 BODY {
 	BACKGROUND-COLOR: #fff; FONT: 14px "Helvetica Neue", Helvetica, Arial, sans-serif; HEIGHT: 100%; COLOR: #666
 }
+
+i,em {
+	font-style: normal;
+}
+
+ol,ul,li {
+	list-style: none;
+}
+
+
+
+
+
+
+
+ /*user-menu*/
+.user-menu {
+	float: right;
+	position: relative;
+	z-index: 5;
+}
+
+.menu-hd {
+	width: 150px;
+}
+
+.select .menu-bd {
+	display: block;
+}
+
+.menu-hd a {
+	height: 34px;
+	display: block;
+	padding-top: 10px;
+	text-align: right;
+}
+
+
+
+.menu-hd img {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	
+	position: relative;
+	vertical-align: middle;
+	z-index: 2;
+}
+
+.menu-hd .user-name {
+	height: 22px;
+	padding-left: 10px;
+	line-height: 22px;
+	font-size: 14px;
+	font-weight: bold;
+	padding-right: 15px;
+	background: url('../images/icon_tnav.png') no-repeat
+		100% -145px;
+}
+
+.menu-hd a:hover span {
+	background-position: 100% -168px;
+	color: #000;
+}
+
+.menu-bd {
+	width: 120px;
+	padding: 10px;
+	position: absolute;
+	right: 0;
+	top: 65px;
+	background: #FFF;
+	border: 1px solid #D5CCCB;
+	display: none;
+}
+
+.menu-bd ul li {
+	width: 100%;
+	float: left;
+	height: 22px;
+	line-height: 22px;
+	font-size: 14px;
+	padding: 10px 0px;
+	border-bottom: 1px solid #f8f8f8;
+}
+
+.menu-bd ul li a {
+	height: 22px;
+	display: block;
+	padding-left: 32px;
+	background-image: url(../images/icon_tnav.png);
+	background-repeat: no-repeat;
+}
+
+
+
+
+
+
 UL {
 	LIST-STYLE-TYPE: none; LIST-STYLE-IMAGE: none
 }
