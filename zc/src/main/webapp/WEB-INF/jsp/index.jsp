@@ -1,116 +1,461 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
-<head>
-<%@include file="/WEB-INF/jsp/include.jsp" %>
-<%@include file="/WEB-INF/jsp/index_title.jsp" %>
-<meta name="Keywords" content="众筹">
-<meta name="Description" content="">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>众筹T恤平台ss</title>
- <link href="css/main.css" rel="StyleSheet" />
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 
-<script type="text/javascript">
-	$(function(){
-		$("#kinMaxShow").kinMaxShow({
-			height:400,
-			button:{
-					showIndex:false,
-					normal:{background:'url(images/demo_extend_images/button.png) no-repeat -14px 0',marginRight:'8px',border:'0',right:'44%',bottom:'20px'},
-					focus:{background:'url(images/demo_extend_images/button.png) no-repeat 0 0',border:'0'}
-				} 
-		});
-		function main(){
-			var elm=$("#header");
-			var startPos = $(elm).offset().top;
-			$.event.add(window, "scroll", function () {
-			var p = $(window).scrollTop();
-				$(elm).css('position', ((p) > startPos) ? 'fixed' : 'static');
-				$(elm).css('top', ((p) > startPos) ? '0px' : '');
-			});
-		}
-		//main();
-	})
-</script>
+<%@include file="/WEB-INF/jsp/include.jsp"%>
+<%@include file="/WEB-INF/jsp/index_title.jsp" %>
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <title>Home</title>
+
+  <script>
+	$(document).ready(function(){
+	    $("#myController").jFlow({
+			controller: ".control", // must be class, use . sign
+			slideWrapper : "#jFlowSlider", // must be id, use # sign
+			slides: "#slider",  // the div where all your sliding divs are nested in
+			selectedWrapper: "jFlowSelected",  // just pure text, no sign
+			width: "984px",  // this is the width for the content-slider
+			height: "480px",  // this is the height for the content-slider
+			duration: 400,  // time in miliseconds to transition one slide
+			prev: ".slidprev", // must be class, use . sign
+			next: ".slidnext", // must be class, use . sign
+			auto: true
+    });
+  });
+  </script>
+  <script>
+	$(function() {
+	  $('#list_product').carouFredSel({
+		prev: '#prev_c1',
+		next: '#next_c1',
+		auto: false
+	  });
+          $('#list_product2').carouFredSel({
+		prev: '#prev_c2',
+		next: '#next_c2',
+		auto: false
+	  });
+	  $(window).resize();
+	});
+  </script>
+  <script>
+       $(document).ready(function(){
+	      $("button").click(function(){
+		     $(this).addClass('click')
+	      });
+       })
+  </script>
+
 </head>
 <body>
-
-<div id="content" style="width: 100%;color: red;margin: 0px auto;position: relative;">
- <div class="zcbanner">
- 	<!-- 图片轮播  begin-->
- 	<div id="kinMaxShow" style="position: relative;margin-top: 49px;">
-	   <div><a href="#" ><img src="images/ab1.jpg"   /></a></div>
-	   <div><a href="#"><img src="images/ab2.jpg"  /></a></div>
-	   <div><a href="#"><img src="images/ab3.jpg"   /></a></div>
-	</div>
- 	<!-- 图片轮播  end -->
-</div>
-
-</div>
-
-<!-- page begin-->
-<div class="pageDiv">
-<c:forEach var="name" items="${reqData }"  varStatus="idx">
-<c:if test="${idx.index%3==0}">
-	<div class="TshortsLi"><ul>
-</c:if>
-
-<a href="projectinfo/project_${idx.index }.html" ><li>
-				<div>
-					<div style="margin-top: 16px;"><img alt="11111" src="images/ts.png" width="300" height="320"> </div>
-					<div class="zcProject">
-						<span><c:out value="${name }"></c:out> </span>
-						<span style="font-size: 12px;">目标:15天  1000件 </span>
-						<div class="progress-bar"><span class="progress bg-red" style="width:10%;"></span></div>
-						<div class="item-rate clearfix">
-							<span class="rate1"><em>0%</em><br>已达</span>
-							<span class="rate2"><em>10</em><br>已筹集</span>
-							<span class="rate3"><em>29天</em><br>剩余时间</span>
-							
-						</div>
-					
-					</div>
-				
-				</div>
-				</li></a>
-
-<!-- 恰好  换行 -->
-<c:if test="${idx.index%3==2 && idx.last==false }" >
-</ul></div> 
-</c:if>
-<!-- 不满足  最后一行 换行 -->
-<c:if test="${idx.index%3!=2 && idx.last==true }" >
-</ul></div> 
-</c:if>
-
-</c:forEach>
-
-
-
-<div class="nipic-footer align-center mt40">
-    <div class="layout-width layout-width990">
-        <a hidefocus="true" title="关于众筹" href="#">关于众筹</a><span class="sepline">|</span><a hidefocus="true" title="网站公约" href="#">网站公约</a><span class="sepline">|</span><a hidefocus="true" title="网站声明" href="#">网站声明</a><span class="sepline">|</span><a hidefocus="true" title="帮助中心" href="#">帮助中心</a><span class="sepline">|</span><a hidefocus="true" title="联系我们" href="http://service.nipic.com/site/contact.html">联系我们</a><span class="sepline">|</span><a hidefocus="true" title="常见问题" href="#">常见问题</a><span class="sepline">
-        <p class="gray mt10"><span class="font-tahoma">Copyright © 2014 NiPic.com All Rights Reserved</span>　版权所有·众筹网　增值电信业务经营许可证 ：浙B2-20140130  </p>
-        <p class="gray mt10">众筹网是网络服务平台方，若您发现您的权利被侵害，请发起知识产权投诉，<span class="font-tahoma">xhymmc@163.com</span></p>
-        <p class="mt10"><img height="52" ondragstart="return false;" src="images/ppaa.gif" /></p>
-    </div>
-</div>  
-
-<DIV id=RightMenu><A href="index.html#top"><IMG 
-src="images/right1.png" width=47 height=56></A><A title=产品反馈 
-onclick=User.show(this); href="javascript:void(0);" rel=Dialog_Alert 
-url="/Feedback/" mode="iframe" showbg="true" showborder="false" 
-showtitle="false" height="500" width="750"><IMG 
-src="images/right2.png" width=47 height=56></A><A title=在线客服 
-href="http://wpa.qq.com/msgrd?v=3&amp;uin=361663126&amp;site=qq&amp;menu=yes" 
-target=_blank><IMG src="images/right3.png" width=47 
-height=56></A><A id=code class=ewm href="javascript:void(0);"><SPAN 
-style="DISPLAY: none" id=code_img></SPAN><IMG 
-src="images/right4.png" width=47 height=56></A></DIV>
-<DIV style="DISPLAY: none" class=ui_btn_min></DIV>
  
+
+  <div class="clear"></div>
+
+  <div class="container_12">
+    <div class="grid_12">
+        <div class="slidprev"><span>Prev</span></div>
+        <div class="slidnext"><span>Next</span></div>
+        <div id="slider">
+          <div id="slide1">
+            <img src="images/ab3.jpg" alt="" title="" />
+            <div class="slid_text">
+           <!--   <h3 class="slid_title"><span>Breeze Theme</span></h3>
+              <p><span>Breeze is the 14 stylish HTML templates,</span></p>
+              <p><span>which will helps you boost sales</span></p>
+              <p><span>and receive good feedback from your clients.</span></p>--> 
+            </div>
+          </div>
+
+          <div id="slide2">
+            <img src="images/ab1.jpg" alt="" title="" />
+            <div class="slid_text">
+              <!--   <h3 class="slid_title"><span>Flexibility</span></h3>
+              <p><span>Every product, which you are selling,</span></p>
+              <p><span>will look great with Breeze theme.</span></p>-->
+            </div>
+          </div>
+
+          <div id="slide3">
+            <img src="images/ab2.jpg" alt="" title="" />
+            <div class="slid_text">
+             <!-- <h3 class="slid_title"><span>Accuracy and Easiness</span></h3>
+              <p><span>Breeze design is mere and accurate,</span></p>
+              <p><span>so it will satisfy everybody.</span></p>-->
+            </div>
+          </div>
+        </div><!-- .slider -->
+        <div id="myController">
+          <div class="control"><span>1</span></div>
+          <div class="control"><span>2</span></div>
+          <div class="control"><span>3</span></div>
+        </div>
+
+
+    </div><!-- .grid_12 -->
+  </div><!-- .container_12 -->
+ <!-- <div class="copyrights">Collect from 网站模板</div> --> 
+  <div class="clear"></div>
+
+  <section id="main" class="home">
+    <div class="container_12">
+      <div id="top_button">
+        <div class="grid_4">
+          <a href="#" class="button_block best_price">
+            <img src="images/banner1.png" alt="Banner 1"/>
+          </a><!-- .best_price -->
+        </div><!-- .grid_4 -->
+
+        <div class="grid_4">
+          <a href="#" class="button_block new_smells">
+            <img src="images/banner2.png" alt="Banner 2"/>
+          </a><!-- .new smells -->
+        </div><!-- .grid_4 -->
+
+        <div class="grid_4">
+          <a href="#" class="button_block only_natural">
+            <img src="images/banner3.png" alt="Banner 3"/>
+          </a><!-- .only_natural -->
+        </div><!-- .grid_4 -->
+
+        <div class="clear"></div>
+      </div><!-- #top_button -->
+
+      <div class="clear"></div>
+
+      <div class="carousel">
+        <div class="c_header">
+          <div class="grid_10">
+            <h2>最受欢迎</h2>
+          </div><!-- .grid_10 -->
+
+          <div class="grid_2">
+            <a id="next_c1" class="next arows" href="#"><span>下一页</span></a>
+            <a id="prev_c1" class="prev arows" href="#"><span>上一页</span></a>
+           </div><!-- .grid_2 -->
+        </div><!-- .c_header -->
+
+        <div class="list_carousel">
+
+        <ul id="list_product" class="list_product">
+          <li class="">
+            <div class="grid_3 product">
+              <img class="sale" src="images/sale.png" alt="Sale"/>
+              <div class="prev">
+                <a href="projectinfo/project_show.html"><img src="images/ts.png" alt="" title="" /></a>
+              </div><!-- .prev -->
+              <h3 class="title">xxx啼血</h3>
+              <div class="cart">
+                <div class="price">
+                <div class="vert">
+                  <div class="price_new">$550.00</div>
+                  <div class="price_old">$725.00</div>
+                </div>
+                </div>
+                <a href="#" class="obn"></a>
+                <a href="#" class="like"></a>
+                <a href="#" class="bay"></a>
+              </div><!-- .cart -->
+            </div><!-- .grid_3 -->
+          </li>
+
+         <li class="">
+            <div class="grid_3 product">
+              <img class="sale" src="images/sale.png" alt="Sale"/>
+              <div class="prev">
+                <a href="product_page.html"><img src="images/ts.png" alt="" title="" /></a>
+              </div><!-- .prev -->
+              <h3 class="title">xxx啼血</h3>
+              <div class="cart">
+                <div class="price">
+                <div class="vert">
+                  <div class="price_new">$550.00</div>
+                  <div class="price_old">$725.00</div>
+                </div>
+                </div>
+                <a href="#" class="obn"></a>
+                <a href="#" class="like"></a>
+                <a href="#" class="bay"></a>
+              </div><!-- .cart -->
+            </div><!-- .grid_3 -->
+          </li>
+          <li class="">
+            <div class="grid_3 product">
+              <img class="sale" src="images/sale.png" alt="Sale"/>
+              <div class="prev">
+                <a href="product_page.html"><img src="images/ts.png" alt="" title="" /></a>
+              </div><!-- .prev -->
+              <h3 class="title">xxx啼血</h3>
+              <div class="cart">
+                <div class="price">
+                <div class="vert">
+                  <div class="price_new">$550.00</div>
+                  <div class="price_old">$725.00</div>
+                </div>
+                </div>
+                <a href="#" class="obn"></a>
+                <a href="#" class="like"></a>
+                <a href="#" class="bay"></a>
+              </div><!-- .cart -->
+            </div><!-- .grid_3 -->
+          </li>
+          <li class="">
+            <div class="grid_3 product">
+              <img class="sale" src="images/sale.png" alt="Sale"/>
+              <div class="prev">
+                <a href="product_page.html"><img src="images/ts.png" alt="" title="" /></a>
+              </div><!-- .prev -->
+              <h3 class="title">xxx啼血</h3>
+              <div class="cart">
+                <div class="price">
+                <div class="vert">
+                  <div class="price_new">$550.00</div>
+                  <div class="price_old">$725.00</div>
+                </div>
+                </div>
+                <a href="#" class="obn"></a>
+                <a href="#" class="like"></a>
+                <a href="#" class="bay"></a>
+              </div><!-- .cart -->
+            </div><!-- .grid_3 -->
+          </li>
+
+           <li class="">
+            <div class="grid_3 product">
+              <img class="sale" src="images/sale.png" alt="Sale"/>
+              <div class="prev">
+                <a href="product_page.html"><img src="images/ts.png" alt="" title="" /></a>
+              </div><!-- .prev -->
+              <h3 class="title">xxx啼血</h3>
+              <div class="cart">
+                <div class="price">
+                <div class="vert">
+                  <div class="price_new">$550.00</div>
+                  <div class="price_old">$725.00</div>
+                </div>
+                </div>
+                <a href="#" class="obn"></a>
+                <a href="#" class="like"></a>
+                <a href="#" class="bay"></a>
+              </div><!-- .cart -->
+            </div><!-- .grid_3 -->
+          </li>
+
+        </ul><!-- #list_product -->
+        </div><!-- .list_carousel -->
+      </div><!-- .carousel -->
+
+      <div class="carousel">
+        <div class="c_header">
+          <div class="grid_10">
+            <h2>最新品</h2>
+          </div><!-- .grid_10 -->
+
+          <div class="grid_2">
+            <a id="next_c2" class="next arows" href="#"><span>Next</span></a>
+            <a id="prev_c2" class="prev arows" href="#"><span>Prev</span></a>
+          </div><!-- .grid_2 -->
+        </div><!-- .c_header -->
+
+        <div class="list_carousel">
+        <ul id="list_product2" class="list_product">
+           <li class="">
+            <div class="grid_3 product">
+              <img class="sale" src="images/sale.png" alt="Sale"/>
+              <div class="prev">
+                <a href="product_page.html"><img src="images/ts.png" alt="" title="" /></a>
+              </div><!-- .prev -->
+              <h3 class="title">xxx啼血</h3>
+              <div class="cart">
+                <div class="price">
+                <div class="vert">
+                  <div class="price_new">$550.00</div>
+                  <div class="price_old">$725.00</div>
+                </div>
+                </div>
+                <a href="#" class="obn"></a>
+                <a href="#" class="like"></a>
+                <a href="#" class="bay"></a>
+              </div><!-- .cart -->
+            </div><!-- .grid_3 -->
+          </li>
+
+          <li class="">
+            <div class="grid_3 product">
+              <img class="sale" src="images/sale.png" alt="Sale"/>
+              <div class="prev">
+                <a href="product_page.html"><img src="images/ts.png" alt="" title="" /></a>
+              </div><!-- .prev -->
+              <h3 class="title">xxx啼血</h3>
+              <div class="cart">
+                <div class="price">
+                <div class="vert">
+                  <div class="price_new">$550.00</div>
+                  <div class="price_old">$725.00</div>
+                </div>
+                </div>
+                <a href="#" class="obn"></a>
+                <a href="#" class="like"></a>
+                <a href="#" class="bay"></a>
+              </div><!-- .cart -->
+            </div><!-- .grid_3 -->
+          </li>
+ <li class="">
+            <div class="grid_3 product">
+              <img class="sale" src="images/sale.png" alt="Sale"/>
+              <div class="prev">
+                <a href="product_page.html"><img src="images/ts.png" alt="" title="" /></a>
+              </div><!-- .prev -->
+              <h3 class="title">xxx啼血</h3>
+              <div class="cart">
+                <div class="price">
+                <div class="vert">
+                  <div class="price_new">$550.00</div>
+                  <div class="price_old">$725.00</div>
+                </div>
+                </div>
+                <a href="#" class="obn"></a>
+                <a href="#" class="like"></a>
+                <a href="#" class="bay"></a>
+              </div><!-- .cart -->
+            </div><!-- .grid_3 -->
+          </li>
+
+
+          <li class="">
+            <div class="grid_3 product">
+              <img class="sale" src="images/sale.png" alt="Sale"/>
+              <div class="prev">
+                <a href="product_page.html"><img src="images/ts.png" alt="" title="" /></a>
+              </div><!-- .prev -->
+              <h3 class="title">xxx啼血</h3>
+              <div class="cart">
+                <div class="price">
+                <div class="vert">
+                  <div class="price_new">$550.00</div>
+                  <div class="price_old">$725.00</div>
+                </div>
+                </div>
+                <a href="#" class="obn"></a>
+                <a href="#" class="like"></a>
+                <a href="#" class="bay"></a>
+              </div><!-- .cart -->
+            </div><!-- .grid_3 -->
+          </li>
+
+         <li class="">
+            <div class="grid_3 product">
+              <img class="sale" src="images/sale.png" alt="Sale"/>
+              <div class="prev">
+                <a href="product_page.html"><img src="images/ts.png" alt="" title="" /></a>
+              </div><!-- .prev -->
+              <h3 class="title">xxx啼血</h3>
+              <div class="cart">
+                <div class="price">
+                <div class="vert">
+                  <div class="price_new">$550.00</div>
+                  <div class="price_old">$725.00</div>
+                </div>
+                </div>
+                <a href="#" class="obn"></a>
+                <a href="#" class="like"></a>
+                <a href="#" class="bay"></a>
+              </div><!-- .cart -->
+            </div><!-- .grid_3 -->
+          </li>
+
+
+        </ul><!-- #list_product2 -->
+        </div><!-- .list_carousel -->
+      </div><!-- .carousel -->
+
+   <!-- #content_bottom -->
+      <div class="clear"></div>
+
+    </div><!-- .container_12 -->
+  </section><!-- #main -->
+
+  <div class="clear"></div>
+
+  <footer>
+    <div class="f_navigation">
+      <div class="container_12">
+        <div class="grid_3">
+          <h3>联系我们</h3>
+          <ul class="f_contact">
+            <li>浙江省杭州市xxx接到</li>
+            <li>+0571-86415126</li>
+            <li>xhymmc@163.com</li>
+          </ul><!-- .f_contact -->
+        </div><!-- .grid_3 -->
+
+        <div class="grid_3">
+          <h3>信息中心</h3>
+          <nav class="f_menu">
+            <ul>
+              <li><a href="#">关于我们</a></li>
+              <li><a href="#">隐私政策</a></li>
+              <li><a href="#">条款和条件</a></li>
+              <!-- <li><a href="#">Secure payment</a></li> -->
+            </ul>
+          </nav><!-- .private -->
+        </div><!-- .grid_3 -->
+
+        <div class="grid_3">
+          <h3>客户服务</h3>
+          <nav class="f_menu">
+            <ul>
+              <li><a href="contact_us.html">Contact As</a></li>
+              <li><a href="#">Return</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Site Map</a></li>
+            </ul>
+          </nav><!-- .private -->
+        </div><!-- .grid_3 -->
+
+        <div class="grid_3">
+          <h3>My Account</h3>
+          <nav class="f_menu">
+            <ul>
+              <li><a href="#">个人中心</a></li>
+              <li><a href="#"></a></li>
+              <li><a href="#">我喜欢的作品</a></li>
+              <li><a href="#">我的信息</a></li>
+            </ul>
+          </nav><!-- .private -->
+        </div><!-- .grid_3 -->
+
+        <div class="clear"></div>
+      </div><!-- .container_12 -->
+    </div><!-- .f_navigation -->
+
+    <div class="f_info">
+      <div class="container_12">
+        <div class="grid_6">
+          <p class="copyright">Copyright &copy; 2014.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+        </div><!-- .grid_6 -->
+
+        <div class="grid_6">
+          <div class="soc">
+            <a class="google" href="#"></a>
+            <a class="twitter" href="#"></a>
+            <a class="facebook" href="#"></a>
+          </div><!-- .soc -->
+        </div><!-- .grid_6 -->
+
+        <div class="clear"></div>
+      </div><!-- .container_12 -->
+    </div><!-- .f_info -->
+  </footer>
+
+<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
 </body>
 </html>

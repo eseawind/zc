@@ -13,44 +13,179 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+
 <body>
-<div id="header">
-    <div class="overlay"></div>
-    <div class="header-container">
-        
-      
-        <div class="title">
-            <h1 style="display: none"><a href="#">果库</a></h1>
-            <a href="index.html" class="logo"><img src="images/logonew.png"></a>
-        </div>
- 
-        <ul class="nav-bar">
-            <li class="active"><a href="index.html">首页</a></li>
-            <li ><a href="#">精选设计</a></li>
-            <li ><a href="#">热门设计</a></li>
-            <li ><a href="#">关于我们</a></li>
-            <li class="add-entity"><a href="projectinfo/project_add.do" title="发起设计"></a></li>
-        </ul>
- 
- 
-        <ul class="user">
-            	<c:if test="${empty sessionScope.USER_INFO }">
-	            	<li><a href="userinfo/login.html">登录</a></li>
-	                <li><span>&#124;</span></li>
-	                <li><a href="userinfo/register.html">注册</a></li>
+ <div class="container_12">
+    <div id="top">
+      <div class="grid_3">
+        <div class="phone_top">
+           客服电话 0571-86854235
+        </div><!-- .phone_top -->
+      </div><!-- .grid_3 -->
+
+      <div class="grid_6">
+        <div class="welcome">
+         亲， 你可以<a href="userinfo/login.html">登录</a> 或 <a href="userinfo/register.html">注册</a>.
+        </div><!-- .welcome -->
+      </div><!-- .grid_6 -->
+
+      <div class="grid_3">
+        <div class="valuta">
+          <ul>
+            <li class="curent"><a href="#">EN</a></li>
+            <li><a href="#">&#8364;</a></li>
+            <li><a href="#">&#163;</a></li>
+          </ul>
+        </div><!-- .valuta -->
+
+        <div class="lang">
+          <ul>
+            <li class="curent"><a href="#">英文</a></li>
+            <li><a href="#">中文</a></li>
+            <li><a href="#">繁体</a></li>
+          </ul>
+        </div><!-- .lang -->
+      </div><!-- .grid_3 -->
+    </div><!-- #top -->
+
+    <div class="clear"></div>
+
+    <header id="branding">
+      <div class="grid_3">
+        <hgroup>
+          <h1 id="site_logo" ><a href="index.html" title=""><img src="images/logo.png" alt="设计师网上设计平台"/></a></h1>
+          <h2 id="site_description">设计师网上设计平台</h2>
+        </hgroup>
+      </div><!-- .grid_3 -->
+
+      <div class="grid_3">
+        <form class="search">
+          <input type="text" name="search" class="entry_form" value="" placeholder="发现更多的作品..."/>
+	</form>
+      </div><!-- .grid_3 -->
+
+     <div class="grid_6">
+      <!--     <ul id="cart_nav">
+          <li>
+            <a class="cart_li" href="#">Cart <span>$0.00</span></a>
+            <ul class="cart_cont">
+              <li class="no_border"><p>Recently added item(s)</p></li>
+              <li>
+                <a href="product_page.html" class="prev_cart"><div class="cart_vert"><img src="images/cart_img.png" alt="" title="" /></div></a>
+                <div class="cont_cart">
+                  <h4>Caldrea Linen and Room Spray</h4>
+                  <div class="price">1 x $399.00</div>
+                </div>
+                <a title="close" class="close" href="#"></a>
+                <div class="clear"></div>
+              </li>
+              
+              <li>
+                <a href="product_page.html" class="prev_cart"><div class="cart_vert"><img src="images/produkt_slid1.png" alt="" title="" /></div></a>
+                <div class="cont_cart">
+                  <h4>Caldrea Linen and Room Spray</h4>
+                  <div class="price">1 x $399.00</div>
+                </div>
+                <a title="close" class="close" href="#"></a>
+                <div class="clear"></div>
+              </li>
+	      <li class="no_border">
+		<a href="shopping_cart.html" class="view_cart">View shopping cart</a>
+		<a href="checkout.html" class="checkout">Procced to Checkout</a>
+	      </li>
+            </ul>
+          </li>
+        </ul>-->
+
+        <nav class="private">
+          <ul>
+          
+          
+          
+            <li><a href="projectinfo/project_add.html">发布作品</a></li>
+		<li class="separator">|</li>
+            <li><a href="#">个人中心</a></li>
+		<li class="separator">|</li>
+		
+		<c:if test="${empty sessionScope.USER_INFO }">
+	            	  <li><a href="userinfo/login.html">登录</a></li>
+		<li class="separator">|</li>
+            <li><a href="userinfo/register.html">注册</a></li>
             	</c:if>
             	<c:if test="${sessionScope.USER_INFO!=null }" var="userinfo" scope="session">
-            		<li><a href="javascript:void(0)"><c:out value="${sessionScope.USER_INFO.userName }"></c:out> 欢迎您 </a> </li>
-            		<li><span>&#124;</span></li>
-            		<li><a href="userinfo/exit.html">退出</a></li>
+            	
+            	  <li><a href="#"><c:out value="${sessionScope.USER_INFO.userName }"></c:out></a></li>
+		<li class="separator">|</li>
+          
             	</c:if>
-        </ul>
-            <form action="#" method="GET">
-                <input type="text" placeholder="搜你想要的" name="q" class="search">
-                <input class="search-submit" type="submit" value="">
-            </form>
-        
-    </div>
-</div>
+		
+		
+          
+          </ul>
+        </nav><!-- .private -->
+      </div>
+       <!-- .grid_6 -->
+    </header><!-- #branding -->
+  </div><!-- .container_12 -->
+
+  <div class="clear"></div>
+
+  <div id="block_nav_primary">
+    <div class="container_12">
+      <div class="grid_12">
+        <nav class="primary">
+          <ul>
+            <li class="curent"><a href="index.html">首页</a></li>
+            <li><a href="catalog_grid.html">短袖</a>
+            <ul class="sub">
+                <li><a href="catalog_grid.html">麻布</a></li>
+                <li><a href="catalog_grid.html">棉质</a></li>
+                <li><a href="catalog_grid.html">尼龙</a></li>
+                <li><a href="catalog_grid.html">其它</a></li>
+              </ul>
+            
+            </li>
+            <li><a href="catalog_grid.html">长袖</a>
+            
+             <ul class="sub">
+                <li><a href="catalog_grid.html">麻布</a></li>
+                <li><a href="catalog_grid.html">棉质</a></li>
+                <li><a href="catalog_grid.html">尼龙</a></li>
+                <li><a href="catalog_grid.html">其它</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="catalog_grid.html">背包</a>
+              <ul class="sub">
+                <li><a href="catalog_grid.html">双肩包</a></li>
+                <li><a href="catalog_grid.html">单肩包</a></li>
+                <li><a href="catalog_grid.html">其它</a></li>
+              </ul>
+            </li>
+           <!--   <li><a href="catalog_grid.html">Electric</a></li>
+            <li><a href="catalog_grid.html">For cars</a></li>
+	    <li>
+              <a href="#">All pages</a>
+              <ul class="sub">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="text_page.html">Typography and basic styles</a></li>
+		<li><a href="catalog_grid.html">Catalog (grid view)</a></li>
+		<li><a href="catalog_list.html">Catalog (list type view)</a></li>
+		<li><a href="product_page.html">Product view</a></li>
+		<li><a href="shopping_cart.html">Shoping cart</a></li>
+		<li><a href="checkout.html">Proceed to checkout</a></li>
+		<li><a href="compare.html">Products comparison</a></li>
+		<li><a href="login.html">Login</a></li>
+		<li><a href="contact_us.html">Contact us</a></li>
+		<li><a href="404.html">404</a></li>
+		<li><a href="blog.html">Blog posts</a></li>
+		<li><a href="blog_post.html">Blog post view</a></li>
+              </ul>
+            </li>-->
+          </ul>
+        </nav><!-- .primary -->
+      </div><!-- .grid_12 -->
+    </div><!-- .container_12 -->
+  </div><!-- .block_nav_primary -->
 </body>
 </html>
