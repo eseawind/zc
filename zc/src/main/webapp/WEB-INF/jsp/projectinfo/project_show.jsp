@@ -14,19 +14,9 @@
 
   <title>Product view</title>
 
-  <link rel="shortcut icon" href="favicon.ico">
-  <link href="css/style.css" media="screen" rel="stylesheet" type="text/css">
-  <link href="css/grid.css" media="screen" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="css/jquery.jqzoom.css" type="text/css">
 
-  <script src="js/jquery-1.7.2.min.js" ></script>
-  <script src="js/html5.js" ></script>
-  <script src="js/jflow.plus.js" ></script>
-  <script src="js/jquery.carouFredSel-5.2.2-packed.js"></script>
-  <script src="js/checkbox.js"></script>
-  <script src="js/radio.js"></script>
-  <script src="js/selectBox.js"></script>
-  <script src="js/jquery.jqzoom-core.js" ></script>
+
+
 
   <script>
 	$(document).ready(function() {
