@@ -213,6 +213,7 @@ input[type="submit"]:focus{
 input[type="email"],
 input[type="text"],
 input[type="password"]{
+	line-height: 33px;
 	height: 33px;
 	padding: 0 10px;
 	border: 1px solid #ccc;
@@ -222,7 +223,7 @@ input[type="password"]{
 	-khtml-border-radius: 2px;
 	behavior: url(PIE.htc);
 }
-input[type="email"]:focus,
+input[type="email"]:focus, 
 input[type="text"]:focus,
 input[type="password"],
 textarea:focus{
