@@ -73,26 +73,26 @@
 							
 				
 				<div class="email">
-					<strong>项目名称:</strong><sup class="surely">*</sup><br/>
+					<strong>项目名称:</strong><sup class="surely">*</sup>
 					<input type="text" id="proName" name="proName" class="" value="" /><DIV id=validName class=Validform_checktip  > </DIV>
 				</div><!-- .email -->
 							
 				<div class="password">
-					<strong>目标:</strong><sup class="surely">*</sup><br/>
+					<strong>目&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;标:</strong><sup class="surely">*</sup>
 					<input id=proTarget onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  type=text name=proTarget class="" value="" />
 					<DIV id=validTarget class=Validform_checktip></DIV>
 				
 				</div><!-- .password -->
 							
 				<div class="password">
-					<strong>单价:</strong><sup class="surely">*</sup><br/>
+					<strong>单&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价:</strong><sup class="surely">*</sup>
 					<input id=proUnit onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')"  type=text name=proUnit class="" value="" />
 					 <DIV id=validUnit class=Validform_checktip></DIV>
 				
 				</div><!-- .password -->
 				
 				<div class="password">
-					<strong>筹集天数:</strong><sup class="surely">*</sup><br/>
+					<strong>筹集天数:</strong><sup class="surely">*</sup>
 					<input id=proDays  type=text name=proDays onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" class="" value="" /> 
 					<DIV id=validDays class=Validform_checktip></DIV>
 				
@@ -100,7 +100,7 @@
 				
 			
 			<div class="password">
-					<strong>类别:</strong><sup class="surely">*</sup><br/>
+					<strong>类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:</strong><sup class="surely">*</sup>
 					<select name="proType" id="proType"  class="" >
 									<option value="0">请选择类别</option>
 									<option value="1">上衣</option>
@@ -112,7 +112,7 @@
 				</div>
 				
 					<div class="password">
-					<strong>面料:</strong><sup class="surely">*</sup><br/>
+					<strong>面&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;料:</strong><sup class="surely">*</sup>
 					<select name="proFabric" id="proFabric"  class="" >
 									<option value="0">请选择面料</option>
 									<option value="1">尼龙</option>
@@ -125,7 +125,7 @@
 				
 				
 					<div class="password">
-					<strong>打样:</strong><sup class="surely">*</sup><br/>
+					<strong>打&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;样:</strong><sup class="surely">*</sup>
 					<select name="proSample" id="proSample"  class="" >
 									<option value="0">请选择打样</option>
 									<option value="1">是</option>
@@ -137,7 +137,7 @@
 				
 				
 				<div class="email">
-					<strong>封面图片:</strong><sup class="surely">*</sup><br/>
+					<strong>封面图片:</strong><sup class="surely">*</sup>
 					
 					<input type="file"  value="上传" id="fileuploada" name="fileupload"/>
 					<DIV id=validName class=Validform_checktip  > </DIV>
@@ -145,7 +145,7 @@
 				
 				
 				<div class="email">
-					<strong>项目地点:</strong><sup class="surely">*</sup><br/>
+					<strong>项目地点:</strong><sup class="surely">*</sup>
 					<select name="proProvince" id="proProvince" class="">
 									<option >请选择省份</option>
 									<option selected="selected" value="浙江省">浙江省</option>
@@ -161,13 +161,13 @@
 			
 			
 			<div class="email">
-					<strong>项目简介:</strong><sup class="surely">*</sup><br/>
-					<textarea style="width:90%;height:40px;" id="proRemarks"  name="proRemarks"  maxlength="75"></textarea>
+					<strong>项目简介:</strong><sup class="surely">*</sup>
+					<textarea style="width:70%;height:40px;" id="proRemarks"  name="proRemarks"  maxlength="75"></textarea>
 					<DIV id=validRemarks class=Validform_checktip  > </DIV>
 				</div><!-- .email -->
 			
 				<div class="email">
-					<strong>标签:</strong><sup class="surely">*</sup><br/>
+					<strong>标&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;签:</strong><sup class="surely">*</sup>
 					<input type="text" id="proTag" name="proTag" class="" value="" /><DIV id=validName class=Validform_checktip  > </DIV>
 					<DIV id=validTag class=Validform_checktip  > </DIV>
 				</div><!-- .email -->
@@ -182,11 +182,28 @@
                 <!-- .grid_6 -->
        </div><!-- #content -->
        
-		<div class="grid_6 new_customers">
-			<h2>作品信息</h2>
-			<p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
-			<div class="clear"></div>
-			<button class="account">Create An Account</button>
+		<div class="grid_6 new_customers" >
+			<h2>封面预览</h2>
+			 <div class="itMyPicShow">
+      <div class="tabBoxR ">
+       <span>选择颜色</span>
+      <span color="white" class="blocks" style="background:#FFF"></span>
+        <span color="black" class="blocks" style="background:#000"></span><span color="gray" class="blocks" style="background:#D0D0D0"></span>
+       <!--<p>预览底衫<select class="shirts"><option>短袖T恤</option></select></p>
+         <ul class="nav">
+          <li side="front" class="current"><a href="#">正面</a></li>
+          <li side="back"><a href="#">背面</a></li>
+        </ul> -->
+      </div>
+      <div class="bgbox" style="background: url(images/6_front.jpg) no-repeat transparent;" id="bgbox">
+      <div style="width: 152px; height: 231px; margin-left: 84px; margin-top: 52px; border: 1px dashed rgb(0, 0, 0); position: absolute;">
+      <img style="border:0px;margin:0px;padding:0px;width:152px;height:152px;" src="images/d.png">
+      </div></div>
+      
+     
+
+
+    </div>
                 </div><!-- .grid_6 -->
       <div class="clear"></div>
     </div><!-- .container_12 -->
