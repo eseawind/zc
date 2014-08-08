@@ -54,185 +54,217 @@
 </script>
 </head>
 <body>
-
-<div class="incContent" style="margin-bottom:50px;">
-  <div class="itMyUpBox" style="background-color:#FFF;" id="editord">
   
+  <div class="clear"></div>
   
-    <div class="picFile itMyPicFile" style="height:530px;">
-    
-        <div style="margin-left: 30px;">
-          
-           <FORM class=registerform method=post action="projectinfo/beginAdd.do" target="upload_f1_frame" name="addForm" id="addForm" 	enctype="multipart/form-data" >
-<table>
-<tr>
-<td colspan="3" style="height: 58px;">
- <div style="border-bottom: 1px dashed #e7e7e7;">
-                <h2 style="text-align: left;">作品信息</h2>
-               
-            </div>
-</td>
-</tr>
-<tr> 
-	<td  style="width:80px; ">项目名称:</td>
-	<td style=" width: 180px;"> <input  style="COLOR: rgb(51,51,51)" maxlength="40"  id=proName class=inputBg1  type=text name=proName value=""  > </td>
-	<td style="width:170px; ">&nbsp;<DIV id=validName class=Validform_checktip  > </DIV> </td>
-</tr>
-<tr>
-	<td>目标:</td>
-	<td><INPUT style="COLOR: rgb(51,51,51);width: 60%" value="" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"   id=proTarget class=inputBg1  type=text name=proTarget> </td>
-	<td>  <DIV id=validTarget class=Validform_checktip></DIV> </td>
-</tr>
-<tr>
-	<td>单价:</td>
-	<td><INPUT style="COLOR: rgb(51,51,51);width: 60%" value="" onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')"   id=proUnit class=inputBg1  type=text name=proUnit> </td>
-	<td>  <DIV id=validUnit class=Validform_checktip></DIV> </td>
-</tr>
-<tr>
-	<td>筹集天数:</td>
-	<td><INPUT style="COLOR: rgb(51,51,51);width: 60%" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" value=""   id=proDays class=inputBg1  type=text name=proDays > </td>
-	<td>  <DIV id=validDays class=Validform_checktip></DIV>  </td>
-</tr>
-<tr>
-	<td>类别:</td>
-	<td><select name="proType" id="proType" style="COLOR: rgb(51,51,51);width: 63%"  class=inputBg1  >
+  <section id="main" class="entire_width">
+    <div class="container_12">      
+       <div id="content">
+		<div class="grid_12">
+			<h1 class="page_title">发布作品</h1>
+		</div><!-- .grid_12 -->
+		
+		
+		<div class="grid_6">
+		 <FORM class=registed method=post action="projectinfo/beginAdd.do" target="upload_f1_frame" name="addForm" id="addForm" 	enctype="multipart/form-data">
+		
+		
+				<h2>作品信息</h2>
+							
+				
+				<div class="email">
+					<strong>项目名称:</strong><sup class="surely">*</sup><br/>
+					<input type="text" id="proName" name="proName" class="" value="" /><DIV id=validName class=Validform_checktip  > </DIV>
+				</div><!-- .email -->
+							
+				<div class="password">
+					<strong>目标:</strong><sup class="surely">*</sup><br/>
+					<input id=proTarget onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  type=text name=proTarget class="" value="" />
+					<DIV id=validTarget class=Validform_checktip></DIV>
+				
+				</div><!-- .password -->
+							
+				<div class="password">
+					<strong>单价:</strong><sup class="surely">*</sup><br/>
+					<input id=proUnit onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')"  type=text name=proUnit class="" value="" />
+					 <DIV id=validUnit class=Validform_checktip></DIV>
+				
+				</div><!-- .password -->
+				
+				<div class="password">
+					<strong>筹集天数:</strong><sup class="surely">*</sup><br/>
+					<input id=proDays  type=text name=proDays onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" class="" value="" /> 
+					<DIV id=validDays class=Validform_checktip></DIV>
+				
+				</div>
+				
+			
+			<div class="password">
+					<strong>类别:</strong><sup class="surely">*</sup><br/>
+					<select name="proType" id="proType"  class="" >
 									<option value="0">请选择类别</option>
 									<option value="1">上衣</option>
 													<option value="2">短袖</option>	
 														<option value="3">短袖</option>				
-																	</select> </td>
-	<td>  <DIV id=validType class=Validform_checktip></DIV>  </td>
-</tr>
-
-<tr>
-	<td>面料:</td>
-	<td><select name="proFabric" id="proFabric" style="COLOR: rgb(51,51,51);width: 63%"  class=inputBg1  >
+																	</select>
+					
+				<DIV id=validType class=Validform_checktip></DIV> 
+				</div>
+				
+					<div class="password">
+					<strong>面料:</strong><sup class="surely">*</sup><br/>
+					<select name="proFabric" id="proFabric"  class="" >
 									<option value="0">请选择面料</option>
 									<option value="1">尼龙</option>
-													<option value="2">棉</option>	
-														
-																	</select> </td>
-	<td>  <DIV id=validPassword class=Validform_checktip></DIV>  </td>
-</tr>
-
-
-<tr>
-	<td>打样:</td>
-	<td><select name="proSample" id="proSample" style="COLOR: rgb(51,51,51);width: 63%"  class=inputBg1  >
+													<option value="2">棉</option>			
+																	</select>
+					
+				<DIV id=validFabric class=Validform_checktip></DIV> 
+				</div>
+				
+				
+				
+					<div class="password">
+					<strong>打样:</strong><sup class="surely">*</sup><br/>
+					<select name="proSample" id="proSample"  class="" >
 									<option value="0">请选择打样</option>
 									<option value="1">是</option>
-													<option value="2">否</option>	
-														
-																	</select> </td>
-	<td>  <DIV id=validPassword class=Validform_checktip></DIV>  </td>
-</tr>
-<tr>
-<td>封面图片：</td>
-<td><input type="file"  value="上传" id="fileuploada" name="fileupload"/> </td>
-</tr>
-<tr>
-	<td>项目地点:</td>
-	<td>	<select name="proProvince" id="proProvince"  style="COLOR: rgb(51,51,51);width: 50%"  class=inputBg1 >
+													<option value="2">否</option>			
+																	</select>
+					
+				<DIV id=validSample class=Validform_checktip></DIV> 
+				</div>
+				
+				
+				<div class="email">
+					<strong>封面图片:</strong><sup class="surely">*</sup><br/>
+					
+					<input type="file"  value="上传" id="fileuploada" name="fileupload"/>
+					<DIV id=validName class=Validform_checktip  > </DIV>
+				</div><!-- .email -->
+				
+				
+				<div class="email">
+					<strong>项目地点:</strong><sup class="surely">*</sup><br/>
+					<select name="proProvince" id="proProvince" class="">
 									<option >请选择省份</option>
 									<option selected="selected" value="浙江省">浙江省</option>
 																	
 																	</select>
-								<select name="proCity" id="proCity"   style="COLOR: rgb(51,51,51);width:50%"  class=inputBg1 >
+								<select name="proCity" id="proCity"   class="" >
 									<option >请选择城市</option>
 									<option selected="selected" value="杭州市">杭州市</option>
 									<option value="宁波市">宁波市</option>
-																	</select> </td>
-	<td> <DIV id=validpasswordAgain class=Validform_checktip></DIV>   </td>
-</tr>
-
-
-<tr>
-	<td>项目简介:</td>
-	<td><textarea style="width:100%;height:40px;COLOR: rgb(51,51,51)" class=inputBg1 id="proRemarks"  name="proRemarks"  maxlength="75"></textarea>
-						</td>
-	<td>  <DIV id=validPhone class=Validform_checktip></DIV>  </td>
-</tr>
-
-<tr>
-	<td>标签:</td>
-	<td><input type="text"  style="COLOR: rgb(51,51,51)" class=inputBg1  id="proTag" name="proTag" value="">
-						</td>
-	<td>  <DIV id=validPhone class=Validform_checktip></DIV>  </td>
-</tr>
-
-<tr>
-	<td colspan="3" align="right"><a class="btn btn-primary" id="btnAdd" href="javascript:void(0)">发布作品</a></td>
-	
-</tr>
-
-<tr>
-	<td colspan="3" >&nbsp;<br><br></td>
-	
-</tr>
-</table>
-<iframe name="upload_f1_frame" id="upload_f1_frame" style="display: none;"></iframe>
- </FORM>
- 
- </div>
-    
-   
+																	</select>
+					<DIV id=validPoint class=Validform_checktip  > </DIV>
+				</div>
+			
+			
+			<div class="email">
+					<strong>项目简介:</strong><sup class="surely">*</sup><br/>
+					<textarea style="width:90%;height:40px;" id="proRemarks"  name="proRemarks"  maxlength="75"></textarea>
+					<DIV id=validRemarks class=Validform_checktip  > </DIV>
+				</div><!-- .email -->
+			
+				<div class="email">
+					<strong>标签:</strong><sup class="surely">*</sup><br/>
+					<input type="text" id="proTag" name="proTag" class="" value="" /><DIV id=validName class=Validform_checktip  > </DIV>
+					<DIV id=validTag class=Validform_checktip  > </DIV>
+				</div><!-- .email -->
+				
+				<div class="submit">										
+					<button class="account" id="btnAdd">发布作品</button>
+				</div><!-- .submit -->
+			</form><!-- .registed -->
+                </div>
+                
+                
+                <!-- .grid_6 -->
+       </div><!-- #content -->
+       
+		<div class="grid_6 new_customers">
+			<h2>作品信息</h2>
+			<p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+			<div class="clear"></div>
+			<button class="account">Create An Account</button>
+                </div><!-- .grid_6 -->
+      <div class="clear"></div>
+    </div><!-- .container_12 -->
+  </section><!-- #main -->
   
-    </div>
+  <div class="clear"></div>
     
-    
-    
-    
-    
-    
-    <div class="itMyPicShow">
-      <div class="tabBoxR ">
-       <span>选择颜色</span>
-      <span color="white" class="blocks" style="background:#FFF"></span>
-        <span color="black" class="blocks" style="background:#000"></span><span color="gray" class="blocks" style="background:#D0D0D0"></span>
-       <!--<p>预览底衫<select class="shirts"><option>短袖T恤</option></select></p>
-         <ul class="nav">
-          <li side="front" class="current"><a href="#">正面</a></li>
-          <li side="back"><a href="#">背面</a></li>
-        </ul> -->
-      </div>
-      <div class="bgbox" style="background: url(images/6_front.jpg) no-repeat transparent;" id="bgbox">
-      <div style="width: 152px; height: 231px; margin-left: 84px; margin-top: 52px; border: 1px dashed rgb(0, 0, 0); position: absolute;">
-      <img style="border:0px;margin:0px;padding:0px;width:152px;height:152px;" src="images/d.png">
-      </div></div>
+  <footer>
+    <div class="f_navigation">
+      <div class="container_12">
+        <div class="grid_3">
+          <h3>Contact Us</h3>
+          <ul class="f_contact">
+            <li>49 Archdale, 2B Charlestone</li>
+            <li>+777 (100) 1234</li>
+            <li>mail@example.com</li>
+          </ul><!-- .f_contact -->
+        </div><!-- .grid_3 -->
       
-     
-
-
-    </div>
-  </div>
-</div>
-
-
-
-
-<div class="nipic-footer align-center mt40">
-    <div class="layout-width layout-width990">
-        <a hidefocus="true" title="关于众筹" href="#">关于众筹</a><span class="sepline">|</span><a hidefocus="true" title="网站公约" href="#">网站公约</a><span class="sepline">|</span><a hidefocus="true" title="网站声明" href="#">网站声明</a><span class="sepline">|</span><a hidefocus="true" title="帮助中心" href="#">帮助中心</a><span class="sepline">|</span><a hidefocus="true" title="联系我们" href="http://service.nipic.com/site/contact.html">联系我们</a><span class="sepline">|</span><a hidefocus="true" title="常见问题" href="#">常见问题</a><span class="sepline">
-        <p class="gray mt10"><span class="font-tahoma">Copyright © 2014 NiPic.com All Rights Reserved</span>　版权所有·众筹网　增值电信业务经营许可证 ：浙B2-20140130  </p>
-        <p class="gray mt10">众筹网是网络服务平台方，若您发现您的权利被侵害，请发起知识产权投诉，<span class="font-tahoma">xhymmc@163.com</span></p>
-        <p class="mt10"><img height="52" ondragstart="return false;" src="images/ppaa.gif" /></p>
-    </div>
-</div>  
-
-<DIV id=RightMenu><A href="projectinfo/project_add.html#top"><IMG 
-src="images/right1.png" width=47 height=56></A><A title=产品反馈 
-onclick=User.show(this); href="javascript:void(0);" rel=Dialog_Alert 
-url="/Feedback/" mode="iframe" showbg="true" showborder="false" 
-showtitle="false" height="500" width="750"><IMG 
-src="images/right2.png" width=47 height=56></A><A title=在线客服 
-href="http://wpa.qq.com/msgrd?v=3&amp;uin=2787064043&amp;site=qq&amp;menu=yes" 
-target=_blank><IMG src="images/right3.png" width=47 
-height=56></A><A id=code class=ewm href="javascript:void(0);"><SPAN 
-style="DISPLAY: none" id=code_img></SPAN><IMG 
-src="images/right4.png" width=47 height=56></A></DIV>
-<DIV style="DISPLAY: none" class=ui_btn_min></DIV>
-
-
-
+        <div class="grid_3">
+          <h3>Information</h3>
+          <nav class="f_menu">
+            <ul>
+              <li><a href="#">About As</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms & Conditions</a></li>
+              <li><a href="#">Secure payment</a></li>
+            </ul>
+          </nav><!-- .private -->
+        </div><!-- .grid_3 -->
+        
+        <div class="grid_3">
+          <h3>Costumer Servise</h3>
+          <nav class="f_menu">
+            <ul>
+              <li><a href="contact_us.html">Contact As</a></li>
+              <li><a href="#">Return</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Site Map</a></li>
+            </ul>
+          </nav><!-- .private -->
+        </div><!-- .grid_3 -->
+        
+        <div class="grid_3">
+          <h3>My Account</h3>
+          <nav class="f_menu">
+            <ul>
+              <li><a href="#">My Account</a></li>
+              <li><a href="#">Order History</a></li>
+              <li><a href="#">Wish List</a></li>
+              <li><a href="#">Newsletter</a></li>
+            </ul>
+          </nav><!-- .private -->
+        </div><!-- .grid_3 -->
+        
+        <div class="clear"></div>
+      </div><!-- .container_12 -->
+    </div><!-- .f_navigation -->
+    
+    <div class="f_info">
+      <div class="container_12">
+        <div class="grid_6">
+          <p class="copyright">Copyright &copy; 2014.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+        </div><!-- .grid_6 -->
+        
+        <div class="grid_6">
+          <div class="soc">
+            <a class="google" href="#"></a>
+            <a class="twitter" href="#"></a>
+            <a class="facebook" href="#"></a>
+          </div><!-- .soc -->
+        </div><!-- .grid_6 -->
+        
+        <div class="clear"></div>
+      </div><!-- .container_12 -->
+    </div><!-- .f_info -->
+  </footer>
+ 
+<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
 </body>
 </html>
