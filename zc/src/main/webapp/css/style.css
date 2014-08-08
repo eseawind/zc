@@ -323,7 +323,7 @@ body{
 .surely{
 	color: #c3293a;
 	margin: 0 3px;
-	vertical-align: top;
+	vertical-align: middle;
 }
 
 /*******
@@ -809,7 +809,7 @@ nav.private ul li a:hover{
  ********/
 #main{margin: 50px 0 60px 0;}
 #main.home{margin: 24px 0 0 0;}
-#main.entire_width{margin: 80px 0 70px 0;}
+#main.entire_width{margin: 10px 0 40px 0;}
 
 /***********
  * Sidebar *
@@ -2768,4 +2768,82 @@ font-size: 12px;
 }
 .Validform_error {
 background-color: #ffe7e7;
+}
+.itMyPicShow {
+width: 280px; 
+float: right;
+margin-right:70px;
+position: relative;
+margin-top:30px;
+
+}
+.itMyPicShow .tabBoxR {
+
+padding: 0px 0 0px;
+zoom: 1;
+border-bottom: 1px dashed #e7e7e7;
+}
+.clearfix {
+}
+.itMyPicShow .blocks {
+margin-top: 0px;
+cursor: pointer;
+}
+.itMyPicShow .blocks {
+margin-top: 0px;
+cursor: pointer;
+}
+.itMyPicShow .blocks {
+background: #0CF;
+border: 1px solid #e7e7e7;
+width: 16px;
+height: 16px;
+display: inline-block;
+margin-left: 10px;
+margin-top: -5px;
+}
+.itMyPicShow .blocks {
+margin-top: 0px;
+cursor: pointer;
+}
+.itMyPicShow .blocks {
+background: #0CF;
+border: 1px solid #e7e7e7;
+width: 16px;
+height: 16px;
+display: inline-block;
+margin-left: 10px;
+margin-top: -5px;
+}
+.itMyPicShow select {
+margin-top: -5px;
+margin-left: 3px;
+}
+
+
+.itMyPicShow .tabBoxR .current {
+background: none;
+}
+.itMyPicShow .tabBoxR li {
+float: left;
+display: inline;
+margin-right: 2px;
+border: 1px solid #ddd;
+background: #ebebeb;
+}
+
+.itMyPicShow .bgbox {
+width: 319px;
+height: 319px;
+position: relative;
+margin: 10px auto;
+background: url(images/picture_10.gif) no-repeat 0 0;
+}
+.itMyPicShow .tabBoxR {
+padding: 20px 0 11px;
+zoom: 1;
+border-bottom: 1px dashed #e7e7e7;
+}
+.itMyPicShow .tabBoxR p {
+float: right;
 }
