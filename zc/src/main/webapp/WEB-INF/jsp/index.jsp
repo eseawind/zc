@@ -260,8 +260,8 @@
           </div><!-- .grid_10 -->
 
           <div class="grid_2">
-            <a id="next_c21" class="next arows" href="#" style="display: block;"><span>Next</span></a>
-            <a id="prev_c21" class="prev arows" href="#"><span>Prev</span></a>
+            <a id="next_c21" class="next arows" href="aaaaaaaaaa#" style="display: block;"><span>Next</span></a>
+            <a id="prev_c21" class="prev arows" href="#"><span>Prevs</span></a>
           </div><!-- .grid_2 -->
         </div><!-- .c_header -->
 

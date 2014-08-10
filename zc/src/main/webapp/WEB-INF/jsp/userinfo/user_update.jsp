@@ -145,8 +145,8 @@ display: block;
 
 		     <nav class="left_menu">
 			    <ul>
-				   <li><a href="userinfo/info.html">个人信息</a></li>
-				    <li><a href="#">资料修改</a></li>
+				   <li><a href="userinfo/show.xhtml">个人信息</a></li>
+				    <li><a href="userinfo/update.xhtml">资料修改</a></li>
 				    <li><a href="#">头像修改</a></li>
 				   <li><a href="#">收货地址</a></li>
 				   <li><a href="#">修盖密码</a></li>

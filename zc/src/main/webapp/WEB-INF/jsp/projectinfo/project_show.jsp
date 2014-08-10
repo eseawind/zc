@@ -43,6 +43,41 @@
 			}
 			return false;
 		});
+		//dialog
+		$("#cartDivDialog").dialog({
+			title:'我的购物车',
+			autoOpen: false,
+			height: 500,
+			width: 750,
+			modal: true,
+			buttons:{
+				"结算":function(){
+					alert("感谢购物,欢迎下次再来");					
+				}
+			}
+		});
+		//buy
+		$("#btnBuy").click(function(e){
+			e.preventDefault();
+			var buynum=$("#buyNumber").val();
+			if(!buynum){
+				$.alert("购物提示","请输入购买数量");
+				return;
+			}
+			var cm=$("input[name=radioType]:checked");
+			if(cm.length==0){
+				$.alert("购物提示","请选择尺码");
+				return;
+			}
+			//pro img
+			var proImg=$("#proImg").attr("src");
+			var proCode=$("#proCode").val();
+			$.post("projectinfo/addCart.xhtml",{proCode:proCode,cartNumber:buynum,tshirtShort:cm.val(),imageUrl:proImg,proName:$("#proSpanName").html(),proUnit:$("#proSpanUnit").html()},function(data){
+				$( "#cartDivDialog" ).html("").html(data).dialog( "open" );
+			});
+			//alert("购物数量："+buynum+" 尺码："+cm.val());
+			
+		})
 	});
   </script>
 
@@ -79,7 +114,26 @@
 
 </head>
 <body>
-
+<!-- -购物车  begin -->
+<div id="cartDivDialog">
+<!-- <table style="border: 1px solid red;width: 600px;">
+	<tr>
+		<td>商品</td><td>&nbsp;</td><td>单价</td><td>数量</td><td>小计</td><td>操作</td>
+	</tr>
+	<tr>
+		<td><img alt="" src="uploadImg/${infoPro.resourceInfo.resourceName }" width="100" height="100"> </td>
+		<td>这是我最好的作品了</td>
+		<td>12</td>
+		<td>1</td>
+		<td>22*1=22元</td>
+		<td>删除</td>
+	</tr>
+	<tr>
+		<td colspan="6" align="right">共1件商品，商品总金额33元 <button style="width: 54px;">结算</button>  </td>
+	</tr>
+</table> -->
+</div>
+<!-- -购物车  end -->
 
   <div class="clear"></div>
 
@@ -212,7 +266,7 @@
        </div><!-- .sidebar -->
 
        <div id="content" class="grid_9">
-	      <h1 class="page_title"><c:out value="${infoPro.proName }"></c:out> </h1>
+	      <h1 class="page_title"><span id="proSpanName"><c:out value="${infoPro.proName }"></c:out></span> </h1>
 
 		<div class="product_page">
 			<div class="grid_4 img_slid" id="products">
@@ -220,7 +274,7 @@
 				<div class="preview slides_container">
 					<div class="prev_bg">
 						<a href="uploadImg/${infoPro.resourceInfo.resourceName }" class="jqzoom" rel='gal1' title="">
-							<img src="uploadImg/${infoPro.resourceInfo.resourceName }"  title="" alt=""/>
+							<img src="uploadImg/${infoPro.resourceInfo.resourceName }"  title="" alt="" id="proImg"/>
 						</a>
 					</div>
 				</div><!-- .prev -->
@@ -247,14 +301,26 @@
 						<span>1 评论</span>
 						<a class="add_review" href="#">评论</a>
 					</div>
+					<!-- pro -->
+					<input type="hidden" value="${infoPro.proCode }" id="proCode">
 					<p><c:out value="${infoPro.proRemarks }"></c:out></p>
 					<div class="ava_price">
 						<div class="availability_sku">
-							
+							<div id="radio">
+								<input type="radio" id="radio1" name="radioType" value="S"/><label for="radio1">S</label>
+								<input type="radio" id="radio2" name="radioType" value="M"/><label for="radio2">M</label>
+								<input type="radio" id="radio3" name="radioType" value="L"/><label for="radio3">L</label>
+								<input type="radio" id="radio4" name="radioType" value="XL"/><label for="radio4">XL</label>
+								<input type="radio" id="radio5" name="radioType" value="XXL"/><label for="radio5">XXL</label>
+								<input type="radio" id="radio6" name="radioType" value="XXXL"/><label for="radio6">XXXL</label>
+							</div>
+							<script type="text/javascript">
+							$( "#radio" ).buttonset();
+							</script>
 						</div><!-- .availability_sku -->
 
 						<div class="price">
-							<div class="price_new">￥<c:out value="${infoPro.proUnit }"></c:out> </div>
+							<div class="price_new">￥<span id="proSpanUnit"><c:out value="${infoPro.proUnit }"></c:out></span> </div>
 						</div><!-- .price -->
 					</div><!-- .ava_price -->
 
@@ -264,8 +330,8 @@
 						</div>
 
 						<div class="cart">
-							<a href="#" class="bay">购买</a>
-							<input type="text" name="" class="number" value="1" />
+							<a href="javascript:void(0)" class="bay" id="btnBuy">加入购物车</a>
+							<input type="text" name="" class="number" id="buyNumber" value="1" />
 							<span>数量:</span>
 						</div>
 						<div class="clear"></div>
