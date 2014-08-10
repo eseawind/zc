@@ -40,6 +40,35 @@ public class ZcUserInfo implements Serializable {
 	private Date regTime;
 	@Column(name="REG_IP")
 	private String regIp;
+	@Column(name="USER_INTRODUCE")
+	private String userIntroduce;
+	
+	@Column(name="USER_IMAG")
+	private String userImag;
+	
+	@Column(name="USER_QQ")
+	private String userQq;
+	
+	
+	
+	public String getUserImag() {
+		return userImag;
+	}
+	public void setUserImag(String userImag) {
+		this.userImag = userImag;
+	}
+	public String getUserQq() {
+		return userQq;
+	}
+	public void setUserQq(String userQq) {
+		this.userQq = userQq;
+	}
+	public String getUserIntroduce() {
+		return userIntroduce;
+	}
+	public void setUserIntroduce(String userIntroduce) {
+		this.userIntroduce = userIntroduce;
+	}
 	public int getUserCode() {
 		return userCode;
 	}
