@@ -98,142 +98,30 @@ display: block;
 </style>
 <script type="text/javascript">
 	$(function(){
-		var emailRegex=/^[a-z0-9_\-]+(\.[_a-z0-9\-]+)*@([_a-z0-9\-]+\.)+([a-z]{2}|aero|arpa|biz|com|coop|edu|gov|info|int|jobs|mil|museum|name|nato|net|org|pro|travel)$/;
-		var phoneRegex=/^((13[0-9])|(15[0-9])|(18[0-9]))[0-9]{8}$/;
 		var register={};
 		register={
 				initButtonRegister:function(){
-					$("#btnUpdate").bind('click',function(){
-						
-						if(register.checkRegForm()){
-							var formJson=$("#updateForm").serializeArray();
-							
-							$.post("userinfo/beginUpdate.html",formJson,function(data){
-								var d=$.eval2(data);
-								if(d.success){
-									$.alert("注册提示","注册成功",function(){
-										url="userinfo/login.html";
-										if($.browser.msie) {
-											url="login.html";
-										}
-										window.location=url;
-									});
-								}else{
-									$.alert("注册提示",d.errorMsgs[0]);
-								}
-							})
-						}
-					})
-					
-				},
-				checkRegForm:function(){//验证表单
-					if(!register.validateInput($("#userName"), "validName", "请输入您的用户名", "请输入6-20位用户名", true, 6, 20, false)){
-						
-						return false;
-					}
-					else if(!register.validateInput($("#email"), "validEmail", "请输入您的邮箱", "邮箱格式不正确", false, 0, 0, emailRegex)){
-						return false;
-					}
-					else if(!register.validateInput($("#userPhone"), "validPhone", "请输入您的手机号", "手机格式不正确", false, 0, 0, phoneRegex)){
-						return false;
-					}
-					
-					return true;
-				},
-				blurInput:function(){
-					register.commonBlurInput($("#userName"), "validName", "请输入您的用户名", "请输入6-20位用户名", true, 6, 20, false);
-					register.commonBlurInput($("#email"), "validEmail", "请输入您的邮箱", "邮箱格式不正确", false, 0, 0, emailRegex);
-					register.commonBlurInput($("#userPhone"), "validPhone", "请输入您的手机号", "手机格式不正确", false, 0, 0, phoneRegex);
-					register.commonBlurInput($("#password"), "validPassword", "请输入密码", "请输入6-20位密码", true, 6, 20, false);
-					
-				},
-				/**
-				* obj:注册blur事件对象
-				* validateId:验证信息id
-				* errmsg1：错误信息1
-				* errmsg2：错误信息2
- 				**/
-				commonBlurInput:function(obj,validateId,nullerrMsg,errMsg2,isvalidateLen,minlen,maxlen,regex){
-					var t=$(obj);
-					t.blur(function(){
-						var that=$(this);
-						if(!that.val()){
-							$("#"+validateId+"").addClass("Validform_wrong").html(nullerrMsg);
-							$("#"+validateId+"").show();
-							that.addClass("Validform_error");
-						}else{
-							if(isvalidateLen){//验证长度
-								var len=that.val().length;
-								if(len<minlen||len>maxlen){
-									$("#"+validateId+"").addClass("Validform_wrong").html(errMsg2);
-									$("#"+validateId+"").show();
-									that.addClass("Validform_error");
-								}else{
-									$("#"+validateId+"").hide();
-									that.removeClass("Validform_error");
-								}
+					$("#btnUpdate").bind('click',function(e){
+						//阻止默认事件发生,会出现 刷新页面的请求
+						e.preventDefault();
+						//表单验证。。
+						var formJson=$("#updateForm").serializeArray();
+						$.post("userinfo/beginUpdate.xhtml",formJson,function(data){
+							var d=$.eval2(data);
+							if(d.success){
+								$.alert("修改提示","修改成功");
 							}else{
-								if(regex){
-									if(!regex.test(that.val())){
-										$("#"+validateId+"").addClass("Validform_wrong").html(errMsg2);
-										$("#"+validateId+"").show();
-										that.addClass("Validform_error");
-									}else{
-										$("#"+validateId+"").hide();
-										that.removeClass("Validform_error");
-									}
-								}else{
-									$("#"+validateId+"").hide();
-									that.removeClass("Validform_error");
-								}
+								$.alert("修改提示",d.errorMsgs[0]);
 							}
-						}
-					})
-				},validateInput:function(obj,validateId,nullerrMsg,errMsg2,isvalidateLen,minlen,maxlen,regex){
-					var that=$(obj);
-					if(!that.val()){
-						$("#"+validateId+"").addClass("Validform_wrong").html(nullerrMsg);
-						$("#"+validateId+"").show();
-						that.addClass("Validform_error");
-						return false;
-					}else{
-						if(isvalidateLen){//验证长度
-							var len=that.val().length;
-							if(len<minlen||len>maxlen){
-								$("#"+validateId+"").addClass("Validform_wrong").html(errMsg2);
-								$("#"+validateId+"").show();
-								that.addClass("Validform_error");
-								return false;
-							}else{
-								$("#"+validateId+"").hide();
-								that.removeClass("Validform_error");
-								return true;
-							}
-						}else{
-							if(regex){
-								if(!regex.test(that.val())){
-									$("#"+validateId+"").addClass("Validform_wrong").html(errMsg2);
-									$("#"+validateId+"").show();
-									that.addClass("Validform_error");
-									return false;
-								}else{
-									$("#"+validateId+"").hide();
-									that.removeClass("Validform_error");
-									return true;
-								}
-							}else{
-								$("#"+validateId+"").hide();
-								that.removeClass("Validform_error");
-								return true;
-							}
-						}
-					}
-				}
+						});
+					});
+					
+				} 
 		};
 		function main(){
 			//注册事件
 			register.initButtonRegister();
-			register.blurInput();
+			//register.blurInput();
 		}
 		
 		main();
@@ -294,7 +182,7 @@ display: block;
 				
 				<div class="email">
 					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户名:</strong><sup class="surely">*</sup>
-					&nbsp;<input type="text" id="userName" name="userName" class="" value="${sessionScope.USER_INFO.userName }" /><DIV id=validName class=Validform_checktip  > </DIV>
+					&nbsp;<input type="text" id="userName" name="userName" class="" value="${sessionScope.USER_INFO.userName }" readonly="readonly"/><DIV id=validName class=Validform_checktip  > </DIV>
 				</div><!-- .email -->
 							
 				<div class="password">
@@ -351,13 +239,13 @@ display: block;
 			
 			<div class="email">
 					<strong>个人说明:</strong><sup class="surely">*</sup>
-					&nbsp;<textarea style="width:70%;height:40px;" id="userIntroduce"  name="userIntroduce"  maxlength="75"></textarea>
+					&nbsp;<textarea style="width:70%;height:40px;" id="userIntroduce"  name="userIntroduce"  maxlength="75"><c:out value="${sessionScope.USER_INFO.userIntroduce }"></c:out> </textarea>
 					<DIV id=validIntroduce class=Validform_checktip  > </DIV>
 				</div><!-- .email -->
 			
 				<div class="email">
 					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QQ:</strong><sup class="surely">&nbsp;*</sup>
-					&nbsp;<input type="text" id="userQq" name="userQq" class="" value="" /><DIV id=validName class=Validform_checktip  > </DIV>
+					&nbsp;<input type="text" id="userQq" name="userQq" class="" value="${sessionScope.USER_INFO.userQq }" /><DIV id=validName class=Validform_checktip  > </DIV>
 					<DIV id=validQq class=Validform_checktip  > </DIV>
 				</div><!-- .email -->
 				
