@@ -260,25 +260,26 @@
           </div><!-- .grid_10 -->
 
           <div class="grid_2">
-            <a id="next_c2" class="next arows" href="#"><span>Next</span></a>
-            <a id="prev_c2" class="prev arows" href="#"><span>Prev</span></a>
+            <a id="next_c21" class="next arows" href="#" style="display: block;"><span>Next</span></a>
+            <a id="prev_c21" class="prev arows" href="#"><span>Prev</span></a>
           </div><!-- .grid_2 -->
         </div><!-- .c_header -->
 
         <div class="list_carousel">
         <ul id="list_product2" class="list_product">
-           <li class="">
+        <c:forEach items="${proInfos.content }" var="pro">
+        	<c:out value="${pro.proName }"></c:out>
+        	 <li class="">
             <div class="grid_3 product">
               <img class="sale" src="images/sale.png" alt="Sale"/>
               <div class="prev">
-                <a href="product_page.html"><img src="images/ts.png" alt="" title="" /></a>
+                <a href="projectinfo/project_${pro.proCode }.html"><img src="uploadImg/${pro.resourceInfo.resourceName }" alt="" title="" /></a>
               </div><!-- .prev -->
-              <h3 class="title">xxx啼血</h3>
+              <h3 class="title">${pro.proName }</h3>
               <div class="cart">
                 <div class="price">
                 <div class="vert">
-                  <div class="price_new">$550.00</div>
-                  <div class="price_old">$725.00</div>
+                  <div class="price_new">￥<c:out value="${pro.proUnit }"></c:out> </div>
                 </div>
                 </div>
                 <a href="#" class="obn"></a>
@@ -287,94 +288,13 @@
               </div><!-- .cart -->
             </div><!-- .grid_3 -->
           </li>
-
-          <li class="">
-            <div class="grid_3 product">
-              <img class="sale" src="images/sale.png" alt="Sale"/>
-              <div class="prev">
-                <a href="product_page.html"><img src="images/ts.png" alt="" title="" /></a>
-              </div><!-- .prev -->
-              <h3 class="title">xxx啼血</h3>
-              <div class="cart">
-                <div class="price">
-                <div class="vert">
-                  <div class="price_new">$550.00</div>
-                  <div class="price_old">$725.00</div>
-                </div>
-                </div>
-                <a href="#" class="obn"></a>
-                <a href="#" class="like"></a>
-                <a href="#" class="bay"></a>
-              </div><!-- .cart -->
-            </div><!-- .grid_3 -->
-          </li>
- <li class="">
-            <div class="grid_3 product">
-              <img class="sale" src="images/sale.png" alt="Sale"/>
-              <div class="prev">
-                <a href="product_page.html"><img src="images/ts.png" alt="" title="" /></a>
-              </div><!-- .prev -->
-              <h3 class="title">xxx啼血</h3>
-              <div class="cart">
-                <div class="price">
-                <div class="vert">
-                  <div class="price_new">$550.00</div>
-                  <div class="price_old">$725.00</div>
-                </div>
-                </div>
-                <a href="#" class="obn"></a>
-                <a href="#" class="like"></a>
-                <a href="#" class="bay"></a>
-              </div><!-- .cart -->
-            </div><!-- .grid_3 -->
-          </li>
-
-
-          <li class="">
-            <div class="grid_3 product">
-              <img class="sale" src="images/sale.png" alt="Sale"/>
-              <div class="prev">
-                <a href="product_page.html"><img src="images/ts.png" alt="" title="" /></a>
-              </div><!-- .prev -->
-              <h3 class="title">xxx啼血</h3>
-              <div class="cart">
-                <div class="price">
-                <div class="vert">
-                  <div class="price_new">$550.00</div>
-                  <div class="price_old">$725.00</div>
-                </div>
-                </div>
-                <a href="#" class="obn"></a>
-                <a href="#" class="like"></a>
-                <a href="#" class="bay"></a>
-              </div><!-- .cart -->
-            </div><!-- .grid_3 -->
-          </li>
-
-         <li class="">
-            <div class="grid_3 product">
-              <img class="sale" src="images/sale.png" alt="Sale"/>
-              <div class="prev">
-                <a href="product_page.html"><img src="images/ts.png" alt="" title="" /></a>
-              </div><!-- .prev -->
-              <h3 class="title">xxx啼血</h3>
-              <div class="cart">
-                <div class="price">
-                <div class="vert">
-                  <div class="price_new">$550.00</div>
-                  <div class="price_old">$725.00</div>
-                </div>
-                </div>
-                <a href="#" class="obn"></a>
-                <a href="#" class="like"></a>
-                <a href="#" class="bay"></a>
-              </div><!-- .cart -->
-            </div><!-- .grid_3 -->
-          </li>
-
-
-        </ul><!-- #list_product2 -->
-        </div><!-- .list_carousel -->
+        </c:forEach>
+        </ul>
+        
+        <!-- #list_product2 -->
+        </div>
+        
+        <!-- .list_carousel -->
       </div><!-- .carousel -->
 
    <!-- #content_bottom -->

@@ -6,6 +6,7 @@
 <%@include file="/WEB-INF/jsp/include.jsp"%>
 <%@include file="/WEB-INF/jsp/index_title.jsp" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>用户登录</title>
  <style type="text/css">
 
@@ -23,8 +24,19 @@
 						//projectinfo/beginAdd.do
 						 //表单验证
 						 //提交表单
-						alert("提交表单")
-						 $("#addForm").get(0).submit();
+						// $("#addForm").get(0).submit();
+						 $("#addForm").ajaxSubmit({
+							 success:function(html){
+								 var d=$.eval2(html);
+								 if(d.success){
+									 $.alert("发布作品","发布成功",function(){
+										 window.location="index.html";
+									 });
+								 }else{
+									 $.alert("发布作品",$.errorMsgs[0]);
+								 }
+							 }
+						 })
 					});
 					
 					//图片上传
@@ -66,7 +78,8 @@
 		
 		
 		<div class="grid_6">
-		 <FORM class=registed method=post action="projectinfo/beginAdd.do" target="upload_f1_frame" name="addForm" id="addForm" 	enctype="multipart/form-data">
+		<img id="loading" src="images/loading.gif" style="display:none;">
+		 <FORM class=registed method=post action="projectinfo/beginAdd.xhtml"   name="addForm" id="addForm" 	enctype="multipart/form-data">
 		
 		
 				<h2>作品信息</h2>
@@ -175,6 +188,7 @@
 				<div class="submit">										
 					<button class="account" id="btnAdd">发布作品</button>
 				</div><!-- .submit -->
+				
 			</form><!-- .registed -->
                 </div>
                 
@@ -283,5 +297,6 @@
   </footer>
  
 <div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
+<script type="text/javascript" src="js/jquery.form.js"></script>
 </body>
 </html>

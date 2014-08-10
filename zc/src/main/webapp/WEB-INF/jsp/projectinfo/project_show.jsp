@@ -212,21 +212,21 @@
        </div><!-- .sidebar -->
 
        <div id="content" class="grid_9">
-	      <h1 class="page_title">少时诵诗书</h1>
+	      <h1 class="page_title"><c:out value="${infoPro.proName }"></c:out> </h1>
 
 		<div class="product_page">
 			<div class="grid_4 img_slid" id="products">
 				<img class="sale" src="images/sale.png" alt="Sale"/>
 				<div class="preview slides_container">
 					<div class="prev_bg">
-						<a href="images/ts.png" class="jqzoom" rel='gal1' title="">
-							<img src="images/ts.png"  title="" alt=""/>
+						<a href="uploadImg/${infoPro.resourceInfo.resourceName }" class="jqzoom" rel='gal1' title="">
+							<img src="uploadImg/${infoPro.resourceInfo.resourceName }"  title="" alt=""/>
 						</a>
 					</div>
 				</div><!-- .prev -->
 
 				<ul class="pagination clearfix" id="thumblist">
-					<li><a class="zoomThumbActive" href='javascript:void(0);' rel="{gallery: 'gal1', smallimage: './images/ts.png',largeimage: './images/ts.png'}"><img src='images/ts.png' alt=""></a></li>
+					<li><a class="zoomThumbActive" href='javascript:void(0);' rel="{gallery: 'gal1', smallimage: './images/ts.png',largeimage: './images/ts.png'}"><img src='uploadImg/${infoPro.resourceInfo.resourceName }' alt=""></a></li>
 
 				</ul>
 
@@ -247,26 +247,19 @@
 						<span>1 评论</span>
 						<a class="add_review" href="#">评论</a>
 					</div>
-					<p>Xssssssssssssssssssssssss1</p>
+					<p><c:out value="${infoPro.proRemarks }"></c:out></p>
 					<div class="ava_price">
 						<div class="availability_sku">
-							<div class="availability">
-								Availability: <span>In stock</span>
-							</div>
-							<div class="sku">
-								SKU: <span>Candles OV</span>
-							</div>
+							
 						</div><!-- .availability_sku -->
 
 						<div class="price">
-							<div class="price_new">$550.00</div>
-							<div class="price_old">$725.00</div>
+							<div class="price_new">￥<c:out value="${infoPro.proUnit }"></c:out> </div>
 						</div><!-- .price -->
 					</div><!-- .ava_price -->
 
 					<div class="block_cart">
 						<div class="obn_like">
-							<div class="obn"><a href="#" class="obn">Add to Compare</a></div>
 							<div class="like"><a href="#" class="like">喜欢</a></div>
 						</div>
 
