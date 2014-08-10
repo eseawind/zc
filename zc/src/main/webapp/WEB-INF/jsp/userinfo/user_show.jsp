@@ -172,7 +172,7 @@ display: block;
 				   <li><a href="userinfo/show.xhtml">个人信息</a></li>
 				    <li><a href="userinfo/update.xhtml">资料修改</a></li>
 				    <li><a href="#">头像修改</a></li>
-				   <li><a href="#">收货地址</a></li>
+				   <li><a href="userinfos/address.xhtml">收货地址</a></li>
 				   <li><a href="#">修盖密码</a></li>
 				   <li class="last"><a href="#">消息中心</a></li>
 			    </ul>
@@ -238,7 +238,7 @@ display: block;
 				
 				<div class="user-info">
 				<p></p>
-					<p>我命由我不由天，我顶胜天</p>
+					<p>${sessionScope.USER_INFO.userIntroduce }</p>
 					<p>积分：100   <a style="cursor: pointer;">如何获取积分？</a></p>
 					<p>加入时间：25天前</p>
 					<p>所在地区：浙江,杭州</p>

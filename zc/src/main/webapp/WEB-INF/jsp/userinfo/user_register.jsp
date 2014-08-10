@@ -201,7 +201,7 @@ height: 55px;text-align: right;
                 </div><!-- .grid_6 -->
 		
 		<div class="grid_6">
-		 <FORM class=registed method=post action="" id="loginForm">
+		 <FORM class=registed method=post action="" id="regForm">
 		
 		
 				<h2>注册</h2>
@@ -233,7 +233,7 @@ height: 55px;text-align: right;
 				
 				<div class="password">
 					<strong>确认密码:</strong><sup class="surely">*</sup><br/>
-					<input id=passwordagin  type=password name=passwordagin   class="" value="" /> <DIV id=validpasswordAgain class=Validform_checktip></DIV>
+					<input id=passwordagin  type=password name=passwordagin class="" value="" /> <DIV id=validpasswordAgain class=Validform_checktip></DIV>
 				
 				</div>
 				
@@ -245,7 +245,7 @@ height: 55px;text-align: right;
   id=reg><IMG id=btnRegister src="images/ty.gif" 
   width=251 height=40></SPAN>
 				</div><!-- .submit -->
-			</FORM><!-- .registed -->
+			</FROM><!-- .registed -->
                 </div><!-- .grid_6 -->
        </div><!-- #content -->
        

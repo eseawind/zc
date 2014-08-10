@@ -145,8 +145,8 @@ display: block;
 
 		     <nav class="left_menu">
 			    <ul>
-				   <li><a href="userinfo/show.xhtml">个人信息</a></li>
-				    <li><a href="userinfo/update.xhtml">资料修改</a></li>
+				   <li><a href="userinfo/info.html">个人信息</a></li>
+				    <li><a href="#">资料修改</a></li>
 				    <li><a href="#">头像修改</a></li>
 				   <li><a href="#">收货地址</a></li>
 				   <li><a href="#">修盖密码</a></li>
@@ -176,8 +176,13 @@ display: block;
 
        <div id="content" class="grid_9">
 	      <h1 class="page_title">资料修改</h1>
-
-		 <FORM class=registed method=post action=""  name="updateForm" id="updateForm" >
+	      
+	      
+	      
+	      
+	      
+	      
+ <FORM class=registed method=post action=""  name="updateForm" id="updateForm" >
 		
 				
 				<div class="email">
@@ -203,11 +208,11 @@ display: block;
 					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性别:</strong><sup class="surely">*</sup>
 					
 					
-							&nbsp;<input class="" type="radio" name="sex" value="1">
+							&nbsp;<input class="" type="radio" name="userSex" value="1">
 							<span class="" >男</span>
-							<input class=""  type="radio" checked="checked" name="sex" value="2">
+							<input class=""  type="radio"  name="sex" value="2">
 							<span class="" >女</span>
-							<input class=""  type="radio" name="sex" value="0">
+							<input class=""  type="radio" checked="checked" name="userSex" value="0">
 							<span class="" >保密</span>
 						
 					
@@ -223,12 +228,12 @@ display: block;
 				
 				<div class="email">
 					<strong>&nbsp;&nbsp;&nbsp;&nbsp;所在地:</strong><sup class="surely">*</sup>
-					<select name="proProvince" id="proProvince" class="">
+					<select name="userProvince" id="userProvince" class="">
 									<option >请选择省份</option>
 									<option selected="selected" value="浙江省">浙江省</option>
 																	
 																	</select>
-								<select name="proCity" id="proCity"   class="" >
+								<select name="userCity" id="userCity"   class="" >
 									<option >请选择城市</option>
 									<option selected="selected" value="杭州市">杭州市</option>
 									<option value="宁波市">宁波市</option>
