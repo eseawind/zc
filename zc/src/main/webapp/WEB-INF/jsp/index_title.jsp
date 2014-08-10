@@ -104,7 +104,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           
             <li><a href="projectinfo/project_add.do">发布作品</a></li>
 		<li class="separator">|</li>
-            <li><a href="#">个人中心</a></li>
+            <li><a href="userinfo/show.html">个人中心</a></li>
 		<li class="separator">|</li>
 		
 		<c:if test="${empty sessionScope.USER_INFO }">
