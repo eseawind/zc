@@ -38,6 +38,17 @@ public class ZcUserInfoAction {
 		return "userinfo/user_login";
 	}
 	
+	@RequestMapping("/show.html")
+	public String to_info(HttpServletRequest request) {
+		return "userinfo/user_show";
+	}
+	
+	@RequestMapping("/update.html")
+	public String to_update(HttpServletRequest request) {
+		return "userinfo/user_update";
+	}
+	
+	
 	@RequestMapping("/beginRegister.html")
 	@ResponseBody
 	public String beginRegister(HttpServletRequest request,@ModelAttribute ZcUserInfo userinfo,@RequestParam(value="passwordagin") String passwordagin){
@@ -76,4 +87,15 @@ public class ZcUserInfoAction {
 		ThreadLocalSession.getLocal_session().removeAttribute(ZcContext.LOGIN_USER_KEY);
 		return "redirect:../index.html";
 	}
+	
+	@RequestMapping("/beginUpdate.html")
+	@ResponseBody
+	public int beginUpdate(HttpServletRequest request,@ModelAttribute ZcUserInfo zcUserInfo,@RequestParam(value="userName") String userName){
+		int dd=0;
+		zcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
+		zcUserInfoService.update(userName,zcUserInfo.getUserCode());
+		return dd;
+	}
+	
+	
 }
