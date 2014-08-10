@@ -120,4 +120,13 @@ public class ZcUserInfoServiceImpl implements ZcUserInfoService {
 		return r;
 	}
 
+	@Override
+	public int update(String userName,int userCode) {
+		int dd=0;
+
+		zcUserInfoDao.update(userName,userCode);
+	
+		return dd;
+	}
+
 }
