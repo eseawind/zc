@@ -1,15 +1,101 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE HTML>
 <html>
-<head>
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <%@include file="/WEB-INF/jsp/include.jsp"%>
 <%@include file="/WEB-INF/jsp/index_title.jsp" %>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>用户注册</title>
+<head>
+  <meta charset="UTF-8">
 
- <!-- <link href="../css/main.css" rel="StyleSheet" />
- <link href="../css/zc_register.css" rel="StyleSheet" /> -->
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <title>Product view</title>
+
+
+<style type="text/css">
+
+.user-fun {
+width: 100%;
+height: 32px;
+}
+.user-fun h2 {
+font-size: 24px;
+line-height: 32px;
+color: #000;
+float: left;
+padding-right: 10px;
+}
+.user-fun .btn-base {
+margin: 6px 0px;
+color: #FFF;
+}
+.btn-red-h20 {
+background-position: -223px 0px;
+height: 20px;
+line-height: 20px;
+}
+.btn-base {
+display: inline-block;
+zoom: 1;
+padding-left: 5px;
+color: #FFF;
+}
+.common-sprite {
+background-image: url('images/icon_sprite.png');
+background-repeat: no-repeat;
+}
+.user-fun .btn-base span {
+padding: 0px 8px 0px 2px;
+margin-right: 8px;
+}
+.btn-red-h20 span {
+background-position: 100% -263px;
+height: 20px;
+line-height: 20px;
+}
+.btn-base span {
+display: inline-block;
+zoom: 1;
+padding-right: 5px;
+float: left;
+}
+.icon-set {
+background-position: -45px -75px;
+}
+.icon-set, .icon-msg, .icon-info {
+width: 16px;
+height: 16px;
+line-height: 0px;
+font-size: 0px;
+display: inline-block;
+vertical-align: middle;
+_margin-top: 3px;
+}
+
+i, em {
+font-style: normal;
+}
+user agent stylesheeti, cite, em, var, address, dfn {
+font-style: italic;
+}
+.user-info {
+padding:20px 110px 110px 0px;
+}
+p {
+display: block;
+-webkit-margin-before: 1em;
+-webkit-margin-after: 1em;
+-webkit-margin-start: 0px;
+-webkit-margin-end: 0px;
+}
+
+
+
+
+</style>
 <script type="text/javascript">
 	$(function(){
 		var emailRegex=/^[a-z0-9_\-]+(\.[_a-z0-9\-]+)*@([_a-z0-9\-]+\.)+([a-z]{2}|aero|arpa|biz|com|coop|edu|gov|info|int|jobs|mil|museum|name|nato|net|org|pro|travel)$/;
@@ -17,11 +103,12 @@
 		var register={};
 		register={
 				initButtonRegister:function(){
-					$("#btnRegister").bind('click',function(){
+					$("#btnUpdate").bind('click',function(){
+						
 						if(register.checkRegForm()){
-							var formJson=$("#regForm").serializeArray();
+							var formJson=$("#updateForm").serializeArray();
 							
-							$.post("userinfo/beginRegister.html",formJson,function(data){
+							$.post("userinfo/beginUpdate.html",formJson,function(data){
 								var d=$.eval2(data);
 								if(d.success){
 									$.alert("注册提示","注册成功",function(){
@@ -40,7 +127,7 @@
 					
 				},
 				checkRegForm:function(){//验证表单
-					if(!register.validateInput($("#userName"), "validAccount", "请输入您的用户名", "请输入6-20位用户名", true, 6, 20, false)){
+					if(!register.validateInput($("#userName"), "validName", "请输入您的用户名", "请输入6-20位用户名", true, 6, 20, false)){
 						
 						return false;
 					}
@@ -50,33 +137,15 @@
 					else if(!register.validateInput($("#userPhone"), "validPhone", "请输入您的手机号", "手机格式不正确", false, 0, 0, phoneRegex)){
 						return false;
 					}
-					else if(!register.validateInput($("#password"), "validPassword", "请输入密码", "请输入6-20位密码", true, 6, 20, false)){
-						return false;
-					}else if($("#passwordagin").val()!=$("#password").val()){
-						$("#validpasswordAgain").addClass("Validform_wrong").html("两次密码输入不一致");
-						$("#validpasswordAgain").show();
-						$("#passwordagin").addClass("Validform_error");
-						return false;
-					}
+					
 					return true;
 				},
 				blurInput:function(){
-					register.commonBlurInput($("#userName"), "validAccount", "请输入您的用户名", "请输入6-20位用户名", true, 6, 20, false);
+					register.commonBlurInput($("#userName"), "validName", "请输入您的用户名", "请输入6-20位用户名", true, 6, 20, false);
 					register.commonBlurInput($("#email"), "validEmail", "请输入您的邮箱", "邮箱格式不正确", false, 0, 0, emailRegex);
 					register.commonBlurInput($("#userPhone"), "validPhone", "请输入您的手机号", "手机格式不正确", false, 0, 0, phoneRegex);
 					register.commonBlurInput($("#password"), "validPassword", "请输入密码", "请输入6-20位密码", true, 6, 20, false);
-					$("#passwordagin").blur(function(){
-						var that=$(this);
-						if(that.val()!=$("#password").val()){
-							$("#validpasswordAgain").addClass("Validform_wrong").html("两次密码输入不一致");
-							$("#validpasswordAgain").show();
-							that.addClass("Validform_error");
-						}else{
-							$("#validpasswordAgain").hide();
-							that.removeClass("Validform_error");
-						}
-						
-					})
+					
 				},
 				/**
 				* obj:注册blur事件对象
@@ -171,90 +240,142 @@
 		
 	})
 </script>
-<style type="text/css">
-.registerform table{
-width: 550px;
-}
-.registerform table td{
-height: 55px;text-align: right;
-}
 
-</style>
 </head>
 <body>
- 
-  
+
+
   <div class="clear"></div>
-  
-  <section id="main" class="entire_width">
-    <div class="container_12">      
-       <div id="content">
-		<div class="grid_12">
-			<h1 class="page_title">注册</h1>
-		</div><!-- .grid_12 -->
+
+ 
+ 
+  <section id="main">
+    <div class="container_12">
+       <div id="sidebar" class="grid_3">
+	      <aside id="categories_nav">
+		     <h3>个人设置</h3>
+
+		     <nav class="left_menu">
+			    <ul>
+				   <li><a href="userinfo/info.html">个人信息</a></li>
+				    <li><a href="#">资料修改</a></li>
+				    <li><a href="#">头像修改</a></li>
+				   <li><a href="#">收货地址</a></li>
+				   <li><a href="#">修盖密码</a></li>
+				   <li class="last"><a href="#">消息中心</a></li>
+			    </ul>
+		     </nav><!-- .left_menu -->
+	      </aside><!-- #categories_nav -->
+
+	     <aside id="categories_nav">
+		     <h3>作品中心</h3>
+
+		     <nav class="left_menu">
+			    <ul>
+				   <li><a href="#">我喜欢的作品<span>(21)</span></a></li>
+				   <li><a href="#">我关注的作品<span> (27)</span></a></li>
+				   <li><a href="#">我发表的作品<span>(33)</span></a></li>
+			    </ul>
+		     </nav><!-- .left_menu -->
+	      </aside>
+
+	     
+
+
+	
+	   
+       </div><!-- .sidebar -->
+
+       <div id="content" class="grid_9">
+	      <h1 class="page_title">资料修改</h1>
+
+		 <FORM class=registed method=post action=""  name="updateForm" id="updateForm" >
 		
-		<div class="grid_6 new_customers">
-			<h2>New Customers</h2>
-			<p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
-			<div class="clear"></div>
-			<button class="account">Create An Account</button>
-                </div><!-- .grid_6 -->
-		
-		<div class="grid_6">
-		 <FORM class=registed method=post action="" id="loginForm">
-		
-		
-				<h2>注册</h2>
-							
-				<p>已有账号？立即<a href="userinfo/login.html" class="red1 underline" hidefocus="true" target="_self">登录</a></p>
-							
+				
 				<div class="email">
-					<strong>用户名:</strong><sup class="surely">*</sup><br/>
-					<input type="text" id="userName" name="userName" class="" value="" /><DIV id=validAccount class=Validform_checktip  > </DIV>
+					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户名:</strong><sup class="surely">*</sup>
+					&nbsp;<input type="text" id="userName" name="userName" class="" value="${sessionScope.USER_INFO.userName }" /><DIV id=validName class=Validform_checktip  > </DIV>
 				</div><!-- .email -->
 							
 				<div class="password">
-					<strong>邮箱:</strong><sup class="surely">*</sup><br/>
-					<input id=email  type=text name=email class="" value="" /><DIV id=validEmail class=Validform_checktip></DIV>
+					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱:</strong><sup class="surely">*</sup>
+					&nbsp;<input id=email   type=text name=email class="" value="${sessionScope.USER_INFO.email }" />
+					<DIV id=validEmail class=Validform_checktip></DIV>
 				
 				</div><!-- .password -->
 							
 				<div class="password">
-					<strong>手机号:</strong><sup class="surely">*</sup><br/>
-					<input id=userPhone  type=text name=userPhone class="" value="" /> <DIV id=validPhone class=Validform_checktip></DIV> 
+					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;手机号:</strong><sup class="surely">*</sup>
+					&nbsp;<input id=userPhone onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')"  type=text name=userPhone class="" value="${sessionScope.USER_INFO.userPhone }" />
+					 <DIV id=validPhone class=Validform_checktip></DIV>
 				
 				</div><!-- .password -->
 				
 				<div class="password">
-					<strong>密码:</strong><sup class="surely">*</sup><br/>
-					<input id=password  type=password name=password class="" value="" /> <DIV id=validPassword class=Validform_checktip></DIV>
+					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性别:</strong><sup class="surely">*</sup>
+					
+					
+							&nbsp;<input class="" type="radio" name="sex" value="1">
+							<span class="" >男</span>
+							<input class=""  type="radio" checked="checked" name="sex" value="2">
+							<span class="" >女</span>
+							<input class=""  type="radio" name="sex" value="0">
+							<span class="" >保密</span>
+						
+					
 				
 				</div>
 				
-				<div class="password">
-					<strong>确认密码:</strong><sup class="surely">*</sup><br/>
-					<input id=passwordagin  type=password name=passwordagin class="" value="" /> <DIV id=validpasswordAgain class=Validform_checktip></DIV>
-				
-				</div>
+			
+			
+			
 				
 				
 			
 				
+				<div class="email">
+					<strong>&nbsp;&nbsp;&nbsp;&nbsp;所在地:</strong><sup class="surely">*</sup>
+					<select name="proProvince" id="proProvince" class="">
+									<option >请选择省份</option>
+									<option selected="selected" value="浙江省">浙江省</option>
+																	
+																	</select>
+								<select name="proCity" id="proCity"   class="" >
+									<option >请选择城市</option>
+									<option selected="selected" value="杭州市">杭州市</option>
+									<option value="宁波市">宁波市</option>
+																	</select>
+					<DIV id=validPoint class=Validform_checktip  > </DIV>
+				</div>
+			
+			
+			<div class="email">
+					<strong>个人说明:</strong><sup class="surely">*</sup>
+					&nbsp;<textarea style="width:70%;height:40px;" id="userIntroduce"  name="userIntroduce"  maxlength="75"></textarea>
+					<DIV id=validIntroduce class=Validform_checktip  > </DIV>
+				</div><!-- .email -->
+			
+				<div class="email">
+					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QQ:</strong><sup class="surely">&nbsp;*</sup>
+					&nbsp;<input type="text" id="userQq" name="userQq" class="" value="" /><DIV id=validName class=Validform_checktip  > </DIV>
+					<DIV id=validQq class=Validform_checktip  > </DIV>
+				</div><!-- .email -->
+				
 				<div class="submit">										
-					<SPAN style="CURSOR: pointer ;margin-left:10px;" 
-  id=reg><IMG id=btnRegister src="images/ty.gif" 
-  width=251 height=40></SPAN>
+					<button class="account" id="btnUpdate">&nbsp;&nbsp;保存&nbsp;&nbsp;</button>
 				</div><!-- .submit -->
-			</form><!-- .registed -->
-                </div><!-- .grid_6 -->
+			</form>
+		<div class="clear"></div>
+
        </div><!-- #content -->
-       
+
       <div class="clear"></div>
+
     </div><!-- .container_12 -->
   </section><!-- #main -->
-  
+
   <div class="clear"></div>
-    
+
   <footer>
     <div class="f_navigation">
       <div class="container_12">
@@ -266,7 +387,7 @@ height: 55px;text-align: right;
             <li>mail@example.com</li>
           </ul><!-- .f_contact -->
         </div><!-- .grid_3 -->
-      
+
         <div class="grid_3">
           <h3>Information</h3>
           <nav class="f_menu">
@@ -278,7 +399,7 @@ height: 55px;text-align: right;
             </ul>
           </nav><!-- .private -->
         </div><!-- .grid_3 -->
-        
+
         <div class="grid_3">
           <h3>Costumer Servise</h3>
           <nav class="f_menu">
@@ -290,7 +411,7 @@ height: 55px;text-align: right;
             </ul>
           </nav><!-- .private -->
         </div><!-- .grid_3 -->
-        
+
         <div class="grid_3">
           <h3>My Account</h3>
           <nav class="f_menu">
@@ -302,17 +423,17 @@ height: 55px;text-align: right;
             </ul>
           </nav><!-- .private -->
         </div><!-- .grid_3 -->
-        
+
         <div class="clear"></div>
       </div><!-- .container_12 -->
     </div><!-- .f_navigation -->
-    
+
     <div class="f_info">
       <div class="container_12">
         <div class="grid_6">
           <p class="copyright">Copyright &copy; 2014.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
         </div><!-- .grid_6 -->
-        
+
         <div class="grid_6">
           <div class="soc">
             <a class="google" href="#"></a>
@@ -320,12 +441,12 @@ height: 55px;text-align: right;
             <a class="facebook" href="#"></a>
           </div><!-- .soc -->
         </div><!-- .grid_6 -->
-        
+
         <div class="clear"></div>
       </div><!-- .container_12 -->
     </div><!-- .f_info -->
   </footer>
- 
+
 <div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
 </body>
 </html>
