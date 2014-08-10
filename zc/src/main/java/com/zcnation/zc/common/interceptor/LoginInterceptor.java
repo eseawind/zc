@@ -35,7 +35,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		boolean flag=true;
 		String url=request.getRequestURI();
 		RootLogger.info("用户请求地址URL:"+url);
-		Pattern p=Pattern.compile("(.*)\\.do(.*)?");
+		Pattern p=Pattern.compile("(.*)\\.xhtml(.*)?");
 		Matcher m=p.matcher(url);
 		if (m.matches()) {
 			HttpSession session=request.getSession();

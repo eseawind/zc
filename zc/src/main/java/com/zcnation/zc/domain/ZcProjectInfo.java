@@ -3,20 +3,28 @@ package com.zcnation.zc.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity(name="zc_project_info")
 public class ZcProjectInfo implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="PRO_CODE")
 	private int proCode;
 	@Column(name="USER_CODE")
-	private String userCode;
+	private int userCode;
 	@Column(name="PRO_NAME")
 	private String proName;
 	@Column(name="PRO_DAYS")
@@ -57,17 +65,15 @@ public class ZcProjectInfo implements Serializable {
 	@Column(name=" PRO_TAG")
 	private String proTag;
 	
+	@OneToOne
+	@JoinColumn(name="RESOURCE_CODE",referencedColumnName="RESOURCE_CODE")
+	private ZcResourceInfo resourceInfo;
 	
-	@Column(name="RESOURCE_CODE")
-	private int resourceCode;
-	
-	
-	
-	public int getResourceCode() {
-		return resourceCode;
+	public ZcResourceInfo getResourceInfo() {
+		return resourceInfo;
 	}
-	public void setResourceCode(int resourceCode) {
-		this.resourceCode = resourceCode;
+	public void setResourceInfo(ZcResourceInfo resourceInfo) {
+		this.resourceInfo = resourceInfo;
 	}
 	public int getProTarget() {
 		return proTarget;
@@ -117,10 +123,11 @@ public class ZcProjectInfo implements Serializable {
 	public void setProCode(int proCode) {
 		this.proCode = proCode;
 	}
-	public String getUserCode() {
+	 
+	public int getUserCode() {
 		return userCode;
 	}
-	public void setUserCode(String userCode) {
+	public void setUserCode(int userCode) {
 		this.userCode = userCode;
 	}
 	public String getProName() {

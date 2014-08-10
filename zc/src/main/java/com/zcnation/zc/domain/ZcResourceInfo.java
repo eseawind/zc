@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity(name = "zc_resource_info")
 public class ZcResourceInfo implements Serializable {
@@ -16,6 +17,7 @@ public class ZcResourceInfo implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
+	@PrimaryKeyJoinColumn
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="RESOURCE_CODE")
 	private int resourceCode;

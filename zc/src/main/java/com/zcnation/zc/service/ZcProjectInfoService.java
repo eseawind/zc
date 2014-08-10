@@ -8,6 +8,8 @@
 package com.zcnation.zc.service;
 
 
+import org.springframework.data.domain.Page;
+
 import com.zcnation.zc.domain.ZcProjectInfo;
 
 
@@ -20,6 +22,19 @@ public interface ZcProjectInfoService {
 	 */
 	public String save(ZcProjectInfo zcProjectInfo);
 	
+	/***
+	 * 分页查询
+	 * @param pageNumber
+	 * @param pageSize
+	 * @return
+	 */
+	public Page<ZcProjectInfo> queryByPage(int pageNumber,int pageSize);
 	
+	/***
+	 * 根据主键查询
+	 * @param precode
+	 * @return
+	 */
+	public ZcProjectInfo queryOne(int precode);
 
 }

@@ -16,16 +16,26 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.zcnation.zc.domain.ZcProjectInfo;
+import com.zcnation.zc.service.ZcProjectInfoService;
 
 @Controller
 public class IndexAction {
 	private Logger logger=Logger.getLogger(IndexAction.class);
+	@Autowired private ZcProjectInfoService zcProjectInfoService;
 	
 	@RequestMapping("/index.html")
 	public String to_index(HttpServletRequest request){
 		//List<Map<String, String>> list=new ArrayList<Map<String,String>>();
+		//首页默认加载8条数据
+		Page<ZcProjectInfo> pas=zcProjectInfoService.queryByPage(0, 4);
+		System.out.println("总大小："+pas.getTotalPages());
+		request.setAttribute("proInfos", pas);
 		List<String> list=new ArrayList<String>();
 		for (int i = 0; i < 20; i++) {
 			list.add("我是最好的设计师"+i);

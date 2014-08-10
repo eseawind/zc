@@ -13,6 +13,10 @@ package com.zcnation.zc.service.impl;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.zcnation.zc.common.Result;
@@ -32,6 +36,17 @@ public class ZcProjectInfoServiceImpl implements ZcProjectInfoService{
 			
 		
 		return r.toJson();
+	}
+	@Override
+	public Page<ZcProjectInfo> queryByPage(int pageNumber, int pageSize) {
+		Pageable page=new PageRequest(pageNumber, pageSize);
+		Sort s=new Sort("proTime");
+		
+		return zcProjectInfoDao.findAll(page);
+	}
+	@Override
+	public ZcProjectInfo queryOne(int precode) {
+		return zcProjectInfoDao.findByProCode(precode);
 	}
 
 	

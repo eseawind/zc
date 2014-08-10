@@ -49,7 +49,7 @@ public class ZcProjectInfoAction {
 	@Autowired
 	private ZcResourceInfoService zcResourceInfoService;
 
-	@RequestMapping("/project_add.do")
+	@RequestMapping("/project_add.xhtml")
 	public String to_add(HttpServletRequest request) {
 		return "projectinfo/project_add";
 	}
@@ -58,11 +58,18 @@ public class ZcProjectInfoAction {
 	public String to_show(@PathVariable("detailid") String detailId,
 			HttpServletRequest request) {
 		System.out.println("detailid:" + detailId);
+		try {
+			int preCode=NumberUtils.toInt(detailId);
+			ZcProjectInfo info= zcProjectInfoService.queryOne(preCode);
+			request.setAttribute("infoPro", info);
+		} catch (Exception e) {
+			RootLogger.error(e);
+		}
 		request.setAttribute("zc_title", "我是最好的设计师" + detailId);
 		return "projectinfo/project_show";
 	}
 
-	@RequestMapping("/beginAdd.do")
+	@RequestMapping("/beginAdd.xhtml")
 	@ResponseBody
 	public String beginAddProject(HttpServletRequest request,
 			@ModelAttribute ZcProjectInfo zcProjectInfo) {
@@ -114,7 +121,8 @@ public class ZcProjectInfoAction {
 					zr.setResourceName(targetFile.getName());
 					
 					ZcResourceInfo saveZr=zcResourceInfoService.saveResourceInfo(zr);
-					pinfo.setResourceCode(saveZr.getResourceCode());
+					pinfo.setResourceInfo(saveZr);
+					//pinfo.setResourceCode(saveZr.getResourceCode());
 					zcProjectInfoService.save(pinfo);
 					rs.setSuccess(true);
 					RootLogger.info("图片上传成功...");
@@ -188,6 +196,8 @@ public class ZcProjectInfoAction {
 			proinfo.setProCity(proCity);
 			proinfo.setProRemarks(proRemarks);
 			proinfo.setProTag(proTag);
+			ZcUserInfo info=(ZcUserInfo)ThreadLocalSession.getLocal_session().getAttribute(ZcContext.LOGIN_USER_KEY);
+			proinfo.setUserCode(info.getUserCode());
 			r.setReturnValue(proinfo);
 		}else{
 			r.setSuccess(false);
