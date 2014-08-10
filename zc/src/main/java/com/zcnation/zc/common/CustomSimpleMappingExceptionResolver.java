@@ -49,6 +49,7 @@ public class CustomSimpleMappingExceptionResolver extends SimpleMappingException
 						response.getWriter().write(r.toJson());
 					}else{
 						System.out.println("响应内容：");
+						ex.printStackTrace();
 						r.setSuccess(false);
 						r.getErrorMsgs().add(ex.getMessage());
 						//r.setReturnValue(ex.getMessage());

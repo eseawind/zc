@@ -29,12 +29,12 @@ public interface ZcUserInfoService {
 	 */
 	public Result login(String userName,String password);
 	
-	
 	/****
 	 * 用户注册
 	 * @param zcUserInfo
 	 * @return
 	 */
-	public int update(String userName,int userCode);
+	public int update(ZcUserInfo info);
+	
 
 }

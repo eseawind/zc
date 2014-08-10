@@ -36,19 +36,17 @@ public class ZcUserInfoAction {
 	@RequestMapping("/login.html")
 	public String to_login(HttpServletRequest request) {
 		return "userinfo/user_login";
-	}
-	
-	@RequestMapping("/show.html")
+	} 
+	@RequestMapping("/show.xhtml")
 	public String to_info(HttpServletRequest request) {
 		return "userinfo/user_show";
 	}
 	
-	@RequestMapping("/update.html")
+	@RequestMapping("/update.xhtml")
 	public String to_update(HttpServletRequest request) {
 		return "userinfo/user_update";
 	}
-	
-	
+	 
 	@RequestMapping("/beginRegister.html")
 	@ResponseBody
 	public String beginRegister(HttpServletRequest request,@ModelAttribute ZcUserInfo userinfo,@RequestParam(value="passwordagin") String passwordagin){
@@ -88,14 +86,26 @@ public class ZcUserInfoAction {
 		return "redirect:../index.html";
 	}
 	
-	@RequestMapping("/beginUpdate.html")
+	@RequestMapping("/beginUpdate.xhtml")
 	@ResponseBody
-	public int beginUpdate(HttpServletRequest request,@ModelAttribute ZcUserInfo zcUserInfo,@RequestParam(value="userName") String userName){
-		int dd=0;
-		zcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
-		zcUserInfoService.update(userName,zcUserInfo.getUserCode());
-		return dd;
+	public String beginUpdate(HttpServletRequest request,@ModelAttribute ZcUserInfo zcUserInfo,@RequestParam(value="userName") String userName){
+		Result r=new Result();
+		//zcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
+		//zcUserInfoService.update(userName,zcUserInfo.getUserCode());
+		ZcUserInfo sezcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
+		//用户主键id不存在页面隐藏域中，防止被看见
+		zcUserInfo.setUserCode(sezcUserInfo.getUserCode());
+		zcUserInfo.setPassword(sezcUserInfo.getPassword());
+		zcUserInfo.setRegIp(sezcUserInfo.getRegIp());
+		zcUserInfo.setRegTime(sezcUserInfo.getRegTime());
+		System.out.println("用户编号："+zcUserInfo.getUserCode());
+		int a=zcUserInfoService.update(zcUserInfo);
+		if (a>0) {
+			r.setSuccess(true);
+			ThreadLocalSession.getLocal_session().removeAttribute(ZcContext.LOGIN_USER_KEY);
+			ThreadLocalSession.getLocal_session().setAttribute(ZcContext.LOGIN_USER_KEY, zcUserInfo);
+		}
+		return r.toJson();
 	}
-	
 	
 }
