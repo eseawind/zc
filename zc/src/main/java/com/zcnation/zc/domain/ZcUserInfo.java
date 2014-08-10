@@ -43,20 +43,49 @@ public class ZcUserInfo implements Serializable {
 	@Column(name="USER_INTRODUCE")
 	private String userIntroduce;
 	
-	@Column(name="USER_IMAG")
-	private String userImag;
-	
+	@Column(name="RESOURCE_CODE")
+	private int resurceCode;
 	@Column(name="USER_QQ")
 	private String userQq;
 	
 	
+	@Column(name="USER_PROVINCE")
+	private String userProvince;
 	
-	public String getUserImag() {
-		return userImag;
+	@Column(name="USER_CITY")
+	private String userCity;
+	
+	@Column(name="USER_SEX")
+	private String userSex;
+	
+	
+	public String getUserProvince() {
+		return userProvince;
 	}
-	public void setUserImag(String userImag) {
-		this.userImag = userImag;
+	public void setUserProvince(String userProvince) {
+		this.userProvince = userProvince;
 	}
+	public String getUserCity() {
+		return userCity;
+	}
+	public void setUserCity(String userCity) {
+		this.userCity = userCity;
+	}
+	public String getUserSex() {
+		return userSex;
+	}
+	public void setUserSex(String userSex) {
+		this.userSex = userSex;
+	}
+	public int getResurceCode() {
+		return resurceCode;
+	}
+	public void setResurceCode(int resurceCode) {
+		this.resurceCode = resurceCode;
+	}
+	
+	
+	
 	public String getUserQq() {
 		return userQq;
 	}
