@@ -1459,6 +1459,19 @@ a.more:hover{text-decoration: underline!important;}
 	//height:auto;
 	//margin-top: expression((147-parseInt(offsetHeight)/2)  <0 ? "0" : 147-(parseInt(offsetHeight)/2) +'px') ;
 }
+
+.product_page .img_slidinfo .prev_bginfo{
+	margin: 0;
+	width: 150px;
+	height: 150px;
+	background: #f3f3f3;
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+	//display:block;
+	//height:auto;
+	//margin-top: expression((147-parseInt(offsetHeight)/2)  <0 ? "0" : 147-(parseInt(offsetHeight)/2) +'px') ;
+}
 .product_page .img_slid .prev_bg .zoomPad > img{
 	max-width: 294px;
 	max-height: 294px;
