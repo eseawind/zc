@@ -198,7 +198,7 @@
 			<h2>New Customers</h2>
 			<p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
 			<div class="clear"></div>
-			<button class="account">Create An Account</button>
+			<button class="account" id="btnRegNewUsers" onclick="javascript:window.location='userinfo/register.html'">Create An Account</button> 
                 </div><!-- .grid_6 -->
 		
 		<div class="grid_6">

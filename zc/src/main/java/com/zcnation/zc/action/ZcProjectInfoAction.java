@@ -340,6 +340,17 @@ public class ZcProjectInfoAction {
 		return cartHtml.toString();
 	}
 
+	
+	@RequestMapping("/beginorders.xhtml")
+	@ResponseBody
+	public String beginPutOrders(HttpServletRequest request){
+		String str="";
+		
+		Result r=new Result();
+		r.setSuccess(true);
+		return r.toJson();
+	}
+	
 	public static void main(String[] args) {
 		System.out.println("ddd");
 	}

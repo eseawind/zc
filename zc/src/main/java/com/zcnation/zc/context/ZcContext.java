@@ -17,4 +17,9 @@ public class ZcContext {
 	 * 存放session的key值
 	 */
 	public static final String LOGIN_USER_KEY="USER_INFO";
+	
+	/***
+	 * 订单状态
+	 */
+	public static final int ORDER_STATUS_FIRST=0;
 }

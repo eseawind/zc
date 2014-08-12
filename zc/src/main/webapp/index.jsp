@@ -60,6 +60,15 @@
  </tr>
  </table>
  <input type="submit" value="提交">
+ <input type="button" id="btnTest" onclick="testConfirm();" value="abc">
+ <script type="text/javascript">
+ function testConfirm(){
+	 $.confirm("确定提交吗?",function(){
+		 alert("你点击了确定");
+	 })
+	 
+ }
+ </script>
  </form>
 </body>
 </html>
