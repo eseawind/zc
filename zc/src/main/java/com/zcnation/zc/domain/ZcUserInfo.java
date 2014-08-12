@@ -44,7 +44,7 @@ public class ZcUserInfo implements Serializable {
 	private String userIntroduce;
 	
 	@Column(name="RESOURCE_CODE")
-	private int resurceCode;
+	private int resourceCode;
 	@Column(name="USER_QQ")
 	private String userQq;
 	
@@ -77,15 +77,16 @@ public class ZcUserInfo implements Serializable {
 	public void setUserSex(String userSex) {
 		this.userSex = userSex;
 	}
-	public int getResurceCode() {
-		return resurceCode;
+	
+	
+	
+	
+	public int getResourceCode() {
+		return resourceCode;
 	}
-	public void setResurceCode(int resurceCode) {
-		this.resurceCode = resurceCode;
+	public void setResourceCode(int resourceCode) {
+		this.resourceCode = resourceCode;
 	}
-	
-	
-	
 	public String getUserQq() {
 		return userQq;
 	}
