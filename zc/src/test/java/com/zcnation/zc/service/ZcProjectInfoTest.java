@@ -18,6 +18,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit38.AbstractJUnit38SpringContextTests;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 
+import com.zcnation.zc.dao.TestDao;
 import com.zcnation.zc.dao.ZcProjectInfoDao;
 import com.zcnation.zc.domain.ZcProjectInfo;
 import com.zcnation.zc.domain.ZcResourceInfo;
@@ -25,6 +26,12 @@ import com.zcnation.zc.domain.ZcResourceInfo;
 @ContextConfiguration(locations={"classpath:config/applicationContext*.xml"})
 @TransactionConfiguration(defaultRollback=true)
 public class ZcProjectInfoTest  extends AbstractJUnit38SpringContextTests{
+	
+	public void testDao(){
+		TestDao dao=applicationContext.getBean("testDao", TestDao.class);
+		dao.query();
+	}
+	
 
 	public void testFindPage(){
 		ZcProjectInfoDao prodao=applicationContext.getBean(ZcProjectInfoDao.class);
