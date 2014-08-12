@@ -21,7 +21,7 @@ public class ZcUserInfo implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="USER_CODE")
-	private int userCode;
+	private Integer userCode;
 	@Column(name="USER_PHONE")
 	private String userPhone;
 	@Column(name="EMAIL")
@@ -44,7 +44,7 @@ public class ZcUserInfo implements Serializable {
 	private String userIntroduce;
 	
 	@Column(name="RESOURCE_CODE")
-	private int resourceCode;
+	private Integer resourceCode;
 	@Column(name="USER_QQ")
 	private String userQq;
 	
@@ -57,109 +57,136 @@ public class ZcUserInfo implements Serializable {
 	
 	@Column(name="USER_SEX")
 	private String userSex;
-	
-	
+
+	public Integer getUserCode() {
+		return userCode;
+	}
+
+	public void setUserCode(Integer userCode) {
+		this.userCode = userCode;
+	}
+
+	public String getUserPhone() {
+		return userPhone;
+	}
+
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getUserNname() {
+		return userNname;
+	}
+
+	public void setUserNname(String userNname) {
+		this.userNname = userNname;
+	}
+
+	public String getRemarks() {
+		return remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
+	public Date getRegTime() {
+		return regTime;
+	}
+
+	public void setRegTime(Date regTime) {
+		this.regTime = regTime;
+	}
+
+	public String getRegIp() {
+		return regIp;
+	}
+
+	public void setRegIp(String regIp) {
+		this.regIp = regIp;
+	}
+
+	public String getUserIntroduce() {
+		return userIntroduce;
+	}
+
+	public void setUserIntroduce(String userIntroduce) {
+		this.userIntroduce = userIntroduce;
+	}
+
+	public Integer getResourceCode() {
+		return resourceCode;
+	}
+
+	public void setResourceCode(Integer resourceCode) {
+		this.resourceCode = resourceCode;
+	}
+
+	public String getUserQq() {
+		return userQq;
+	}
+
+	public void setUserQq(String userQq) {
+		this.userQq = userQq;
+	}
+
 	public String getUserProvince() {
 		return userProvince;
 	}
+
 	public void setUserProvince(String userProvince) {
 		this.userProvince = userProvince;
 	}
+
 	public String getUserCity() {
 		return userCity;
 	}
+
 	public void setUserCity(String userCity) {
 		this.userCity = userCity;
 	}
+
 	public String getUserSex() {
 		return userSex;
 	}
+
 	public void setUserSex(String userSex) {
 		this.userSex = userSex;
 	}
 	
 	
 	
-	
-	public int getResourceCode() {
-		return resourceCode;
-	}
-	public void setResourceCode(int resourceCode) {
-		this.resourceCode = resourceCode;
-	}
-	public String getUserQq() {
-		return userQq;
-	}
-	public void setUserQq(String userQq) {
-		this.userQq = userQq;
-	}
-	public String getUserIntroduce() {
-		return userIntroduce;
-	}
-	public void setUserIntroduce(String userIntroduce) {
-		this.userIntroduce = userIntroduce;
-	}
-	public int getUserCode() {
-		return userCode;
-	}
-	public void setUserCode(int userCode) {
-		this.userCode = userCode;
-	}
-	public String getUserPhone() {
-		return userPhone;
-	}
-	public void setUserPhone(String userPhone) {
-		this.userPhone = userPhone;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	 
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-	public String getUserNname() {
-		return userNname;
-	}
-	public void setUserNname(String userNname) {
-		this.userNname = userNname;
-	}
-	public String getRemarks() {
-		return remarks;
-	}
-	public void setRemarks(String remarks) {
-		this.remarks = remarks;
-	}
-	public String getUserType() {
-		return userType;
-	}
-	public void setUserType(String userType) {
-		this.userType = userType;
-	}
-	public Date getRegTime() {
-		return regTime;
-	}
-	public void setRegTime(Date regTime) {
-		this.regTime = regTime;
-	}
-	public String getRegIp() {
-		return regIp;
-	}
-	public void setRegIp(String regIp) {
-		this.regIp = regIp;
-	}
-
 	
 }

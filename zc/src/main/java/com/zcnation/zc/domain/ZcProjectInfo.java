@@ -22,7 +22,7 @@ public class ZcProjectInfo implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="PRO_CODE")
-	private int proCode;
+	private Integer proCode;
 	@Column(name="USER_CODE")
 	private int userCode;
 	@Column(name="PRO_NAME")
@@ -68,115 +68,151 @@ public class ZcProjectInfo implements Serializable {
 	@OneToOne
 	@JoinColumn(name="RESOURCE_CODE",referencedColumnName="RESOURCE_CODE")
 	private ZcResourceInfo resourceInfo;
-	
-	public ZcResourceInfo getResourceInfo() {
-		return resourceInfo;
-	}
-	public void setResourceInfo(ZcResourceInfo resourceInfo) {
-		this.resourceInfo = resourceInfo;
-	}
-	public int getProTarget() {
-		return proTarget;
-	}
-	public void setProTarget(int proTarget) {
-		this.proTarget = proTarget;
-	}
-	public Date getProTime() {
-		return proTime;
-	}
-	public void setProTime(Date proTime) {
-		this.proTime = proTime;
-	}
-	public int getProType() {
-		return proType;
-	}
-	public void setProType(int proType) {
-		this.proType = proType;
-	}
-	public String getProProvince() {
-		return proProvince;
-	}
-	public void setProProvince(String proProvince) {
-		this.proProvince = proProvince;
-	}
-	public String getProCity() {
-		return proCity;
-	}
-	public void setProCity(String proCity) {
-		this.proCity = proCity;
-	}
-	public int getProFabric() {
-		return proFabric;
-	}
-	public void setProFabric(int proFabric) {
-		this.proFabric = proFabric;
-	}
-	public int getProSample() {
-		return proSample;
-	}
-	public void setProSample(int proSample) {
-		this.proSample = proSample;
-	}
-	public int getProCode() {
+
+	public Integer getProCode() {
 		return proCode;
 	}
-	public void setProCode(int proCode) {
+
+	public void setProCode(Integer proCode) {
 		this.proCode = proCode;
 	}
-	 
+
 	public int getUserCode() {
 		return userCode;
 	}
+
 	public void setUserCode(int userCode) {
 		this.userCode = userCode;
 	}
+
 	public String getProName() {
 		return proName;
 	}
+
 	public void setProName(String proName) {
 		this.proName = proName;
 	}
+
 	public int getProDays() {
 		return proDays;
 	}
+
 	public void setProDays(int proDays) {
 		this.proDays = proDays;
 	}
+
 	public double getProUnit() {
 		return proUnit;
 	}
+
 	public void setProUnit(double proUnit) {
 		this.proUnit = proUnit;
 	}
+
 	public int getProImag() {
 		return proImag;
 	}
+
 	public void setProImag(int proImag) {
 		this.proImag = proImag;
 	}
+
 	public String getProRemarks() {
 		return proRemarks;
 	}
+
 	public void setProRemarks(String proRemarks) {
 		this.proRemarks = proRemarks;
 	}
+
 	public int getProShStatus() {
 		return proShStatus;
 	}
+
 	public void setProShStatus(int proShStatus) {
 		this.proShStatus = proShStatus;
 	}
+
 	public int getProExeStatus() {
 		return proExeStatus;
 	}
+
 	public void setProExeStatus(int proExeStatus) {
 		this.proExeStatus = proExeStatus;
 	}
+
+	public int getProTarget() {
+		return proTarget;
+	}
+
+	public void setProTarget(int proTarget) {
+		this.proTarget = proTarget;
+	}
+
+	public Date getProTime() {
+		return proTime;
+	}
+
+	public void setProTime(Date proTime) {
+		this.proTime = proTime;
+	}
+
+	public int getProType() {
+		return proType;
+	}
+
+	public void setProType(int proType) {
+		this.proType = proType;
+	}
+
+	public String getProProvince() {
+		return proProvince;
+	}
+
+	public void setProProvince(String proProvince) {
+		this.proProvince = proProvince;
+	}
+
+	public String getProCity() {
+		return proCity;
+	}
+
+	public void setProCity(String proCity) {
+		this.proCity = proCity;
+	}
+
+	public int getProFabric() {
+		return proFabric;
+	}
+
+	public void setProFabric(int proFabric) {
+		this.proFabric = proFabric;
+	}
+
+	public int getProSample() {
+		return proSample;
+	}
+
+	public void setProSample(int proSample) {
+		this.proSample = proSample;
+	}
+
 	public String getProTag() {
 		return proTag;
 	}
+
 	public void setProTag(String proTag) {
 		this.proTag = proTag;
 	}
+
+	public ZcResourceInfo getResourceInfo() {
+		return resourceInfo;
+	}
+
+	public void setResourceInfo(ZcResourceInfo resourceInfo) {
+		this.resourceInfo = resourceInfo;
+	}
+	
+	
 
 }

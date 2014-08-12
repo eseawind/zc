@@ -20,7 +20,7 @@ public class ZcResourceInfo implements Serializable {
 	@PrimaryKeyJoinColumn
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="RESOURCE_CODE")
-	private int resourceCode;
+	private Integer resourceCode;
 	@Column(name="UPT_DATE")
 	private Date uptDate;
 	@Column(name="UPT_IP")
@@ -31,53 +31,43 @@ public class ZcResourceInfo implements Serializable {
 	private String resourceUrl;
 	@Column(name="RSTATUS")
 	private String rstatus;
-
-	public int getResourceCode() {
+	public Integer getResourceCode() {
 		return resourceCode;
 	}
-
-	public void setResourceCode(int resourceCode) {
+	public void setResourceCode(Integer resourceCode) {
 		this.resourceCode = resourceCode;
 	}
-
 	public Date getUptDate() {
 		return uptDate;
 	}
-
 	public void setUptDate(Date uptDate) {
 		this.uptDate = uptDate;
 	}
-
 	public String getUptIp() {
 		return uptIp;
 	}
-
 	public void setUptIp(String uptIp) {
 		this.uptIp = uptIp;
 	}
-
 	public String getResourceName() {
 		return resourceName;
 	}
-
 	public void setResourceName(String resourceName) {
 		this.resourceName = resourceName;
 	}
-
 	public String getResourceUrl() {
 		return resourceUrl;
 	}
-
 	public void setResourceUrl(String resourceUrl) {
 		this.resourceUrl = resourceUrl;
 	}
-
 	public String getRstatus() {
 		return rstatus;
 	}
-
 	public void setRstatus(String rstatus) {
 		this.rstatus = rstatus;
 	}
+
+	
 
 }
