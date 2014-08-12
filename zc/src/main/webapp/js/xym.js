@@ -69,6 +69,36 @@
 				$( "#_validateMessageDialog" ).html(msg);
 				$( "#_validateMessageDialog" ).dialog("open");
 			}
+		},
+		confirm:function(msg,fn1,fn2){
+			if($("#_validateMessageDialog").length==0){//不存在,创建该div
+				var div=$("<div title='提示信息' id='_validateMessageDialog'>"+msg+"</div>");
+				$("body").append(div);
+				$( "#_validateMessageDialog" ).dialog({
+					modal: true,
+					show: "blind",
+					buttons: {
+						"确定": function() {
+							$( this ).dialog( "close" );
+							if(fn1){
+								if(typeof fn1=="function"){
+									fn1();
+								}
+							}
+						},"取消":function(){
+							$(this).dialog("close");
+							if(fn2){
+								if(typeof fn2=="function"){
+									fn2();
+								}
+							}
+						}
+					}
+				});
+			}else{
+				$( "#_validateMessageDialog" ).html(msg);
+				$( "#_validateMessageDialog" ).dialog("open");
+			}
 		}
 	});
 	
