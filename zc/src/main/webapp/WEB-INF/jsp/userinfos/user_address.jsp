@@ -191,7 +191,7 @@ display: block;
 		     <nav class="left_menu">
 			    <ul>
 				   <li><a href="#">我喜欢的作品<span>(21)</span></a></li>
-				   <li><a href="#">我关注的作品<span> (27)</span></a></li>
+				 <!--   <li><a href="#">我关注的作品<span> (27)</span></a></li>--> 
 				   <li><a href="#">我发表的作品<span>(33)</span></a></li>
 			    </ul>
 		     </nav><!-- .left_menu -->
