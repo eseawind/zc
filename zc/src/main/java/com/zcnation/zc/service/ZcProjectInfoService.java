@@ -8,9 +8,12 @@
 package com.zcnation.zc.service;
 
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 
 import com.zcnation.zc.domain.ZcProjectInfo;
+
 
 
 public interface ZcProjectInfoService {
@@ -36,5 +39,8 @@ public interface ZcProjectInfoService {
 	 * @return
 	 */
 	public ZcProjectInfo queryOne(int precode);
+	
+	
+	public List<ZcProjectInfo> queryByUserCodeAndProNameLike(Integer userCode,String proName);
 
 }

@@ -36,5 +36,13 @@ public interface ZcUserInfoService {
 	 */
 	public int update(ZcUserInfo info);
 	
+	
+	/****
+	 * 用户注册
+	 * @param zcUserInfo
+	 * @return
+	 */
+	public int gengxinByUserCode(int userCode);
+	
 
 }
