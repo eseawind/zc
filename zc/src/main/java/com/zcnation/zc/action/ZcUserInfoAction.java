@@ -44,10 +44,17 @@ public class ZcUserInfoAction {
 		return "userinfo/user_show";
 	}
 	
-	@RequestMapping("/update.xhtml")
+	@RequestMapping("/update_password.xhtml")
 	public String to_update(HttpServletRequest request) {
+		return "userinfo/user_update_password";
+	}
+	
+	
+	@RequestMapping("/update.xhtml")
+	public String to_update_password(HttpServletRequest request) {
 		return "userinfo/user_update";
 	}
+	
 	 
 	@RequestMapping("/beginRegister.html")
 	@ResponseBody
@@ -107,6 +114,31 @@ public class ZcUserInfoAction {
 			ThreadLocalSession.getLocal_session().removeAttribute(ZcContext.LOGIN_USER_KEY);
 			ThreadLocalSession.getLocal_session().setAttribute(ZcContext.LOGIN_USER_KEY, zcUserInfo);
 		}
+		return r.toJson();
+	}
+	
+	
+	@RequestMapping("/beginUpdatePssword.xhtml")
+	@ResponseBody
+	public String beginUpdatePssword(HttpServletRequest request,@ModelAttribute ZcUserInfo zcUserInfo,@RequestParam(value="passwordagin") String passwordagin){
+		Result r=new Result();
+		//zcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
+		//zcUserInfoService.update(userName,zcUserInfo.getUserCode());
+		ZcUserInfo sezcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
+		zcUserInfoService.gengxinByUserCode(sezcUserInfo.getUserCode());
+		//用户主键id不存在页面隐藏域中，防止被看见
+//		zcUserInfo.setUserCode(sezcUserInfo.getUserCode());
+//		System.out.println();
+//		zcUserInfo.setPassword(passwordagin);
+//		zcUserInfo.setRegIp(sezcUserInfo.getRegIp());
+//		zcUserInfo.setRegTime(sezcUserInfo.getRegTime());
+//		System.out.println("用户编号："+zcUserInfo.getUserCode());
+//		int a=zcUserInfoService.update(zcUserInfo);
+//		if (a>0) {
+//			r.setSuccess(true);
+//			ThreadLocalSession.getLocal_session().removeAttribute(ZcContext.LOGIN_USER_KEY);
+//			ThreadLocalSession.getLocal_session().setAttribute(ZcContext.LOGIN_USER_KEY, zcUserInfo);
+//		}
 		return r.toJson();
 	}
 	

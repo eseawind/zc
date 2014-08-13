@@ -38,8 +38,10 @@ import com.zcnation.zc.common.util.RootLogger;
 import com.zcnation.zc.context.ZcContext;
 import com.zcnation.zc.domain.CartInfo;
 import com.zcnation.zc.domain.ZcProjectInfo;
+import com.zcnation.zc.domain.ZcProjectLike;
 import com.zcnation.zc.domain.ZcResourceInfo;
 import com.zcnation.zc.domain.ZcUserInfo;
+import com.zcnation.zc.service.ZcProjecLikeService;
 import com.zcnation.zc.service.ZcProjectInfoService;
 import com.zcnation.zc.service.ZcResourceInfoService;
 import com.zcnation.zc.service.ZcUserInfoService;
@@ -52,12 +54,57 @@ public class ZcProjectInfoAction {
 	private ZcProjectInfoService zcProjectInfoService;
 	@Autowired
 	private ZcResourceInfoService zcResourceInfoService;
+	@Autowired
+	private ZcProjecLikeService zcProjecLikeService;
 
 	@RequestMapping("/project_add.xhtml")
 	public String to_add(HttpServletRequest request) {
 		return "projectinfo/project_add";
 	}
 
+	@RequestMapping("/project_like.xhtml")
+	public String to_like(HttpServletRequest request) {
+		List<ZcProjectLike> list=new ArrayList<ZcProjectLike>();
+		ZcUserInfo sezcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
+		list=zcProjecLikeService.queryByUserCode(sezcUserInfo.getUserCode());
+		request.setAttribute("prolikes", list);
+		System.out.println(list.size());
+		return "projectinfo/project_like";
+	}
+	
+	
+	@RequestMapping("/project_un{userCode}.xhtml")
+	public String to_unlike(@PathVariable("userCode") String userCode,
+			HttpServletRequest request) {
+		System.out.println("userCode:" + userCode);
+		
+		try {
+			ZcProjectLike zcProjectLike=zcProjecLikeService.queryOne(Integer.parseInt(userCode));
+			zcProjecLikeService.delete(zcProjectLike);
+			//ZcUserInfos zcUserInfos= zcUserInfosService.queryOne(Integer.parseInt(userCode));
+			//zcUserInfosService.delete(zcUserInfos);
+			//zcProjecLikeService.deleteByLikeCode((Integer.parseInt(userCode)));
+		} catch (Exception e) {
+			RootLogger.error(e);
+		}
+		
+		return "redirect:../projectinfo/project_like.xhtml";
+		
+	}
+	
+	@RequestMapping("/project_publish.xhtml")
+	public String to_publish(HttpServletRequest request,String proName) {
+		List<ZcProjectInfo> list=new ArrayList<ZcProjectInfo>();
+		ZcUserInfo sezcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
+		list=zcProjectInfoService.queryByUserCodeAndProNameLike(sezcUserInfo.getUserCode(),"%"+proName+"%");
+		request.setAttribute("proinfos", list);
+		System.out.println(list.size());
+		return "projectinfo/project_publish";
+	}
+	
+	
+	
+	
 	@RequestMapping("/project_{detailid}.html")
 	public String to_show(@PathVariable("detailid") String detailId,
 			HttpServletRequest request) {
