@@ -91,67 +91,43 @@ display: block;
 -webkit-margin-start: 0px;
 -webkit-margin-end: 0px;
 }
+
+
+
+
 </style>
-
-
-  <script>
-	$(document).ready(function() {
-		$('.jqzoom').jqzoom({
-			zoomType: 'standard',
-			lens:true,
-			preloadImages: true,
-			alwaysOn:false
-		});
-	});
-  </script>
-
-  <script>
-	$(document).ready(function() {
-		$("select").selectBox();
-	});
-  </script>
-
-  <script>
-	$(document).ready(function() {
-		$('#wrapper_tab a').click(function() {
-			if ($(this).attr('class') != $('#wrapper_tab').attr('class') ) {
-				$('#wrapper_tab').attr('class',$(this).attr('class'));
-			}
-			return false;
-		});
-	});
-  </script>
-
-  <script>
-	$(function() {
-	  $('#list_product').carouFredSel({
-		prev: '#prev_c1',
-		next: '#next_c1',
-		auto: false
-	  });
-          $('#list_banners').carouFredSel({
-		prev: '#ban_prev',
-		next: '#ban_next',
-		scroll: 1,
-		auto: false
-	  });
-	  $('#thumblist').carouFredSel({
-		prev: '#img_prev',
-		next: '#img_next',
-		scroll: 1,
-		auto: false,
-		circular: false,
-	  });
-	  $(window).resize();
-	});
-  </script>
-  <script>
-       $(document).ready(function(){
-	      $("button").click(function(){
-		     $(this).addClass('click')
-	      });
-       })
-  </script>
+<script type="text/javascript">
+	$(function(){
+		var register={};
+		register={
+				initButtonRegister:function(){
+					$("#btnUpdate").bind('click',function(e){
+						//阻止默认事件发生,会出现 刷新页面的请求
+						e.preventDefault();
+						//表单验证。。
+						var formJson=$("#updateForm").serializeArray();
+						$.post("userinfo/beginUpdatePssword.xhtml",formJson,function(data){
+							var d=$.eval2(data);
+							if(d.success){
+								$.alert("修改提示","修改成功");
+							}else{
+								$.alert("修改提示",d.errorMsgs[0]);
+							}
+						});
+					});
+					
+				} 
+		};
+		function main(){
+			//注册事件
+			register.initButtonRegister();
+			//register.blurInput();
+		}
+		
+		main();
+		
+	})
+</script>
 
 </head>
 <body>
@@ -169,11 +145,11 @@ display: block;
 
 		     <nav class="left_menu">
 			    <ul>
-				   <li><a href="userinfo/show.xhtml">个人信息</a></li>
-				    <li><a href="userinfo/update.xhtml">资料修改</a></li>
+				   <li><a href="userinfo/info.html">个人信息</a></li>
+				    <li><a href="#">资料修改</a></li>
 				    <li><a href="#">头像修改</a></li>
-				   <li><a href="userinfos/address.xhtml">收货地址</a></li>
-				   <li><a href="userinfo/update_password.xhtml">修改密码</a></li>
+				   <li><a href="#">收货地址</a></li>
+				   <li><a href="#">修盖密码</a></li>
 				   <li class="last"><a href="#">消息中心</a></li>
 			    </ul>
 		     </nav><!-- .left_menu -->
@@ -184,9 +160,9 @@ display: block;
 
 		     <nav class="left_menu">
 			    <ul>
-				   <li><a href="projectinfo/project_like.xhtml">我喜欢的作品<span>(21)</span></a></li>
-				 <!--  <li><a href="#">我关注的作品<span> (27)</span></a></li> --> 
-				   <li><a href="projectinfo/project_publish.xhtml">我发表的作品<span>(33)</span></a></li>
+				   <li><a href="#">我喜欢的作品<span>(21)</span></a></li>
+				    <!-- <li><a href="#">我关注的作品<span> (27)</span></a></li> --> 
+				   <li><a href="#">我发表的作品<span>(33)</span></a></li>
 			    </ul>
 		     </nav><!-- .left_menu -->
 	      </aside>
@@ -199,69 +175,44 @@ display: block;
        </div><!-- .sidebar -->
 
        <div id="content" class="grid_9">
-	      <h1 class="page_title">个人信息</h1>
-
-		<div class="product_page">
-			<div class="grid_4 img_slidinfo" id="products" >
+	      <h1 class="page_title">修改密码</h1>
+	      
+	      
+	      
+	      
+	      
+	      
+ <FORM class=registed method=post action=""  name="updateForm" id="updateForm" >
+		
 				
-				<div class="preview slides_container">
-					<div class="prev_bginfo">
-						<a href="#"  rel='gal1' title="">
-						<c:if test="${sessionScope.USER_INFO!=null }">
-						
-						
-						<img src="images/<c:out value="${sessionScope.USER_INFO.userName }"></c:out>" style="width: 200px;height: 200px;"   title="" alt=""/>
-						</c:if>
-						
+				<div class="email">
+					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;旧密码:</strong><sup class="surely">*</sup>
+					&nbsp;<input type="text" id="userOldPassowrd" name="userOldPassowrd" class="" value="" readonly="readonly"/>
+					<DIV id=validOldPassowrd class=Validform_checktip  > </DIV>
+				</div><!-- .email -->
 							
-						</a>
-					</div>
-					
-					<a >修改头像</a>
-					
-				</div><!-- .prev -->
+							<div class="password">
+					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码:</strong><sup class="surely">*</sup>
+					<input id=password  type=password name=password class="" value="" /> <DIV id=validPassword class=Validform_checktip></DIV>
 				
-		</div><!-- .grid_4 -->
-
-			<div class="grid_5" >
-				<div class="entry_content">
-					<div class="user-fun">
-					<h2><c:if test="${sessionScope.USER_INFO!=null }"><c:out value="${sessionScope.USER_INFO.userName }"></c:out></c:if></h2> 
-					<a href="/settings" class="btn-red-h20 btn-base common-sprite">
-						<span class="common-sprite"><i class="common-sprite icon-set"></i>个人设置</span>
-					</a>
-					<a href="/message" class="btn-red-h20 btn-base common-sprite">
-						<span class="common-sprite"><i class="common-sprite icon-info"></i>消息中心</span>
-					</a>
-					
 				</div>
 				
-				<div class="user-info">
-				<p></p>
-					<p>${sessionScope.USER_INFO.userIntroduce }</p>
-					<p>积分：100   <a style="cursor: pointer;">如何获取积分？</a></p>
-					<p>加入时间：25天前</p>
-					<p>所在地区：浙江,杭州</p>
-					<p>上次登录时间：2014-12-12 09:10</p>
-										
-									</div>
+				<div class="password">
+					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;确认密码:</strong><sup class="surely">*</sup>
+					<input id=passwordagin  type=password name=passwordagin class="" value="" /> <DIV id=validpasswordAgain class=Validform_checktip></DIV>
 				
-					
-					
-
-				<!-- .soc -->
-				</div><!-- .entry_content -->
-
-			</div><!-- .grid_5 -->
-
-			<div class="clear"></div>
-
+				</div>
+							
+				
 			
-
-			<div class="clear"></div>
-
+				
 			
-		</div><!-- .product_page -->
+			
+		
+				<div class="submit">										
+					<button class="account" id="btnUpdate">&nbsp;&nbsp;保存&nbsp;&nbsp;</button>
+				</div><!-- .submit -->
+			</form>
 		<div class="clear"></div>
 
        </div><!-- #content -->
