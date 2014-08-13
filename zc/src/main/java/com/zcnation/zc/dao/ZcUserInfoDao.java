@@ -5,12 +5,13 @@ import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.Repository;
 
 import com.zcnation.zc.domain.ZcUserInfo;
 
 
-public interface ZcUserInfoDao extends Repository<ZcUserInfo, Integer> {
+public interface ZcUserInfoDao extends Repository<ZcUserInfo, Integer>,CrudRepository<ZcUserInfo, Integer> {
 	
 	/**
 	 * 添加客户
@@ -74,5 +75,16 @@ public interface ZcUserInfoDao extends Repository<ZcUserInfo, Integer> {
 	  */
 	 @Query("select count(*) from zc_user_info where user_name =?1 or email =?2 or user_phone =?3 ")
 	 public Long countByUerOrEmailOrPhone(String userName,String email,String userPhone);
+	 
+	 @Transactional
+	 @Modifying
+	   
+	 @Query("update zc_user_info set password='123456' where user_code=?1")
+	 public int gengxinByUserCode(int userCode);
+
+
+
+	 
+	 
 	 
 }

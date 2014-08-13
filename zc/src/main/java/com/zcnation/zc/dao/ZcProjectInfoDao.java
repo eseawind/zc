@@ -2,14 +2,17 @@ package com.zcnation.zc.dao;
 
 
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.repository.Repository;
+
 
 import com.zcnation.zc.domain.ZcProjectInfo;
+
 
 
 public interface ZcProjectInfoDao extends JpaRepository<ZcProjectInfo, Integer>,PagingAndSortingRepository<ZcProjectInfo, Integer> {
@@ -23,5 +26,7 @@ public interface ZcProjectInfoDao extends JpaRepository<ZcProjectInfo, Integer>,
 	 public  ZcProjectInfo findByProCode(int proCode);
 	 
 	 public Page<ZcProjectInfo> findAll(Pageable page);
+	 
+	 public List<ZcProjectInfo> findByUserCodeAndProNameLike(Integer userCode,String proName);
 	
 }
