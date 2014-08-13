@@ -11,6 +11,8 @@ package com.zcnation.zc.service.impl;
 
 
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -47,6 +49,13 @@ public class ZcProjectInfoServiceImpl implements ZcProjectInfoService{
 	@Override
 	public ZcProjectInfo queryOne(int precode) {
 		return zcProjectInfoDao.findByProCode(precode);
+	}
+	@Override
+	public List<ZcProjectInfo> queryByUserCodeAndProNameLike(Integer userCode,String proName) {
+		// TODO Auto-generated method stub
+		Sort s=new Sort("proCode");
+		return zcProjectInfoDao.findByUserCodeAndProNameLike(userCode,proName);
+		
 	}
 
 	

@@ -130,4 +130,11 @@ public class ZcUserInfoServiceImpl implements ZcUserInfoService {
 		return dd;
 	}
 
+	@Override
+	public int gengxinByUserCode(int userCode) {
+		// TODO Auto-generated method stub
+	  return	zcUserInfoDao.gengxinByUserCode(userCode);
+		
+	}
+
 }

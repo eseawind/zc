@@ -1,0 +1,38 @@
+package com.zcnation.zc.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+
+import com.zcnation.zc.dao.ZcProjectLikeDao;
+import com.zcnation.zc.domain.ZcProjectLike;
+import com.zcnation.zc.service.ZcProjecLikeService;
+@Service(value = "zcProjecLikeService")
+public class ZcProjecLikeServiceImpl implements ZcProjecLikeService {
+	@Autowired private ZcProjectLikeDao zcProjectLikeDao;
+	@Override
+	public List<ZcProjectLike> queryByUserCode(Integer userCode) {
+		Sort s=new Sort("likeCode");
+		
+		return zcProjectLikeDao.findByUserCode(userCode);
+	}
+	@Override
+	public void deleteByLikeCode(int likeCode) {
+		// TODO Auto-generated method stub
+		zcProjectLikeDao.deleteByLikeCode(likeCode);
+	}
+	@Override
+	public void delete(ZcProjectLike zcProjectLike) {
+		// TODO Auto-generated method stub
+		zcProjectLikeDao.delete(zcProjectLike);
+		
+	}
+	@Override
+	public ZcProjectLike queryOne(int likeCode) {
+		// TODO Auto-generated method stub
+		return zcProjectLikeDao.findByLikeCode(likeCode);
+	}
+
+}
