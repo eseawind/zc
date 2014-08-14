@@ -42,6 +42,7 @@ import com.zcnation.zc.domain.ZcProjectLike;
 import com.zcnation.zc.domain.ZcResourceInfo;
 import com.zcnation.zc.domain.ZcUserInfo;
 import com.zcnation.zc.service.ZcProjecLikeService;
+import com.zcnation.zc.service.ZcProjectInfoNativeService;
 import com.zcnation.zc.service.ZcProjectInfoService;
 import com.zcnation.zc.service.ZcResourceInfoService;
 import com.zcnation.zc.service.ZcUserInfoService;
@@ -56,7 +57,8 @@ public class ZcProjectInfoAction {
 	private ZcResourceInfoService zcResourceInfoService;
 	@Autowired
 	private ZcProjecLikeService zcProjecLikeService;
-
+	@Autowired
+	private ZcProjectInfoNativeService zcProjectInfoNativeService;
 	@RequestMapping("/project_add.xhtml")
 	public String to_add(HttpServletRequest request) {
 		return "projectinfo/project_add";
@@ -92,15 +94,35 @@ public class ZcProjectInfoAction {
 		
 	}
 	
+	
+	
 	@RequestMapping("/project_publish.xhtml")
-	public String to_publish(HttpServletRequest request,String proName) {
-		List<ZcProjectInfo> list=new ArrayList<ZcProjectInfo>();
+	public String to_publish(HttpServletRequest request, String  proName, String proShStatus) {
+		System.out.println("proName"+proName);
+		System.out.println("proShStatus"+proShStatus);
+		//List<ZcProjectInfo> list=new ArrayList<ZcProjectInfo>();
 		ZcUserInfo sezcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
-		list=zcProjectInfoService.queryByUserCodeAndProNameLike(sezcUserInfo.getUserCode(),"%"+proName+"%");
+		
+		
+		List list=zcProjectInfoNativeService.queryByUserCodeAndProShStatusAndProNameAndProShStatus(sezcUserInfo.getUserCode(), proName,proShStatus);
+		//list=zcProjectInfoService.queryByUserCodeAndProNameLike(sezcUserInfo.getUserCode(),"%"+proName+"%");
 		request.setAttribute("proinfos", list);
+		request.setAttribute("proName", proName);
 		System.out.println(list.size());
+		
+//		if(list.size()>0){
+//			for (int i = 0; i <list.size(); i++) {
+//				System.out.println(list.get(i).getProCode());
+//				System.out.println(list.get(i).getProName());
+//			}
+//			
+//		}
 		return "projectinfo/project_publish";
 	}
+	
+	
+	
+	
 	
 	
 	
