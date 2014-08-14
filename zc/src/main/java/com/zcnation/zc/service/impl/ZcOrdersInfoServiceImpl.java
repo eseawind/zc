@@ -57,6 +57,7 @@ public class ZcOrdersInfoServiceImpl implements ZcOrdersInfoService {
 					zd.setProCode(ci.getProCode());
 					zd.setProNumber(ci.getCartNumber());
 					zd.setProUnit(new BigDecimal(ci.getProUnit()));
+					zd.setProType(ci.getTshirtShort());
 					zcOrderDetailDao.save(zd);
 				}
 				r.setSuccess(true);

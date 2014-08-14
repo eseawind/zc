@@ -43,6 +43,32 @@
 			}
 			return false;
 		});
+		var proCart={};
+		proCart={
+				initDelete:function(){
+					$("#cartDivDialog a").each(function(){
+						var that=$(this);
+						that.bind('click',function(e){
+							e.preventDefault();
+							var t=$(this);
+							var proCode=t.attr("proCode");
+							var ttype=t.attr("ttype");
+							//发送请求
+							$.post("projectinfo/beginDelecart.xhtml",{proCode:proCode,tshirtShort:ttype},function(data){
+								var d=$.eval2(data);
+								if(d.success){
+									proCart.getCartHtml();
+								}
+							});
+						});
+					})
+				},getCartHtml:function(){
+					$.post("projectinfo/getCart.xhtml",{},function(data){
+						$( "#cartDivDialog" ).html("").html(data).dialog( "open" );
+						proCart.initDelete();
+					})
+				}
+			};
 		//dialog
 		$("#cartDivDialog").dialog({
 			title:'我的购物车',
@@ -52,7 +78,8 @@
 			modal: true,
 			buttons:{
 				"结算":function(){
-					alert("感谢购物,欢迎下次再来");					
+					//alert("感谢购物,欢迎下次再来");
+					window.location="order/order.xhtml";
 				}
 			}
 		});
@@ -74,10 +101,12 @@
 			var proCode=$("#proCode").val();
 			$.post("projectinfo/addCart.xhtml",{proCode:proCode,cartNumber:buynum,tshirtShort:cm.val(),imageUrl:proImg,proName:$("#proSpanName").html(),proUnit:$("#proSpanUnit").html()},function(data){
 				$( "#cartDivDialog" ).html("").html(data).dialog( "open" );
+				proCart.initDelete();
 			});
 			//alert("购物数量："+buynum+" 尺码："+cm.val());
-			
 		})
+		
+		
 	});
   </script>
 

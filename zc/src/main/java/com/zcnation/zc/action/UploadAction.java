@@ -15,6 +15,7 @@ import java.io.InputStream;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.math.NumberUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -76,5 +77,18 @@ public class UploadAction {
 			System.out.println("文件名称："+fil.getOriginalFilename());
 		}*/
 		return "";
+	}
+	
+	public static void main(String[] args) {
+		String nn="阿卡时订单";
+		String msg="";
+		try {
+			System.out.println(Integer.parseInt(nn));
+			
+			msg="success";
+		} catch (Exception e) {
+			msg="error";
+		}
+		System.out.println(msg);
 	}
 }

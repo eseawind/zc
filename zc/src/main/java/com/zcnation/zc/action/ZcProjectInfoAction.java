@@ -329,33 +329,8 @@ public class ZcProjectInfoAction {
 		}
 		r.setSuccess(true);
 		// 购物车html
-		StringBuffer cartHtml = new StringBuffer();
-		cartHtml.append("<table style=\"width:100%;\">")
-				.append("<tr>")
-				.append("<td>商品</td><td>&nbsp;</td><td>单价</td><td>型号</td><td>数量</td><td>小计</td><td>操作</td>")
-				.append("</tr>");
-		List<CartInfo> cartList = (List<CartInfo>) ThreadLocalSession
-				.getLocal_session().getAttribute(
-						ObjectUtils.toString(user.getUserCode()));
-		BigDecimal b = new BigDecimal(0);
-		for (CartInfo c : cartList) {
-			BigDecimal b1 = new BigDecimal(c.getProUnit());
-			cartHtml.append("<tr>")
-					.append("<td><img alt=\"\" src=\"" + c.getImageUrl()
-							+ "\" width=\"100\" height=\"100\"> </td>")
-					.append("<td>" + c.getProName() + "</td>")
-					.append("<td>" + c.getProUnit() + "</td>")
-					.append("<td>" + c.getTshirtShort() + "</td>")
-					.append("<td>" + c.getCartNumber() + "</td>")
-					.append("<td>" + c.getCartNumber() + "*" + c.getProUnit()
-							+ "=" + (c.getCartNumber() * c.getProUnit())
-							+ "元</td>").append("<td>删除</td>").append("</tr>");
-			b = b.add(b1.multiply(new BigDecimal(c.getCartNumber())));
-		}
-		cartHtml.append("<tr>")
-				.append("<td colspan=\"6\" align=\"right\">共" + cartList.size()
-						+ "件商品，商品总金额" + b + "元   </td>").append("</tr>");
-		return cartHtml.toString();
+		String cartHtml=generateCartHtml();
+		return cartHtml;
 	}
 
 	/***
@@ -370,6 +345,7 @@ public class ZcProjectInfoAction {
 				.append("<tr>")
 				.append("<td>商品</td><td>&nbsp;</td><td>单价</td><td>型号</td><td>数量</td><td>小计</td><td>操作</td>")
 				.append("</tr>");
+		@SuppressWarnings("unchecked")
 		List<CartInfo> cartList = (List<CartInfo>) ThreadLocalSession.getLocal_session().getAttribute(ObjectUtils.toString(user.getUserCode()));
 		BigDecimal b = new BigDecimal(0);
 		for (CartInfo c : cartList) {
@@ -380,13 +356,34 @@ public class ZcProjectInfoAction {
 					.append("<td>" + c.getProUnit() + "</td>")
 					.append("<td>" + c.getTshirtShort() + "</td>")
 					.append("<td>" + c.getCartNumber() + "</td>")
-					.append("<td>" + c.getCartNumber() + "*" + c.getProUnit()+ "=" + (c.getCartNumber() * c.getProUnit())+ "元</td>").append("<td>删除</td>").append("</tr>");
+					.append("<td>" + c.getCartNumber() + "*" + c.getProUnit()+ "=" + (c.getCartNumber() * c.getProUnit())+ "元</td>").append("<td><a href=\"javascript:void(0)\" proCode=\""+c.getProCode()+"\" ttype=\""+c.getTshirtShort()+"\">删除<a></td>").append("</tr>");
 			b = b.add(b1.multiply(new BigDecimal(c.getCartNumber())));
 		}
 		cartHtml.append("<tr>").append("<td colspan=\"6\" align=\"right\">共" + cartList.size()+ "件商品，商品总金额" + b + "元   </td>").append("</tr>");
 		return cartHtml.toString();
 	}
 
+	@RequestMapping("/beginDelecart.xhtml")
+	@ResponseBody
+	public String beginDeleteCart(HttpServletRequest request,@ModelAttribute CartInfo info){
+		Result r=new Result();
+		ZcUserInfo user = (ZcUserInfo) ThreadLocalSession.getLocal_session().getAttribute(ZcContext.LOGIN_USER_KEY);
+		@SuppressWarnings("unchecked")
+		List<CartInfo> cartList = (List<CartInfo>) ThreadLocalSession.getLocal_session().getAttribute(ObjectUtils.toString(user.getUserCode()));
+		if (cartList.contains(info)) {
+			cartList.remove(info);
+		}
+		ThreadLocalSession.getLocal_session().setAttribute(ObjectUtils.toString(user.getUserCode()), cartList);
+		r.setSuccess(true);
+		return r.toJson();
+	}
+	
+	@RequestMapping("/getCart.xhtml")
+	@ResponseBody
+	public String getCartHtml(){
+		String carthtml=generateCartHtml();
+		return carthtml;
+	}
 	
 	@RequestMapping("/beginorders.xhtml")
 	@ResponseBody
