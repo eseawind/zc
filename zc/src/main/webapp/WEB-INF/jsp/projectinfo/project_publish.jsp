@@ -134,37 +134,7 @@ display: inline-block;
 
 </style>
 <script type="text/javascript">
-	$(function(){
-		var register={};
-		register={
-				initButtonRegister:function(){
-					$("#btnSearch").bind('click',function(e){
-						//阻止默认事件发生,会出现 刷新页面的请求
-						e.preventDefault();
-						//表单验证。。
-						alert(11);
-						var formJson=$("#searchForm").serializeArray();
-						$.post("projectinfo/project_publish.xhtml",formJson,function(data){
-							var d=$.eval2(data);
-							if(d.success){
-								$.alert("添加提示","添加成功");
-							}else{
-								$.alert("添加提示",d.errorMsgs[0]);
-							}
-						});
-					});
-					
-				} 
-		};
-		function main(){
-			//注册事件
-			register.initButtonRegister();
-			//register.blurInput();
-		}
-		
-		main();
-		
-	})
+
 </script>
 
 </head>
@@ -218,12 +188,8 @@ display: inline-block;
 		
 	      <dl class="findBox clearfix">
           <dt>
-          <!--  <select style="padding:0;" id="date" name="date">
-                        <option value="all">全部</option>
-                        <option value="month">最近一个月订单</option>
-                        <option value="ago">一个月以前的订单</option>
-          </select>-->
-                    <select name="" id="proShStatus" name="proShStatus">
+       
+                    <select  id="proShStatus" name="proShStatus">
                         <option value="-1" selected="selected">全部</option>
                                   <option value="0">审核中</option>
                                     <option value="1">众筹中</option>
@@ -233,7 +199,7 @@ display: inline-block;
                       </select>
           </dt>
           <dd>
-            <input type="text" class="incInput" name="proName" value="" size="36" id="proName">
+            <input type="text" class="incInput" name="proName" value="${proName }" size="36" id="proName">
          <input type="submit"value="111">
           </dd>
         </dl>
@@ -253,23 +219,22 @@ display: inline-block;
           </tr>
            <c:forEach items="${proinfos}" var="pro">
                <tr>
-            <!--   <td><c:out value="${pro.proCode }"></c:out></td>--> 
-              
-               <td align="left"><img src="uploadImg/<c:out value="${pro.resourceInfo.resourceName}"></c:out>" width="60" height="43" alt="" title="" />
+             
+               <td align="left"><img src="uploadImg/<c:out value="${pro[6]}"></c:out>" width="60" height="43" alt="" title="" />
                
-             <span style="vertical-align: top;">  <c:out value="${pro.proName}"></c:out></span>
+             <span style="vertical-align: top;">  <c:out value="${pro[1]}"></c:out></span>
                </td>
              
-              <td><c:out value="${pro.proCode}"></c:out></td>
+              <td><c:out value="${pro[0]}"></c:out></td>
              
-              <td><c:out value="${pro.proCode}"></c:out></td>
-               <td><c:out value="${pro.proTarget}"></c:out></td>
-                <td><c:out value="${pro.proCode}"></c:out></td>
+              <td><c:out value="${pro[0]}"></c:out></td>
+               <td><c:out value="${pro[3]}"></c:out></td>
+                <td><c:out value="${pro[0]}"></c:out></td>
               <td>
               
                 
                  
-              <c:if test="${pro.proShStatus==0 }">
+              <c:if test="${pro[2]=='0' }">
             
            		   审核中
               </c:if>
