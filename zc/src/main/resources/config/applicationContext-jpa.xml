@@ -22,8 +22,7 @@
 		<tx:attributes>
 			<tx:method name="query*" read-only="true"/>
 			<tx:method name="get*" read-only="true"/>
-			<tx:method name="*" no-rollback-for=" com.zcnation.zc.common.exception.NotRollbackException
-			"/>
+			<tx:method name="*" propagation="REQUIRED"/>
 		</tx:attributes>
 	</tx:advice>
 

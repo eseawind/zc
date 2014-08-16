@@ -129,6 +129,7 @@ public class ZcUserInfoAction {
 		
 		ZcUserInfo sezcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
 		int flag=zcUserInfoNativeService.updateByUserCode(sezcUserInfo.getUserCode(), passwordagin);
+		r.setSuccess(flag>0?true:false);
 		System.out.println("flag"+flag);
 		//zcUserInfoService.gengxinByUserCode(sezcUserInfo.getUserCode());
 		//用户主键id不存在页面隐藏域中，防止被看见
