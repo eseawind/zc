@@ -19,10 +19,11 @@ public class ZcUserInfoNativeDaoImpl implements ZcUserInfoNativeDao {
 	public int updateByUserCode(Integer userCode,String password) {
 		// TODO Auto-generated method stub
 		String sql="update  from zc_user_info t set t.password='"+password+"' were t.user_code='"+userCode+"'";
+		System.out.println(sql);
 		EntityManager em=entityManagerFactory.createEntityManager();
 		Query query=em.createNativeQuery(sql);
 		int flag= query.executeUpdate();
-		
+	
 		return flag;
 	}
 	
