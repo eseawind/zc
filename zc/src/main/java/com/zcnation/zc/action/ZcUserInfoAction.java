@@ -18,6 +18,7 @@ import com.zcnation.zc.common.ThreadLocalSession;
 import com.zcnation.zc.common.util.UrlHelp;
 import com.zcnation.zc.context.ZcContext;
 import com.zcnation.zc.domain.ZcUserInfo;
+import com.zcnation.zc.service.ZcUserInfoNativeService;
 import com.zcnation.zc.service.ZcUserInfoService;
 
 @Controller
@@ -26,6 +27,7 @@ public class ZcUserInfoAction {
 	
 	
 	@Autowired private ZcUserInfoService zcUserInfoService;
+	@Autowired private ZcUserInfoNativeService zcUserInfoNativeService;
 
 	@RequestMapping("/register.html")
 	public String to_register(HttpServletRequest request) {
@@ -124,8 +126,11 @@ public class ZcUserInfoAction {
 		Result r=new Result();
 		//zcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
 		//zcUserInfoService.update(userName,zcUserInfo.getUserCode());
+		
 		ZcUserInfo sezcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
-		zcUserInfoService.gengxinByUserCode(sezcUserInfo.getUserCode());
+		int flag=zcUserInfoNativeService.updateByUserCode(sezcUserInfo.getUserCode(), passwordagin);
+		System.out.println("flag"+flag);
+		//zcUserInfoService.gengxinByUserCode(sezcUserInfo.getUserCode());
 		//用户主键id不存在页面隐藏域中，防止被看见
 //		zcUserInfo.setUserCode(sezcUserInfo.getUserCode());
 //		System.out.println();
