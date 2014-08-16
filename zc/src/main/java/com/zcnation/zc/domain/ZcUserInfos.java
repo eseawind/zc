@@ -41,6 +41,19 @@ public class ZcUserInfos implements Serializable {
 	
 	@Column(name="USER_EMAIL")
 	private String userEmail;
+	
+	@Column(name="ISDEFAULT")
+	private String isDefault;
+
+
+	public String getIsDefault() {
+		return isDefault;
+	}
+
+
+	public void setIsDefault(String isDefault) {
+		this.isDefault = isDefault;
+	}
 
 
 	public Integer getUserCode() {
