@@ -21,5 +21,5 @@ public class ZcContext {
 	/***
 	 * 订单状态
 	 */
-	public static final int ORDER_STATUS_FIRST=0;
+	public static final String ORDER_STATUS_FIRST="0";
 }
