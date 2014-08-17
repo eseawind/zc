@@ -21,7 +21,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -45,7 +44,12 @@ import com.zcnation.zc.service.ZcProjecLikeService;
 import com.zcnation.zc.service.ZcProjectInfoNativeService;
 import com.zcnation.zc.service.ZcProjectInfoService;
 import com.zcnation.zc.service.ZcResourceInfoService;
-import com.zcnation.zc.service.ZcUserInfoService;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 
 @Controller
 @RequestMapping("/projectinfo")
@@ -63,6 +67,22 @@ public class ZcProjectInfoAction {
 	public String to_add(HttpServletRequest request) {
 		return "projectinfo/project_add";
 	}
+	
+	
+	@RequestMapping("/project_list.html")
+	public String to_list(HttpServletRequest request) {
+		Sort s=new Sort(Direction.DESC, "proTime");
+		Pageable p=new PageRequest(0, 8,s);
+		Page<ZcProjectInfo> ojbs=zcProjectInfoService.queryByPage(0, 8);
+		List<ZcProjectInfo> prolist=new ArrayList<ZcProjectInfo>();
+		prolist=ojbs.getContent();
+		System.out.println(prolist.size());
+		request.setAttribute("proinfos", prolist);
+		
+		
+		return "projectinfo/project_list";
+	}
+	
 
 	@RequestMapping("/project_like.xhtml")
 	public String to_like(HttpServletRequest request) {

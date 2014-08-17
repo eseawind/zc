@@ -33,7 +33,7 @@ public class IndexAction {
 	public String to_index(HttpServletRequest request){
 		//List<Map<String, String>> list=new ArrayList<Map<String,String>>();
 		//首页默认加载8条数据
-		Page<ZcProjectInfo> pas=zcProjectInfoService.queryByPage(0, 4);
+		Page<ZcProjectInfo> pas=zcProjectInfoService.queryByPage(0, 5);
 		System.out.println("总大小："+pas.getTotalPages());
 		request.setAttribute("proInfos", pas);
 		List<String> list=new ArrayList<String>();
