@@ -167,6 +167,7 @@ display: block;
 
  
  
+   
   <section id="main">
     <div class="container_12">
        <div id="sidebar" class="grid_3">
@@ -175,11 +176,12 @@ display: block;
 
 		     <nav class="left_menu">
 			    <ul>
-				   <li><a href="userinfo/info.html">个人信息</a></li>
-				    <li><a href="#">资料修改</a></li>
+				   <li><a href="userinfo/show.xhtml">个人信息</a></li>
+				    <li><a href="userinfo/update.xhtml">资料修改</a></li>
 				    <li><a href="#">头像修改</a></li>
-				   <li><a href="#">收货地址</a></li>
-				   <li><a href="#">修盖密码</a></li>
+				   <li><a href="userinfos/address.xhtml">收货地址</a></li>
+				   <li><a href="userinfo/update_password.xhtml">修改密码</a></li>
+				    <li><a href="order/order_info.xhtml">我的订单</a></li>
 				   <li class="last"><a href="#">消息中心</a></li>
 			    </ul>
 		     </nav><!-- .left_menu -->
@@ -191,8 +193,8 @@ display: block;
 		     <nav class="left_menu">
 			    <ul>
 				   <li><a href="projectinfo/project_like.xhtml">我喜欢的作品<span>(21)</span></a></li>
-				 <!--   <li><a href="#">我关注的作品<span> (27)</span></a></li>--> 
-				   <li><a href="#">我发表的作品<span>(33)</span></a></li>
+				 <!--  <li><a href="#">我关注的作品<span> (27)</span></a></li> --> 
+				   <li><a href="projectinfo/project_publish.xhtml">我发表的作品<span>(33)</span></a></li>
 			    </ul>
 		     </nav><!-- .left_menu -->
 	      </aside>
@@ -203,6 +205,7 @@ display: block;
 	
 	   
        </div><!-- .sidebar -->
+
 
        <div id="content" class="grid_9">
 	      <h1 class="page_title">喜欢的作品</h1>
