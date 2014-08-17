@@ -268,7 +268,6 @@
         <div class="list_carousel">
         <ul id="list_product2" class="list_product">
         <c:forEach items="${proInfos.content }" var="pro">
-        	<c:out value="${pro.proName }"></c:out>
         	 <li class="">
             <div class="grid_3 product">
               <img class="sale" src="images/sale.png" alt="Sale"/>
