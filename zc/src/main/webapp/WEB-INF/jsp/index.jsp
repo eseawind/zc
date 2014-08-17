@@ -138,8 +138,8 @@
           </div><!-- .grid_10 -->
 
           <div class="grid_2">
-            <a id="next_c1" class="next arows" href="#"><span>下一页</span></a>
-            <a id="prev_c1" class="prev arows" href="#"><span>上一页</span></a>
+            <a id="next_c1" class="next arows" href="javascript:void(0)"><span>下一页</span></a>
+            <a id="prev_c1" class="prev arows" href="javascript:void(0)"><span>上一页</span></a>
            </div><!-- .grid_2 -->
         </div><!-- .c_header -->
 
@@ -253,18 +253,20 @@
         </div><!-- .list_carousel -->
       </div><!-- .carousel -->
 
+     
+
       <div class="carousel">
         <div class="c_header">
           <div class="grid_10">
             <h2>最新品</h2>
           </div><!-- .grid_10 -->
-
+ 
           <div class="grid_2">
-            <a id="next_c21" class="next arows" href="aaaaaaaaaa#" style="display: block;"><span>Next</span></a>
-            <a id="prev_c21" class="prev arows" href="#"><span>Prevs</span></a>
+            <a id="next_c2" class="next arows" href="#"><span>Next</span></a>
+            <a id="prev_c2" class="prev arows" href="#"><span>Prev</span></a>
           </div><!-- .grid_2 -->
         </div><!-- .c_header -->
-
+ 
         <div class="list_carousel">
         <ul id="list_product2" class="list_product">
         <c:forEach items="${proInfos.content }" var="pro">
@@ -288,11 +290,12 @@
             </div><!-- .grid_3 -->
           </li>
         </c:forEach>
-        </ul>
-        
-        <!-- #list_product2 -->
-        </div>
-        
+         
+ 
+        </ul><!-- #list_product2 -->
+        </div><!-- .list_carousel -->
+      </div><!-- .carousel -->
+
         <!-- .list_carousel -->
       </div><!-- .carousel -->
 

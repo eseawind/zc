@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <base href="<%=basePath%>"/>
 <%@include file="/WEB-INF/jsp/include.jsp"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>T恤众筹平台</title>
 </head>
 
 <body>
@@ -136,12 +136,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <nav class="primary">
           <ul>
             <li class="curent"><a href="index.html">首页</a></li>
-            <li><a href="catalog_grid.html">短袖</a>
+            <li><a href="projectinfo/project_list.html">短袖</a>
             <ul class="sub">
-                <li><a href="catalog_grid.html">麻布</a></li>
-                <li><a href="catalog_grid.html">棉质</a></li>
-                <li><a href="catalog_grid.html">尼龙</a></li>
-                <li><a href="catalog_grid.html">其它</a></li>
+                <li><a href="projectinfo/project_list.html">麻布</a></li>
+                <li><a href="projectinfo/project_list.html">棉质</a></li>
+                <li><a href="projectinfo/project_list.html">尼龙</a></li>
+                <li><a href="projectinfo/project_list.html">其它</a></li>
               </ul>
             
             </li>
