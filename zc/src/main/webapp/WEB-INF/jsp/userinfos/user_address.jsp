@@ -288,7 +288,7 @@ display: block;
 				
 				
 				<div class="password">
-					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电话:</strong><sup class="surely">*</sup>
+					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱:</strong><sup class="surely">*</sup>
 					&nbsp;<input id=userEmail   type=text name=userEmail class="" value="" />
 					<DIV id=validEmail class=Validform_checktip></DIV>
 				
@@ -324,7 +324,7 @@ display: block;
               <td>   <c:out value="${user.userZip}"></c:out>   </td>
               <td><c:out value="${user.userEmail}"></c:out> </td>
               <td>
-                <a href="userinfos/address_<c:out value="${user.userCode }.html"></c:out>" class="blue" onclick="return confirm('确定要删除吗？');">删除</a>              </td>
+                <a href="userinfos/address_<c:out value="${user.userCode }.xhtml"></c:out>" class="blue" onclick="return confirm('确定要删除吗？');">删除</a>              </td>
             </tr>
              </c:forEach>
           
