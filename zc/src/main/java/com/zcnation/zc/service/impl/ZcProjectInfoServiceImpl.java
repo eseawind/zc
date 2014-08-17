@@ -41,8 +41,9 @@ public class ZcProjectInfoServiceImpl implements ZcProjectInfoService{
 	}
 	@Override
 	public Page<ZcProjectInfo> queryByPage(int pageNumber, int pageSize) {
-		Pageable page=new PageRequest(pageNumber, pageSize);
 		Sort s=new Sort("proTime");
+		Pageable page=new PageRequest(pageNumber, pageSize,s);
+		
 		
 		return zcProjectInfoDao.findAll(page);
 	}
