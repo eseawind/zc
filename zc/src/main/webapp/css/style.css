@@ -1244,6 +1244,13 @@ h1.post_title{
 }
 .sort a:hover.sort_up{text-decoration: none;}
 
+.sort a.sort_down{
+	color: #444!important;
+	font:bold 20px Segoeui-Bold, Arial, Verdana, serif;
+	text-decoration: none!important;
+}
+.sort a:hover.sort_down{text-decoration: none;}
+
 .grid_product{
 	margin: 42px -12px 10px;
 	width: 756px;
