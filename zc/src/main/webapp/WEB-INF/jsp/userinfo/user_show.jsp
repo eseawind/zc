@@ -174,7 +174,7 @@ display: block;
 				    <li><a href="#">头像修改</a></li>
 				   <li><a href="userinfos/address.xhtml">收货地址</a></li>
 				   <li><a href="userinfo/update_password.xhtml">修改密码</a></li>
-				    <li><a href="userinfo/update_password.xhtml">我的订单</a></li>
+				    <li><a href="order/order_info.xhtml">我的订单</a></li>
 				   <li class="last"><a href="#">消息中心</a></li>
 			    </ul>
 		     </nav><!-- .left_menu -->
