@@ -37,7 +37,7 @@ public class ZcOrdersInfoServiceImpl implements ZcOrdersInfoService {
 			//订单表
 			Calendar ordtime=Calendar.getInstance();
 			ZcOrdersInfo orderinfo=new ZcOrdersInfo();
-			orderinfo.setOrderStatus(ZcContext.ORDER_STATUS_FIRST);
+			orderinfo.setOrderStatus(String.valueOf(ZcContext.ORDER_STATUS_FIRST));
 			orderinfo.setOrderTime(Calendar.getInstance().getTime());
 			orderinfo.setUserCode(info.getUserCode());
 			//订单编号 生成规程 
