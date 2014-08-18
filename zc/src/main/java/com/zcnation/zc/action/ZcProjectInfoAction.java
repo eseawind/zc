@@ -70,20 +70,29 @@ public class ZcProjectInfoAction {
 	
 	
 	@RequestMapping("/project_list.html")
-	public String to_list(HttpServletRequest request) {
-		Sort s=new Sort(Direction.DESC, "proTime");
-		Pageable p=new PageRequest(0, 8,s);
-		Page<ZcProjectInfo> ojbs=zcProjectInfoService.queryByPage(0, 8);
+	public String to_list(HttpServletRequest request,String currentPage) {
+//		Sort s=new Sort(Direction.DESC, "proTime");
+//		Pageable p=new PageRequest(0, 8,s);
+//		Page<ZcProjectInfo> ojbs=zcProjectInfoService.queryByPage(0, 8);
+//		List<ZcProjectInfo> prolist=new ArrayList<ZcProjectInfo>();
+//		prolist=ojbs.getContent();
+//		System.out.println(prolist.size());
+		System.out.println("的的的顶顶顶顶顶"+currentPage);
+		if (currentPage == null || currentPage.equals("")) {
+			
+			currentPage="1";
+		}
+		System.out.println("ddddddddddddd"+currentPage);
 		List<ZcProjectInfo> prolist=new ArrayList<ZcProjectInfo>();
-		prolist=ojbs.getContent();
-		System.out.println(prolist.size());
+		prolist=zcProjectInfoNativeService.queryByProShStatus(Integer.parseInt(currentPage));
+		System.out.println("size"+prolist.size());
 		request.setAttribute("proinfos", prolist);
 		
 		
 		return "projectinfo/project_list";
 	}
 	
-
+ 
 	@RequestMapping("/project_like.xhtml")
 	public String to_like(HttpServletRequest request) {
 		List<ZcProjectLike> list=new ArrayList<ZcProjectLike>();

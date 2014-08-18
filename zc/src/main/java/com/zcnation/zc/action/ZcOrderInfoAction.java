@@ -57,6 +57,7 @@ public class ZcOrderInfoAction {
 		//list=zcProjectInfoService.queryByUserCodeAndProNameLike(sezcUserInfo.getUserCode(),"%"+proName+"%");
 		request.setAttribute("ordinfos", list);
 		request.setAttribute("ocodes", ocodes);
+		request.setAttribute("orderStatus", orderStatus);
 		System.out.println(list.size());
 		
 //		if(list.size()>0){

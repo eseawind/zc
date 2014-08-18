@@ -22,12 +22,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.zcnation.zc.domain.ZcProjectInfo;
+import com.zcnation.zc.service.ZcProjectInfoNativeService;
 import com.zcnation.zc.service.ZcProjectInfoService;
 
 @Controller
 public class IndexAction {
 	private Logger logger=Logger.getLogger(IndexAction.class);
 	@Autowired private ZcProjectInfoService zcProjectInfoService;
+	@Autowired private ZcProjectInfoNativeService zcProjectInfoNativeService;
 	
 	@RequestMapping("/index.html")
 	public String to_index(HttpServletRequest request){
@@ -36,6 +38,13 @@ public class IndexAction {
 		Page<ZcProjectInfo> pas=zcProjectInfoService.queryByPage(0, 5);
 		System.out.println("总大小："+pas.getTotalPages());
 		request.setAttribute("proInfos", pas);
+		
+		
+		
+		List prolikeinfos=zcProjectInfoNativeService.queryByProShStatus();
+		request.setAttribute("prolikeinfos", prolikeinfos);
+		System.out.println("likesie"+prolikeinfos.size());
+		
 		List<String> list=new ArrayList<String>();
 		for (int i = 0; i < 20; i++) {
 			list.add("我是最好的设计师"+i);
