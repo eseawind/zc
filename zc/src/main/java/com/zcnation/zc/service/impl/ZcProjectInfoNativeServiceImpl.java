@@ -19,5 +19,15 @@ public class ZcProjectInfoNativeServiceImpl implements ZcProjectInfoNativeServic
 		// TODO Auto-generated method stub
 	return	zcProjectInfoNativeDao.findByUserCodeAndProShStatusAndProNameAndProShStatus(userCode, proName,proShStatus);
 	}
+	@Override
+	public List<ZcProjectInfo> queryByProShStatus() {
+		// TODO Auto-generated method stub
+		return zcProjectInfoNativeDao.findByProShStatus();
+	}
+	@Override
+	public List<ZcProjectInfo> queryByProShStatus(Integer currentPage) {
+		// TODO Auto-generated method stub
+		return zcProjectInfoNativeDao.findByProShStatus(currentPage);
+	}
 
 }
