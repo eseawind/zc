@@ -159,6 +159,7 @@ display: block;
     });
   });
 </script>
+
 </head>
 <body>
 
@@ -207,7 +208,7 @@ display: block;
        </div><!-- .sidebar -->
 
        <div id="content" class="grid_9">
-	      <h1 class="page_title">资料修改</h1>
+	      <h1 class="page_title">收货地址</h1>
 	      
 	      
 	      
@@ -298,8 +299,10 @@ display: block;
 				
 				<div class="submit">										
 					<SPAN style="CURSOR: pointer ;margin-left:10px;" 
-  id=reg><IMG id=btnAdd src="images/ty.gif" 
-  width=251 height=40></SPAN>
+  id=reg>
+  <a href="javascript:void(0)" id=btnAdd class="bay">购买</a>
+  
+  </SPAN>
 				</div>
 				</FORM>
 </div></div>
