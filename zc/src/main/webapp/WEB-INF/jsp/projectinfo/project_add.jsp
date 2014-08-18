@@ -64,6 +64,30 @@
 		
 	})
 </script>
+<script>
+	$(document).ready(function() {
+		$("select").selectBox();
+	});
+  </script>
+
+  <script>
+	$(document).ready(function(){
+	    $("#myController").jFlow({
+			controller: ".control", // must be class, use . sign
+			slideWrapper : "#jFlowSlider", // must be id, use # sign
+			slides: "#slider",  // the div where all your sliding divs are nested in
+			selectedWrapper: "jFlowSelected",  // just pure text, no sign
+			width: "984px",  // this is the width for the content-slider
+			height: "480px",  // this is the height for the content-slider
+			duration: 400,  // time in miliseconds to transition one slide
+			prev: ".slidprev", // must be class, use . sign
+			next: ".slidnext", // must be class, use . sign
+			auto: true	
+		});
+	});
+  </script>
+  
+	
 </head>
 <body>
   
@@ -114,19 +138,19 @@
 			
 			<div class="password">
 					<strong>类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:</strong><sup class="surely">*</sup>
-					<select name="proType" id="proType"  class="" >
+					<select name="proType" id="proType"  class=""  style="width: 120px">
 									<option value="0">请选择类别</option>
-									<option value="1">上衣</option>
-													<option value="2">短袖</option>	
-														<option value="3">短袖</option>				
-																	</select>
+									<option value="1">短袖</option>
+									<option value="2">长袖</option>	
+													
+					</select>
 					
 				<DIV id=validType class=Validform_checktip></DIV> 
 				</div>
 				
 					<div class="password">
 					<strong>面&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;料:</strong><sup class="surely">*</sup>
-					<select name="proFabric" id="proFabric"  class="" >
+					<select name="proFabric" id="proFabric"  class="" style="width: 120px" >
 									<option value="0">请选择面料</option>
 									<option value="1">尼龙</option>
 													<option value="2">棉</option>			
@@ -139,7 +163,7 @@
 				
 					<div class="password">
 					<strong>打&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;样:</strong><sup class="surely">*</sup>
-					<select name="proSample" id="proSample"  class="" >
+					<select name="proSample" id="proSample"  class="" style="width: 120px" >
 									<option value="0">请选择打样</option>
 									<option value="1">是</option>
 													<option value="2">否</option>			
@@ -159,12 +183,12 @@
 				
 				<div class="email">
 					<strong>项目地点:</strong><sup class="surely">*</sup>
-					<select name="proProvince" id="proProvince" class="">
+					<select name="proProvince" id="proProvince" class="" style="width: 120px">
 									<option >请选择省份</option>
 									<option selected="selected" value="浙江省">浙江省</option>
 																	
 																	</select>
-								<select name="proCity" id="proCity"   class="" >
+								<select name="proCity" id="proCity"   class="" style="width: 120px" >
 									<option >请选择城市</option>
 									<option selected="selected" value="杭州市">杭州市</option>
 									<option value="宁波市">宁波市</option>

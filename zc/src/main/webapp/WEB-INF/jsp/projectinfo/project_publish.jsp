@@ -132,7 +132,28 @@ vertical-align: middle;
 display: inline-block;
 }
 
-</style>
+</style><script>
+	$(document).ready(function() {
+		$("select").selectBox();
+	});
+  </script>
+
+  <script>
+	$(document).ready(function(){
+	    $("#myController").jFlow({
+			controller: ".control", // must be class, use . sign
+			slideWrapper : "#jFlowSlider", // must be id, use # sign
+			slides: "#slider",  // the div where all your sliding divs are nested in
+			selectedWrapper: "jFlowSelected",  // just pure text, no sign
+			width: "984px",  // this is the width for the content-slider
+			height: "480px",  // this is the height for the content-slider
+			duration: 400,  // time in miliseconds to transition one slide
+			prev: ".slidprev", // must be class, use . sign
+			next: ".slidnext", // must be class, use . sign
+			auto: true	
+		});
+	});
+  </script>
 <script type="text/javascript">
 
 </script>
@@ -192,7 +213,7 @@ display: inline-block;
 	      <dl class="findBox clearfix">
           <dt>
        
-                    <select  id="proShStatus" name="proShStatus">
+                    <select  id="proShStatus" name="proShStatus" style="width: 150px;">
                         <option value="-1" selected="selected">全部</option>
                                   <option value="0">审核中</option>
                                     <option value="1">众筹中</option>
@@ -203,7 +224,7 @@ display: inline-block;
           </dt>
           <dd>
             <input type="text" class="incInput" name="proName" value="${proName }" size="36" id="proName">
-         <input type="submit"value="111">
+         <input type="submit"value="查询">
           </dd>
         </dl>
 	      </FORM>

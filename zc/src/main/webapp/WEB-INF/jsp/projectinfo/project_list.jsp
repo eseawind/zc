@@ -58,38 +58,7 @@
 	      });             
        })
   </script>
-<script type="text/javascript">
-	$(function(){
-		var register={};
-		register={
-				initButtonRegister:function(){
-					$("#btnAdd").bind('click',function(e){
-						//阻止默认事件发生,会出现 刷新页面的请求
-						e.preventDefault();
-						//表单验证。。
-						var formJson=$("#addForm").serializeArray();
-						$.post("userinfos/beginAdd.html",formJson,function(data){
-							var d=$.eval2(data);
-							if(d.success){
-								$.alert("添加提示","添加成功");
-							}else{
-								$.alert("添加提示",d.errorMsgs[0]);
-							}
-						});
-					});
-					
-				} 
-		};
-		function main(){
-			//注册事件
-			register.initButtonRegister();
-			//register.blurInput();
-		}
-		
-		main();
-		
-	})
-</script>
+
 <script type="text/javascript">
   $(document).ready(function() {
     var deliveryd = new DeliveryInfoDialog("addressd");
@@ -101,6 +70,19 @@
       });
     });
   });
+  
+  
+
+  
+  
+ 
+  
+ 
+  
+  function kk(){
+	 
+		alert(1111);
+	}
 </script>
 </head>
 <body>
@@ -189,7 +171,7 @@
 		     
 		     <div class="show">
 			   转到
-			    <select>
+			    <select id="currentPage" name="currentPage" onclick="gopage2();">
 				   <option>1</option>
 				   <option>2</option>
 				   <option>3</option>
@@ -230,13 +212,13 @@
 				<div class="grid_3">
 					<img class="sale" src="images/new.png" alt="New"/>
 					<div class="prev">
-						<a href="projectinfo/project_${pro.proCode }.html"><img src="uploadImg/${pro.resourceInfo.resourceName }" width="115px" height="189px" alt="" title="" /></a>
+						<a href="projectinfo/project_${pro[0] }.html"><img src="uploadImg/${pro[0] }" width="115px" height="189px" alt="" title="" /></a>
 					</div><!-- .prev -->
 				</div><!-- .grid_3 -->
 				
 				<div class="grid_4">
 					<div class="entry_content">
-						<a href="product_page.html"><h3 class="title">${pro.proName }</h3></a>
+						<a href="product_page.html"><h3 class="title">${pro[0] }</h3></a>
 						<div class="review">
 							<a class="plus" href="#"></a>
 							<a class="plus" href="#"></a>
@@ -245,18 +227,18 @@
 							<a href="#"></a>
 							<span>1 REVIEW(S)</span>
 						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pharetra faucibus congue. Aenean luctus dolor et purus malesuada luctus. Quisque ullamcorper ante viverra lectus fermentum quis rutrum erat sollicitudin. Fusce tortor massa.</p>
-						<a class="more" href="product_page.html">Learn More</a>
+						<p>${pro[0] }</p>
+						<a class="more" style="margin-left: 260px;" href="projectinfo/project_${pro[0] }.html">更多</a>
 					</div><!-- .entry_content -->
 				</div><!-- .grid_4 -->
 				
 				<div class="grid_2">
 					<div class="cart">
 						<div class="price">
-							<div class="price_new">￥<c:out value="${pro.proUnit }"></c:out> </div>
+							<div class="price_new">￥<c:out value="${pro[0] }"></c:out> </div>
 						
 						</div>
-						<a href="#" class="bay">购买</a>
+						<a href="projectinfo/project_${pro[0] }.html" class="bay">购买</a>
 						<a href="#" class="obn"></a>
 						<a href="#" class="like"></a>
 					</div><!-- .cart -->

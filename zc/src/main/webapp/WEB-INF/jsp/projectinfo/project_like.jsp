@@ -216,7 +216,7 @@ display: block;
 
  <table border="0" cellpadding="0" cellspacing="0" class="tableStyle thback">
           <tbody><tr>
-              <!--   <th>序号</th>-->
+             
             <th>作品名称</th>
             <th>日期</th>
             <th>操作</th>
@@ -224,8 +224,7 @@ display: block;
           </tr>
              <c:forEach items="${prolikes}" var="pro">
                <tr>
-             <!--  <td><c:out value="${pro.likeCode }"></c:out></td> -->
-              
+            
                <td><img src="uploadImg/<c:out value="${pro.zcProjectInfo.resourceInfo.resourceName}"></c:out>" width="60" height="43" alt="" title="" />
                
              <span style="vertical-align: top;">  <c:out value="${pro.zcProjectInfo.proName}"></c:out></span>
