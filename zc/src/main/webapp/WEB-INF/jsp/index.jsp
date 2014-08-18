@@ -53,6 +53,11 @@
 	      });
        })
   </script>
+  
+  <style type="text/css">
+  
+ 
+  </style>
 
 </head>
 <body>
@@ -153,14 +158,36 @@
             <div class="grid_3 product">
               <img class="sale" src="images/sale.png" alt="Sale"/>
               <div class="prev">
-                <a href="projectinfo/project_show.html"><img src="uploadImg/${prolike[0]}" alt="" title="" /></a>
+                <a href="projectinfo/project_${prolike[0]}.html"><img src="uploadImg/${prolike[7]}" alt="" title="" /></a>
               </div><!-- .prev -->
               <h3 class="title">${prolike[1] }</h3>
+         
+              
+              
+              <c:choose>  
+               <c:when test="${empty prolike[9]}">  
+                  <div class="progress-bar" title="已售卖了0件，完成目标的0%"> 
+                <span class="progress bg-red" style="width:0%;" ></span>
+                	</div>
+                </c:when> 
+                      <c:otherwise>  
+                       <div class="progress-bar" title="已售卖了${prolike[10]}件，完成目标的${prolike[9]}"> 
+                <span class="progress bg-red" style="width:${prolike[9]};" ></span>
+                	</div>
+                         
+                       </c:otherwise> 
+                      </c:choose> 
+              
+            
+              
+              
+              
+		
+	
               <div class="cart">
                 <div class="price">
                 <div class="vert">
                   <div class="price_new">￥<c:out value="${prolike[5]}"></c:out></div>
-                 
                 </div>
                 </div>
                 <a href="#" class="obn"></a>
@@ -194,18 +221,35 @@
  
         <div class="list_carousel">
         <ul id="list_product2" class="list_product">
-        <c:forEach items="${proInfos.content }" var="pro">
+        <c:forEach items="${proInfos }" var="pro">
         	 <li class="">
             <div class="grid_3 product">
               <img class="sale" src="images/sale.png" alt="Sale"/>
               <div class="prev">
-                <a href="projectinfo/project_${pro.proCode }.html"><img src="uploadImg/${pro.resourceInfo.resourceName }" alt="" title="" /></a>
+                <a href="projectinfo/project_${pro[0] }.html"><img src="uploadImg/${pro[7]}" alt="" title="" /></a>
               </div><!-- .prev -->
-              <h3 class="title">${pro.proName }</h3>
+              <h3 class="title">${pro[1]}</h3>
+              
+                
+              <c:choose>  
+               <c:when test="${empty pro[9]}">  
+                  <div class="progress-bar" title="已售卖了0件，完成目标的0%"> 
+                <span class="progress bg-red" style="width:0%;" ></span>
+                	</div>
+                </c:when> 
+                      <c:otherwise>  
+                       <div class="progress-bar" title="已售卖了${pro[9]}件，完成目标的${pro[8]}"> 
+                <span class="progress bg-red" style="width:${pro[8]};" ></span>
+                	</div>
+                         
+                       </c:otherwise> 
+                      </c:choose> 
+              
+              
               <div class="cart">
                 <div class="price">
                 <div class="vert">
-                  <div class="price_new">￥<c:out value="${pro.proUnit }"></c:out> </div>
+                  <div class="price_new">￥<c:out value="${pro[5] }"></c:out> </div>
                 </div>
                 </div>
                 <a href="#" class="obn"></a>
