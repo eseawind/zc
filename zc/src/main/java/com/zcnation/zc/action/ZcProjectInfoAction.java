@@ -84,7 +84,7 @@ public class ZcProjectInfoAction {
 		}
 		System.out.println("ddddddddddddd"+currentPage);
 		List<ZcProjectInfo> prolist=new ArrayList<ZcProjectInfo>();
-		prolist=zcProjectInfoNativeService.queryByProShStatus(Integer.parseInt(currentPage));
+		prolist=zcProjectInfoNativeService.queryByProShStatusAndPage(Integer.parseInt(currentPage));
 		System.out.println("size"+prolist.size());
 		request.setAttribute("proinfos", prolist);
 		
