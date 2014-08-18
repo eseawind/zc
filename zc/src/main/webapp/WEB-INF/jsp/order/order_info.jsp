@@ -133,10 +133,48 @@ display: inline-block;
 }
 
 </style>
-<script type="text/javascript">
+<script>
+	$(document).ready(function() {
+	
+		 var orderStatusSelect=$("#orderStatusSelect").val();
+		
+		if(orderStatusSelect==''||orderStatusSelect=='-1'){
+			 $("#orderStatus option").filter("[value='-1']").attr("selected", true);//有效！ 
+				
+				
+		}else{
+			
+			 $("#orderStatus option").filter("[value='"+orderStatusSelect+"']").attr("selected", true);//有效！ 
+				
+				
+		}
+		
+		 
+		
+			$("select").selectBox();
+			
 
-</script>
 
+	
+	});
+  </script>
+
+  <script>
+	$(document).ready(function(){
+	    $("#myController").jFlow({
+			controller: ".control", // must be class, use . sign
+			slideWrapper : "#jFlowSlider", // must be id, use # sign
+			slides: "#slider",  // the div where all your sliding divs are nested in
+			selectedWrapper: "jFlowSelected",  // just pure text, no sign
+			width: "984px",  // this is the width for the content-slider
+			height: "480px",  // this is the height for the content-slider
+			duration: 400,  // time in miliseconds to transition one slide
+			prev: ".slidprev", // must be class, use . sign
+			next: ".slidnext", // must be class, use . sign
+			auto: true	
+		});
+	});
+  </script>
 </head>
 <body>
 
@@ -192,7 +230,7 @@ display: inline-block;
 	      <dl class="findBox clearfix">
           <dt>
        
-                    <select  id="orderStatus" name="orderStatus">
+                    <select  id="orderStatus" name="orderStatus" style="width: 150px;">
                         <option value="-1" selected="selected">全部</option>
                                  <option value="0" >已提交</option>
                                    <option value="1" >已取消</option>
@@ -204,10 +242,11 @@ display: inline-block;
 
                                     
                       </select>
+                      <input type="hidden" id="orderStatusSelect" name="orderStatusSelect" value="${orderStatus }">
           </dt>
           <dd>
             <input type="text" class="incInput" name="ocodes" value="${ocodes }" size="36" id="ocodes">
-         <input type="submit"value="查询">
+         <input type="submit" class="bay" value="查询">
           </dd>
         </dl>
 	      </FORM>
