@@ -2867,3 +2867,21 @@ border-bottom: 1px dashed #e7e7e7;
 .itMyPicShow .tabBoxR p {
 float: right;
 }
+
+ .progress-bar {
+width: 225px;
+height: 10px;
+line-height: 0px;
+font-size: 0px;
+background: #F2F2F2;
+overflow: hidden;
+}
+.progress {
+height: 10px;
+line-height: 0px;
+font-size: 0px;
+display: block;
+}
+.bg-red {
+background: #FF6559;
+}
