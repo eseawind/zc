@@ -52,28 +52,31 @@ public class ZcProjectInfoNativeDaoImpl implements ZcProjectInfoNativeDao{
 		}
 		return list;
 	}
+	/**
+	 * 最受欢迎
+	 */
 	@Override
 	public List<ZcProjectInfo> findByProShStatus() {
 		// TODO Auto-generated method stub
-		String sql="select zpi.PRO_CODE,zpi.PRO_NAME,zpi.PRO_SH_STATUS,zpi.PRO_TARGET,zpi.RESOURCE_CODE as zpircode,zpi.pro_unit, zri.RESOURCE_CODE as zrircode,zri.RESOURCE_NAME,(select count(*) from  zc_project_like zpl where zpl.pro_code in(zpi.pro_code)) as likecount from zc_project_info zpi left JOIN zc_resource_info zri on zpi.RESOURCE_CODE=zri.RESOURCE_CODE where 1=1    order by   likecount desc limit 0, 6  ";
+		String sql="select zpi.PRO_CODE,zpi.PRO_NAME,zpi.PRO_SH_STATUS,zpi.PRO_TARGET,zpi.RESOURCE_CODE as zpircode,zpi.pro_unit, zri.RESOURCE_CODE as zrircode,zri.RESOURCE_NAME,(select count(*) from  zc_project_like zpl where zpl.pro_code in(zpi.pro_code)) as likecount,"
+				+ "concat ( ROUND ((select sum(zod.ORDER_NUMBER) from  zc_order_detail zod where zod.pro_code in(zpi.pro_code))  /zpi.PRO_TARGET *100,2),'%') as orderdiscount,(select sum(zod.ORDER_NUMBER) from  zc_order_detail zod where zod.pro_code in(zpi.pro_code)) as ordercount from zc_project_info zpi left JOIN zc_resource_info zri on zpi.RESOURCE_CODE=zri.RESOURCE_CODE where 1=1    order by   likecount desc limit 0, 6 ";
 //String sql1="select zpi.PRO_CODE,zpi.PRO_NAME,zpi.PRO_SH_STATUS,zpi.PRO_TARGET,zpi.RESOURCE_CODE as zpircode,zri.RESOURCE_CODE as zrircode,zri.RESOURCE_NAME,(select count(*) from  zc_project_like zpl where zpl.pro_code in(zpi.pro_code)) as likecount from zc_project_info zpi left JOIN zc_resource_info zri on zpi.RESOURCE_CODE=zri.RESOURCE_CODE where 1=1  and zpi.PRO_SH_STATUS<>0   order by   likecount desc limit 0, 6  ";
 	
 	
 		EntityManager em=entityManagerFactory.createEntityManager();
 		Query query=em.createNativeQuery(sql);
 		List list=query.getResultList();
-		for (Object object : list) {
-			//这个object应该是个数组
-			Object[] oj=(Object[])object;
-			System.out.println("项目名称："+oj[0]+" 资源名称："+oj[1]);
-		}
+		
 		return list;
 	}
+	/**
+	 * 所有产品分页
+	 */
 	@Override
-	public List<ZcProjectInfo> findByProShStatus(Integer currentPage) {
+	public List<ZcProjectInfo> findByProShStatusAndPage(Integer currentPage) {
 		// TODO Auto-generated method stub
 		 int start = (currentPage - 1) * 4;  
-			String sql="select zpi.PRO_CODE,zpi.PRO_NAME,zpi.PRO_SH_STATUS,zpi.PRO_TARGET,zpi.RESOURCE_CODE as zpircode,zpi.pro_unit, zri.RESOURCE_CODE as zrircode,zri.RESOURCE_NAME,(select count(*) from  zc_project_like zpl where zpl.pro_code in(zpi.pro_code)) as likecount from zc_project_info zpi left JOIN zc_resource_info zri on zpi.RESOURCE_CODE=zri.RESOURCE_CODE where 1=1    order by   likecount desc   ";
+			String sql="select zpi.PRO_CODE,zpi.PRO_NAME,zpi.PRO_SH_STATUS,zpi.PRO_TARGET,zpi.RESOURCE_CODE as zpircode,zpi.pro_unit, zri.RESOURCE_CODE as zrircode,zri.RESOURCE_NAME,(select count(*) from  zc_project_like zpl where zpl.pro_code in(zpi.pro_code)) as likecount,zpi.pro_remarks from zc_project_info zpi left JOIN zc_resource_info zri on zpi.RESOURCE_CODE=zri.RESOURCE_CODE where 1=1    order by   likecount desc   ";
 			EntityManager em=entityManagerFactory.createEntityManager();
 		 Query query = em.createNativeQuery(sql); 
 		 int total = query.getResultList().size();  
@@ -88,6 +91,22 @@ public class ZcProjectInfoNativeDaoImpl implements ZcProjectInfoNativeDao{
 
 		 
 		return list;
+	}
+	/**
+	 * 最新
+	 */
+	@Override
+	public List<ZcProjectInfo> findByProTime() {
+		// TODO Auto-generated method stub
+				String sql="select zpi.PRO_CODE,zpi.PRO_NAME,zpi.PRO_SH_STATUS,zpi.PRO_TARGET,zpi.RESOURCE_CODE as zpircode,zpi.pro_unit, zri.RESOURCE_CODE as zrircode,zri.RESOURCE_NAME,concat ( ROUND ((select sum(zod.ORDER_NUMBER) from zc_order_detail zod where zod.pro_code in(zpi.pro_code))  /zpi.PRO_TARGET *100,2),'%') as orderdiscount,(select sum(zod.ORDER_NUMBER) from  zc_order_detail zod where zod.pro_code in(zpi.pro_code)) as ordercount from zc_project_info zpi left JOIN zc_resource_info zri on zpi.RESOURCE_CODE=zri.RESOURCE_CODE where 1=1   order by   zpi.pro_time desc limit 0, 6 ";
+		//String sql1="select zpi.PRO_CODE,zpi.PRO_NAME,zpi.PRO_SH_STATUS,zpi.PRO_TARGET,zpi.RESOURCE_CODE as zpircode,zri.RESOURCE_CODE as zrircode,zri.RESOURCE_NAME,(select count(*) from  zc_project_like zpl where zpl.pro_code in(zpi.pro_code)) as likecount from zc_project_info zpi left JOIN zc_resource_info zri on zpi.RESOURCE_CODE=zri.RESOURCE_CODE where 1=1  and zpi.PRO_SH_STATUS<>0   order by   likecount desc limit 0, 6  ";
+			
+			
+				EntityManager em=entityManagerFactory.createEntityManager();
+				Query query=em.createNativeQuery(sql);
+				List list=query.getResultList();
+			
+				return list;
 	}
 	
 
