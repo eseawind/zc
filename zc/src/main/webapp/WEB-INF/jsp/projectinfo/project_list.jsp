@@ -212,22 +212,23 @@
 				<div class="grid_3">
 					<img class="sale" src="images/new.png" alt="New"/>
 					<div class="prev">
-						<a href="projectinfo/project_${pro[0] }.html"><img src="uploadImg/${pro[0] }" width="115px" height="189px" alt="" title="" /></a>
+						<a href="projectinfo/project_${pro[0] }.html"><img src="uploadImg/${pro[7] }" width="115px" height="189px" alt="" title="" /></a>
 					</div><!-- .prev -->
 				</div><!-- .grid_3 -->
 				
 				<div class="grid_4">
 					<div class="entry_content">
-						<a href="product_page.html"><h3 class="title">${pro[0] }</h3></a>
+						<a href="product_page.html"><h3 class="title">${pro[1] }</h3></a>
 						<div class="review">
-							<a class="plus" href="#"></a>
+						<hr style="">
+							<!-- <a class="plus" href="#"></a>
 							<a class="plus" href="#"></a>
 							<a class="plus" href="#"></a>
 							<a href="#"></a>
 							<a href="#"></a>
-							<span>1 REVIEW(S)</span>
+							<span>1 REVIEW(S)</span> -->
 						</div>
-						<p>${pro[0] }</p>
+						<p>${pro[9] }</p>
 						<a class="more" style="margin-left: 260px;" href="projectinfo/project_${pro[0] }.html">更多</a>
 					</div><!-- .entry_content -->
 				</div><!-- .grid_4 -->
@@ -235,7 +236,7 @@
 				<div class="grid_2">
 					<div class="cart">
 						<div class="price">
-							<div class="price_new">￥<c:out value="${pro[0] }"></c:out> </div>
+							<div class="price_new">￥<c:out value="${pro[5] }"></c:out> </div>
 						
 						</div>
 						<a href="projectinfo/project_${pro[0] }.html" class="bay">购买</a>
