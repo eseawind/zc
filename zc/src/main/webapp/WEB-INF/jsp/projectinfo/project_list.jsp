@@ -16,7 +16,35 @@
 
  <script>
 	$(document).ready(function() {
-		$("select").selectBox();
+		
+		 var orderStatusSelect=$("#currentPageSelect").val();
+		 var sortSeleSelect=$("#sortSeleSelect").val();
+		 
+			if(orderStatusSelect==''||orderStatusSelect=='-1'){
+				 $("#currentPage option").filter("[value='-1']").attr("selected", true);//有效！ 
+					
+					
+			}else{
+				
+				 $("#currentPage option").filter("[value='"+orderStatusSelect+"']").attr("selected", true);//有效！ 
+					
+					
+			}
+			
+			
+			if(sortSeleSelect==''||sortSeleSelect=='0'){
+				 $("#sortSele option").filter("[value='0']").attr("selected", true);//有效！ 
+					
+					
+			}else{
+				
+				 $("#sortSele option").filter("[value='"+sortSeleSelect+"']").attr("selected", true);//有效！ 
+					
+					
+			}
+			
+			$("select").selectBox();
+			 
 	});
   </script>
 
@@ -54,20 +82,35 @@
   <script>
        $(document).ready(function(){
 	      $("button").click(function(){
-		     $(this).addClass('click')
+		     $(this).addClass('click');
 	      });    
 	      
 	      //排序
-	      $("#sortSele").change(function(){
-	    	  var that=$(this);
-	    	  alert(that.val());
-	      });
+	     // $("#sortSele").change(function(){
+	    	//  var that=$(this);
+	    	
+	    	  
+	    	 // var page= $("#currentPage");
+	    	 // window.location=("../projectinfo/project_list.html?currentPage="+page.val());
+	    	  
+	     // });
 	      //分页
 	      $("#currentPage").change(function(){
 	    	  var page=$(this);
-	    	  alert(page.val());
-	      })
+	    	  window.location=("../projectinfo/project_list.html?currentPage="+page.val());
+	    	 
+	      });
 	      
+	      
+	      $("#sortdown").click(function(){
+	    	 
+	    	  window.location=("../projectinfo/project_list.html?currentPage=1&sortSele="+$("#sortSele").val()+"&sortBy=1");  
+		      }); 
+	      
+	      $("#sortup").click(function(){
+	    
+	    	  window.location=("../projectinfo/project_list.html?currentPage=1&sortSele="+$("#sortSele").val()+"&sortBy=0");  
+		      }); 
        })
   </script>
 
@@ -195,40 +238,48 @@
 	      
 	      <div class="options">
 		     <div class="grid-list">
-			   <a class="grid" href="catalog_grid.html"><span>img</span></a>
+			   <a class="grid" href="#"><span>img</span></a>
 			   <a class="list curent" href="index.html"><span>img</span></a>
 		     </div><!-- .grid-list -->
 		     
 		     <div class="show">
 			   转到
-			    <select id="currentPage" name="currentPage" onclick="gopage2();">
-				   <option>1</option>
-				   <option>2</option>
-				   <option>3</option>
-				   <option>4</option>
-				   <option>5</option>
-				   <option>6</option>
-				   <option>7</option>
-				   <option>8</option>
-				   <option>9</option>
-				   <option>10</option>
-				   <option>11</option>
-				   <option>12</option>
-			     </select>
+			    <select id="currentPage" name="currentPage" >
 			    
+			    <c:forEach var="i" begin="1" end="${pagesize }" step="1">
+			    
+			      <option value="${i}">${i}</option>
+			    </c:forEach>
+			    
+			    
+				  
+			     </select>
+			    <input type="hidden" id="currentPageSelect" name="currentPageSelect" value="${currentPage }">
 			   页
 		     </div><!-- .show -->
 		     
 		     <div class="sort">
 			   排序
-			    <select id="sortSele">
-				   <option>价格</option>
-				   <option>发布时间</option>
+			    <select id="sortSele" name="sortSele">
+				   <option value="0">价格</option>
+				   <option value="1">发布时间</option>
 				
 			     </select>
+			    <input type="hidden" id="sortSeleSelect" name="sortSeleSelect" value="${sortSele }">
 			    
-			    <a class="sort_up" href="#">&#8593;</a>
-			     <a class="sort_down" href="#">&#8595;</a>
+			    
+			      <c:choose>  
+               <c:when test="${sortBy=='0'}">  
+                  <a class="sort_down" id="sortdown" name="sortdown" href="javascript:void(0);" >&#8595;</a>
+                </c:when> 
+                      <c:otherwise>  
+                       <a class="sort_up" id="sortup" name="sortup" href="javascript:void(0);" >&#8593;</a>
+                       </c:otherwise> 
+                      </c:choose> 
+			    
+			    
+			  
+			   
 		     </div><!-- .sort -->
 	      </div><!-- .options -->
 	      
