@@ -35,6 +35,7 @@ $(function(){
 			},
 			jsButton:function(){
 				$("#btnJs").bind('click',function(){
+					//下单之前，判断选择收货地址
 					$.post("putOrder.xhtml",{},function(data){
 						var d=$.eval2(data);
 						if(d.success){

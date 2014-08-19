@@ -33,6 +33,7 @@ import com.zcnation.zc.common.Result;
 import com.zcnation.zc.common.ThreadLocalSession;
 import com.zcnation.zc.common.exception.NotValidateCorrectException;
 import com.zcnation.zc.common.security.MD5;
+import com.zcnation.zc.common.util.ImageUtil;
 import com.zcnation.zc.common.util.RootLogger;
 import com.zcnation.zc.context.ZcContext;
 import com.zcnation.zc.domain.CartInfo;
@@ -221,6 +222,9 @@ public class ZcProjectInfoAction {
 						fos.write(b, 0, flag);
 						fos.flush();
 					}
+					//水印输出
+					String srcFile=request.getSession().getServletContext().getRealPath("/images")+"/6_front.jpg";
+					ImageUtil.pressImage(srcFile, targetFile.getAbsolutePath(), targetFile.getAbsolutePath());
 					ZcResourceInfo zr = new ZcResourceInfo();
 					zr.setUptDate(uploadDate);
 					zr.setUptIp(request.getRemoteAddr());

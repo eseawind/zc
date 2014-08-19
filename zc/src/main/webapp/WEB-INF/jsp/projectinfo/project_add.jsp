@@ -48,7 +48,8 @@
 							var reader=new FileReader();
 							reader.readAsDataURL(files[0]);
 							reader.onloadend=function(){
-								$("#bgbox").css("background-image","url("+this.result+")");
+								//$("#bgbox").css("background-image","url("+this.result+")");
+								$("#imgBox").attr("src",this.result);
 							}
 						}
 					});
@@ -236,7 +237,7 @@
       </div>
       <div class="bgbox" style="background: url(images/6_front.jpg) no-repeat transparent;" id="bgbox">
       <div style="width: 152px; height: 231px; margin-left: 84px; margin-top: 52px; border: 1px dashed rgb(0, 0, 0); position: absolute;">
-      <img style="border:0px;margin:0px;padding:0px;width:152px;height:152px;" src="images/d.png">
+      <img style="border:0px;margin:0px;padding:0px;width:152px;height:152px;" id="imgBox" src="images/d.png">
       </div></div>
       
      
