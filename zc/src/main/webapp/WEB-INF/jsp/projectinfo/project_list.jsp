@@ -55,7 +55,19 @@
        $(document).ready(function(){
 	      $("button").click(function(){
 		     $(this).addClass('click')
-	      });             
+	      });    
+	      
+	      //排序
+	      $("#sortSele").change(function(){
+	    	  var that=$(this);
+	    	  alert(that.val());
+	      });
+	      //分页
+	      $("#currentPage").change(function(){
+	    	  var page=$(this);
+	    	  alert(page.val());
+	      })
+	      
        })
   </script>
 
@@ -209,7 +221,7 @@
 		     
 		     <div class="sort">
 			   排序
-			    <select>
+			    <select id="sortSele">
 				   <option>价格</option>
 				   <option>发布时间</option>
 				
