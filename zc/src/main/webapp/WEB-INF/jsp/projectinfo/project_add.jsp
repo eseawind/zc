@@ -20,7 +20,8 @@
 		register={
 				initButtonRegister:function(){
 					//提交
-					$("#btnAdd").bind('click',function(){
+					$("#btnAdd").bind('click',function(e){
+						e.preventDefault();
 						//projectinfo/beginAdd.do
 						 //表单验证
 						 //提交表单
