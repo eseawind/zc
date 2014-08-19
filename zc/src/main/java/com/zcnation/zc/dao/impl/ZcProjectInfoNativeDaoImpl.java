@@ -73,16 +73,34 @@ public class ZcProjectInfoNativeDaoImpl implements ZcProjectInfoNativeDao{
 	 * 所有产品分页
 	 */
 	@Override
-	public List<ZcProjectInfo> findByProShStatusAndPage(Integer currentPage) {
+	public List<ZcProjectInfo> findByProShStatusAndPage(Integer currentPage,Integer sortSele,Integer sortBy) {
 		// TODO Auto-generated method stub
 		 int start = (currentPage - 1) * 4;  
-			String sql="select zpi.PRO_CODE,zpi.PRO_NAME,zpi.PRO_SH_STATUS,zpi.PRO_TARGET,zpi.RESOURCE_CODE as zpircode,zpi.pro_unit, zri.RESOURCE_CODE as zrircode,zri.RESOURCE_NAME,(select count(*) from  zc_project_like zpl where zpl.pro_code in(zpi.pro_code)) as likecount,zpi.pro_remarks from zc_project_info zpi left JOIN zc_resource_info zri on zpi.RESOURCE_CODE=zri.RESOURCE_CODE where 1=1    order by   likecount desc   ";
+			String sql="select zpi.PRO_CODE,zpi.PRO_NAME,zpi.PRO_SH_STATUS,zpi.PRO_TARGET,zpi.RESOURCE_CODE as zpircode,zpi.pro_unit, zri.RESOURCE_CODE as zrircode,zri.RESOURCE_NAME,(select count(*) from  zc_project_like zpl where zpl.pro_code in(zpi.pro_code)) as likecount,zpi.pro_remarks,zpi.pro_time from zc_project_info zpi left JOIN zc_resource_info zri on zpi.RESOURCE_CODE=zri.RESOURCE_CODE where 1=1 ";
+			
+			System.out.println("sortSele"+sortSele);
+			System.out.println("sortBy"+sortBy);
+			System.out.println("sortBy"+sortBy);
+			if(sortSele==0&&sortBy==0){
+				
+				sql=sql+" order by zpi.pro_unit asc ";
+			}else if (sortSele==0&&sortBy==1) {
+			
+				sql=sql+" order by zpi.pro_unit desc ";
+			}else if (sortSele==1&&sortBy==0) {
+				sql=sql+" order by zpi.pro_time asc ";
+			}else if (sortSele==1&&sortBy==1) {
+				sql=sql+" order by zpi.pro_time desc ";
+			}else {
+				sql=sql+" order by   likecount desc ";
+			}
+			
+			  
 			EntityManager em=entityManagerFactory.createEntityManager();
 		 Query query = em.createNativeQuery(sql); 
 		 int total = query.getResultList().size();  
-		 
 		
-		
+		//System.out.println(total);
 			 query.setFirstResult(start);  
 			 query.setMaxResults(4);  
 			 List list=query.getResultList();
@@ -109,5 +127,5 @@ public class ZcProjectInfoNativeDaoImpl implements ZcProjectInfoNativeDao{
 				return list;
 	}
 	
-
+	
 }
