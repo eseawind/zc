@@ -25,9 +25,9 @@ public class ZcProjectInfoNativeServiceImpl implements ZcProjectInfoNativeServic
 		return zcProjectInfoNativeDao.findByProShStatus();
 	}
 	@Override
-	public List<ZcProjectInfo> queryByProShStatusAndPage(Integer currentPage) {
+	public List<ZcProjectInfo> queryByProShStatusAndPage(Integer currentPage,Integer sortSele,Integer sortBy) {
 		// TODO Auto-generated method stub
-		return zcProjectInfoNativeDao.findByProShStatusAndPage(currentPage);
+		return zcProjectInfoNativeDao.findByProShStatusAndPage(currentPage,sortSele,sortBy);
 	}
 	@Override
 	public List<ZcProjectInfo> queryByProTime() {
