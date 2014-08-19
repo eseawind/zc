@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.zcnation.zc.common.Result;
 import com.zcnation.zc.dao.ZcProjectLikeDao;
 import com.zcnation.zc.domain.ZcProjectLike;
 import com.zcnation.zc.service.ZcProjecLikeService;
@@ -33,6 +34,17 @@ public class ZcProjecLikeServiceImpl implements ZcProjecLikeService {
 	public ZcProjectLike queryOne(int likeCode) {
 		// TODO Auto-generated method stub
 		return zcProjectLikeDao.findByLikeCode(likeCode);
+	}
+	@Override
+	public String save(ZcProjectLike zcProjectLike) {
+		// TODO Auto-generated method stub
+		Result r = new Result();
+		zcProjectLikeDao.save(zcProjectLike);
+				r.setSuccess(true);
+			
+		
+		return r.toJson();
+		
 	}
 
 }
