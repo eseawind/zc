@@ -250,6 +250,31 @@ public class ZcProjectInfoAction {
 		return rs.toJson();
 		// return zcProjectInfoService.save(zcProjectInfo);
 	}
+	
+	
+	@RequestMapping("/beginAddLike.html")
+	@ResponseBody
+	public String beginAddProjectLike(HttpServletRequest request,
+			@ModelAttribute ZcProjectLike zcProjectLike, String proCode) {
+		Result rs = new Result();
+		
+		ZcUserInfo sezcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
+		  zcProjectLike.setUserCode(sezcUserInfo.getUserCode());
+		  
+		     ZcProjectInfo projectInfo=new ZcProjectInfo();
+		        projectInfo.setProCode(Integer.parseInt(proCode));
+		   
+		  zcProjectLike.setZcProjectInfo(projectInfo);
+		
+		zcProjecLikeService.save(zcProjectLike);
+					rs.setReturnValue(proCode);
+					rs.setSuccess(true);
+				
+				
+				System.out.println(rs.toJson());
+		return rs.toJson();
+		// return zcProjectInfoService.save(zcProjectInfo);
+	}
 
 	private Result validateUpload(MultipartHttpServletRequest req,
 			MultipartFile file) {
