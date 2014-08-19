@@ -71,24 +71,38 @@ public class ZcProjectInfoAction {
 	
 	
 	@RequestMapping("/project_list.html")
-	public String to_list(HttpServletRequest request,String currentPage) {
+	public String to_list(HttpServletRequest request,String currentPage,String sortSele,String sortBy) {
 //		Sort s=new Sort(Direction.DESC, "proTime");
 //		Pageable p=new PageRequest(0, 8,s);
 //		Page<ZcProjectInfo> ojbs=zcProjectInfoService.queryByPage(0, 8);
 //		List<ZcProjectInfo> prolist=new ArrayList<ZcProjectInfo>();
 //		prolist=ojbs.getContent();
 //		System.out.println(prolist.size());
-		System.out.println("的的的顶顶顶顶顶"+currentPage);
+		//System.out.println("的的的顶顶顶顶顶"+currentPage);
 		if (currentPage == null || currentPage.equals("")) {
 			
 			currentPage="1";
 		}
+		
+		
+if (sortSele == null || sortSele.equals("")) {
+			
+	sortSele="0";
+		}
+if (sortBy == null || sortBy.equals("")) {
+	
+	sortBy="0";
+		}
+
 		System.out.println("ddddddddddddd"+currentPage);
 		List<ZcProjectInfo> prolist=new ArrayList<ZcProjectInfo>();
-		prolist=zcProjectInfoNativeService.queryByProShStatusAndPage(Integer.parseInt(currentPage));
+		prolist=zcProjectInfoNativeService.queryByProShStatusAndPage(Integer.parseInt(currentPage),Integer.parseInt(sortSele),Integer.parseInt(sortBy));
 		System.out.println("size"+prolist.size());
 		request.setAttribute("proinfos", prolist);
-		
+		request.setAttribute("currentPage", currentPage);
+		request.setAttribute("sortSele", sortSele);
+		request.setAttribute("sortBy", sortBy);
+		request.setAttribute("pagesize", 3);
 		
 		return "projectinfo/project_list";
 	}
@@ -475,7 +489,23 @@ public class ZcProjectInfoAction {
 		return r.toJson();
 	}
 	
+	/**
+	 * 判断需要分几页
+	 * @param count
+	 * @param pageSize
+	 * @return
+	 */
+	   private long getpagenum(long count, int pageSize) {
+		    if (count == 0L)
+		       return 1L;
+		     if (count % pageSize != 0L) {
+		       return count / pageSize + 1L;
+		     }
+	     return count / pageSize;
+		   }
+	
 	public static void main(String[] args) {
 		System.out.println("ddd");
 	}
+	
 }

@@ -55,7 +55,6 @@ public class ZcUserInfosAction {
 	@RequestMapping("/address_{userCode}.xhtml")
 	public String to_show(@PathVariable("userCode") String userCode,
 			HttpServletRequest request) {
-		System.out.println("userCode:" + userCode);
 		
 		try {
 			
