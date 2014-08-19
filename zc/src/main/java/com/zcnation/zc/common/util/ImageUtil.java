@@ -43,6 +43,7 @@ public class ImageUtil {
 			g.dispose();
 			File outFile=new File(outFilePath);
 			ImageIO.write(br, IMAGE_FORMAT_JPG, outFile);
+			isSuccess=true;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
