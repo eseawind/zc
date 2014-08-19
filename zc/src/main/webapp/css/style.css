@@ -1374,7 +1374,28 @@ a.more:hover{text-decoration: underline!important;}
 .listing_product .product_li .cart a.like{
 	margin: 0;
 	border: 0 none;
-	background: url(../images/bg_like.png) no-repeat 50% 50%;
+	POSITION: relative;
+	WIDTH: 20px;
+	DISPLAY: inline-block;
+BACKGROUND: url(../images/toolkit.png) no-repeat -19px -102px;
+/*BACKGROUND: url(../images/toolkit.png) no-repeat -56px -102px;*/
+HEIGHT: 18px;
+TOP: 12px;
+MARGIN-left: 15px;
+	
+}
+.listing_product .product_li .cart a.likeed{
+	margin: 0;
+	border: 0 none;
+	POSITION: relative;
+	WIDTH: 20px;
+	DISPLAY: inline-block;
+
+BACKGROUND: url(../images/toolkit.png) no-repeat -56px -102px;
+HEIGHT: 18px;
+TOP: 12px;
+MARGIN-left: 15px;
+	
 }
 .listing_product .product_li .cart a.obn:hover,
 .listing_product .product_li .cart a.like:hover{
