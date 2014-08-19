@@ -17,103 +17,6 @@
 
 <style type="text/css">
 
-.user-fun {
-width: 100%;
-height: 32px;
-}
-.user-fun h2 {
-font-size: 24px;
-line-height: 32px;
-color: #000;
-float: left;
-padding-right: 10px;
-}
-.user-fun .btn-base {
-margin: 6px 0px;
-color: #FFF;
-}
-.btn-red-h20 {
-background-position: -223px 0px;
-height: 20px;
-line-height: 20px;
-}
-.btn-base {
-display: inline-block;
-zoom: 1;
-padding-left: 5px;
-color: #FFF;
-}
-.common-sprite {
-background-image: url('images/icon_sprite.png');
-background-repeat: no-repeat;
-}
-.user-fun .btn-base span {
-padding: 0px 8px 0px 2px;
-margin-right: 8px;
-}
-.btn-red-h20 span {
-background-position: 100% -263px;
-height: 20px;
-line-height: 20px;
-}
-.btn-base span {
-display: inline-block;
-zoom: 1;
-padding-right: 5px;
-float: left;
-}
-.icon-set {
-background-position: -45px -75px;
-}
-.icon-set, .icon-msg, .icon-info {
-width: 16px;
-height: 16px;
-line-height: 0px;
-font-size: 0px;
-display: inline-block;
-vertical-align: middle;
-_margin-top: 3px;
-}
-
-i, em {
-font-style: normal;
-}
-user agent stylesheeti, cite, em, var, address, dfn {
-font-style: italic;
-}
-.user-info {
-padding:20px 110px 110px 0px;
-}
-p {
-display: block;
--webkit-margin-before: 1em;
--webkit-margin-after: 1em;
--webkit-margin-start: 0px;
--webkit-margin-end: 0px;
-}
-
-
-
-
-.hide{display:none;}
-.dialogc{padding:0px;border:0px;font-size:12px;font-family:"微软雅黑",Arial;color:black;}
-.dialogc .layer{margin:0px;padding:0px}
-.dialogc .ui-dialog-titlebar{display:none}
-.dialogc .ui-widget-content .blue{color:#0CACEB;}
-
-*{margin: 0;padding: 0;}
-
-
-
-
-.layer .close{position:absolute;right:8px;top:8px;width:14px;height:14px;display:block;background:url(images/icon.png) no-repeat 0 -166px;text-indent:-9999px;cursor:pointer;}
-
-
-.layer .rightDe .number li a{position:relative;display:inline-block;width:63px;height:27px;float:right;}
-
-
-
-.layer h5{background:#f5f5f5;height:35px;line-height:35px;color:#0caceb;font-size:14px;text-indent:12px;margin-bottom:20px;}
 </style>
 <script type="text/javascript">
 	$(function(){
@@ -158,8 +61,8 @@ display: block;
       });
     });
   });
-</script>
-
+  </script>
+ 
 </head>
 <body>
 
@@ -220,35 +123,35 @@ display: block;
         
 
  
-<div class="ui-dialog ui-widget ui-widget-content ui-corner-all dialogc" tabindex="-1" role="dialog" aria-labelledby="ui-dialog-title-addressd" style="display: none; z-index: 1002; outline: 0px; height: auto; width: 803px; top: 0px; left: 273px;">
-<div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span class="ui-dialog-title" id="ui-dialog-title-addressd">&nbsp;</span><a href="#" class="ui-dialog-titlebar-close ui-corner-all" role="button"><span class="ui-icon ui-icon-closethick">close</span></a>
-</div><div class="layer layerSize hide ui-dialog-content ui-widget-content" id="addressd" scrolltop="0" scrollleft="0" style="display: block; width: auto; min-height: 150px; height: auto;">
-  <span class="close"></span>
-  <h5>使用新收货地址</h5>
+<div style="display: none; z-index: 1002; outline: 0px; height: auto; width: 803px; top: 0px; left: 273px;">
+<div ><span >&nbsp;</span><a href="#"  role="button"><span>close</span></a>
+</div><div id="addressd" scrolltop="0" scrollleft="0" style="display: block; width: auto; min-height: 150px; height: auto;">
+  <span></span>
+  <h5 align="center"><strong>使用新收货地址</strong></h5>
    <FORM class=added method=post action="" id="addForm">
 		
-  <div class="password">
-					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;收货人姓名:</strong><sup class="surely">*</sup>
-					&nbsp;<input id=userName   type=text name=userName class="" value="" />
+  				<div  style="line-height: 50px;">
+					<strong>收货人姓名:</strong><sup class="surely">*</sup>
+					&nbsp;<input id=userName style="COLOR: rgb(51,51,51)" class=inputBg1   type=text name=userName class="" value="" />
 					<DIV id=validName class=Validform_checktip></DIV>
 				
 				</div>
 				
 				
-				<div class="password">
-					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地区:</strong><sup class="surely">*</sup>
-					<select name="userProvince" id="userProvince" class="">
+				<div  style="line-height:50px;">
+					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地区:</strong><sup class="surely">*</sup>
+					&nbsp;<select name="userProvince" id="userProvince" style="width: 150px;" class="">
 									<option >请选择省份</option>
 									<option selected="selected" value="浙江省">浙江省</option>
 																	
 																	</select>
-								<select name="userCity" id="userCity"   class="" >
+								<select name="userCity" id="userCity"  style="width: 150px;"  class="" >
 									<option >请选择城市</option>
 									<option selected="selected" value="杭州市">杭州市</option>
 									<option value="宁波市">宁波市</option>
 																	</select>
 																	
-																	<select name="userArea" id="userArea"   class="" >
+																	<select name="userArea" id="userArea"  style="width: 150px;"  class="" >
 									<option >请选择城市区域</option>
 									<option selected="selected" value="海曙区">海曙区</option>
 									<option value="上城区">上城区</option>
@@ -258,30 +161,30 @@ display: block;
 				</div>
 				
 				
-				<div class="password">
-					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;详细地址:</strong><sup class="surely">*</sup>
+				<div style="line-height: 50px;">
+					<strong>&nbsp;&nbsp;&nbsp;&nbsp;详细地址:</strong><sup class="surely">*</sup>
 					&nbsp;<input id=userAddress   type=text name=userAddress class="" value="" />
 					<DIV id=validAddress class=Validform_checktip></DIV>
 				
 				</div>
 				
-				<div class="password">
-					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮编:</strong><sup class="surely">*</sup>
+				<div  style="line-height: 50px;">
+					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮编:</strong><sup class="surely">*</sup>
 					&nbsp;<input id=userZip   type=text name=userZip class="" value="" />
 					<DIV id=validZip class=Validform_checktip></DIV>
 				
 				</div>
 				
 				
-				<div class="password">
-					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;手机:</strong><sup class="surely">*</sup>
+				<div style="line-height: 50px;">
+					<strong>&nbsp;&nbsp;&nbsp;&nbsp;手机号码:</strong><sup class="surely">*</sup>
 					&nbsp;<input id=userMobilephone   type=text name=userMobilephone class="" value="" />
 					<DIV id=validMobilephone class=Validform_checktip></DIV>
 				
 				</div>
 				
-				<div class="password">
-					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;固定电话:</strong><sup class="surely">*</sup>
+				<div style="line-height: 50px;">
+					<strong>&nbsp;&nbsp;&nbsp;&nbsp;固定电话:</strong><sup class="surely">*</sup>
 					&nbsp;<input id=userTelephone   type=text name=userTelephone class="" value="" />
 					<DIV id=validTelephone class=Validform_checktip></DIV>
 				
@@ -290,8 +193,8 @@ display: block;
 				
 				
 				
-				<div class="password">
-					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱:</strong><sup class="surely">*</sup>
+				<div  style="line-height: 50px;">
+					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱:</strong><sup class="surely">*</sup>
 					&nbsp;<input id=userEmail   type=text name=userEmail class="" value="" />
 					<DIV id=validEmail class=Validform_checktip></DIV>
 				
@@ -300,7 +203,7 @@ display: block;
 				<div class="submit">										
 					<SPAN style="CURSOR: pointer ;margin-left:10px;" 
   id=reg>
-  <a href="javascript:void(0)" id=btnAdd class="bay">购买</a>
+  <a href="javascript:void(0)" id=btnAdd class="bay">保存</a>
   
   </SPAN>
 				</div>
