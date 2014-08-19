@@ -72,18 +72,36 @@
   });
   
   
-
-  
-  
+	
  
-  
- 
-  
-  function kk(){
-	 
-		alert(1111);
-	}
 </script>
+
+
+<script type="text/javascript">
+	
+	
+	
+	function ajax_webserviceHello(proCode) {
+    $.ajax({
+        type: "post",
+        contentType: "application/json",
+        url: "projectinfo/beginAddLike.html?proCode="+proCode,
+        data: "{}",
+        dataType: 'json',
+        success: function(data) {
+        
+        	$("#btnLike"+data.returnValue).removeClass("like");
+        	$("#btnLike"+data.returnValue).addClass("likeed");
+        }
+    });
+}
+
+</script>
+<style type="text/css">
+
+
+</style>
+
 </head>
 <body>
 
@@ -218,7 +236,8 @@
 				
 				<div class="grid_4">
 					<div class="entry_content">
-						<a href="product_page.html"><h3 class="title">${pro[1] }</h3></a>
+					<a href="product_page.html"><h3 class="title">${pro[1] }</h3></a>  
+						
 						<div class="review">
 						<hr style="">
 							<!-- <a class="plus" href="#"></a>
@@ -229,6 +248,7 @@
 							<span>1 REVIEW(S)</span> -->
 						</div>
 						<p>${pro[9] }</p>
+						
 						<a class="more" style="margin-left: 260px;" href="projectinfo/project_${pro[0] }.html">更多</a>
 					</div><!-- .entry_content -->
 				</div><!-- .grid_4 -->
@@ -240,8 +260,12 @@
 						
 						</div>
 						<a href="projectinfo/project_${pro[0] }.html" class="bay">购买</a>
-						<a href="#" class="obn"></a>
-						<a href="#" class="like"></a>
+						<a href="javascript:void(0);" class="obn"></a>
+						 <FORM  method=post action="projectinfo/beginAddLike.html"   name="likeForm" id="likeForm" >
+						 <input type="hidden" value="${pro[0] }" id="proCode" name="proCode">
+						
+				<a href="javascript:void(0);" class="like" id="btnLike${pro[0] }" name="btnLike${pro[0] }" onclick="ajax_webserviceHello(${pro[0] });"></a>
+						</FORM>
 					</div><!-- .cart -->
 				</div><!-- .grid_2 -->
 				
