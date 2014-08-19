@@ -16,7 +16,7 @@ public interface ZcProjectInfoNativeDao {
 	
 	public List<ZcProjectInfo> findByProTime();
 	
-	public List<ZcProjectInfo> findByProShStatusAndPage(Integer currentPage);
+	public List<ZcProjectInfo> findByProShStatusAndPage(Integer currentPage,Integer sortSele,Integer sortBy);
 	
 
 
