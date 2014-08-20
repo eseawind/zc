@@ -44,5 +44,5 @@ public interface ZcUserInfoService {
 	 */
 	public int gengxinByUserCode(int userCode);
 	
-
+	public ZcUserInfo queryOne(int userCode);
 }

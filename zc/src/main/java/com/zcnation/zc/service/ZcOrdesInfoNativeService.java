@@ -8,7 +8,7 @@ import com.zcnation.zc.domain.ZcProjectInfo;
 
 public interface ZcOrdesInfoNativeService {
 	
-	public  List<ZcOrdersInfo> queryByUserCodeAndOcodesAndOrderStatus(Integer userCode,String ocodes,String orderStatus);
+	public  List<ZcOrdersInfo> queryByUserCodeAndOrderCodeAndOrderStatus(Integer userCode,String orderCode,String orderStatus);
 	
 
 

@@ -13,6 +13,6 @@ public interface ZcUserInfoNativeService {
 
 	public int updateByUserCode(Integer userCode,String password);
 	
-
+	public int updateLoginTimeAndUserScoreByUserCode(Integer userScore,Integer userCode);
 
 }
