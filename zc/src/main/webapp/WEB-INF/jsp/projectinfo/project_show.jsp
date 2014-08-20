@@ -79,7 +79,11 @@
 			buttons:{
 				"结算":function(){
 					//alert("感谢购物,欢迎下次再来");
-					window.location="order/order.xhtml";
+					if(!window.ActiveXObject){
+						window.location="order/order.xhtml";
+					}else{
+						window.location="../order/order.xhtml";
+					}
 				}
 			}
 		});

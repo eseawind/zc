@@ -39,6 +39,8 @@ public class CustomSimpleMappingExceptionResolver extends SimpleMappingException
 							if (codeStatus!=null) {
 								applyStatusCodeIfPossible(request, response, codeStatus);
 							}
+							//用户未登录
+							response.setStatus(HttpServletResponse.SC_MULTIPLE_CHOICES);
 							request.setAttribute("error", ex.getMessage());
 							return getModelAndView(viewName, ex,request);
 					}else if(ex instanceof NotValidateCorrectException){//验证异常

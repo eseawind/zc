@@ -18,7 +18,8 @@
 			if(arguments.length==2){
 				var status=arguments[1];
 				if(status==300){
-					alert("用户未登录")
+					//alert("用户未登录")
+					window.location="userinfo/login.html";
 					return;
 				}
 			}
@@ -102,12 +103,15 @@
 		}
 	});
 	
+	
+	
 	$.ajaxSetup({
 		error : function(jqXHR, textStatus, errorThrown) {
 			if(jqXHR.status==300){
 				//alert(errorThrown);
 				//_dologin(jqXHR.responseText);
-				alert("用户未登录");
+				//alert("用户未登录");
+				window.location="userinfo/login.html";
 			}else{
 				$.eval2(jqXHR.responseText,jqXHR.status);
 			}
