@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+
 <!DOCTYPE HTML>
 <html>
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
@@ -301,7 +304,7 @@
 					<div class="entry_content">
 					<a href="product_page.html"><h3 class="title">${pro[1] }</h3></a>  
 						
-						<div class="review">
+						<!-- <div class="review"> -->
 						<hr style="">
 							<!-- <a class="plus" href="#"></a>
 							<a class="plus" href="#"></a>
@@ -309,10 +312,32 @@
 							<a href="#"></a>
 							<a href="#"></a>
 							<span>1 REVIEW(S)</span> -->
-						</div>
-						<p>${pro[9] }</p>
+						<!--</div> -->
+						<p style="line-height:20px" title="${pro[9] }">
+						<c:if test="${fn:length(pro[9])>50 }">${ fn:substring(pro[9],0,50)} ...</c:if>
+ <c:if test="${fn:length(pro[9])<=50 }">${  pro[9] }</c:if>
 						
-						<a class="more" style="margin-left: 260px;" href="projectinfo/project_${pro[0] }.html">更多</a>
+					</p>
+						
+						<a class="more" style="margin-left: 260px;" href="projectinfo/project_${pro[0] }.html" >更多</a>
+						<hr style="">
+						<p style="line-height: 18px"><span>截止时间：</span>2014-11-11 14:00:00</p>
+						<p style="line-height: 8px"><span>剩余时间：</span>82天23小时</p>
+						
+						 <c:choose>  
+               <c:when test="${empty pro[11]}">  
+                 <p style="line-height: 8px"> <div class="progress-bar" title="已售卖了0件，完成目标的0%"> 
+                <span class="progress bg-red" style="width:0%;" ></span>
+                	</div></p>
+                </c:when> 
+                      <c:otherwise>  
+                <p style="line-height: 18px">  <div class="progress-bar" title="已售卖了${pro[12]}件，完成目标的${pro[11]}"> 
+                <span class="progress bg-red" style="width:${pro[11]};" ></span>
+                	</div></p>
+                         
+                       </c:otherwise> 
+                      </c:choose> 
+						
 					</div><!-- .entry_content -->
 				</div><!-- .grid_4 -->
 				
@@ -324,11 +349,22 @@
 						</div>
 						<a href="projectinfo/project_${pro[0] }.html" class="bay">购买</a>
 						<a href="javascript:void(0);" class="obn"></a>
-						 <FORM  method=post action="projectinfo/beginAddLike.html"   name="likeForm" id="likeForm" >
-						 <input type="hidden" value="${pro[0] }" id="proCode" name="proCode">
 						
-				<a href="javascript:void(0);" class="like" id="btnLike${pro[0] }" name="btnLike${pro[0] }" onclick="ajax_webserviceHello(${pro[0] });"></a>
-						</FORM>
+						
+						 <c:if test="${pro[8] =='0'}">
+            
+           		<a href="javascript:void(0);" title="我喜欢" class="like" id="btnLike${pro[0] }" name="btnLike${pro[0] }" onclick="ajax_webserviceHello(${pro[0] });">
+				
+              </c:if>
+						<c:if test="${pro[8]=='1'}">
+            
+           		<a href="javascript:void(0);" title="我喜欢" class="likeed" id="btnLike${pro[0] }" name="btnLike${pro[0] }" onclick="ajax_webserviceHello(${pro[0] });">
+				
+              </c:if>
+						
+				
+				</a>
+						
 					</div><!-- .cart -->
 				</div><!-- .grid_2 -->
 				
