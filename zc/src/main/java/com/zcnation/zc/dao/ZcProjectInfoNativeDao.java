@@ -18,6 +18,6 @@ public interface ZcProjectInfoNativeDao {
 	
 	public List<ZcProjectInfo> findByProShStatusAndPage(Integer currentPage,Integer sortSele,Integer sortBy);
 	
-
+	
 
 }

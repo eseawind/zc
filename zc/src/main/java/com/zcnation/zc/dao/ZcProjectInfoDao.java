@@ -29,4 +29,5 @@ public interface ZcProjectInfoDao extends JpaRepository<ZcProjectInfo, Integer>,
 	 
 	 public List<ZcProjectInfo> findByUserCodeAndProNameLike(Integer userCode,String proName);
 	
+	 
 }

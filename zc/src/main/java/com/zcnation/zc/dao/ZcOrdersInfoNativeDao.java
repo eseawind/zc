@@ -5,7 +5,7 @@ import com.zcnation.zc.domain.ZcOrdersInfo;
 
 public interface ZcOrdersInfoNativeDao {
 	
-	public List<ZcOrdersInfo> findByUserCodeAndOcodesAndOrderStatus(Integer userCode,String ocodes,String orderStatus);
+	public List<ZcOrdersInfo> findByUserCodeAndOrderCodeAndOrderStatus(Integer userCode,String orderCode,String orderStatus);
 	
 
 

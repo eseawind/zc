@@ -14,4 +14,6 @@ public interface ZcProjectLikeDao extends JpaRepository<ZcProjectLike, Integer>,
 	 public void delete(ZcProjectLike zcProjectLike);
 	 public ZcProjectLike findByLikeCode(int likeCode);
 	 public ZcProjectLike save(ZcProjectLike zcProjectLike);
+	 
+	 //public ZcProjectLike findByUserCodeAndProCode(Integer userCode,Integer proCode );
 }
