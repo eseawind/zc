@@ -328,25 +328,8 @@
       </div><!-- .container_12 -->
     </div><!-- .f_navigation -->
 
-    <div class="f_info">
-      <div class="container_12">
-        <div class="grid_6">
-          <p class="copyright">Copyright &copy; 2014.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
-        </div><!-- .grid_6 -->
-
-        <div class="grid_6">
-          <div class="soc">
-            <a class="google" href="#"></a>
-            <a class="twitter" href="#"></a>
-            <a class="facebook" href="#"></a>
-          </div><!-- .soc -->
-        </div><!-- .grid_6 -->
-
-        <div class="clear"></div>
-      </div><!-- .container_12 -->
-    </div><!-- .f_info -->
+   
   </footer>
 
-<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
 </body>
 </html>
