@@ -76,7 +76,7 @@ public class ZcProjectInfoNativeDaoImpl implements ZcProjectInfoNativeDao{
 	public List<ZcProjectInfo> findByProShStatusAndPage(Integer currentPage,Integer sortSele,Integer sortBy) {
 		// TODO Auto-generated method stub
 		 int start = (currentPage - 1) * 4;  
-			String sql="select zpi.PRO_CODE,zpi.PRO_NAME,zpi.PRO_SH_STATUS,zpi.PRO_TARGET,zpi.RESOURCE_CODE as zpircode,zpi.pro_unit, zri.RESOURCE_CODE as zrircode,zri.RESOURCE_NAME,(select count(*) from  zc_project_like zpl where zpl.pro_code in(zpi.pro_code)) as likecount,zpi.pro_remarks,zpi.pro_time,concat ( ROUND ((select sum(zod.ORDER_NUMBER) from  zc_order_detail zod where zod.pro_code in(zpi.pro_code))  /zpi.PRO_TARGET *100,2),'%') as orderdiscount,(select sum(zod.ORDER_NUMBER) from  zc_order_detail zod where zod.pro_code in(zpi.pro_code)) as ordercount from zc_project_info zpi left JOIN zc_resource_info zri on zpi.RESOURCE_CODE=zri.RESOURCE_CODE where 1=1 ";
+			String sql="select zpi.PRO_CODE,zpi.PRO_NAME,zpi.PRO_SH_STATUS,zpi.PRO_TARGET,zpi.RESOURCE_CODE as zpircode,zpi.pro_unit, zri.RESOURCE_CODE as zrircode,zri.RESOURCE_NAME,(select count(*) from  zc_project_like zpl where zpl.pro_code in(zpi.pro_code)) as likecount,zpi.pro_remarks,zpi.pro_time,concat ( ROUND ((select sum(zod.ORDER_NUMBER) from  zc_order_detail zod where zod.pro_code in(zpi.pro_code))  /zpi.PRO_TARGET *100,2),'%') as orderdiscount,(select sum(zod.ORDER_NUMBER) from  zc_order_detail zod where zod.pro_code in(zpi.pro_code)) as ordercount,zpi.pro_endtime from zc_project_info zpi left JOIN zc_resource_info zri on zpi.RESOURCE_CODE=zri.RESOURCE_CODE where 1=1 ";
 			
 			System.out.println("sortSele"+sortSele);
 			System.out.println("sortBy"+sortBy);
