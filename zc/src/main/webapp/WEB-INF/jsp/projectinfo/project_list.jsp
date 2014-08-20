@@ -158,6 +158,7 @@
 <style type="text/css">
 
 
+
 </style>
 
 </head>
@@ -302,8 +303,12 @@
 				
 				<div class="grid_4">
 					<div class="entry_content">
-					<a href="product_page.html"><h3 class="title">${pro[1] }</h3></a>  
-						
+					<a href="projectinfo/project_${pro[0] }.html"><h3 class="title">${pro[1] }</h3></a>  
+						<!-- <div style="margin-left: 160px;margin-top: -40px;"><a href="/u/105/" class="avatar" target="_blank">
+						<img src="http://imgcdn.guoku.com/avatar/small_105_18f2d4b100ffb4c38b352f7d6cb5a53f.gif" width="30" height="30"></a>
+						<a href="/u/105/" class="nickname" target="_blank">
+                拜拜北鼻
+            </a></div> -->
 						<!-- <div class="review"> -->
 						<hr style="">
 							<!-- <a class="plus" href="#"></a>
@@ -319,21 +324,21 @@
 						
 					</p>
 						
-						<a class="more" style="margin-left: 260px;" href="projectinfo/project_${pro[0] }.html" >更多</a>
+						<a class="more"  style="margin-left: 260px;" href="projectinfo/project_${pro[0] }.html" >更多</a>
 						<hr style="">
-						<p style="line-height: 18px"><span>截止时间：</span>2014-11-11 14:00:00</p>
+						<p style="line-height: 18px"><span>截止时间：</span>${pro[13]}</p>
 						<p style="line-height: 8px"><span>剩余时间：</span>82天23小时</p>
 						
 						 <c:choose>  
                <c:when test="${empty pro[11]}">  
-                 <p style="line-height: 8px"> <div class="progress-bar" title="已售卖了0件，完成目标的0%"> 
-                <span class="progress bg-red" style="width:0%;" ></span>
-                	</div></p>
+                  <div class="progress-bar" title="已售卖了0件，完成目标的0%"> 
+                <span class="progress bg-red" style="width:0%;" ></span>(0%)
+                	</div>
                 </c:when> 
                       <c:otherwise>  
-                <p style="line-height: 18px">  <div class="progress-bar" title="已售卖了${pro[12]}件，完成目标的${pro[11]}"> 
-                <span class="progress bg-red" style="width:${pro[11]};" ></span>
-                	</div></p>
+                <div class="progress-bar" title="已售卖了${pro[12]}件，完成目标的${pro[11]}"> 
+                <span class="progress bg-red" style="width:${pro[11]};" ></span>(${pro[11]})
+                	</div>
                          
                        </c:otherwise> 
                       </c:choose> 
@@ -459,25 +464,8 @@
       </div><!-- .container_12 -->
     </div><!-- .f_navigation -->
     
-    <div class="f_info">
-      <div class="container_12">
-        <div class="grid_6">
-          <p class="copyright">Copyright &copy; 2014.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
-        </div><!-- .grid_6 -->
-        
-        <div class="grid_6">
-          <div class="soc">
-            <a class="google" href="#"></a>
-            <a class="twitter" href="#"></a>
-            <a class="facebook" href="#"></a>
-          </div><!-- .soc -->
-        </div><!-- .grid_6 -->
-        
-        <div class="clear"></div>
-      </div><!-- .container_12 -->
-    </div><!-- .f_info -->
+  
   </footer>
  
-<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
 </body>
 </html>
