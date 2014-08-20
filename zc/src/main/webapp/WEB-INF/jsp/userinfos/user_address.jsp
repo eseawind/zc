@@ -170,7 +170,7 @@
 				
 				<div  style="line-height: 50px;">
 					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮编:</strong><sup class="surely">*</sup>
-					&nbsp;<input id=userZip   type=text name=userZip class="" value="" />
+					&nbsp;<input id=userZip maxlength="6"  onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  type=text name=userZip class="" value="" />
 					<DIV id=validZip class=Validform_checktip></DIV>
 				
 				</div>
@@ -178,7 +178,7 @@
 				
 				<div style="line-height: 50px;">
 					<strong>&nbsp;&nbsp;&nbsp;&nbsp;手机号码:</strong><sup class="surely">*</sup>
-					&nbsp;<input id=userMobilephone   type=text name=userMobilephone class="" value="" />
+					&nbsp;<input id=userMobilephone onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"   type=text name=userMobilephone class="" value="" />
 					<DIV id=validMobilephone class=Validform_checktip></DIV>
 				
 				</div>
