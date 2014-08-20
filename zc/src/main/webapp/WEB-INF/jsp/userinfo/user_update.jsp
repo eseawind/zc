@@ -17,82 +17,6 @@
 
 <style type="text/css">
 
-.user-fun {
-width: 100%;
-height: 32px;
-}
-.user-fun h2 {
-font-size: 24px;
-line-height: 32px;
-color: #000;
-float: left;
-padding-right: 10px;
-}
-.user-fun .btn-base {
-margin: 6px 0px;
-color: #FFF;
-}
-.btn-red-h20 {
-background-position: -223px 0px;
-height: 20px;
-line-height: 20px;
-}
-.btn-base {
-display: inline-block;
-zoom: 1;
-padding-left: 5px;
-color: #FFF;
-}
-.common-sprite {
-background-image: url('images/icon_sprite.png');
-background-repeat: no-repeat;
-}
-.user-fun .btn-base span {
-padding: 0px 8px 0px 2px;
-margin-right: 8px;
-}
-.btn-red-h20 span {
-background-position: 100% -263px;
-height: 20px;
-line-height: 20px;
-}
-.btn-base span {
-display: inline-block;
-zoom: 1;
-padding-right: 5px;
-float: left;
-}
-.icon-set {
-background-position: -45px -75px;
-}
-.icon-set, .icon-msg, .icon-info {
-width: 16px;
-height: 16px;
-line-height: 0px;
-font-size: 0px;
-display: inline-block;
-vertical-align: middle;
-_margin-top: 3px;
-}
-
-i, em {
-font-style: normal;
-}
-user agent stylesheeti, cite, em, var, address, dfn {
-font-style: italic;
-}
-.user-info {
-padding:20px 110px 110px 0px;
-}
-p {
-display: block;
--webkit-margin-before: 1em;
--webkit-margin-after: 1em;
--webkit-margin-start: 0px;
--webkit-margin-end: 0px;
-}
-
-
 
 
 </style>
@@ -110,6 +34,8 @@ display: block;
 							var d=$.eval2(data);
 							if(d.success){
 								$.alert("修改提示","修改成功");
+								// window.location="../userinfo/update.xhtml";
+								
 							}else{
 								$.alert("修改提示",d.errorMsgs[0]);
 							}
@@ -128,7 +54,58 @@ display: block;
 		
 	})
 </script>
-
+<script>
+	$(document).ready(function() {
+		
+		
+		 var userProvinceValue=$("#userProvinceValue").val();
+		
+		if(userProvinceValue==''||userProvinceValue=='请选择省份'){
+			 $("#userProvince option").filter("[value='请选择省份']").attr("selected", true);//有效！ 
+				
+				
+		}else{
+			
+			 $("#userProvince option").filter("[value='"+userProvinceValue+"']").attr("selected", true);//有效！ 
+				
+				
+		}
+		
+		
+		
+		 var userCityValue=$("#userCityValue").val();
+			
+			if(userCityValue==''||userCityValue=='请选择城市'){
+				 $("#userCity option").filter("[value='请选择城市']").attr("selected", true);//有效！ 
+					
+					
+			}else{
+				
+				 $("#userCity option").filter("[value='"+userCityValue+"']").attr("selected", true);//有效！ 
+					
+					
+			}
+			
+			 var usersexValue=$("#usersexValue").val();
+				
+				if(usersexValue==''||usersexValue=='0'){
+					$("input[type=radio][value=0]").attr("checked",'checked');//有效！ 
+						
+						
+				}else{
+					
+					$("input[type=radio][value="+usersexValue+"]").attr("checked",'checked');//有效！ 
+						
+						
+				}
+			
+		
+		
+		
+		
+		$("select").selectBox();
+	});
+  </script>
 </head>
 <body>
 
@@ -210,15 +187,15 @@ display: block;
 					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性别:</strong><sup class="surely">*</sup>
 					
 					
-							&nbsp;<input class="" type="radio" name="userSex" value="1">
+							&nbsp;<input class="" type="radio" id="userSex" name="userSex" value="1">
 							<span class="" >男</span>
-							<input class=""  type="radio"  name="sex" value="2">
+							<input class=""  type="radio" id="userSex"  name="userSex" value="2">
 							<span class="" >女</span>
-							<input class=""  type="radio" checked="checked" name="userSex" value="0">
+							<input class=""  type="radio"  id="userSex"  name="userSex" value="0">
 							<span class="" >保密</span>
 						
 					
-				
+				<input type="hidden" id="usersexValue" name="usersexValue" value="${sessionScope.USER_INFO.userSex }"> 
 				</div>
 				
 			
@@ -230,17 +207,20 @@ display: block;
 				
 				<div class="email">
 					<strong>&nbsp;&nbsp;&nbsp;&nbsp;所在地:</strong><sup class="surely">*</sup>
-					<select name="userProvince" id="userProvince" class="">
-									<option >请选择省份</option>
-									<option selected="selected" value="浙江省">浙江省</option>
+					<select name="userProvince" id="userProvince" class="" style="width:120px">
+									<option value="请选择省份">请选择省份</option>
+									<option value="浙江省">浙江省</option>
 																	
 																	</select>
-								<select name="userCity" id="userCity"   class="" >
-									<option >请选择城市</option>
-									<option selected="selected" value="杭州市">杭州市</option>
+								<select name="userCity" id="userCity"   class=""  style="width:120px">
+									<option value="请选择城市">请选择城市</option>
+									<option  value="杭州市">杭州市</option>
 									<option value="宁波市">宁波市</option>
 																	</select>
 					<DIV id=validPoint class=Validform_checktip  > </DIV>
+					
+					<input type="hidden" id="userProvinceValue" name="userProvinceValue" value="${sessionScope.USER_INFO.userProvince }"> 
+					<input type="hidden" id="userCityValue" name="userCityValue" value="${sessionScope.USER_INFO.userCity }"> 
 				</div>
 			
 			
@@ -256,8 +236,8 @@ display: block;
 					<DIV id=validQq class=Validform_checktip  > </DIV>
 				</div><!-- .email -->
 				
-				<div class="submit">										
-					<button class="account" id="btnUpdate">&nbsp;&nbsp;保存&nbsp;&nbsp;</button>
+				<div class="submit" style=" margin-left:480px;">										
+					<button class="account" id="btnUpdate">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
 				</div><!-- .submit -->
 			</form>
 		<div class="clear"></div>
