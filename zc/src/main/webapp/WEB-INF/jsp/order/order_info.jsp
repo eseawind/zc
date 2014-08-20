@@ -245,8 +245,8 @@ display: inline-block;
                       <input type="hidden" id="orderStatusSelect" name="orderStatusSelect" value="${orderStatus }">
           </dt>
           <dd>
-            <input type="text" class="incInput" name="ocodes" value="${ocodes }" size="36" id="ocodes">
-         <input type="submit" class="bay" value="查询">
+            <input type="text" class="incInput" name="orderCode" value="${orderCode }" size="36" id="orderCode">
+         <input type="submit" class="bay" value="&nbsp;&nbsp;&nbsp;&nbsp;查询&nbsp;&nbsp;&nbsp;&nbsp;">
           </dd>
         </dl>
 	      </FORM>
@@ -256,8 +256,10 @@ display: inline-block;
           <tbody><tr>
            <!--   <th>序号</th>-->
             <th>订单ID</th>
+             <th>订单号</th>
+               <th>下单时间</th>
             <th>订单金额</th>
-             <th>下单时间</th>
+           
               <th>订单状态</th>
               <th>操作</th>
            
@@ -265,13 +267,14 @@ display: inline-block;
           </tr>
            <c:forEach items="${ordinfos}" var="ord">
                <tr>
+              <td><c:out value="${ord[0]}"></c:out></td>
+              <td><c:out value="${ord[1]}"></c:out></td>
               <td><c:out value="${ord[5]}"></c:out></td>
-              <td><c:out value="${ord[3]}"></c:out></td>
              
-              <td><c:out value="${ord[6]}"></c:out></td>
+              <td><c:out value="${ord[4]}"></c:out></td>
              
                  <td>
-              <c:if test="${ord[4]=='0' }">
+              <c:if test="${ord[3]=='0' }">
             
            		已提交
               </c:if>
