@@ -137,4 +137,10 @@ public class ZcUserInfoServiceImpl implements ZcUserInfoService {
 		
 	}
 
+	@Override
+	public ZcUserInfo queryOne(int userCode) {
+		// TODO Auto-generated method stub
+		return zcUserInfoDao.findByUserCode(userCode);
+	}
+
 }

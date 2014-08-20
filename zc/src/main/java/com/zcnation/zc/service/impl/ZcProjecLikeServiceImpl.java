@@ -46,5 +46,11 @@ public class ZcProjecLikeServiceImpl implements ZcProjecLikeService {
 		return r.toJson();
 		
 	}
+//	@Override
+//	public ZcProjectLike queryByUserCodeAndProCode(Integer userCode,
+//			Integer proCode) {
+//		// TODO Auto-generated method stub
+//		return zcProjectLikeDao.findByUserCodeAndProCode(userCode, proCode);
+//	}
 
 }

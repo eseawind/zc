@@ -20,5 +20,10 @@ public class ZcUserInfoNativeServiceImpl implements ZcUserInfoNativeService,Seri
 		// TODO Auto-generated method stub
 		return zcUserInfoNativeDao.updateByUserCode(userCode, password);
 	}
+	@Override
+	public int updateLoginTimeAndUserScoreByUserCode(Integer userScore,Integer userCode) {
+		// TODO Auto-generated method stub
+		return zcUserInfoNativeDao.updateLoginTimeAndUserScoreByUserCode(userScore,userCode);
+	}
 
 }

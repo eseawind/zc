@@ -17,9 +17,9 @@ import com.zcnation.zc.service.ZcProjectInfoNativeService;
 public class ZcOrdesInfoNativeServiceImpl implements ZcOrdesInfoNativeService {
 	@Autowired private ZcOrdersInfoNativeDao zcOrdersInfoNativeDao;
 	@Override
-	public List<ZcOrdersInfo> queryByUserCodeAndOcodesAndOrderStatus(Integer userCode,String ocodes,String orderStatus) {
+	public List<ZcOrdersInfo> queryByUserCodeAndOrderCodeAndOrderStatus(Integer userCode,String orderCode,String orderStatus) {
 		// TODO Auto-generated method stub
-	return	zcOrdersInfoNativeDao.findByUserCodeAndOcodesAndOrderStatus(userCode, ocodes, orderStatus);
+	return	zcOrdersInfoNativeDao.findByUserCodeAndOrderCodeAndOrderStatus(userCode, orderCode, orderStatus);
 	}
 
 }
