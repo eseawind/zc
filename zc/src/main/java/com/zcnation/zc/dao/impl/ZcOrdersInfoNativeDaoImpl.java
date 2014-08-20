@@ -17,9 +17,9 @@ import com.zcnation.zc.domain.ZcOrdersInfo;
 public class ZcOrdersInfoNativeDaoImpl implements ZcOrdersInfoNativeDao{
 
 	@Autowired private EntityManagerFactory entityManagerFactory;
-	public List<ZcOrdersInfo> findByUserCodeAndOcodesAndOrderStatus(Integer userCode,String ocodes,String orderStatus) {
+	public List<ZcOrdersInfo> findByUserCodeAndOrderCodeAndOrderStatus(Integer userCode,String orderCode,String orderStatus) {
 		// TODO Auto-generated method stub
-		String sql="select zoi.ORDER_CODE,zoi.USER_CODE,zoi.PRO_CODE,zoi.ORDER_MONEY,zoi.ORDER_STATUS,zoi.OCODES,zoi.ORDER_TIME from zc_orders_info zoi where 1=1 ";
+		String sql="select    zoi.ocodes,zoi.order_code, zoi.user_code,zoi.order_status,zoi.order_time ,(select sum(zod.order_number*zod.pro_unit)from zc_order_detail zod where zod.order_code in( zoi.order_code) ) as total  from zc_orders_info zoi where 1=1 ";
 		
 		if(userCode!=0){
 		 sql=sql+"  and  zoi.USER_CODE="+userCode+"";
@@ -30,9 +30,9 @@ public class ZcOrdersInfoNativeDaoImpl implements ZcOrdersInfoNativeDao{
 			 sql=sql+"  and  zoi.ORDER_STATUS="+orderStatus+"";
 		}
 		
-		if (ocodes != null && !ocodes.equalsIgnoreCase("")) {
+		if (orderCode != null && !orderCode.equalsIgnoreCase("")) {
 			
-			 sql=sql+"  and  zoi.OCODES like '%"+ocodes+"%'";
+			 sql=sql+"  and  zoi.order_code like '%"+orderCode+"%'";
 		}
 		
 		EntityManager em=entityManagerFactory.createEntityManager();

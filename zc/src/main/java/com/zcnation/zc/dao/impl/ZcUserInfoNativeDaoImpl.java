@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.zcnation.zc.dao.ZcUserInfoNativeDao;
-import com.zcnation.zc.domain.ZcProjectInfo;
+
+import java.sql.Timestamp;
+import java.util.Calendar;
 
 @Repository("zcUserInfoNativeDao")
 public class ZcUserInfoNativeDaoImpl implements ZcUserInfoNativeDao {
@@ -28,6 +30,22 @@ public class ZcUserInfoNativeDaoImpl implements ZcUserInfoNativeDao {
 		em.getTransaction().commit();
 		
 		return flag;
+	}
+	@Override
+	public int updateLoginTimeAndUserScoreByUserCode(Integer userScore,Integer userCode) {
+		// TODO Auto-generated method stub
+		String sql="update   zc_user_info t set t.login_time='"+new Timestamp(
+		        Calendar.getInstance().getTimeInMillis())+"',user_score='"+userScore+"' where t.user_code='"+userCode+"'";
+		System.out.println(sql);
+		EntityManager em=entityManagerFactory.createEntityManager();
+		em.getTransaction().begin();
+		Query query=em.createNativeQuery(sql);
+		int flag= query.executeUpdate();
+	
+		em.getTransaction().commit();
+		
+		
+		return 0;
 	}
 	
 	
