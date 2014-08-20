@@ -111,7 +111,11 @@
 				//alert(errorThrown);
 				//_dologin(jqXHR.responseText);
 				//alert("用户未登录");
-				window.location="userinfo/login.html";
+				var href="userinfo/login.html";
+				if(window.ActiveXObject){
+					href="../userinfo/login.html";
+				}
+				window.location=href;
 			}else{
 				$.eval2(jqXHR.responseText,jqXHR.status);
 			}
