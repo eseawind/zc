@@ -228,10 +228,10 @@ display: block;
 				<div class="entry_content">
 					<div class="user-fun">
 					<h2><c:if test="${sessionScope.USER_INFO!=null }"><c:out value="${sessionScope.USER_INFO.userName }"></c:out></c:if></h2> 
-					<a href="/settings" class="btn-red-h20 btn-base common-sprite">
+					<a href="userinfo/update.xhtml" class="btn-red-h20 btn-base common-sprite">
 						<span class="common-sprite"><i class="common-sprite icon-set"></i>个人设置</span>
 					</a>
-					<a href="/message" class="btn-red-h20 btn-base common-sprite">
+					<a href="javascript:void(0);" class="btn-red-h20 btn-base common-sprite">
 						<span class="common-sprite"><i class="common-sprite icon-info"></i>消息中心</span>
 					</a>
 					
@@ -240,10 +240,10 @@ display: block;
 				<div class="user-info">
 				<p></p>
 					<p>${sessionScope.USER_INFO.userIntroduce }</p>
-					<p>积分：100   <a style="cursor: pointer;">如何获取积分？</a></p>
-					<p>加入时间：25天前</p>
-					<p>所在地区：浙江,杭州</p>
-					<p>上次登录时间：2014-12-12 09:10</p>
+					<p>积分：${sessionScope.USER_INFO.userScore }  <a style="cursor: pointer;" href="javascript:void(0);">如何获取积分？</a></p>
+					<!-- <p>加入时间：25天前</p> -->
+					<p>所在地区：${sessionScope.USER_INFO.userProvince },${sessionScope.USER_INFO.userCity }</p>
+					<p>上次登录时间：${sessionScope.USER_INFO.loginTime}</p>
 										
 									</div>
 				
