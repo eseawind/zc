@@ -162,7 +162,13 @@
 									if($.browser.msie) {
 										url="../index.html";
 									}
+									var href=window.location;
+									if(/^.*login.*/.test(href)){
+										window.location=url;
+									}else{
 									window.location.reload();
+										
+									}
 									//window.location=url;
 								}else{
 									$.alert("登录提示",d.errorMsgs[0]);
