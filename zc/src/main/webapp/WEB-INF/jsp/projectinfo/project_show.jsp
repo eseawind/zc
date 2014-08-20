@@ -532,7 +532,7 @@
 						<div class="grid_3 product">
 							<img class="sale" src="images/sale.png" alt="Sale"/>
 							<div class="prev">
-								<a href="product_page.html"><img src="images/product_1.png" alt="" title="" /></a>
+								<a href="javascript:void(0);"><img src="images/product_1.png" alt="" title="" /></a>
 							</div><!-- .prev -->
 							<h3 class="title">我我我我</h3>
 							<div class="cart">
@@ -552,7 +552,7 @@
 					<li class="">
 						<div class="grid_3 product">
 							<div class="prev">
-								<a href="product_page.html"><img src="images/product_2.png" alt="" title="" /></a>
+								<a href="javascript:void(0);"><img src="images/product_2.png" alt="" title="" /></a>
 							</div><!-- .prev -->
 							<h3 class="title">灌灌灌灌</h3>
 							<div class="cart">
@@ -572,7 +572,7 @@
 					<li class="">
 						<div class="grid_3 product">
 							<div class="prev">
-								<a href="product_page.html"><img src="images/product_3.png" alt="" title="" /></a>
+								<a href="javascript:void(0);"><img src="images/product_3.png" alt="" title="" /></a>
 							</div><!-- .prev -->
 							<h3 class="title">Febreze Air Effects New Zealand Springs</h3>
 							<div class="cart">
@@ -592,7 +592,7 @@
 					<li class="">
 						<div class="grid_3 product">
 							<div class="prev">
-								<a href="product_page.html"><img src="images/product_4.png" alt="" title="" /></a>
+								<a href="javascript:void(0);"><img src="images/product_4.png" alt="" title="" /></a>
 							</div><!-- .prev -->
 							<h3 class="title">Febreze Air Effects New Zealand Springs</h3>
 							<div class="cart">

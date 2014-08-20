@@ -31,7 +31,7 @@
 								 var d=$.eval2(html);
 								 if(d.success){
 									 $.alert("发布作品","发布成功",function(){
-										 window.location="index.html";
+										 window.location="../index.html";
 									 });
 								 }else{
 									 $.alert("发布作品",$.errorMsgs[0]);

@@ -202,22 +202,22 @@
 		     <ul>
 			    <li>
 				   <div class="prev">
-					  <a href="product_page.html"><img src="images/special1.png" alt="" title="" /></a>
+					  <a href="javascript:void(0);"><img src="images/special1.png" alt="" title="" /></a>
 				   </div>
 				   
 				   <div class="cont">
-					  <a href="product_page.html">Honeysuckle Flameless Luminary Refill</a>
+					  <a href="javascript:void(0);">Honeysuckle Flameless Luminary Refill</a>
 					  <div class="prise"><span class="old">$177.00</span>$75.00</div>
 				   </div>   
 			    </li>
 			    
 			    <li>
 				   <div class="prev">
-					  <a href="product_page.html"><img src="images/special2.png" alt="" title="" /></a>
+					  <a href="javascript:void(0);"><img src="images/special2.png" alt="" title="" /></a>
 				   </div>
 				   
 				   <div class="cont">
-					  <a href="product_page.html">Honeysuckle Flameless Luminary Refill</a>
+					  <a href="javascript:void(0);">Honeysuckle Flameless Luminary Refill</a>
 					  <div class="prise"><span class="old">$177.00</span>$75.00</div>
 				   </div>   
 			    </li>
