@@ -162,7 +162,8 @@
 									if($.browser.msie) {
 										url="../index.html";
 									}
-									window.location=url;
+									window.location.reload();
+									//window.location=url;
 								}else{
 									$.alert("登录提示",d.errorMsgs[0]);
 								}
