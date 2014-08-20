@@ -70,8 +70,13 @@ public class ZcUserInfoAction {
 		Result r=zcUserInfoService.login(userName, password);
 		if (r.isSuccess()) {
 			System.out.println("登录成功");
-			ThreadLocalSession.getLocal_session().setAttribute(ZcContext.LOGIN_USER_KEY, (ZcUserInfo)r.getReturnValue());
+			  ZcUserInfo zcUserInfo=new ZcUserInfo();
+			  zcUserInfo=(ZcUserInfo)r.getReturnValue(); 
+			zcUserInfoNativeService.updateLoginTimeAndUserScoreByUserCode(zcUserInfo.getUserScore()+5, zcUserInfo.getUserCode());
+			ThreadLocalSession.getLocal_session().setAttribute(ZcContext.LOGIN_USER_KEY, zcUserInfoService.queryOne(zcUserInfo.getUserCode()));
 		}
+		
+		
 		return r.toJson();
 	}
 	@RequestMapping("/beginLogins.html")
@@ -94,7 +99,7 @@ public class ZcUserInfoAction {
 	@RequestMapping("/exit.html")
 	public String exitLogin(HttpServletRequest request){
 		ThreadLocalSession.getLocal_session().removeAttribute(ZcContext.LOGIN_USER_KEY);
-		return "redirect:../index.html";
+		return "redirect:/index.html";
 	}
 	
 	@RequestMapping("/beginUpdate.xhtml")

@@ -44,6 +44,7 @@ import com.zcnation.zc.domain.ZcUserInfo;
 import com.zcnation.zc.service.ZcProjecLikeService;
 import com.zcnation.zc.service.ZcProjectInfoNativeService;
 import com.zcnation.zc.service.ZcProjectInfoService;
+import com.zcnation.zc.service.ZcProjectLikeNativeService;
 import com.zcnation.zc.service.ZcResourceInfoService;
 
 import org.springframework.data.domain.Page;
@@ -64,113 +65,113 @@ public class ZcProjectInfoAction {
 	private ZcProjecLikeService zcProjecLikeService;
 	@Autowired
 	private ZcProjectInfoNativeService zcProjectInfoNativeService;
+	
+	@Autowired
+	private ZcProjectLikeNativeService zcProjectLikeNativeService;
+
 	@RequestMapping("/project_add.xhtml")
 	public String to_add(HttpServletRequest request) {
 		return "projectinfo/project_add";
 	}
-	
-	
+
 	@RequestMapping("/project_list.html")
-	public String to_list(HttpServletRequest request,String currentPage,String sortSele,String sortBy) {
-//		Sort s=new Sort(Direction.DESC, "proTime");
-//		Pageable p=new PageRequest(0, 8,s);
-//		Page<ZcProjectInfo> ojbs=zcProjectInfoService.queryByPage(0, 8);
-//		List<ZcProjectInfo> prolist=new ArrayList<ZcProjectInfo>();
-//		prolist=ojbs.getContent();
-//		System.out.println(prolist.size());
-		//System.out.println("的的的顶顶顶顶顶"+currentPage);
+	public String to_list(HttpServletRequest request, String currentPage,
+			String sortSele, String sortBy) {
+		// Sort s=new Sort(Direction.DESC, "proTime");
+		// Pageable p=new PageRequest(0, 8,s);
+		// Page<ZcProjectInfo> ojbs=zcProjectInfoService.queryByPage(0, 8);
+		// List<ZcProjectInfo> prolist=new ArrayList<ZcProjectInfo>();
+		// prolist=ojbs.getContent();
+		// System.out.println(prolist.size());
+		// System.out.println("的的的顶顶顶顶顶"+currentPage);
 		if (currentPage == null || currentPage.equals("")) {
-			
-			currentPage="1";
-		}
-		
-		
-if (sortSele == null || sortSele.equals("")) {
-			
-	sortSele="0";
-		}
-if (sortBy == null || sortBy.equals("")) {
-	
-	sortBy="0";
+
+			currentPage = "1";
 		}
 
-		System.out.println("ddddddddddddd"+currentPage);
-		List<ZcProjectInfo> prolist=new ArrayList<ZcProjectInfo>();
-		prolist=zcProjectInfoNativeService.queryByProShStatusAndPage(Integer.parseInt(currentPage),Integer.parseInt(sortSele),Integer.parseInt(sortBy));
-		System.out.println("size"+prolist.size());
+		if (sortSele == null || sortSele.equals("")) {
+
+			sortSele = "0";
+		}
+		if (sortBy == null || sortBy.equals("")) {
+
+			sortBy = "0";
+		}
+
+		// System.out.println("ddddddddddddd"+currentPage);
+		List<ZcProjectInfo> prolist = new ArrayList<ZcProjectInfo>();
+		prolist = zcProjectInfoNativeService.queryByProShStatusAndPage(
+				Integer.parseInt(currentPage), Integer.parseInt(sortSele),
+				Integer.parseInt(sortBy));
+		System.out.println("size" + prolist.size());
 		request.setAttribute("proinfos", prolist);
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("sortSele", sortSele);
 		request.setAttribute("sortBy", sortBy);
 		request.setAttribute("pagesize", 3);
-		
+
 		return "projectinfo/project_list";
 	}
-	
- 
+
 	@RequestMapping("/project_like.xhtml")
 	public String to_like(HttpServletRequest request) {
-		List<ZcProjectLike> list=new ArrayList<ZcProjectLike>();
-		ZcUserInfo sezcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
-		list=zcProjecLikeService.queryByUserCode(sezcUserInfo.getUserCode());
+		List<ZcProjectLike> list = new ArrayList<ZcProjectLike>();
+		ZcUserInfo sezcUserInfo = (ZcUserInfo) request.getSession()
+				.getAttribute(ZcContext.LOGIN_USER_KEY);
+		list = zcProjecLikeService.queryByUserCode(sezcUserInfo.getUserCode());
 		request.setAttribute("prolikes", list);
 		System.out.println(list.size());
 		return "projectinfo/project_like";
 	}
-	
-	
+
 	@RequestMapping("/project_un{userCode}.xhtml")
 	public String to_unlike(@PathVariable("userCode") String userCode,
 			HttpServletRequest request) {
 		System.out.println("userCode:" + userCode);
-		
+
 		try {
-			ZcProjectLike zcProjectLike=zcProjecLikeService.queryOne(Integer.parseInt(userCode));
+			ZcProjectLike zcProjectLike = zcProjecLikeService.queryOne(Integer
+					.parseInt(userCode));
 			zcProjecLikeService.delete(zcProjectLike);
-			//ZcUserInfos zcUserInfos= zcUserInfosService.queryOne(Integer.parseInt(userCode));
-			//zcUserInfosService.delete(zcUserInfos);
-			//zcProjecLikeService.deleteByLikeCode((Integer.parseInt(userCode)));
+			// ZcUserInfos zcUserInfos=
+			// zcUserInfosService.queryOne(Integer.parseInt(userCode));
+			// zcUserInfosService.delete(zcUserInfos);
+			// zcProjecLikeService.deleteByLikeCode((Integer.parseInt(userCode)));
 		} catch (Exception e) {
 			RootLogger.error(e);
 		}
-		
+
 		return "redirect:../projectinfo/project_like.xhtml";
-		
+
 	}
-	
-	
-	
+
 	@RequestMapping("/project_publish.xhtml")
-	public String to_publish(HttpServletRequest request, String  proName, String proShStatus) {
-		System.out.println("proName"+proName);
-		System.out.println("proShStatus"+proShStatus);
-		//List<ZcProjectInfo> list=new ArrayList<ZcProjectInfo>();
-		ZcUserInfo sezcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
-		
-		
-		List list=zcProjectInfoNativeService.queryByUserCodeAndProShStatusAndProNameAndProShStatus(sezcUserInfo.getUserCode(), proName,proShStatus);
-		//list=zcProjectInfoService.queryByUserCodeAndProNameLike(sezcUserInfo.getUserCode(),"%"+proName+"%");
+	public String to_publish(HttpServletRequest request, String proName,
+			String proShStatus) {
+		System.out.println("proName" + proName);
+		System.out.println("proShStatus" + proShStatus);
+		// List<ZcProjectInfo> list=new ArrayList<ZcProjectInfo>();
+		ZcUserInfo sezcUserInfo = (ZcUserInfo) request.getSession()
+				.getAttribute(ZcContext.LOGIN_USER_KEY);
+
+		List list = zcProjectInfoNativeService
+				.queryByUserCodeAndProShStatusAndProNameAndProShStatus(
+						sezcUserInfo.getUserCode(), proName, proShStatus);
+		// list=zcProjectInfoService.queryByUserCodeAndProNameLike(sezcUserInfo.getUserCode(),"%"+proName+"%");
 		request.setAttribute("proinfos", list);
 		request.setAttribute("proName", proName);
 		System.out.println(list.size());
-		
-//		if(list.size()>0){
-//			for (int i = 0; i <list.size(); i++) {
-//				System.out.println(list.get(i).getProCode());
-//				System.out.println(list.get(i).getProName());
-//			}
-//			
-//		}
+
+		// if(list.size()>0){
+		// for (int i = 0; i <list.size(); i++) {
+		// System.out.println(list.get(i).getProCode());
+		// System.out.println(list.get(i).getProName());
+		// }
+		//
+		// }
 		return "projectinfo/project_publish";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
 	@RequestMapping("/project_{detailid}.html")
 	public String to_show(@PathVariable("detailid") String detailId,
 			HttpServletRequest request) {
@@ -236,9 +237,12 @@ if (sortBy == null || sortBy.equals("")) {
 						fos.write(b, 0, flag);
 						fos.flush();
 					}
-					//水印输出
-					String srcFile=request.getSession().getServletContext().getRealPath("/images")+"/6_front.jpg";
-					ImageUtil.pressImage(srcFile, targetFile.getAbsolutePath(), targetFile.getAbsolutePath());
+					// 水印输出
+					String srcFile = request.getSession().getServletContext()
+							.getRealPath("/images")
+							+ "/6_front.jpg";
+					ImageUtil.pressImage(srcFile, targetFile.getAbsolutePath(),
+							targetFile.getAbsolutePath());
 					ZcResourceInfo zr = new ZcResourceInfo();
 					zr.setUptDate(uploadDate);
 					zr.setUptIp(request.getRemoteAddr());
@@ -268,28 +272,35 @@ if (sortBy == null || sortBy.equals("")) {
 		return rs.toJson();
 		// return zcProjectInfoService.save(zcProjectInfo);
 	}
-	
-	
+
 	@RequestMapping("/beginAddLike.html")
 	@ResponseBody
 	public String beginAddProjectLike(HttpServletRequest request,
 			@ModelAttribute ZcProjectLike zcProjectLike, String proCode) {
 		Result rs = new Result();
 		
-		ZcUserInfo sezcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
-		  zcProjectLike.setUserCode(sezcUserInfo.getUserCode());
-		  
-		     ZcProjectInfo projectInfo=new ZcProjectInfo();
-		        projectInfo.setProCode(Integer.parseInt(proCode));
-		   
-		  zcProjectLike.setZcProjectInfo(projectInfo);
 		
-		zcProjecLikeService.save(zcProjectLike);
-					rs.setReturnValue(proCode);
-					rs.setSuccess(true);
-				
-				
-				System.out.println(rs.toJson());
+		
+
+		ZcUserInfo sezcUserInfo = (ZcUserInfo) request.getSession()
+				.getAttribute(ZcContext.LOGIN_USER_KEY);
+		zcProjectLike.setUserCode(sezcUserInfo.getUserCode());
+		
+		List<ZcProjectLike> zProjectLikeval=new ArrayList<ZcProjectLike>();
+		zProjectLikeval=zcProjectLikeNativeService.queryByUserCodeAndproCode  (sezcUserInfo.getUserCode(), Integer.parseInt(proCode));
+		if(zProjectLikeval.size()==0){
+			ZcProjectInfo projectInfo = new ZcProjectInfo();
+			projectInfo.setProCode(Integer.parseInt(proCode));
+			zcProjectLike.setZcProjectInfo(projectInfo);
+			zcProjecLikeService.save(zcProjectLike);
+		}
+		
+		
+
+		rs.setReturnValue(proCode);
+		rs.setSuccess(true);
+
+		// System.out.println(rs.toJson());
 		return rs.toJson();
 		// return zcProjectInfoService.save(zcProjectInfo);
 	}
@@ -423,16 +434,18 @@ if (sortBy == null || sortBy.equals("")) {
 		}
 		r.setSuccess(true);
 		// 购物车html
-		String cartHtml=generateCartHtml();
+		String cartHtml = generateCartHtml();
 		return cartHtml;
 	}
 
 	/***
 	 * 购物车html
+	 * 
 	 * @return
 	 */
 	private String generateCartHtml() {
-		ZcUserInfo user = (ZcUserInfo) ThreadLocalSession.getLocal_session().getAttribute(ZcContext.LOGIN_USER_KEY);
+		ZcUserInfo user = (ZcUserInfo) ThreadLocalSession.getLocal_session()
+				.getAttribute(ZcContext.LOGIN_USER_KEY);
 		// 购物车html
 		StringBuffer cartHtml = new StringBuffer();
 		cartHtml.append("<table style=\"width:100%;\">")
@@ -440,72 +453,89 @@ if (sortBy == null || sortBy.equals("")) {
 				.append("<td>商品</td><td>&nbsp;</td><td>单价</td><td>型号</td><td>数量</td><td>小计</td><td>操作</td>")
 				.append("</tr>");
 		@SuppressWarnings("unchecked")
-		List<CartInfo> cartList = (List<CartInfo>) ThreadLocalSession.getLocal_session().getAttribute(ObjectUtils.toString(user.getUserCode()));
+		List<CartInfo> cartList = (List<CartInfo>) ThreadLocalSession
+				.getLocal_session().getAttribute(
+						ObjectUtils.toString(user.getUserCode()));
 		BigDecimal b = new BigDecimal(0);
 		for (CartInfo c : cartList) {
 			BigDecimal b1 = new BigDecimal(c.getProUnit());
 			cartHtml.append("<tr>")
-					.append("<td><img alt=\"\" src=\"" + c.getImageUrl()+ "\" width=\"100\" height=\"100\"> </td>")
+					.append("<td><img alt=\"\" src=\"" + c.getImageUrl()
+							+ "\" width=\"100\" height=\"100\"> </td>")
 					.append("<td>" + c.getProName() + "</td>")
 					.append("<td>" + c.getProUnit() + "</td>")
 					.append("<td>" + c.getTshirtShort() + "</td>")
 					.append("<td>" + c.getCartNumber() + "</td>")
-					.append("<td>" + c.getCartNumber() + "*" + c.getProUnit()+ "=" + (c.getCartNumber() * c.getProUnit())+ "元</td>").append("<td><a href=\"javascript:void(0)\" proCode=\""+c.getProCode()+"\" ttype=\""+c.getTshirtShort()+"\">删除<a></td>").append("</tr>");
+					.append("<td>" + c.getCartNumber() + "*" + c.getProUnit()
+							+ "=" + (c.getCartNumber() * c.getProUnit())
+							+ "元</td>")
+					.append("<td><a href=\"javascript:void(0)\" proCode=\""
+							+ c.getProCode() + "\" ttype=\""
+							+ c.getTshirtShort() + "\">删除<a></td>")
+					.append("</tr>");
 			b = b.add(b1.multiply(new BigDecimal(c.getCartNumber())));
 		}
-		cartHtml.append("<tr>").append("<td colspan=\"6\" align=\"right\">共" + cartList.size()+ "件商品，商品总金额" + b + "元   </td>").append("</tr>");
+		cartHtml.append("<tr>")
+				.append("<td colspan=\"6\" align=\"right\">共" + cartList.size()
+						+ "件商品，商品总金额" + b + "元   </td>").append("</tr>");
 		return cartHtml.toString();
 	}
 
 	@RequestMapping("/beginDelecart.xhtml")
 	@ResponseBody
-	public String beginDeleteCart(HttpServletRequest request,@ModelAttribute CartInfo info){
-		Result r=new Result();
-		ZcUserInfo user = (ZcUserInfo) ThreadLocalSession.getLocal_session().getAttribute(ZcContext.LOGIN_USER_KEY);
+	public String beginDeleteCart(HttpServletRequest request,
+			@ModelAttribute CartInfo info) {
+		Result r = new Result();
+		ZcUserInfo user = (ZcUserInfo) ThreadLocalSession.getLocal_session()
+				.getAttribute(ZcContext.LOGIN_USER_KEY);
 		@SuppressWarnings("unchecked")
-		List<CartInfo> cartList = (List<CartInfo>) ThreadLocalSession.getLocal_session().getAttribute(ObjectUtils.toString(user.getUserCode()));
+		List<CartInfo> cartList = (List<CartInfo>) ThreadLocalSession
+				.getLocal_session().getAttribute(
+						ObjectUtils.toString(user.getUserCode()));
 		if (cartList.contains(info)) {
 			cartList.remove(info);
 		}
-		ThreadLocalSession.getLocal_session().setAttribute(ObjectUtils.toString(user.getUserCode()), cartList);
+		ThreadLocalSession.getLocal_session().setAttribute(
+				ObjectUtils.toString(user.getUserCode()), cartList);
 		r.setSuccess(true);
 		return r.toJson();
 	}
-	
+
 	@RequestMapping("/getCart.xhtml")
 	@ResponseBody
-	public String getCartHtml(){
-		String carthtml=generateCartHtml();
+	public String getCartHtml() {
+		String carthtml = generateCartHtml();
 		return carthtml;
 	}
-	
+
 	@RequestMapping("/beginorders.xhtml")
 	@ResponseBody
-	public String beginPutOrders(HttpServletRequest request){
-		String str="";
-		
-		Result r=new Result();
+	public String beginPutOrders(HttpServletRequest request) {
+		String str = "";
+
+		Result r = new Result();
 		r.setSuccess(true);
 		return r.toJson();
 	}
-	
+
 	/**
 	 * 判断需要分几页
+	 * 
 	 * @param count
 	 * @param pageSize
 	 * @return
 	 */
-	   private long getpagenum(long count, int pageSize) {
-		    if (count == 0L)
-		       return 1L;
-		     if (count % pageSize != 0L) {
-		       return count / pageSize + 1L;
-		     }
-	     return count / pageSize;
-		   }
-	
+	private long getpagenum(long count, int pageSize) {
+		if (count == 0L)
+			return 1L;
+		if (count % pageSize != 0L) {
+			return count / pageSize + 1L;
+		}
+		return count / pageSize;
+	}
+
 	public static void main(String[] args) {
 		System.out.println("ddd");
 	}
-	
+
 }
