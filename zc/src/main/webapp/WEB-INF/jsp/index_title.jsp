@@ -114,9 +114,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	</c:if>
             	<c:if test="${sessionScope.USER_INFO!=null }" var="userinfo" scope="session">
             	
-            	  <li><a href="#"><c:out value="${sessionScope.USER_INFO.userName }"></c:out></a></li>
+            	  <li><a href="userinfo/show.xhtml"><c:out value="${sessionScope.USER_INFO.userName }"></c:out></a></li>
 		<li class="separator">|</li>
-          
+           <li><a href="userinfo/exit.html">退出</a></li>
             	</c:if>
 		
 		
@@ -141,27 +141,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <li><a href="projectinfo/project_list.html">麻布</a></li>
                 <li><a href="projectinfo/project_list.html">棉质</a></li>
                 <li><a href="projectinfo/project_list.html">尼龙</a></li>
-                <li><a href="projectinfo/project_list.html">其它</a></li>
+                <!-- <li><a href="projectinfo/project_list.html">其它</a></li>--> 
               </ul>
             
             </li>
             <li><a href="catalog_grid.html">长袖</a>
             
              <ul class="sub">
-                <li><a href="catalog_grid.html">麻布</a></li>
-                <li><a href="catalog_grid.html">棉质</a></li>
-                <li><a href="catalog_grid.html">尼龙</a></li>
-                <li><a href="catalog_grid.html">其它</a></li>
+                <li><a href="projectinfo/project_list.html">麻布</a></li>
+                <li><a href="projectinfo/project_list.html">棉质</a></li>
+                <li><a href="projectinfo/project_list.html">尼龙</a></li>
+              <!--   <li><a href="catalog_grid.html">其它</a></li>--> 
               </ul>
             </li>
-            <li>
+           <!-- <li>
               <a href="catalog_grid.html">背包</a>
               <ul class="sub">
                 <li><a href="catalog_grid.html">双肩包</a></li>
                 <li><a href="catalog_grid.html">单肩包</a></li>
                 <li><a href="catalog_grid.html">其它</a></li>
               </ul>
-            </li>
+            </li> --> 
            <!--   <li><a href="catalog_grid.html">Electric</a></li>
             <li><a href="catalog_grid.html">For cars</a></li>
 	    <li>
