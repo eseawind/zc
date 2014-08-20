@@ -57,6 +57,13 @@ public class ZcUserInfo implements Serializable {
 	
 	@Column(name="USER_SEX")
 	private String userSex;
+	
+	@Column(name="LOGIN_TIME")
+	private Date loginTime;
+	
+	@Column(name="USER_SCORE")
+	private Integer userScore;
+	
 
 	public Integer getUserCode() {
 		return userCode;
@@ -184,6 +191,22 @@ public class ZcUserInfo implements Serializable {
 
 	public void setUserSex(String userSex) {
 		this.userSex = userSex;
+	}
+
+	public Date getLoginTime() {
+		return loginTime;
+	}
+
+	public void setLoginTime(Date loginTime) {
+		this.loginTime = loginTime;
+	}
+
+	public Integer getUserScore() {
+		return userScore;
+	}
+
+	public void setUserScore(Integer userScore) {
+		this.userScore = userScore;
 	}
 	
 	
