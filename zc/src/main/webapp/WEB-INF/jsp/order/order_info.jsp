@@ -269,9 +269,9 @@ display: inline-block;
                <tr>
               <td><c:out value="${ord[0]}"></c:out></td>
               <td><c:out value="${ord[1]}"></c:out></td>
-              <td><c:out value="${ord[5]}"></c:out></td>
-             
               <td><c:out value="${ord[4]}"></c:out></td>
+             
+              <td><c:out value="${ord[5]}"></c:out></td>
              
                  <td>
               <c:if test="${ord[3]=='0' }">
