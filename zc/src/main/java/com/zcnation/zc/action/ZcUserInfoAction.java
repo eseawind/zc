@@ -72,7 +72,15 @@ public class ZcUserInfoAction {
 			System.out.println("登录成功");
 			  ZcUserInfo zcUserInfo=new ZcUserInfo();
 			  zcUserInfo=(ZcUserInfo)r.getReturnValue(); 
-			zcUserInfoNativeService.updateLoginTimeAndUserScoreByUserCode(zcUserInfo.getUserScore()+5, zcUserInfo.getUserCode());
+			  
+			  if (zcUserInfo.getUserScore() == null ||zcUserInfo.getUserScore().equals("")) {
+					
+				  zcUserInfoNativeService.updateLoginTimeAndUserScoreByUserCode(5, zcUserInfo.getUserCode());
+				}else{
+					zcUserInfoNativeService.updateLoginTimeAndUserScoreByUserCode(zcUserInfo.getUserScore()+5, zcUserInfo.getUserCode());
+				}
+			  
+			
 			ThreadLocalSession.getLocal_session().setAttribute(ZcContext.LOGIN_USER_KEY, zcUserInfoService.queryOne(zcUserInfo.getUserCode()));
 		}
 		
