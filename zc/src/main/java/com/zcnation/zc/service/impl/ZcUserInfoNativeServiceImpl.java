@@ -16,9 +16,9 @@ public class ZcUserInfoNativeServiceImpl implements ZcUserInfoNativeService,Seri
 	
 	
 	@Override
-	public int updateByUserCode(Integer userCode, String password) {
+	public int updateByUserCode(Integer userCode, String password,String userOldPassowrd) {
 		// TODO Auto-generated method stub
-		return zcUserInfoNativeDao.updateByUserCode(userCode, password);
+		return zcUserInfoNativeDao.updateByUserCode(userCode, password,userOldPassowrd);
 	}
 	@Override
 	public int updateLoginTimeAndUserScoreByUserCode(Integer userScore,Integer userCode) {
