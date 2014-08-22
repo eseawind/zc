@@ -11,7 +11,7 @@ import com.zcnation.zc.domain.ZcProjectInfo;
 
 public interface ZcUserInfoNativeService {
 
-	public int updateByUserCode(Integer userCode,String password);
+	public int updateByUserCode(Integer userCode,String password,String userOldPassowrd);
 	
 	public int updateLoginTimeAndUserScoreByUserCode(Integer userScore,Integer userCode);
 
