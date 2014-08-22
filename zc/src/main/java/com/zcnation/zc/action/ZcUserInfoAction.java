@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.zcnation.zc.common.Result;
 import com.zcnation.zc.common.ThreadLocalSession;
+import com.zcnation.zc.common.exception.NotValidateCorrectException;
 import com.zcnation.zc.common.util.UrlHelp;
 import com.zcnation.zc.context.ZcContext;
 import com.zcnation.zc.domain.ZcUserInfo;
@@ -135,15 +136,25 @@ public class ZcUserInfoAction {
 	
 	@RequestMapping("/beginUpdatePssword.xhtml")
 	@ResponseBody
-	public String beginUpdatePssword(HttpServletRequest request,@ModelAttribute ZcUserInfo zcUserInfo,@RequestParam(value="passwordagin") String passwordagin){
+	public String beginUpdatePssword(HttpServletRequest request,@ModelAttribute ZcUserInfo zcUserInfo,@RequestParam(value="passwordagin") String passwordagin,@RequestParam(value="userOldPassowrd") String userOldPassowrd){
 		Result r=new Result();
 		//zcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
 		//zcUserInfoService.update(userName,zcUserInfo.getUserCode());
 		
 		ZcUserInfo sezcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
-		int flag=zcUserInfoNativeService.updateByUserCode(sezcUserInfo.getUserCode(), passwordagin);
-		r.setSuccess(flag>0?true:false);
-		System.out.println("flag"+flag);
+		int flag=zcUserInfoNativeService.updateByUserCode(sezcUserInfo.getUserCode(), passwordagin,userOldPassowrd);
+		
+		 
+		  if(flag==0){
+				r.setSuccess(flag==0?true:false);
+				
+			
+		  }else{
+				throw new NotValidateCorrectException("输入的旧密码不正确");
+
+		  }
+		
+	
 		//zcUserInfoService.gengxinByUserCode(sezcUserInfo.getUserCode());
 		//用户主键id不存在页面隐藏域中，防止被看见
 //		zcUserInfo.setUserCode(sezcUserInfo.getUserCode());
