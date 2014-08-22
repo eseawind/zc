@@ -40,36 +40,36 @@ public class ZcProjectInfo implements Serializable {
 	@Column(name="PRO_EXE_STATUS")
 	private int proExeStatus;
 	
-	@Column(name=" PRO_TARGET")
+	@Column(name="PRO_TARGET")
 	private int proTarget;
 	
-	@Column(name=" PRO_TIME")
+	@Column(name="PRO_TIME")
 	private Date proTime;
 	
-	@Column(name=" PRO_TYPE")
+	@Column(name="PRO_TYPE")
 	private int proType;
 	
 	
 	
-	@Column(name=" PRO_PROVINCE")
+	@Column(name="PRO_PROVINCE")
 	private String proProvince;
-	@Column(name=" PRO_CITY")
+	@Column(name="PRO_CITY")
 	private String proCity;
 	
-	@Column(name=" PRO_FABRIC")
+	@Column(name="PRO_FABRIC")
 	private int proFabric;
 	
-	@Column(name=" PRO_SAMPLE")
+	@Column(name="PRO_SAMPLE")
 	private int proSample;
 	
-	@Column(name=" PRO_TAG")
+	@Column(name="PRO_TAG")
 	private String proTag;
 	
 	
-	@Column(name=" PRO_STARTTIME")
+	@Column(name="PRO_STARTTIME")
 	private Date proStartTime;
 	
-	@Column(name=" PRO_ENDTIME")
+	@Column(name="PRO_ENDTIME")
 	private Date proEndTime;
 	
 	@OneToOne
