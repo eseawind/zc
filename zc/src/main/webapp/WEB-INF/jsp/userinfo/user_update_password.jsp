@@ -123,12 +123,12 @@ display: block;
 					
 				},
 				checkRegForm:function(){//验证表单
-					if(!register.validateInput($("#userOldPassowrd"), "validOldPassowrd", "请输入您的用户名", "请输入6-20位用户名", true, 6, 20, false)){
+					if(!register.validateInput($("#userOldPassowrd"), "validOldPassowrd", "请输入您的旧密码", "请输入6-20位旧密码", true, 6, 20, false)){
 						
 						return false;
 					}
 
-					else if(!register.validateInput($("#password"), "validPassword", "请输入密码", "请输入6-20位密码", true, 6, 20, false)){
+					else if(!register.validateInput($("#password"), "validPassword", "请输入新密码", "请输入6-20位新密码", true, 6, 20, false)){
 						return false;
 					}else if($("#passwordagin").val()!=$("#password").val()){
 						$("#validpasswordAgain").addClass("Validform_wrong").html("两次密码输入不一致");
@@ -139,8 +139,8 @@ display: block;
 					return true;
 				},
 				blurInput:function(){
-					register.commonBlurInput($("#userOldPassowrd"), "validOldPassowrd", "请输入您的用户名", "请输入6-20位用户名", true, 6, 20, false);
-					register.commonBlurInput($("#password"), "validPassword", "请输入密码", "请输入6-20位密码", true, 6, 20, false);
+					register.commonBlurInput($("#userOldPassowrd"), "validOldPassowrd", "请输入您的旧密码", "请输入6-20位旧密码", true, 6, 20, false);
+					register.commonBlurInput($("#password"), "validPassword", "请输入新密码", "请输入6-20位新密码", true, 6, 20, false);
 					$("#passwordagin").blur(function(){
 						var that=$(this);
 						if(that.val()!=$("#password").val()){
