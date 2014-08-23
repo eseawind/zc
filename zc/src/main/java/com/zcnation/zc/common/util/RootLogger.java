@@ -37,5 +37,11 @@ public class RootLogger {
 	}
 	public static void main(String[] args) {
 		RootLogger.info("你好");
+		try {
+			System.out.println(1/0);
+		} catch (Exception e) {
+			RootLogger.error(e);
+		}
+		RootLogger.error("发成错误了");
 	}
 }

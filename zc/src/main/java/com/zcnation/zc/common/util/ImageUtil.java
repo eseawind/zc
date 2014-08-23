@@ -15,6 +15,9 @@ import javax.imageio.ImageIO;
  */
 public class ImageUtil {
 	public static final String IMAGE_FORMAT_JPG="jpg";
+	
+	public static final int IMAGE_TARGET_WIDTH=128;
+	public static final int IMAGE_TARGET_HEIGHT=128;
 
 	/***
 	 * 水印图片
@@ -38,7 +41,7 @@ public class ImageUtil {
 			Image wriImage=ImageIO.read(wrtFile);
 			int tarWidth=wriImage.getWidth(null);
 			int tarHeight=wriImage.getHeight(null);
-			g.drawImage(wriImage, (width-tarWidth)/2,(height-tarHeight)/2, tarWidth, tarHeight, null);
+			g.drawImage(wriImage, (width-IMAGE_TARGET_WIDTH)/2,(height-IMAGE_TARGET_HEIGHT)/2, IMAGE_TARGET_WIDTH, IMAGE_TARGET_HEIGHT, null);
 			
 			g.dispose();
 			File outFile=new File(outFilePath);

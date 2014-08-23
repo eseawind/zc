@@ -84,9 +84,10 @@ public class UploadAction {
 		String msg="";
 		try {
 			System.out.println(Integer.parseInt(nn));
-			
+			System.out.println(1/0);
 			msg="success";
 		} catch (Exception e) {
+			RootLogger.error(e);
 			msg="error";
 		}
 		System.out.println(msg);
