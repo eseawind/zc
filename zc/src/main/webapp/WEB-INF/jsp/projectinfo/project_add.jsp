@@ -31,7 +31,11 @@
 								 var d=$.eval2(html);
 								 if(d.success){
 									 $.alert("发布作品","发布成功",function(){
-										 window.location="../index.html";
+										 if(window.ActiveXObject){
+											 window.location="../index.html";
+										 }else{
+											 window.location="index.html";
+										 }
 									 });
 								 }else{
 									 $.alert("发布作品",$.errorMsgs[0]);
@@ -42,20 +46,54 @@
 					
 					//图片上传
 					$("#fileuploada").bind('change',function(){
-						var files=!!this.files?this.files:[];
-						if(!files.length||!window.FileReader)return;
-						if(/^image/.test(files[0].type)){
-							var reader=new FileReader();
-							reader.readAsDataURL(files[0]);
-							reader.onloadend=function(){
-								//$("#bgbox").css("background-image","url("+this.result+")");
-								$("#imgBox").attr("src",this.result);
+						if(!window.ActiveXObject){
+							var files=!!this.files?this.files:[];
+							if(!files.length||!window.FileReader)return;
+							if(/^image/.test(files[0].type)){
+								var reader=new FileReader();
+								reader.readAsDataURL(files[0]);
+								reader.onloadend=function(){
+									//$("#bgbox").css("background-image","url("+this.result+")");
+									$("#imgBox").attr("src",this.result);
+									//$("#imgDivBox").css("background-image","url("+this.result+")");
+								}
 							}
+						}else{
+							var p=getPath($(this)[0]);
+							//var obj=$("#imgDivBox")[0];
+							//obj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = p;
+							$("#imgDivBox").html('<div style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src=\'' + p + '\')"></div>');
+							alert($("#imgDivBox").html());
 						}
 					});
 					
+					
+					
 				} 
 		};
+		//附带不用修改浏览器安全配置的javascript代码，兼容ie， firefox全系列
+
+		function getPath(obj)  
+		{  
+		  if(obj)  
+		    {  
+		    if (window.navigator.userAgent.indexOf("MSIE")>=1)  
+		      {  
+		        obj.select();  
+		 
+		      return document.selection.createRange().text;  
+		      }  
+		    else if(window.navigator.userAgent.indexOf("Firefox")>=1)  
+		      {  
+		      if(obj.files)  
+		        {  
+		        return obj.files.item(0).getAsDataURL();  
+		        }  
+		      return obj.value;  
+		      }  
+		    return obj.value;  
+		    }  
+		}  
 		function main(){
 			//注册事件
 			register.initButtonRegister();
@@ -179,7 +217,7 @@
 					<strong>封面图片:</strong><sup class="surely">*</sup>
 					
 					<input type="file"  value="上传" id="fileuploada" name="fileupload"/>
-					<DIV id=validName class=Validform_checktip  > </DIV>
+					<DIV id=validName class=Validform_checktip  > </DIV>(推荐像素：128*128)
 				</div><!-- .email -->
 				
 				
@@ -236,9 +274,10 @@
         </ul> -->
       </div>
       <div class="bgbox" style="background: url(images/6_front.jpg) no-repeat transparent;" id="bgbox">
-      <div style="width: 152px; height: 231px; margin-left: 84px; margin-top: 52px; border: 1px dashed rgb(0, 0, 0); position: absolute;">
-      <img style="border:0px;margin:0px;padding:0px;width:152px;height:152px;" id="imgBox" src="images/d.png">
-      </div></div>
+      <div style="width: 128px; height: 128px; margin-left: 95px; margin-top: 90px; border: 1px dashed rgb(0, 0, 0); position: absolute;background-repeat: no-repeat;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale);" id="imgDivBox">
+       <img style="border:0px;margin:0px;padding:0px;" id="imgBox" src="images/d.png" width="128" height="128"> 
+      </div>
+      </div>
       
      
 
