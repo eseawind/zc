@@ -25,14 +25,20 @@ public class ZcProjectInfoNativeServiceImpl implements ZcProjectInfoNativeServic
 		return zcProjectInfoNativeDao.findByProShStatus();
 	}
 	@Override
-	public List<ZcProjectInfo> queryByProShStatusAndPage(Integer currentPage,Integer sortSele,Integer sortBy) {
+	public List<ZcProjectInfo> queryByProShStatusAndPage(Integer currentPage,Integer sortSele,Integer sortBy,Integer proType,Integer proFabric,Integer userCode) {
 		// TODO Auto-generated method stub
-		return zcProjectInfoNativeDao.findByProShStatusAndPage(currentPage,sortSele,sortBy);
+		return zcProjectInfoNativeDao.findByProShStatusAndPage(currentPage,sortSele,sortBy,proType,proFabric,userCode);
 	}
 	@Override
 	public List<ZcProjectInfo> queryByProTime() {
 		// TODO Auto-generated method stub
 		return zcProjectInfoNativeDao.findByProTime();
+	}
+	@Override
+	public Integer queryTtotalByProShStatusAndPage(Integer sortSele,
+			Integer sortBy, Integer proType, Integer proFabric) {
+		// TODO Auto-generated method stub
+		return zcProjectInfoNativeDao.findTotalByProShStatusAndPage(sortSele, sortBy, proType, proFabric);
 	}
 
 }
