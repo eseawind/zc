@@ -16,122 +16,28 @@
 
 
 <style type="text/css">
-
-.user-fun {
-width: 100%;
-height: 32px;
+.button{
+	width:140px;
+	line-height:38px;
+	text-align:center;
+	font-weight:bold;
+	color:#fff;
+	text-shadow:1px 1px 1px #333;
+	border-radius:5px;
+	margin:0 20px 20px 0;
+	position:relative;
+	overflow:hidden;
+	float:right;display:inline;
 }
-.user-fun h2 {
-font-size: 24px;
-line-height: 32px;
-color: #000;
-float: left;
-padding-right: 10px;
+.button:nth-child(6n){margin-right:0;}
+.button.blue{
+	border:1px solid #1e7db9;
+	box-shadow:0 1px 2px #8fcaee inset,0 -1px 0 #497897 inset,0 -2px 3px #8fcaee inset;
+	background:-webkit-linear-gradient(top,#42a4e0,#2e88c0);
+	background:-moz-linear-gradient(top,#42a4e0,#2e88c0);
+	background:linear-gradient(top,#42a4e0,#2e88c0);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#42a4e0', endColorstr='#2e88c0'); /*  IE */
 }
-.user-fun .btn-base {
-margin: 6px 0px;
-color: #FFF;
-}
-.btn-red-h20 {
-background-position: -223px 0px;
-height: 20px;
-line-height: 20px;
-}
-.btn-base {
-display: inline-block;
-zoom: 1;
-padding-left: 5px;
-color: #FFF;
-}
-.common-sprite {
-background-image: url('images/icon_sprite.png');
-background-repeat: no-repeat;
-}
-.user-fun .btn-base span {
-padding: 0px 8px 0px 2px;
-margin-right: 8px;
-}
-.btn-red-h20 span {
-background-position: 100% -263px;
-height: 20px;
-line-height: 20px;
-}
-.btn-base span {
-display: inline-block;
-zoom: 1;
-padding-right: 5px;
-float: left;
-}
-.icon-set {
-background-position: -45px -75px;
-}
-.icon-set, .icon-msg, .icon-info {
-width: 16px;
-height: 16px;
-line-height: 0px;
-font-size: 0px;
-display: inline-block;
-vertical-align: middle;
-_margin-top: 3px;
-}
-
-i, em {
-font-style: normal;
-}
-user agent stylesheeti, cite, em, var, address, dfn {
-font-style: italic;
-}
-.user-info {
-padding:20px 110px 110px 0px;
-}
-p {
-display: block;
--webkit-margin-before: 1em;
--webkit-margin-after: 1em;
--webkit-margin-start: 0px;
--webkit-margin-end: 0px;
-}
-
-
-
- .content .findBox {
-margin: 12px 20px 16px;
-zoom: 1;
-}
-.content .findBox dt {
-float: left;
-}
-* {
-margin: 0;
-padding: 0;
-}
-.content .findBox select {
-margin-right: 6px;
-}
-.content .findBox dd {
-float: right;
-}
-.content .findBox input, .userCenter .findBox select {
-color: #7e7e7e;
-}
-.incInput {
-height: 26px;
-border: 1px solid #e7e7e7;
-padding: 0 10px;
-line-height: 26px;
-}
-
-a.buthui {
-background: #f2f2f2;
-color: #7e7e7e;
-font-size: 12px;
-padding: 5px 15px 4px;
-border: 1px solid #d7d7d7;
-margin-left: 7px;
-vertical-align: middle;
-display: inline-block;
-}
-
 </style>
 <script>
 	$(document).ready(function() {
@@ -225,12 +131,16 @@ display: inline-block;
 
        <div id="content" class="grid_9">
 	      <h1 class="page_title">我的订单</h1>
+	        
+	      
+	      
 	      <FORM method=post action="order/order_info.xhtml" id="searchForm">
 		
-	      <dl class="findBox clearfix">
-          <dt>
+	      <div style="margin-top: 20px;">
        
-                    <select  id="orderStatus" name="orderStatus" style="width: 150px;">
+               <input type="text"  class="incInput" name="orderCode" value="${orderCode }" size="36" id="orderCode">
+               &nbsp;  &nbsp;  &nbsp;&nbsp;  &nbsp;  &nbsp;&nbsp;  &nbsp;  &nbsp;
+                     <select  id="orderStatus" name="orderStatus" style="width: 150px;">
                         <option value="-1" selected="selected">全部</option>
                                  <option value="0" >已提交</option>
                                    <option value="1" >已取消</option>
@@ -243,14 +153,12 @@ display: inline-block;
                                     
                       </select>
                       <input type="hidden" id="orderStatusSelect" name="orderStatusSelect" value="${orderStatus }">
-          </dt>
-          <dd>
-            <input type="text" class="incInput" name="orderCode" value="${orderCode }" size="36" id="orderCode">
-         <input type="submit" class="bay" value="&nbsp;&nbsp;&nbsp;&nbsp;查询&nbsp;&nbsp;&nbsp;&nbsp;">
-          </dd>
-        </dl>
+                        
+                        <button type="submit" class="button blue">查询</button>
+                  </div>      
+         
 	      </FORM>
-	      
+	     
 
  <table border="0" cellpadding="0" cellspacing="0" class="tableStyle thback">
           <tbody><tr>
