@@ -318,7 +318,8 @@ body{
 	color:#444;
 	background: #fff;
 	font:normal 13px/20px Segoeui, Arial, Verdana, serif;
-	background: url(../images/bg_header.png) repeat-x center top;
+	margin-top: 10px;
+	/**background: url(../images/bg_header.png) repeat-x center top;**/
 }
 .surely{
 	color: #c3293a;
@@ -389,8 +390,8 @@ body{
  **********/
 header#branding{
 	width: 100%;
-	height:125px;
-	margin: 35px 0 0 0;
+	height:100px;
+	margin: 0 0 0 0;
 }
 #site_logo{
 	margin: 0 0 0 -10px;
@@ -417,6 +418,9 @@ form.search .entry_form{
 form.search input.entry_form:hover{
 	border: 1px solid #afafaf;
 	background: url(../images/bg_search_h.png) no-repeat 204px center;
+	cursor: pointer;
+	
+	
 }
 form.search input.entry_form:focus{
 	outline:none;
@@ -2613,10 +2617,10 @@ img.sale{
 	margin: 0px;
 	border-right: 1px solid #e0e0e0;
 }
-.product .cart .obn{background: url(../images/bg_obn.png) no-repeat 50% 50%;}
-.product .cart .like{background: url(../images/bg_like.png) no-repeat 50% 50%;}
+.product .cart .obn{background: url(../images/toolkit.png) no-repeat 50% 50%;}
+.product .cart .like{background: url(../images/toolkit.png) no-repeat -8px -94px;}
 .product .cart .bay{
-	background: url(../images/bg_bay.png) no-repeat 50% 50% #f5f7f9;
+	background: url(../images/toolkit.png) no-repeat 80% 19% #f5f7f9;
 	border: 0 none;
 }
 .product .cart a:hover.obn,
