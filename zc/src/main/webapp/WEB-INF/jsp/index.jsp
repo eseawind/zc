@@ -52,6 +52,23 @@
 		     $(this).addClass('click')
 	      });
        })
+       
+       
+	function ajax_webserviceHello(proCode) {
+    $.ajax({
+        type: "post",
+        contentType: "application/json",
+        url: "projectinfo/beginAddLike.html?proCode="+proCode,
+        data: "{}",
+        dataType: 'json',
+        success: function(data) {
+        
+        	$("#btnLike"+data.returnValue).removeClass("like");
+        	$("#btnLike"+data.returnValue).addClass("likeed");
+        }
+    });
+}
+
   </script>
   
   <style type="text/css">
@@ -160,10 +177,8 @@
               <div class="prev">
                 <a href="projectinfo/project_${prolike[0]}.html"><img src="uploadImg/${prolike[7]}" alt="" title="" /></a>
               </div><!-- .prev -->
-              <h3 class="title">${prolike[1] }</h3>
-         
-              
-              
+              <h3 class="title">${prolike[1] }<br>
+               	 目标： ${prolike[10] }天 ${prolike[3] }件 </h3>
               <c:choose>  
                <c:when test="${empty prolike[9]}">  
                   <div class="progress-bar" title="已售卖了0件，完成目标的0%"> 
@@ -190,9 +205,9 @@
                   <div class="price_new">￥<c:out value="${prolike[5]}"></c:out></div>
                 </div>
                 </div>
-                <a href="#" class="obn"></a>
-                <a href="#" class="like"></a>
-                <a href="#" class="bay"></a>
+              <a href="#" class="obn"></a>
+            	<a href="javascript:void(0);" title="我喜欢" class="like" id="btnLike${pro[0] }" name="btnLike${pro[0] }" onclick="ajax_webserviceHello(${prolike[0] });">
+                <a href="projectinfo/project_${prolike[0]}.html" class="bay" title="加入购物车"></a>
               </div><!-- .cart -->
             </div><!-- .grid_3 -->
           </li>
@@ -228,8 +243,8 @@
               <div class="prev">
                 <a href="projectinfo/project_${pro[0] }.html"><img src="uploadImg/${pro[7]}" alt="" title="" /></a>
               </div><!-- .prev -->
-              <h3 class="title">${pro[1]}</h3>
-              
+             <h3 class="title">${prolike[1] }<br>
+               	 目标： ${pro[10] }天 ${pro[3] }件 </h3>
                 
               <c:choose>  
                <c:when test="${empty pro[9]}">  
@@ -253,8 +268,8 @@
                 </div>
                 </div>
                 <a href="#" class="obn"></a>
-                <a href="#" class="like"></a>
-                <a href="#" class="bay"></a>
+              <a href="javascript:void(0);" title="我喜欢" class="like" id="btnLike${pro[0] }" name="btnLike${pro[0] }" onclick="ajax_webserviceHello(${pro[0] });">
+                <a href="projectinfo/project_${prolike[0]}.html" class="bay" title="加入购物车"></a>
               </div><!-- .cart -->
             </div><!-- .grid_3 -->
           </li>

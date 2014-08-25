@@ -13,43 +13,49 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>T恤众筹平台</title>
 </head>
+<script type="text/javascript">
 
+$(document).ready(function () {  
+  
+	     $("#favorites").click(function () {
+	    	
+	       var ctrl = (navigator.userAgent.toLowerCase()).indexOf('mac') != -1 ? 'Command/Cmd' : 'CTRL';  
+
+	       if (document.all) {  
+
+       window.external.addFavorite('http://www.noobest.cn', '众筹网')  
+
+       } else if (window.sidebar) {  
+
+	       window.sidebar.addPanel('众筹网', 'http://www.noobest.cn', "")  
+
+	        } else {//添加收藏的快捷键  
+
+       alert('添加失败\n您可以尝试通过快捷键' + ctrl + ' + D 加入到收藏夹~')  
+
+	       } 
+
+	   });
+	   
+	   $("#proTypeShort").click(function(){
+		   if(window.ActiveXObject){
+			   window.location=("../projectinfo/project_list.html?proType=1&proFabric=0");  
+			 }else{
+				  window.location=("projectinfo/project_list.html?proType=1&proFabric=0");  
+			 }
+		   	
+		       }); 
+
+	  });  
+
+
+
+</script>
 <body>
  <div class="container_12">
-    <div id="top">
-      <div class="grid_3">
-        <div class="phone_top">
-           客服电话 0571-86854235
-        </div><!-- .phone_top -->
-      </div><!-- .grid_3 -->
+   
 
-      <div class="grid_6">
-        <div class="welcome">
-         亲， 你可以<a href="userinfo/login.html">登录</a> 或 <a href="userinfo/register.html">注册</a>.
-        </div><!-- .welcome -->
-      </div><!-- .grid_6 -->
-
-      <div class="grid_3">
-        <div class="valuta">
-          <ul>
-            <li class="curent"><a href="#">EN</a></li>
-            <li><a href="#">&#8364;</a></li>
-            <li><a href="#">&#163;</a></li>
-          </ul>
-        </div><!-- .valuta -->
-
-        <div class="lang">
-          <ul>
-            <li class="curent"><a href="#">英文</a></li>
-            <li><a href="#">中文</a></li>
-            <li><a href="#">繁体</a></li>
-          </ul>
-        </div><!-- .lang -->
-      </div><!-- .grid_3 -->
-    </div><!-- #top -->
-
-    <div class="clear"></div>
-
+ 
     <header id="branding">
       <div class="grid_3">
         <hgroup>
@@ -61,6 +67,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <div class="grid_3">
         <form class="search">
           <input type="text" name="search" class="entry_form" value="" placeholder="发现更多的作品..."/>
+          
+         
 	</form>
       </div><!-- .grid_3 -->
 
@@ -136,21 +144,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <nav class="primary">
           <ul>
             <li class="curent"><a href="index.html">首页</a></li>
-            <li><a href="projectinfo/project_list.html">短袖</a>
+            <li><a  href="projectinfo/project_list.html?proType=1&proFabric=0">短袖</a>
             <ul class="sub">
-                <li><a href="projectinfo/project_list.html">麻布</a></li>
-                <li><a href="projectinfo/project_list.html">棉质</a></li>
-                <li><a href="projectinfo/project_list.html">尼龙</a></li>
+                <li><a href="projectinfo/project_list.html?proType=1&proFabric=1">麻布</a></li>
+                <li><a href="projectinfo/project_list.html?proType=1&proFabric=2">棉质</a></li>
+                <li><a href="projectinfo/project_list.html?proType=1&proFabric=3">尼龙</a></li>
                 <!-- <li><a href="projectinfo/project_list.html">其它</a></li>--> 
               </ul>
             
             </li>
-            <li><a href="catalog_grid.html">长袖</a>
+            <li><a href="projectinfo/project_list.html?proType=2&proFabric=0">长袖</a>
             
              <ul class="sub">
-                <li><a href="projectinfo/project_list.html">麻布</a></li>
-                <li><a href="projectinfo/project_list.html">棉质</a></li>
-                <li><a href="projectinfo/project_list.html">尼龙</a></li>
+                <li><a href="projectinfo/project_list.html?proType=2&proFabric=1">麻布</a></li>
+                <li><a href="projectinfo/project_list.html?proType=2&proFabric=2">棉质</a></li>
+                <li><a href="projectinfo/project_list.html?proType=2&proFabric=3">尼龙</a></li>
               <!--   <li><a href="catalog_grid.html">其它</a></li>--> 
               </ul>
             </li>
