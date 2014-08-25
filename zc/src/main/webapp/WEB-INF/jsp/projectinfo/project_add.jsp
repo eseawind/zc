@@ -141,7 +141,7 @@
 		</div><!-- .grid_12 -->
 		
 		
-		<div class="grid_6">
+		<div class="grid_7">
 		<img id="loading" src="images/loading.gif" style="display:none;">
 		 <FORM class=registed method=post action="projectinfo/beginAdd.xhtml"   name="addForm" id="addForm" 	enctype="multipart/form-data">
 		
@@ -260,7 +260,7 @@
                 <!-- .grid_6 -->
        </div><!-- #content -->
        
-		<div class="grid_6 new_customers" >
+		<div class="grid_5 new_customers" >
 			<h2>封面预览</h2>
 			 <div class="itMyPicShow">
       <div class="tabBoxR ">

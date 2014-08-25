@@ -100,19 +100,23 @@
 	      //分页
 	      $("#currentPage").change(function(){
 	    	  var page=$(this);
-	    	  window.location=("../projectinfo/project_list.html?currentPage="+page.val());
+	    	  
+	    	  if(window.ActiveXObject){
+	    		  window.location=("../projectinfo/project_list.html?currentPage="+page.val()+"&proType=${proType}&proFabric=${proFabric}");
+				 }else{
+					  window.location=("projectinfo/project_list.html?currentPage="+page.val()+"&proType=${proType}&proFabric=${proFabric}");
+				 }
+	    	
 	    	 
 	      });
 	      
 	      
 	      $("#sortdown").click(function(){
-	    	 
-	    	  window.location=("../projectinfo/project_list.html?currentPage=1&sortSele="+$("#sortSele").val()+"&sortBy=1");  
+	    	  window.location=("../projectinfo/project_list.html?currentPage=1&sortSele="+$("#sortSele").val()+"&sortBy=1&proType=${proType}&proFabric=${proFabric}");  
 		      }); 
 	      
 	      $("#sortup").click(function(){
-	    
-	    	  window.location=("../projectinfo/project_list.html?currentPage=1&sortSele="+$("#sortSele").val()+"&sortBy=0");  
+	    	  window.location=("../projectinfo/project_list.html?currentPage=1&sortSele="+$("#sortSele").val()+"&sortBy=0&proType=${proType}&proFabric=${proFabric}");  
 		      }); 
        })
   </script>
@@ -171,7 +175,32 @@
   <div class="container_12">
     <div class="grid_12">
        <div class="breadcrumbs">
-	      <a href="index.html">首页</a><span>&#8250;</span><a href="#">短袖</a><span>&#8250;</span><span class="current">尼龙</span>
+	      <a href="index.html">首页</a><span>&#8250;</span><a href="projectinfo/project_list.html?proType=${proType}&proFabric=${proFabric}">  <c:choose>  
+               <c:when test="${proType=='1'}">  
+            	   短袖
+                </c:when> 
+                      <c:otherwise>  
+					长袖                       </c:otherwise> 
+                      </c:choose> </a>
+
+                       <c:choose>  
+               <c:when test="${proFabric=='1'}">  
+            	   
+                      <span>&#8250;</span><span class="current">
+                     <a href="projectinfo/project_list.html?proType=${proType}&proFabric=${proFabric}">  麻布 </a></span>
+                </c:when> 
+              <c:when test="${proFabric=='2'}">  
+               
+                      <span>&#8250;</span><span class="current">
+                      	 <a href="projectinfo/project_list.html?proType=${proType}&proFabric=${proFabric}">棉质 </a></span>
+                </c:when> 
+                  <c:when test="${proFabric=='3'}">  
+               
+                      <span>&#8250;</span><span class="current">
+                      	 <a href="projectinfo/project_list.html?proType=${proType}&proFabric=${proFabric}">棉质 </a></span>
+                </c:when> 
+                    </c:choose>
+                     
        </div><!-- .breadcrumbs -->
     </div><!-- .grid_12 -->
   </div><!-- .container_12 -->
@@ -186,8 +215,8 @@
 		     
 		     <nav class="left_menu">
 			    <ul>
-				   <li><a href="#">短袖<span>(21)</span></a></li>
-				   <li class="last"><a href="#">长袖<span> (27)</span></a></li>
+				   <li><a href="projectinfo/project_list.html?proType=1&proFabric=0">短袖<span>(21)</span></a></li>
+				   <li class="last"><a href="projectinfo/project_list.html?proType=2&proFabric=0">长袖<span> (27)</span></a></li>
 				  
 				  
 			    </ul>
@@ -208,7 +237,7 @@
 				   
 				   <div class="cont">
 					  <a href="javascript:void(0);">Honeysuckle Flameless Luminary Refill</a>
-					  <div class="prise"><span class="old">$177.00</span>$75.00</div>
+					  <div class="prise"><span class="old">$177.00</span></div>
 				   </div>   
 			    </li>
 			    
@@ -219,7 +248,7 @@
 				   
 				   <div class="cont">
 					  <a href="javascript:void(0);">Honeysuckle Flameless Luminary Refill</a>
-					  <div class="prise"><span class="old">$177.00</span>$75.00</div>
+					  <div class="prise"><span class="old">$177.00</span></div>
 				   </div>   
 			    </li>
 		     </ul>
@@ -361,7 +390,7 @@
            		<a href="javascript:void(0);" title="我喜欢" class="like" id="btnLike${pro[0] }" name="btnLike${pro[0] }" onclick="ajax_webserviceHello(${pro[0] });">
 				
               </c:if>
-						<c:if test="${pro[8]=='1'}">
+						<c:if test="${pro[8]>='1'}">
             
            		<a href="javascript:void(0);" title="我喜欢" class="likeed" id="btnLike${pro[0] }" name="btnLike${pro[0] }" onclick="ajax_webserviceHello(${pro[0] });">
 				

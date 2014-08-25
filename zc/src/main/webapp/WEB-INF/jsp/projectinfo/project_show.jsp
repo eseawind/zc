@@ -184,14 +184,14 @@
     <div class="container_12">
        <div id="sidebar" class="grid_3">
 	      <aside id="categories_nav">
-		     <h3>类别</h3>
+		     <h3>系列</h3>
 
 		     <nav class="left_menu">
 			    <ul>
-				   <li><a href="#">上衣<span>(21)</span></a></li>
-				   <li><a href="#">长袖<span> (27)</span></a></li>
-				   <li><a href="#">裤子<span>(33)</span></a></li>
-				   <li class="last"><a href="#">其它<span>(135)</span></a></li>
+				   <li><a href="projectinfo/project_list.html?proType=1&proFabric=0">短袖<span>(21)</span></a></li>
+				   <li class="last"><a href="projectinfo/project_list.html?proType=2&proFabric=0">长袖<span> (27)</span></a></li>
+				  
+				  
 			    </ul>
 		     </nav><!-- .left_menu -->
 	      </aside><!-- #categories_nav -->
@@ -369,9 +369,8 @@
 						</div>
 						<div class="clear"></div>
 					</div><!-- .block_cart -->
-					<div class="soc">
-						<img src="images/soc.png" alt="Soc"/>
-					</div><!-- .soc -->
+				<div class="bdsharebuttonbox" style="float: right;"><A class=bds_more href="#" data-cmd="more"></A><A class=bds_qzone title=分享到QQ空间 href="#" data-cmd="qzone"></A><A class=bds_tsina title=分享到新浪微博 href="#" data-cmd="tsina"></A><A class=bds_tqq title=分享到腾讯微博 href="#" data-cmd="tqq"></A><A class=bds_renren title=分享到人人网 href="#" data-cmd="renren"></A><A class=bds_weixin title=分享到微信 href="#" data-cmd="weixin"></A></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
 				</div><!-- .entry_content -->
 
 			</div><!-- .grid_5 -->
@@ -543,7 +542,7 @@
 								<div class="price">
 									<div class="vert">
 										<div class="price_new">$550.00</div>
-										<div class="price_old">$725.00</div>
+									
 									</div>
 								</div>
 								<a href="#" class="obn"></a>
@@ -563,7 +562,7 @@
 								<div class="price">
 									<div class="vert">
 										<div class="price_new">$550.00</div>
-										<div class="price_old">$725.00</div>
+										
 									</div>
 								</div>
 								<a href="#" class="obn"></a>
@@ -583,7 +582,7 @@
 								<div class="price">
 									<div class="vert">
 										<div class="price_new">$550.00</div>
-										<div class="price_old">$725.00</div>
+										
 									</div>
 								</div>
 								<a href="#" class="obn"></a>
@@ -603,7 +602,7 @@
 								<div class="price">
 									<div class="vert">
 										<div class="price_new">$550.00</div>
-										<div class="price_old">$725.00</div>
+										
 									</div>
 								</div>
 								<a href="#" class="obn"></a>
