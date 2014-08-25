@@ -187,6 +187,15 @@
 		
 		main();
 	})
+	
+	document.onkeydown = function (e) { 
+var theEvent = window.event || e; 
+var code = theEvent.keyCode || theEvent.which; 
+if (code == 13) { 
+$("#btnLogin").click(); 
+} 
+} 
+
 </script>
 </head>
 <body>
@@ -201,14 +210,23 @@
 			<h1 class="page_title">登录</h1>
 		</div><!-- .grid_12 -->
 		
-		<div class="grid_6 new_customers">
-			<h2>New Customers</h2>
-			<p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+		<div class="grid_5">
+			<h2></h2>
+			<p style="margin-left: 100px;margin-top: 30px;">人在路上，创意在身上</p>
 			<div class="clear"></div>
-			<button class="account" id="btnRegNewUsers" onclick="javascript:window.location='userinfo/register.html'">Create An Account</button> 
+			          <div style="margin-left: 300px;"> --众筹网</div>
+			          
+			          <hr style="margin-top: 50px;">
+			          <div  style="margin-left:120px;">
+      <p style="line-height: 30px;">您也可以使用合作网站账号登录</p>
+      <p style="margin-top:20px;"><a href="javascript:void(0);"><img src="images/connect_weibo_logo.png"></a></p>
+      <p style="margin-top:20px;"><a href="javascript:void(0);"><img src="images/connect_renren_logo.png"></a></p>
+      <p style="margin-top:20px;"><a href="javascript:void(0);"><img src="images/connect_tqq_logo.png"></a></p>
+    </div>
+			          
                 </div><!-- .grid_6 -->
 		
-		<div class="grid_6">
+		<div class="grid_7">
 		 <FORM class=registed method=post action="" id="loginForm">
 		
 		
@@ -217,14 +235,14 @@
 				<p>还没有账号？立即<a href="userinfo/register.html" class="red1 underline" hidefocus="true" target="_self">注册</a></p>
 							
 				<div class="email">
-					<strong>用户名:</strong><sup class="surely">*</sup><br/>
-					<input type="text" id="userName" name="userName" class="" value="" /><DIV id=validAccount class=Validform_checktip  >
+					<strong>用户名:</strong><sup class="surely">*</sup>
+					<input type="text" id="userName" name="userName" class="" value="" /><DIV  id=validAccount class=Validform_checktip  ></DIV>
 				</div><!-- .email -->
 							
 				<div class="password">
-					<strong>密码:</strong><sup class="surely">*</sup><br/>
-					<input id=password  type=password name=password class="" value="" /><DIV id=validPassword class=Validform_checktip></DIV>
-					<a class="forgot" href="#">忘记密码?</a>
+					<strong>密&nbsp;&nbsp;&nbsp;&nbsp;码:</strong><sup class="surely">*</sup>
+					<input id=password  type=password name=password class="" value="" /><DIV   id=validPassword class=Validform_checktip></DIV>
+					
 				</div><!-- .password -->
 				
 				<div class="remember">
@@ -232,9 +250,10 @@
 					<span class="rem">记住密码</span>
 				</div><!-- .remember -->
 				
-				<div class="submit">										
+				<div class="submit" style="margin-left:30px;">										
+				
 					<input type="button" value="登   录" id="btnLogin"  style="width: 266px;height: 37px;border-radius:5px 6px 7px 8px;background: url(images/btn.png);color: white;font-family: 微软雅黑;font-size: 16px;"/>
-					
+					<a class="forgot" href="#">忘记密码?</a>
 				</div><!-- .submit -->
 			</form><!-- .registed -->
                 </div><!-- .grid_6 -->

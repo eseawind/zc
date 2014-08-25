@@ -8,8 +8,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户注册</title>
 
- <!-- <link href="../css/main.css" rel="StyleSheet" />
- <link href="../css/zc_register.css" rel="StyleSheet" /> -->
 <script type="text/javascript">
 	$(function(){
 		var emailRegex=/^[a-z0-9_\-]+(\.[_a-z0-9\-]+)*@([_a-z0-9\-]+\.)+([a-z]{2}|aero|arpa|biz|com|coop|edu|gov|info|int|jobs|mil|museum|name|nato|net|org|pro|travel)$/;
@@ -184,68 +182,77 @@ height: 55px;text-align: right;
 <body>
  
   
-  <div class="clear"></div>
+   <div class="clear"></div>
   
   <section id="main" class="entire_width">
     <div class="container_12">      
        <div id="content">
 		<div class="grid_12">
-			<h1 class="page_title">注册</h1>
+			<h1 class="page_title">登录</h1>
 		</div><!-- .grid_12 -->
 		
-		<div class="grid_6 new_customers">
-			<h2>New Customers</h2>
-			<p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+		<div class="grid_5">
+			<h2></h2>
+			<p style="margin-left: 100px;margin-top: 30px;">人在路上，创意在身上</p>
 			<div class="clear"></div>
-			<button class="account">Create An Account</button>
-                </div><!-- .grid_6 -->
+			          <div style="margin-left: 300px;"> --众筹网</div>
+			          
+			          <hr style="margin-top: 50px;">
+			          <div  style="margin-left:120px;">
+      <p style="line-height: 30px;">您也可以使用合作网站账号登录</p>
+      <p style="margin-top:20px;"><a href="javascript:void(0);"><img src="images/connect_weibo_logo.png"></a></p>
+      <p style="margin-top:20px;"><a href="javascript:void(0);"><img src="images/connect_renren_logo.png"></a></p>
+      <p style="margin-top:20px;"><a href="javascript:void(0);"><img src="images/connect_tqq_logo.png"></a></p>
+    </div>
+			          
+                </div>
 		
-		<div class="grid_6">
+		<div class="grid_7">
 		 <FORM class=registed method=post action="" id="regForm">
 		
 		
+			
 				<h2>注册</h2>
 							
 				<p>已有账号？立即<a href="userinfo/login.html" class="red1 underline" hidefocus="true" target="_self">登录</a></p>
 							
 				<div class="email">
-					<strong>用户名:</strong><sup class="surely">*</sup><br/>
+					<strong>用户&nbsp;&nbsp;&nbsp;名:</strong><sup class="surely">*</sup>
 					<input type="text" id="userName" name="userName" class="" value="" /><DIV id=validAccount class=Validform_checktip  > </DIV>
 				</div><!-- .email -->
 							
+							
 				<div class="password">
-					<strong>邮箱:</strong><sup class="surely">*</sup><br/>
+					<strong>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱:</strong><sup class="surely">*</sup>
 					<input id=email  type=text name=email class="" value="" /><DIV id=validEmail class=Validform_checktip></DIV>
 				
 				</div><!-- .password -->
 							
 				<div class="password">
-					<strong>手机号:</strong><sup class="surely">*</sup><br/>
+					<strong>手机号码:</strong><sup class="surely">*</sup>
 					<input id=userPhone  type=text name=userPhone class="" value="" /> <DIV id=validPhone class=Validform_checktip></DIV> 
 				
 				</div><!-- .password -->
 				
 				<div class="password">
-					<strong>密码:</strong><sup class="surely">*</sup><br/>
+					<strong>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:</strong><sup class="surely">*</sup>
 					<input id=password  type=password name=password class="" value="" /> <DIV id=validPassword class=Validform_checktip></DIV>
 				
 				</div>
 				
 				<div class="password">
-					<strong>确认密码:</strong><sup class="surely">*</sup><br/>
+					<strong>确认密码:</strong><sup class="surely">*</sup>
 					<input id=passwordagin  type=password name=passwordagin class="" value="" /> <DIV id=validpasswordAgain class=Validform_checktip></DIV>
 				
 				</div>
 				
 				
-			
-				
 				<div class="submit">										
 					<SPAN style="CURSOR: pointer ;margin-left:10px;" 
   id=reg><IMG id=btnRegister src="images/ty.gif" 
   width=251 height=40></SPAN>
-				</div><!-- .submit -->
-			</FROM><!-- .registed -->
+				</div><!-- .submit --><!-- .submit -->
+			</form><!-- .registed -->
                 </div><!-- .grid_6 -->
        </div><!-- #content -->
        
@@ -309,6 +316,6 @@ height: 55px;text-align: right;
   
   </footer>
  
-<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
+
 </body>
 </html>
