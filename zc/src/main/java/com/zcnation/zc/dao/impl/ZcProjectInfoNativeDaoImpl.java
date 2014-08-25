@@ -59,7 +59,7 @@ public class ZcProjectInfoNativeDaoImpl implements ZcProjectInfoNativeDao{
 	public List<ZcProjectInfo> findByProShStatus() {
 		// TODO Auto-generated method stub
 		String sql="select zpi.PRO_CODE,zpi.PRO_NAME,zpi.PRO_SH_STATUS,zpi.PRO_TARGET,zpi.RESOURCE_CODE as zpircode,zpi.pro_unit, zri.RESOURCE_CODE as zrircode,zri.RESOURCE_NAME,(select count(*) from  zc_project_like zpl where zpl.pro_code in(zpi.pro_code)) as likecount,"
-				+ "concat ( ROUND ((select sum(zod.ORDER_NUMBER) from  zc_order_detail zod where zod.pro_code in(zpi.pro_code))  /zpi.PRO_TARGET *100,2),'%') as orderdiscount,(select sum(zod.ORDER_NUMBER) from  zc_order_detail zod where zod.pro_code in(zpi.pro_code)) as ordercount from zc_project_info zpi left JOIN zc_resource_info zri on zpi.RESOURCE_CODE=zri.RESOURCE_CODE where 1=1    order by   likecount desc limit 0, 6 ";
+				+ "concat ( ROUND ((select sum(zod.ORDER_NUMBER) from  zc_order_detail zod where zod.pro_code in(zpi.pro_code))  /zpi.PRO_TARGET *100,2),'%') as orderdiscount,(select sum(zod.ORDER_NUMBER) from  zc_order_detail zod where zod.pro_code in(zpi.pro_code)) as ordercount,zpi.pro_days from zc_project_info zpi left JOIN zc_resource_info zri on zpi.RESOURCE_CODE=zri.RESOURCE_CODE where 1=1    order by   likecount desc limit 0, 6 ";
 //String sql1="select zpi.PRO_CODE,zpi.PRO_NAME,zpi.PRO_SH_STATUS,zpi.PRO_TARGET,zpi.RESOURCE_CODE as zpircode,zri.RESOURCE_CODE as zrircode,zri.RESOURCE_NAME,(select count(*) from  zc_project_like zpl where zpl.pro_code in(zpi.pro_code)) as likecount from zc_project_info zpi left JOIN zc_resource_info zri on zpi.RESOURCE_CODE=zri.RESOURCE_CODE where 1=1  and zpi.PRO_SH_STATUS<>0   order by   likecount desc limit 0, 6  ";
 	
 	
@@ -73,14 +73,23 @@ public class ZcProjectInfoNativeDaoImpl implements ZcProjectInfoNativeDao{
 	 * 所有产品分页
 	 */
 	@Override
-	public List<ZcProjectInfo> findByProShStatusAndPage(Integer currentPage,Integer sortSele,Integer sortBy) {
+	public List<ZcProjectInfo> findByProShStatusAndPage(Integer currentPage,Integer sortSele,Integer sortBy,Integer proType,Integer proFabric,Integer userCode) {
 		// TODO Auto-generated method stub
 		 int start = (currentPage - 1) * 4;  
-			String sql="select zpi.PRO_CODE,zpi.PRO_NAME,zpi.PRO_SH_STATUS,zpi.PRO_TARGET,zpi.RESOURCE_CODE as zpircode,zpi.pro_unit, zri.RESOURCE_CODE as zrircode,zri.RESOURCE_NAME,(select count(*) from  zc_project_like zpl where zpl.pro_code in(zpi.pro_code)) as likecount,zpi.pro_remarks,zpi.pro_time,concat ( ROUND ((select sum(zod.ORDER_NUMBER) from  zc_order_detail zod where zod.pro_code in(zpi.pro_code))  /zpi.PRO_TARGET *100,2),'%') as orderdiscount,(select sum(zod.ORDER_NUMBER) from  zc_order_detail zod where zod.pro_code in(zpi.pro_code)) as ordercount,zpi.pro_endtime from zc_project_info zpi left JOIN zc_resource_info zri on zpi.RESOURCE_CODE=zri.RESOURCE_CODE where 1=1 ";
+			String sql="select zpi.PRO_CODE,zpi.PRO_NAME,zpi.PRO_SH_STATUS,zpi.PRO_TARGET,zpi.RESOURCE_CODE as zpircode,zpi.pro_unit, zri.RESOURCE_CODE as zrircode,zri.RESOURCE_NAME,(select count(*) from  zc_project_like zpl where zpl.pro_code in(zpi.pro_code) and  zpl.user_code='"+userCode+"') as likecount,zpi.pro_remarks,zpi.pro_time,concat ( ROUND ((select sum(zod.ORDER_NUMBER) from  zc_order_detail zod where zod.pro_code in(zpi.pro_code))  /zpi.PRO_TARGET *100,2),'%') as orderdiscount,(select sum(zod.ORDER_NUMBER) from  zc_order_detail zod where zod.pro_code in(zpi.pro_code)) as ordercount,zpi.pro_endtime,zpi.pro_days from zc_project_info zpi left JOIN zc_resource_info zri on zpi.RESOURCE_CODE=zri.RESOURCE_CODE where 1=1 ";
 			
-			System.out.println("sortSele"+sortSele);
-			System.out.println("sortBy"+sortBy);
-			System.out.println("sortBy"+sortBy);
+		
+	if(proType==1||proType==2){
+				
+				sql=sql+" and zpi.pro_type='"+proType+"'";
+			}
+			
+			if(proFabric==1||proFabric==2||proFabric==3){
+				
+				sql=sql+" and zpi.pro_fabric='"+proFabric+"'";
+			}
+				
+			
 			if(sortSele==0&&sortBy==0){
 				
 				sql=sql+" order by zpi.pro_unit asc ";
@@ -94,6 +103,9 @@ public class ZcProjectInfoNativeDaoImpl implements ZcProjectInfoNativeDao{
 			}else {
 				sql=sql+" order by   likecount desc ";
 			}
+			
+			
+		
 			
 			  
 			EntityManager em=entityManagerFactory.createEntityManager();
@@ -116,7 +128,7 @@ public class ZcProjectInfoNativeDaoImpl implements ZcProjectInfoNativeDao{
 	@Override
 	public List<ZcProjectInfo> findByProTime() {
 		// TODO Auto-generated method stub
-				String sql="select zpi.PRO_CODE,zpi.PRO_NAME,zpi.PRO_SH_STATUS,zpi.PRO_TARGET,zpi.RESOURCE_CODE as zpircode,zpi.pro_unit, zri.RESOURCE_CODE as zrircode,zri.RESOURCE_NAME,concat ( ROUND ((select sum(zod.ORDER_NUMBER) from zc_order_detail zod where zod.pro_code in(zpi.pro_code))  /zpi.PRO_TARGET *100,2),'%') as orderdiscount,(select sum(zod.ORDER_NUMBER) from  zc_order_detail zod where zod.pro_code in(zpi.pro_code)) as ordercount from zc_project_info zpi left JOIN zc_resource_info zri on zpi.RESOURCE_CODE=zri.RESOURCE_CODE where 1=1   order by   zpi.pro_time desc limit 0, 6 ";
+				String sql="select zpi.PRO_CODE,zpi.PRO_NAME,zpi.PRO_SH_STATUS,zpi.PRO_TARGET,zpi.RESOURCE_CODE as zpircode,zpi.pro_unit, zri.RESOURCE_CODE as zrircode,zri.RESOURCE_NAME,concat ( ROUND ((select sum(zod.ORDER_NUMBER) from zc_order_detail zod where zod.pro_code in(zpi.pro_code))  /zpi.PRO_TARGET *100,2),'%') as orderdiscount,(select sum(zod.ORDER_NUMBER) from  zc_order_detail zod where zod.pro_code in(zpi.pro_code)) as ordercount,zpi.pro_days from zc_project_info zpi left JOIN zc_resource_info zri on zpi.RESOURCE_CODE=zri.RESOURCE_CODE where 1=1   order by   zpi.pro_time desc limit 0, 6 ";
 		//String sql1="select zpi.PRO_CODE,zpi.PRO_NAME,zpi.PRO_SH_STATUS,zpi.PRO_TARGET,zpi.RESOURCE_CODE as zpircode,zri.RESOURCE_CODE as zrircode,zri.RESOURCE_NAME,(select count(*) from  zc_project_like zpl where zpl.pro_code in(zpi.pro_code)) as likecount from zc_project_info zpi left JOIN zc_resource_info zri on zpi.RESOURCE_CODE=zri.RESOURCE_CODE where 1=1  and zpi.PRO_SH_STATUS<>0   order by   likecount desc limit 0, 6  ";
 			
 			
@@ -125,6 +137,47 @@ public class ZcProjectInfoNativeDaoImpl implements ZcProjectInfoNativeDao{
 				List list=query.getResultList();
 			
 				return list;
+	}
+	@Override
+	public Integer findTotalByProShStatusAndPage(Integer sortSele, Integer sortBy,
+			Integer proType, Integer proFabric) {
+		// TODO Auto-generated method stub
+		String sql="select zpi.PRO_CODE,zpi.PRO_NAME,zpi.PRO_SH_STATUS,zpi.PRO_TARGET,zpi.RESOURCE_CODE as zpircode,zpi.pro_unit, zri.RESOURCE_CODE as zrircode,zri.RESOURCE_NAME,(select count(*) from  zc_project_like zpl where zpl.pro_code in(zpi.pro_code)) as likecount,zpi.pro_remarks,zpi.pro_time,concat ( ROUND ((select sum(zod.ORDER_NUMBER) from  zc_order_detail zod where zod.pro_code in(zpi.pro_code))  /zpi.PRO_TARGET *100,2),'%') as orderdiscount,(select sum(zod.ORDER_NUMBER) from  zc_order_detail zod where zod.pro_code in(zpi.pro_code)) as ordercount,zpi.pro_endtime,zpi.pro_days from zc_project_info zpi left JOIN zc_resource_info zri on zpi.RESOURCE_CODE=zri.RESOURCE_CODE where 1=1 ";
+		
+		
+		if(proType==1||proType==2){
+					
+					sql=sql+" and zpi.pro_type='"+proType+"'";
+				}
+				
+				if(proFabric==1||proFabric==2||proFabric==3){
+					
+					sql=sql+" and zpi.pro_fabric='"+proFabric+"'";
+				}
+					
+				
+				if(sortSele==0&&sortBy==0){
+					
+					sql=sql+" order by zpi.pro_unit asc ";
+				}else if (sortSele==0&&sortBy==1) {
+				
+					sql=sql+" order by zpi.pro_unit desc ";
+				}else if (sortSele==1&&sortBy==0) {
+					sql=sql+" order by zpi.pro_time asc ";
+				}else if (sortSele==1&&sortBy==1) {
+					sql=sql+" order by zpi.pro_time desc ";
+				}else {
+					sql=sql+" order by   likecount desc ";
+				}
+				
+				
+			
+				
+				  
+				EntityManager em=entityManagerFactory.createEntityManager();
+			 Query query = em.createNativeQuery(sql); 
+			 Integer total = query.getResultList().size();  
+		return total;
 	}
 	
 	
