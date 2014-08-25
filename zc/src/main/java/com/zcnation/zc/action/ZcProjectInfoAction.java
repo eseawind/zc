@@ -76,14 +76,20 @@ public class ZcProjectInfoAction {
 
 	@RequestMapping("/project_list.html")
 	public String to_list(HttpServletRequest request, String currentPage,
-			String sortSele, String sortBy) {
-		// Sort s=new Sort(Direction.DESC, "proTime");
-		// Pageable p=new PageRequest(0, 8,s);
-		// Page<ZcProjectInfo> ojbs=zcProjectInfoService.queryByPage(0, 8);
-		// List<ZcProjectInfo> prolist=new ArrayList<ZcProjectInfo>();
-		// prolist=ojbs.getContent();
-		// System.out.println(prolist.size());
-		// System.out.println("的的的顶顶顶顶顶"+currentPage);
+			String sortSele, String sortBy,String proType,String proFabric) {
+		
+		ZcUserInfo sezcUserInfo = (ZcUserInfo) request.getSession()
+				.getAttribute(ZcContext.LOGIN_USER_KEY);
+	
+		Integer userCode=0;
+		
+		if(sezcUserInfo==null||sezcUserInfo.equals("")){
+		}else{
+			
+			userCode=sezcUserInfo.getUserCode();
+		}
+		
+		
 		if (currentPage == null || currentPage.equals("")) {
 
 			currentPage = "1";
@@ -98,17 +104,20 @@ public class ZcProjectInfoAction {
 			sortBy = "0";
 		}
 
-		// System.out.println("ddddddddddddd"+currentPage);
+	
 		List<ZcProjectInfo> prolist = new ArrayList<ZcProjectInfo>();
 		prolist = zcProjectInfoNativeService.queryByProShStatusAndPage(
 				Integer.parseInt(currentPage), Integer.parseInt(sortSele),
-				Integer.parseInt(sortBy));
-		System.out.println("size" + prolist.size());
+				Integer.parseInt(sortBy),Integer.parseInt(proType),Integer.parseInt(proFabric),userCode);
+		
 		request.setAttribute("proinfos", prolist);
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("sortSele", sortSele);
 		request.setAttribute("sortBy", sortBy);
-		request.setAttribute("pagesize", 3);
+		request.setAttribute("pagesize",getpagenum (zcProjectInfoNativeService.queryTtotalByProShStatusAndPage( Integer.parseInt(sortSele), Integer.parseInt( sortBy), Integer.parseInt( proType),  Integer.parseInt(proFabric)),4));
+		request.setAttribute("proType", proType);
+		request.setAttribute("proFabric", proFabric);
+		
 
 		return "projectinfo/project_list";
 	}
