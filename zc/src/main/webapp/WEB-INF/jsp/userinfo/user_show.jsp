@@ -206,22 +206,98 @@ display: block;
 			<div class="grid_4 img_slidinfo" id="products" >
 				
 				<div class="preview slides_container">
+					<form method=post action="userinfo/beginModifyImage.xhtml"   name="addForm" id="addForm" 	enctype="multipart/form-data" >
 					<div class="prev_bginfo">
 						<a href="#"  rel='gal1' title="">
 						<c:if test="${sessionScope.USER_INFO!=null }">
 						
 						
-						<img src="images/<c:out value="${sessionScope.USER_INFO.userName }"></c:out>" style="width: 200px;height: 200px;"   title="" alt=""/>
+						<img src="uploadImg/${sessionScope.USER_INFO.resourceInfo.resourceName }" style="width: 200px;height: 200px;"  id="imgBox"  title="" alt=""/>
 						</c:if>
 						
 							
 						</a>
 					</div>
 					
-					<a >修改头像</a>
-					
+					<a id="modifyImage">修改头像</a> &nbsp;&nbsp;&nbsp;&nbsp;
+					<a id="saveImage">保存</a>
+					<script type="text/javascript">
+					 
+						$(function(){
+							$("#modifyImage").click(function(e){
+								e.preventDefault();
+								$("#fileuploada").trigger("click");
+							})
+							//图片上传
+							$("#fileuploada").bind('change',function(){
+								if(!window.ActiveXObject){
+									var files=!!this.files?this.files:[];
+									if(!files.length||!window.FileReader)return;
+									if(/^image/.test(files[0].type)){
+										var reader=new FileReader();
+										reader.readAsDataURL(files[0]);
+										reader.onloadend=function(){
+											$("#fileRealPath").val(this.result);
+											//$("#bgbox").css("background-image","url("+this.result+")");
+											$("#imgBox").attr("src",this.result);
+											//$("#imgDivBox").css("background-image","url("+this.result+")");
+										}
+									}
+								}else{
+									var p=getPath($(this)[0]);
+									$("#fileRealPath").val(p);
+									//var obj=$("#imgDivBox")[0];
+									//obj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = p;
+									$("#imgDivBox").html('<div style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src=\'' + p + '\')"></div>');
+									alert($("#imgDivBox").html());
+								}
+							});
+							$("#saveImage").click(function(e){
+								if(!$("#fileRealPath").val()){
+									$.alert("修改图像","请选择头像");
+									return;
+								}
+								$("#addForm").ajaxSubmit({
+									 success:function(html){
+										 var d=$.eval2(html);
+										 if(d.success){
+											 $.alert("修改图像","修改成功",function(){
+												//window.href.reload();
+											 });
+										 }else{
+											 $.alert("修改图像",$.errorMsgs[0]);
+										 }
+									 }
+								 })
+							})
+							
+						})
+						function getPath(obj)  
+					{  
+					  if(obj)  
+					    {  
+					    if (window.navigator.userAgent.indexOf("MSIE")>=1)  
+					      {  
+					        obj.select();  
+					 
+					      return document.selection.createRange().text;  
+					      }  
+					    else if(window.navigator.userAgent.indexOf("Firefox")>=1)  
+					      {  
+					      if(obj.files)  
+					        {  
+					        return obj.files.item(0).getAsDataURL();
+					    	  //return window.URL.createObjectURL(obj.files[0]);
+					        }  
+					      return obj.value;  
+					      }  
+					    return obj.value;  
+					    }  
+					} 
+					</script>	
+					<input type="hidden" id="fileRealPath">
+				<input type="file"  value="上传" id="fileuploada" name="fileupload" style="display:none; "/></form>
 				</div><!-- .prev -->
-				
 		</div><!-- .grid_4 -->
 
 			<div class="grid_5" >
@@ -328,5 +404,6 @@ display: block;
 
   </footer>
 
+<script type="text/javascript" src="js/jquery.form.js"></script>
 </body>
 </html>
