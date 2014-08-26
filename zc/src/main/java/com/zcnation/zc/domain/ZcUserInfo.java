@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.Generated;
 
@@ -43,8 +45,9 @@ public class ZcUserInfo implements Serializable {
 	@Column(name="USER_INTRODUCE")
 	private String userIntroduce;
 	
-	@Column(name="RESOURCE_CODE")
-	private Integer resourceCode;
+	@OneToOne
+	@JoinColumn(name="RESOURCE_CODE",referencedColumnName="RESOURCE_CODE")
+	private ZcResourceInfo resourceInfo;
 	@Column(name="USER_QQ")
 	private String userQq;
 	
@@ -153,12 +156,14 @@ public class ZcUserInfo implements Serializable {
 		this.userIntroduce = userIntroduce;
 	}
 
-	public Integer getResourceCode() {
-		return resourceCode;
+	 
+
+	public ZcResourceInfo getResourceInfo() {
+		return resourceInfo;
 	}
 
-	public void setResourceCode(Integer resourceCode) {
-		this.resourceCode = resourceCode;
+	public void setResourceInfo(ZcResourceInfo resourceInfo) {
+		this.resourceInfo = resourceInfo;
 	}
 
 	public String getUserQq() {

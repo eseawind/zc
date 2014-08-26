@@ -4,12 +4,18 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.zcnation.zc.common.ThreadLocalSession;
+import com.zcnation.zc.common.util.RootLogger;
+import com.zcnation.zc.context.ZcContext;
 import com.zcnation.zc.dao.ZcUserInfoNativeDao;
+import com.zcnation.zc.domain.ZcResourceInfo;
+import com.zcnation.zc.domain.ZcUserInfo;
 
 import java.sql.Timestamp;
 import java.util.Calendar;
@@ -58,6 +64,26 @@ public class ZcUserInfoNativeDaoImpl implements ZcUserInfoNativeDao {
 		
 		
 		return 0;
+	}
+	@Override
+	public int updateResourceInfo(ZcResourceInfo info) {
+		int flag=0;
+		String sql="update zc_user_info set resource_code=? where user_code=?";
+		EntityManager em=entityManagerFactory.createEntityManager();
+		EntityTransaction tra= em.getTransaction();
+		tra.begin();
+		try {
+			ZcUserInfo user=(ZcUserInfo)ThreadLocalSession.getLocal_session().getAttribute(ZcContext.LOGIN_USER_KEY);
+			Query q=em.createNamedQuery(sql);
+			q.setParameter(0, info.getResourceCode());
+			q.setParameter(1, user.getUserCode());
+			flag=q.executeUpdate();
+			tra.commit();
+		} catch (Exception e) {
+			RootLogger.error(e);
+			tra.rollback();
+		}
+		return flag;
 	}
 	@Override
 	public int findByuserCodeAndpassword(Integer userCode, String password) {
