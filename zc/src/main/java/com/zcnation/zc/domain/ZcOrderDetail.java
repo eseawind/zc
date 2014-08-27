@@ -30,8 +30,16 @@ public class ZcOrderDetail implements Serializable{
 	private BigDecimal proUnit;
 	@Column(name="PRO_TYPE")
 	private String proType;
+	@Column(name="USER_CODE")
+	private Integer userCode; 
+ 
 	
-	
+	public Integer getUserCode() {
+		return userCode;
+	}
+	public void setUserCode(Integer userCode) {
+		this.userCode = userCode;
+	}
 	public String getProType() {
 		return proType;
 	}
