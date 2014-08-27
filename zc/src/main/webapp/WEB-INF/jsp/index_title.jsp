@@ -73,11 +73,11 @@ $(document).ready(function () {
       </div><!-- .grid_3 -->
 
      <div class="grid_6">
-      <!--     <ul id="cart_nav">
+        <ul id="cart_nav">
           <li>
             <a class="cart_li" href="#">Cart <span>$0.00</span></a>
             <ul class="cart_cont">
-              <li class="no_border"><p>Recently added item(s)</p></li>
+              <li class="no_border"><p>最近购买的作品</p></li>
               <li>
                 <a href="product_page.html" class="prev_cart"><div class="cart_vert"><img src="images/cart_img.png" alt="" title="" /></div></a>
                 <div class="cont_cart">
@@ -98,12 +98,12 @@ $(document).ready(function () {
                 <div class="clear"></div>
               </li>
 	      <li class="no_border">
-		<a href="shopping_cart.html" class="view_cart">View shopping cart</a>
-		<a href="checkout.html" class="checkout">Procced to Checkout</a>
+		<a href="order/order_cart.xhtml" class="view_cart">查看购物车</a>
+		<a href="checkout.html" class="checkout">结账</a>
 	      </li>
             </ul>
           </li>
-        </ul>-->
+        </ul>
 
         <nav class="private">
           <ul>
