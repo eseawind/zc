@@ -615,7 +615,8 @@ nav.private ul li a:hover{
 #block_nav_primary{
 	width: 100%;
 	height: 50px;
-	border-top: 1px solid #e0e0e0;
+	/*border-top: 1px solid #e0e0e0;*/
+	border-bottom: 1px solid #e0e0e0;
 	margin: 0 0 20px 0;
 }
 #block_nav_primary .grid_12{background: #f5f7f9;}
@@ -2787,26 +2788,20 @@ ul.f_contact li+li+li{background: url(../images/li_let.png) no-repeat 0px 50%;}
 	margin: 0 22px 0 0;
 }
 
-
-.Validform_wrong, .Validform_right, .Validform_loading {
-display: block;
-}
 .Validform_checktip {
-display: none;
+margin-left:10px;
+padding-left:20px;
 line-height: 38px;
 height: 38px;
 }
 .Validform_wrong {
 color: red;
-padding-left: 20px;
 white-space: nowrap;
 background: url(../images/error.gif) no-repeat left center;
-float: right;
 height: 40px;
 line-height: 40px;
 }
 .Validform_checktip {
-margin-left: 8px;
 overflow: hidden;
 color: red;
 font-size: 12px;
