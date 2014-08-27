@@ -218,31 +218,31 @@ height: 55px;text-align: right;
 							
 				<div class="email">
 					<strong>用户&nbsp;&nbsp;&nbsp;名:</strong><sup class="surely">*</sup>
-					<input type="text" id="userName" name="userName" class="" value="" /><DIV id=validAccount class=Validform_checktip  > </DIV>
+					<input type="text" id="userName" name="userName" class="" value="" /><span id=validAccount class=Validform_checktip  > </span>
 				</div><!-- .email -->
 							
 							
 				<div class="password">
 					<strong>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱:</strong><sup class="surely">*</sup>
-					<input id=email  type=text name=email class="" value="" /><DIV id=validEmail class=Validform_checktip></DIV>
+					<input id=email  type=text name=email class="" value="" /><span id=validEmail class=Validform_checktip></span>
 				
 				</div><!-- .password -->
 							
 				<div class="password">
 					<strong>手机号码:</strong><sup class="surely">*</sup>
-					<input id=userPhone  type=text name=userPhone class="" value="" /> <DIV id=validPhone class=Validform_checktip></DIV> 
+					<input id=userPhone  type=text name=userPhone class="" value="" /> <span id=validPhone class=Validform_checktip></span> 
 				
 				</div><!-- .password -->
 				
 				<div class="password">
 					<strong>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:</strong><sup class="surely">*</sup>
-					<input id=password  type=password name=password class="" value="" /> <DIV id=validPassword class=Validform_checktip></DIV>
+					<input id=password  type=password name=password class="" value="" /> <span id=validPassword class=Validform_checktip></span>
 				
 				</div>
 				
 				<div class="password">
 					<strong>确认密码:</strong><sup class="surely">*</sup>
-					<input id=passwordagin  type=password name=passwordagin class="" value="" /> <DIV id=validpasswordAgain class=Validform_checktip></DIV>
+					<input id=passwordagin  type=password name=passwordagin class="" value="" /> <span id=validpasswordAgain class=Validform_checktip></span>
 				
 				</div>
 				
