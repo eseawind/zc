@@ -67,4 +67,31 @@ public class ZcOrderInfoAction {
 	}
 	
 	
+	@RequestMapping("/order_cart.xhtml")
+	public String to_cart(HttpServletRequest request, String  orderCode, String orderStatus) {
+		System.out.println("orderCode"+orderCode);
+		System.out.println("orderStatus"+orderStatus);
+		//List<ZcProjectInfo> list=new ArrayList<ZcProjectInfo>();
+		ZcUserInfo sezcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
+		
+		
+		List list=zcOrdesInfoNativeService.queryByUserCodeAndOrderCodeAndOrderStatus(sezcUserInfo.getUserCode(), orderCode,orderStatus);
+		//list=zcProjectInfoService.queryByUserCodeAndProNameLike(sezcUserInfo.getUserCode(),"%"+proName+"%");
+		request.setAttribute("ordinfos", list);
+		request.setAttribute("orderCode", orderCode);
+		request.setAttribute("orderStatus", orderStatus);
+		System.out.println(list.size());
+		
+//		if(list.size()>0){
+//			for (int i = 0; i <list.size(); i++) {
+//				System.out.println(list.get(i).getProCode());
+//				System.out.println(list.get(i).getProName());
+//			}
+//			
+//		}
+		return "order/order_cart";
+	}
+	
+	
+	
 }

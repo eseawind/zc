@@ -33,6 +33,7 @@ import com.zcnation.zc.common.Result;
 import com.zcnation.zc.common.ThreadLocalSession;
 import com.zcnation.zc.common.exception.NotValidateCorrectException;
 import com.zcnation.zc.common.security.MD5;
+import com.zcnation.zc.common.util.Getpagenum;
 import com.zcnation.zc.common.util.ImageUtil;
 import com.zcnation.zc.common.util.RootLogger;
 import com.zcnation.zc.context.ZcContext;
@@ -77,6 +78,7 @@ public class ZcProjectInfoAction {
 	@RequestMapping("/project_list.html")
 	public String to_list(HttpServletRequest request, String currentPage,
 			String sortSele, String sortBy,String proType,String proFabric) {
+		   Getpagenum getpagenum=new Getpagenum();
 		
 		ZcUserInfo sezcUserInfo = (ZcUserInfo) request.getSession()
 				.getAttribute(ZcContext.LOGIN_USER_KEY);
@@ -114,7 +116,7 @@ public class ZcProjectInfoAction {
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("sortSele", sortSele);
 		request.setAttribute("sortBy", sortBy);
-		request.setAttribute("pagesize",getpagenum (zcProjectInfoNativeService.queryTtotalByProShStatusAndPage( Integer.parseInt(sortSele), Integer.parseInt( sortBy), Integer.parseInt( proType),  Integer.parseInt(proFabric)),4));
+		request.setAttribute("pagesize",getpagenum.getpagenum (zcProjectInfoNativeService.queryTtotalByProShStatusAndPage( Integer.parseInt(sortSele), Integer.parseInt( sortBy), Integer.parseInt( proType),  Integer.parseInt(proFabric)),4));
 		request.setAttribute("proType", proType);
 		request.setAttribute("proFabric", proFabric);
 		
@@ -527,21 +529,6 @@ public class ZcProjectInfoAction {
 		return r.toJson();
 	}
 
-	/**
-	 * 判断需要分几页
-	 * 
-	 * @param count
-	 * @param pageSize
-	 * @return
-	 */
-	private long getpagenum(long count, int pageSize) {
-		if (count == 0L)
-			return 1L;
-		if (count % pageSize != 0L) {
-			return count / pageSize + 1L;
-		}
-		return count / pageSize;
-	}
 
 	public static void main(String[] args) {
 		System.out.println("ddd");

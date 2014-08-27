@@ -30,6 +30,7 @@ import com.zcnation.zc.common.Result;
 import com.zcnation.zc.common.ThreadLocalSession;
 import com.zcnation.zc.common.exception.NotValidateCorrectException;
 import com.zcnation.zc.common.security.MD5;
+import com.zcnation.zc.common.util.IsSameDay;
 import com.zcnation.zc.common.util.RootLogger;
 import com.zcnation.zc.common.util.UrlHelp;
 import com.zcnation.zc.context.ZcContext;
@@ -88,18 +89,34 @@ public class ZcUserInfoAction {
 	@ResponseBody
 	public String beginLogin(HttpServletRequest request,@RequestParam(value="userName") String userName,@RequestParam(value="password") String password){
 		Result r=zcUserInfoService.login(userName, password);
+		IsSameDay isSameDay=new IsSameDay();
+		Date dt = new Date();  
 		if (r.isSuccess()) {
 			System.out.println("登录成功");
 			  ZcUserInfo zcUserInfo=new ZcUserInfo();
 			  zcUserInfo=(ZcUserInfo)r.getReturnValue(); 
-			  System.out.println("图片路径："+zcUserInfo.getResourceInfo().getResourceName());
-			zcUserInfoNativeService.updateLoginTimeAndUserScoreByUserCode(zcUserInfo.getUserScore()+5, zcUserInfo.getUserCode());
+			  //System.out.println("图片路径："+zcUserInfo.getResourceInfo().getResourceName());
+			  
+			 
+			  
+			//zcUserInfoNativeService.updateLoginTimeAndUserScoreByUserCode(zcUserInfo.getUserScore()+5, zcUserInfo.getUserCode());
 			  
 			  if (zcUserInfo.getUserScore() == null ||zcUserInfo.getUserScore().equals("")) {
-					
-				  zcUserInfoNativeService.updateLoginTimeAndUserScoreByUserCode(5, zcUserInfo.getUserCode());
+				  			
+
+					  zcUserInfoNativeService.updateLoginTimeAndUserScoreByUserCode(1, zcUserInfo.getUserCode());
+		        	  
+		        
+				  
 				}else{
-					zcUserInfoNativeService.updateLoginTimeAndUserScoreByUserCode(zcUserInfo.getUserScore()+5, zcUserInfo.getUserCode());
+					
+					 if( (isSameDay.isSameDay( zcUserInfo.getLoginTime(),dt)==0)){
+						 zcUserInfoNativeService.updateLoginTimeAndUserScoreByUserCode(zcUserInfo.getUserScore()+1, zcUserInfo.getUserCode());
+			        	  
+			          }
+			  
+					
+					
 				}
 			  
 			
@@ -113,9 +130,26 @@ public class ZcUserInfoAction {
 	public ModelAndView beginLogins(HttpServletRequest request,HttpServletResponse response,@RequestParam(value="userName") String userName,@RequestParam(value="password") String password){
 		Result r=zcUserInfoService.login(userName, password);
 		if (r.isSuccess()) {
-			System.out.println("登录成功");
+			IsSameDay isSameDay=new IsSameDay();
+			Date dt = new Date();  
+			//System.out.println("登录成功");
 			ZcUserInfo z=(ZcUserInfo)r.getReturnValue();
-			System.out.println("图片路径："+z.getResourceInfo().getResourceName());
+			//System.out.println("图片路径："+z.getResourceInfo().getResourceName());
+			 if (z.getUserScore() == null ||z.getUserScore().equals("")) {
+		  			
+				
+					  zcUserInfoNativeService.updateLoginTimeAndUserScoreByUserCode(1, z.getUserCode());
+		         
+				}else{
+					
+					 if( (isSameDay.isSameDay( z.getLoginTime(),dt)==0)){
+						 zcUserInfoNativeService.updateLoginTimeAndUserScoreByUserCode(z.getUserScore()+1, z.getUserCode());
+			          }
+				}
+			  
+			
+			
+			
 			ThreadLocalSession.getLocal_session().setAttribute(ZcContext.LOGIN_USER_KEY, (ZcUserInfo)r.getReturnValue());
 			//return new ModelAndView("userinfo/user_login");
 			return new ModelAndView(UrlHelp.getRedirect("../index.html", null));
