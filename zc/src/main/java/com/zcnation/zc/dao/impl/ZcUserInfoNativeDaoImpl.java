@@ -46,7 +46,7 @@ public class ZcUserInfoNativeDaoImpl implements ZcUserInfoNativeDao {
 		   }
 		
 		
-		   System.out.println("flagflag11111111111111111111"+flag);
+		   
 		return flag;
 	}
 	@Override
