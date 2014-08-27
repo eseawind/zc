@@ -112,11 +112,27 @@
 	      
 	      
 	      $("#sortdown").click(function(){
-	    	  window.location=("../projectinfo/project_list.html?currentPage=1&sortSele="+$("#sortSele").val()+"&sortBy=1&proType=${proType}&proFabric=${proFabric}");  
+	    	  
+	    	  
+	    	  if(window.ActiveXObject){
+	    		  window.location=("../projectinfo/project_list.html?currentPage=1&sortSele="+$("#sortSele").val()+"&sortBy=1&proType=${proType}&proFabric=${proFabric}");  
+				 }else{
+					 window.location=("projectinfo/project_list.html?currentPage=1&sortSele="+$("#sortSele").val()+"&sortBy=1&proType=${proType}&proFabric=${proFabric}");  
+				 }
+	    	
+	    	  
+	    	  
+	    	 
 		      }); 
 	      
 	      $("#sortup").click(function(){
-	    	  window.location=("../projectinfo/project_list.html?currentPage=1&sortSele="+$("#sortSele").val()+"&sortBy=0&proType=${proType}&proFabric=${proFabric}");  
+	    	  
+	    	  if(window.ActiveXObject){  window.location=("../projectinfo/project_list.html?currentPage=1&sortSele="+$("#sortSele").val()+"&sortBy=0&proType=${proType}&proFabric=${proFabric}"); 
+	    	  }else{
+	    		  window.location=("projectinfo/project_list.html?currentPage=1&sortSele="+$("#sortSele").val()+"&sortBy=0&proType=${proType}&proFabric=${proFabric}");  
+	    	  }
+	    	  
+	    	
 		      }); 
        })
   </script>
@@ -197,7 +213,7 @@
                   <c:when test="${proFabric=='3'}">  
                
                       <span>&#8250;</span><span class="current">
-                      	 <a href="projectinfo/project_list.html?proType=${proType}&proFabric=${proFabric}">棉质 </a></span>
+                      	 <a href="projectinfo/project_list.html?proType=${proType}&proFabric=${proFabric}">尼龙 </a></span>
                 </c:when> 
                     </c:choose>
                      

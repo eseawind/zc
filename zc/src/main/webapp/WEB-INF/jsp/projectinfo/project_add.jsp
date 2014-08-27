@@ -151,27 +151,27 @@
 				
 				<div class="email">
 					<strong>项目名称:</strong><sup class="surely">*</sup>
-					<input type="text" id="proName" name="proName" class="" value="" /><DIV id=validName class=Validform_checktip  > </DIV>
+					<input type="text" id="proName" name="proName" class="" value="" /><span id=validName class=Validform_checktip  > </span>
 				</div><!-- .email -->
 							
 				<div class="password">
 					<strong>目&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;标:</strong><sup class="surely">*</sup>
 					<input id=proTarget onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  type=text name=proTarget class="" value="" />
-					<DIV id=validTarget class=Validform_checktip></DIV>
+					<span id=validTarget class=Validform_checktip></span>
 				
 				</div><!-- .password -->
 							
 				<div class="password">
 					<strong>单&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价:</strong><sup class="surely">*</sup>
 					<input id=proUnit onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')"  type=text name=proUnit class="" value="" />
-					 <DIV id=validUnit class=Validform_checktip></DIV>
+					 <span id=validUnit class=Validform_checktip> </span>
 				
 				</div><!-- .password -->
 				
 				<div class="password">
 					<strong>筹集天数:</strong><sup class="surely">*</sup>
 					<input id=proDays  type=text name=proDays onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" class="" value="" /> 
-					<DIV id=validDays class=Validform_checktip></DIV>
+					 <span id=validDays class=Validform_checktip></span>
 				
 				</div>
 				
@@ -185,7 +185,7 @@
 													
 					</select>
 					
-				<DIV id=validType class=Validform_checktip></DIV> 
+				 <span id=validType class=Validform_checktip></span> 
 				</div>
 				
 					<div class="password">
@@ -196,7 +196,7 @@
 													<option value="2">棉</option>			
 																	</select>
 					
-				<DIV id=validFabric class=Validform_checktip></DIV> 
+				 <span id=validFabric class=Validform_checktip></span> 
 				</div>
 				
 				
@@ -209,7 +209,7 @@
 													<option value="2">否</option>			
 																	</select>
 					
-				<DIV id=validSample class=Validform_checktip></DIV> 
+				 <span id=validSample class=Validform_checktip></span> 
 				</div>
 				
 				
@@ -217,7 +217,7 @@
 					<strong>封面图片:</strong><sup class="surely">*</sup>
 					
 					<input type="file"  value="上传" id="fileuploada" name="fileupload"/>
-					<DIV id=validName class=Validform_checktip  > </DIV>(推荐像素：128*128)
+					<span id=validName class=Validform_checktip  > </span>(推荐像素：128*128)
 				</div><!-- .email -->
 				
 				
@@ -233,14 +233,14 @@
 									<option selected="selected" value="杭州市">杭州市</option>
 									<option value="宁波市">宁波市</option>
 																	</select>
-					<DIV id=validPoint class=Validform_checktip  > </DIV>
+					 <span id=validPoint class=Validform_checktip  > </span>
 				</div>
 			
 			
 			<div class="email">
 					<strong>项目简介:</strong><sup class="surely">*</sup>
 					<textarea style="width:70%;height:40px;" id="proRemarks"  name="proRemarks"  maxlength="75"></textarea>
-					<DIV id=validRemarks class=Validform_checktip  > </DIV>
+					<span id=validRemarks class=Validform_checktip  > </span>
 				</div><!-- .email -->
 			
 				<div class="email">
