@@ -90,16 +90,16 @@
   <section id="main" class="entire_width">
     <div class="container_12">
        <div class="grid_12">
-       <h1 class="page_title">Shopping Cart</h1>
+       <h1 class="page_title">我的购物车</h1>
 
        <table class="cart_product">
 	      <tr>
 		     <th class="images"></th>
-		     <th class="bg name">Product Name</th>
+		     <th class="bg name">作品名字</th>
 		     <th class="edit"> </th>
-		     <th class="bg price">Unit Price</th>
-		     <th class="qty">Qty</th>
-		     <th class="bg subtotal">Subtotal</th>
+		     <th class="bg price">单价</th>
+		     <th class="qty">数量</th>
+		     <th class="bg subtotal">总价</th>
 		     <th class="close"> </th>
 	      </tr>
 	      <tr>
@@ -122,46 +122,19 @@
 	      </tr>
 	      <tr>
 		     <td colspan="7" class="cart_but">
-			    <button class="continue"><span>icon</span>Continue Shopping</button>
-			    <button class="update"><span>icon</span>Update Shopping Cart</button>
+			    <button class="continue"><span>icon</span>继续购买</button>
+			    <button class="update"><span>icon</span>更新购物车</button>
 		     </td>
 	      </tr>
        </table>
        </div><!-- .grid_12 -->
 
-       <div id="content_bottom">
-        <div class="grid_4">
-          <div class="bottom_block estimate">
-            <h3>Estimate Shipping and Tax</h3>
-            <p>Enter your destination to get a shipping estimate.</p>
-	    <form>
-	      <p>
-		     <strong>Country:</strong><sup class="surely">*</sup><br/>
-		     <select>
-			    <option>United States</option>
-			    <option>United States</option>
-		     </select>
-	      </p>
-	      <p>
-		     <strong>State/Province:</strong><br/>
-		     <select>
-			    <option>Please select region, state or province</option>
-			    <option>Please select region, state or province</option>
-		     </select>
-	      </p>
-	      <p>
-		     <strong>Zip/Postal Code</strong><br/>
-		     <input type="text" name="" value="" />
-	      </p>
-	      <input type="submit" id="get_estimate" value="Get a Quote" />
-	    </form>
+       <div id="content_bottom" style="float: right">
+        
 
-          </div><!-- .estimate -->
-        </div><!-- .grid_4 -->
-
-        <div class="grid_4">
+        <div class="grid_8">
           <div class="bottom_block discount">
-            <h3>Discount Codes</h3>
+            <h3>总计</h3>
             <p>Enter your coupon code if you have one.</p>
 	    <form>
 	      <p>
@@ -176,14 +149,14 @@
           <div class="bottom_block total">
 	      <table class="subtotal">
 		     <tr>
-			    <td>Subtotal</td><td class="price">$1, 500.00</td>
+			    <td colspan="2">&nbsp; </td>
 		     </tr>
 		     <tr class="grand_total">
-			    <td>Grand Total</td><td class="price">$1, 500.00</td>
+			    <td>总计</td><td class="price">￥1, 500.00</td>
 		     </tr>
 	      </table>
-	    <button class="checkout">PROCEED TO CHECKOUT</button>
-            <a href="#">Checkout with Multiple Addresses</a>
+	    <button class="checkout">去结算中心</button>
+           
           </div><!-- .total -->
         </div><!-- .grid_4 -->
 
