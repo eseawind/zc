@@ -38,10 +38,13 @@ import com.zcnation.zc.common.util.ImageUtil;
 import com.zcnation.zc.common.util.RootLogger;
 import com.zcnation.zc.context.ZcContext;
 import com.zcnation.zc.domain.CartInfo;
+import com.zcnation.zc.domain.ZcOrderDetail;
 import com.zcnation.zc.domain.ZcProjectInfo;
 import com.zcnation.zc.domain.ZcProjectLike;
 import com.zcnation.zc.domain.ZcResourceInfo;
 import com.zcnation.zc.domain.ZcUserInfo;
+import com.zcnation.zc.service.ZcOrderDetailNativeService;
+import com.zcnation.zc.service.ZcOrderDetailService;
 import com.zcnation.zc.service.ZcProjecLikeService;
 import com.zcnation.zc.service.ZcProjectInfoNativeService;
 import com.zcnation.zc.service.ZcProjectInfoService;
@@ -69,6 +72,12 @@ public class ZcProjectInfoAction {
 	
 	@Autowired
 	private ZcProjectLikeNativeService zcProjectLikeNativeService;
+	
+	@Autowired
+	private ZcOrderDetailNativeService zcOrderDetailNativeService;
+	
+	@Autowired
+	private ZcOrderDetailService zcOrderDetailService;
 
 	@RequestMapping("/project_add.xhtml")
 	public String to_add(HttpServletRequest request) {
@@ -400,8 +409,8 @@ public class ZcProjectInfoAction {
 	@RequestMapping("/addCart.xhtml")
 	@ResponseBody
 	public String addCart(HttpServletRequest request,
-			@RequestParam("proCode") int proCode,
-			@RequestParam("cartNumber") int cartNumber,
+			@RequestParam("proCode") Integer proCode,
+			@RequestParam("cartNumber") Integer cartNumber,
 			@RequestParam("tshirtShort") String tshirtShort,
 			@RequestParam("imageUrl") String imageUrl,
 			@RequestParam("proName") String proName,
@@ -409,44 +418,67 @@ public class ZcProjectInfoAction {
 		Result r = new Result();
 		ZcUserInfo user = (ZcUserInfo) ThreadLocalSession.getLocal_session()
 				.getAttribute(ZcContext.LOGIN_USER_KEY);
-		CartInfo ci = new CartInfo();
-		ci.setCartNumber(cartNumber);
-		ci.setTshirtShort(tshirtShort);
-		ci.setProCode(proCode);
-		ci.setUserCode(user.getUserCode());
-		ci.setImageUrl(imageUrl);
-		ci.setProUnit(proUnit);
-		ci.setProName(proName);
+		        List<ZcOrderDetail> listzcd=new ArrayList<ZcOrderDetail>();
+		        System.out.println(tshirtShort);
+		        System.out.println(proCode);
+		        System.out.println(user.getUserCode());
+		        listzcd= zcOrderDetailService.queryByProCodeAndProTypeAndUserCodeAndOrderCodeIsNull(proCode,tshirtShort,user.getUserCode());
+		       
+		        ZcOrderDetail zd=new ZcOrderDetail();
+				
+				zd.setProCode(proCode);
+				zd.setProNumber(cartNumber);
+				zd.setProUnit(new BigDecimal(proUnit));
+				zd.setProType(tshirtShort);
+				zd.setUserCode(user.getUserCode());
+		        if(listzcd.size()==0){
+		        	
+		        	
+		        	zcOrderDetailService.save(zd);
+		        	
+		        }	else{
+		        int dd=	zcOrderDetailNativeService.updateZcOrderDetail(listzcd.get(0).getProNumber()+cartNumber,listzcd.get(0).getDetId());
+		        }	        
+		
+		
+//		CartInfo ci = new CartInfo();
+//		ci.setCartNumber(cartNumber);
+//		ci.setTshirtShort(tshirtShort);
+//		ci.setProCode(proCode);
+//		ci.setUserCode(user.getUserCode());
+//		ci.setImageUrl(imageUrl);
+//		ci.setProUnit(proUnit);
+//		ci.setProName(proName);
 		// 取当前购物车
-		Object obj = ThreadLocalSession.getLocal_session().getAttribute(
-				ObjectUtils.toString(user.getUserCode()));
-		if (obj == null) {// 购物车为空
-			List<CartInfo> list = new ArrayList<CartInfo>();
-
-			list.add(ci);
-			ThreadLocalSession.getLocal_session().setAttribute(
-					ObjectUtils.toString(user.getUserCode()), list);
-		} else {
-			List<CartInfo> list = (List<CartInfo>) obj;
-			// 当前购物车中有产品
-			if (list.contains(ci)) {
-				// 包含该产品，数量累计
-				int index = list.indexOf(ci);
-				CartInfo newC = list.get(index);
-				int num = newC.getCartNumber() + ci.getCartNumber();
-				newC.setCartNumber(num);
-				list.remove(index);
-				list.add(newC);
-			} else {
-				list.add(ci);
-			}
-			ThreadLocalSession.getLocal_session().setAttribute(
-					ObjectUtils.toString(user.getUserCode()), list);
-		}
+//		Object obj = ThreadLocalSession.getLocal_session().getAttribute(
+//				ObjectUtils.toString(user.getUserCode()));
+//		if (obj == null) {// 购物车为空
+//			List<CartInfo> list = new ArrayList<CartInfo>();
+//
+//			list.add(ci);
+//			ThreadLocalSession.getLocal_session().setAttribute(
+//					ObjectUtils.toString(user.getUserCode()), list);
+//		} else {
+//			List<CartInfo> list = (List<CartInfo>) obj;
+//			// 当前购物车中有产品
+//			if (list.contains(ci)) {
+//				// 包含该产品，数量累计
+//				int index = list.indexOf(ci);
+//				CartInfo newC = list.get(index);
+//				int num = newC.getCartNumber() + ci.getCartNumber();
+//				newC.setCartNumber(num);
+//				list.remove(index);
+//				list.add(newC);
+//			} else {
+//				list.add(ci);
+//			}
+//			ThreadLocalSession.getLocal_session().setAttribute(
+//					ObjectUtils.toString(user.getUserCode()), list);
+//		}
 		r.setSuccess(true);
 		// 购物车html
-		String cartHtml = generateCartHtml();
-		return cartHtml;
+		//String cartHtml = generateCartHtml();
+		return r.toJson();
 	}
 
 	/***
