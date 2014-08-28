@@ -240,7 +240,7 @@ $("#btnLogin").click();
 				</div><!-- .email -->
 							
 				<div class="password">
-					<strong>密&nbsp;&nbsp;&nbsp;&nbsp;码:</strong><sup class="surely">*</sup>
+					<strong>密&nbsp;&nbsp;&nbsp;码:</strong><sup class="surely">*</sup>
 					<input id=password  type=password name=password class="" value="" /><span class="Validform_checktip"   id=validPassword ></span>
 					
 				</div><!-- .password -->
