@@ -20,7 +20,8 @@
 <script type="text/javascript" src="${pageContext['request'].contextPath }/js/jquery.kinMaxShow-1.1.min.js"></script>
 <script type="text/javascript" src="${pageContext['request'].contextPath }/js/xym.js"></script>
 <script type="text/javascript" src="${pageContext['request'].contextPath }/js/order.js"></script>
-
+<script type="text/javascript" src="${pageContext['request'].contextPath }/js/jquery.JPlaceholder.js"></script>
+<script type="text/javascript" src="${pageContext['request'].contextPath }/js/payfor.js"></script>
 
   <script src="${pageContext['request'].contextPath }/js/html5.js" ></script>
   <script src="${pageContext['request'].contextPath }/js/jflow.plus.js" ></script>
