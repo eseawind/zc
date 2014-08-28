@@ -38,6 +38,10 @@
 	background:linear-gradient(top,#42a4e0,#2e88c0);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#42a4e0', endColorstr='#2e88c0'); /*  IE */
 }
+
+    span.emptyhint {color:#999;position:absolute;padding:3px;}
+
+
 </style>
 <script>
 	$(document).ready(function() {
@@ -79,7 +83,11 @@
 			next: ".slidnext", // must be class, use . sign
 			auto: true	
 		});
+	    initPlaceHolders();
+
 	});
+	
+	
   </script>
 </head>
 <body>
@@ -102,24 +110,141 @@
 		     <th class="bg subtotal">总价</th>
 		     <th class="close"> </th>
 	      </tr>
+	        <c:forEach items="${ordcart}" var="ord">
+	      
 	      <tr>
-		     <td class="images"><a href="product_page.html"><img src="images/product_6.png" alt="Product 6"></a></td>
-		     <td class="bg name">Paddywax Fragrance Diffuser Set, Gardenia Tuberose,<br/> Jasmine, 4-Ounces</td>
+	   
+		     <td class="images"><a href="projectinfo/project_${ord[0] }.html"><img src="uploadImg/${ord[2] }" alt="Product 6"></a></td>
+		     <td class="bg name">${ord[1] }</td>
 		     <td class="edit"><a title="Edit" href="#">Edit</a></td>
-		     <td class="bg price">$75.00</td>
-		     <td class="qty"><input type="text" name="" value="" placeholder="1000" /></td>
-		     <td class="bg subtotal">$750.00</td>
-		     <td class="close"><a title="close" class="close" href="#"></a></td>
+		     <td class="bg price">${ord[3] }</td>
+		     <td class="qty"> 	
+		
+		
+		    <c:choose>
+		    
+		     <c:when test="${ord[6]!='0'}">  
+                  	
+	<div class="p_number">
+		
+		<div class="f_l add_chose">
+			<a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)">
+			-</a>
+			<input type="text" name="qty_item_1" value="${ord[6]}" id="qty_item_1" onKeyUp="setAmount.modify('#qty_item_1')" class="text" style="height: 15px;" />
+			<a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">
+			+</a>
+		</div></div>
+                </c:when> 
+               </c:choose>
+                 <c:choose>   <c:when test="${ord[7]!='0'}">  
+                  	
+	<div class="p_number">
+		
+		<div class="f_l add_chose">
+			<a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)">
+			-</a>
+			<input type="text" name="qty_item_1" value="${ord[7]}" id="qty_item_1" onKeyUp="setAmount.modify('#qty_item_1')" class="text" style="height: 15px;" />
+			<a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">
+			+</a>
+		</div></div>
+                </c:when> 
+                 </c:choose>
+		        <c:choose>  <c:when test="${ord[8]!='0'}">  
+                  	
+	<div class="p_number">
+		
+		<div class="f_l add_chose">
+			<a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)">
+			-</a>
+			<input type="text" name="qty_item_1" value="${ord[8]}" id="qty_item_1" onKeyUp="setAmount.modify('#qty_item_1')" class="text" style="height: 15px;" />
+			<a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">
+			+</a>
+		</div></div>
+                </c:when> 
+                 </c:choose>
+                 <c:choose> <c:when test="${ord[9]!='0'}">  
+                  	
+	<div class="p_number">
+		
+		<div class="f_l add_chose">
+			<a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)">
+			-</a>
+			<input type="text" name="qty_item_1" value="${ord[9]}" id="qty_item_1" onKeyUp="setAmount.modify('#qty_item_1')" class="text" style="height: 15px;" />
+			<a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">
+			+</a>
+		</div></div>
+                </c:when> 
+                 </c:choose>
+                 <c:choose> <c:when test="${ord[10]!='0'}">  
+                  	
+	<div class="p_number">
+		
+		<div class="f_l add_chose">
+			<a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)">
+			-</a>
+			<input type="text" name="qty_item_1" value="${ord[10]}" id="qty_item_1" onKeyUp="setAmount.modify('#qty_item_1')" class="text" style="height: 15px;" />
+			<a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">
+			+</a>
+		</div></div>
+                </c:when> 
+                  </c:choose> 
+                    <c:choose> <c:when test="${ord[11]!='0'}">  
+                  	
+	<div class="p_number">
+		
+		<div class="f_l add_chose">
+			<a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)">
+			-</a>
+			<input type="text" name="qty_item_1" value="${ord[11]}" id="qty_item_1" onKeyUp="setAmount.modify('#qty_item_1')" class="text" style="height: 15px;" />
+			<a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">
+			+</a>
+		</div></div>
+                </c:when> 
+		    </c:choose>
+	
+
+
+
+		        </td>
+		     <td class="bg subtotal">${ord[4] }</td>
+		     <td class="close">
+		     
+		      <c:choose>
+		    
+		     <c:when test="${ord[6]!='0'}">  
+                  	
+	 <a title="close" class="close" href="#"></a><br>
+                </c:when> 
+               </c:choose>
+                 <c:choose>   <c:when test="${ord[7]!='0'}">  
+                  	
+	 <a title="close" class="close" href="#"></a><br>
+                </c:when> 
+                 </c:choose>
+		        <c:choose>  <c:when test="${ord[8]!='0'}">  
+                  	
+	 <a title="close" class="close" href="#"></a><br>
+                </c:when> 
+                 </c:choose>
+                 <c:choose> <c:when test="${ord[9]!='0'}">  
+                  	
+	 <a title="close" class="close" href="#"></a><br>
+                </c:when> 
+                 </c:choose>
+                 <c:choose> <c:when test="${ord[10]!='0'}">  
+                  	
+	 <a title="close" class="close" href="#"></a><br>
+                </c:when> 
+                  </c:choose> 
+                    <c:choose> <c:when test="${ord[11]!='0'}">  
+                  	
+	 <a title="close" class="close" href="#"></a>
+                </c:when> 
+		    </c:choose>
+		     
+		    </td>
 	      </tr>
-	      <tr>
-		     <td class="images"><a href="product_page.html"><img src="images/produkt_slid1.png" alt="Product Slide 1"></a></td>
-		     <td class="bg name">California Scents Spillproof Organic Air Fresheners,<br/> Coronado Cherry, 1.5 Ounce Cannister</td>
-		     <td class="edit"><a title="Edit" href="#">Edit</a></td>
-		     <td class="bg price">$75.00</td>
-		     <td class="qty"><input type="text" name="" value="" placeholder="1000" /></td>
-		     <td class="bg subtotal">$750.00</td>
-		     <td class="close"><a title="close" class="close" href="#"></a></td>
-	      </tr>
+	      </c:forEach>
 	      <tr>
 		     <td colspan="7" class="cart_but">
 			    <button class="continue"><span>icon</span>继续购买</button>
@@ -132,27 +257,24 @@
        <div id="content_bottom" style="float: right">
         
 
-        <div class="grid_8">
-          <div class="bottom_block discount">
-            <h3>总计</h3>
-            <p>Enter your coupon code if you have one.</p>
-	    <form>
-	      <p>
-		     <input type="text" name="" value="" placeholder="United States"/>
-	      </p>
-	      <input type="submit" id="apply_coupon" value="Apply Coupon" />
-	    </form>
-          </div><!-- .discount -->
-        </div><!-- .grid_4 -->
 
-        <div class="grid_4">
+        <div class="grid_6">
           <div class="bottom_block total">
 	      <table class="subtotal">
 		     <tr>
 			    <td colspan="2">&nbsp; </td>
 		     </tr>
 		     <tr class="grand_total">
-			    <td>总计</td><td class="price">￥1, 500.00</td>
+		   
+			    <td>总数</td><td class="price">￥${totalnumber} </td>
+		     </tr>
+		     <tr class="grand_total">
+		   
+			    <td>总计</td><td class="price">￥${totalprice} </td>
+		     </tr>
+		     
+		     <tr>
+		     <td ><span class="jifen">购买商品可获得：<b id="total_points">350</b>积分</span></td>
 		     </tr>
 	      </table>
 	    <button class="checkout">去结算中心</button>
