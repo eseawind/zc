@@ -23,6 +23,12 @@ public class ZcOrderDetailNativeServiceImpl implements ZcOrderDetailNativeServic
 		// TODO Auto-generated method stub
 		return zcOrderDetailNativeDao.updateZcOrderDetail(proNumber, detId);
 	}
+	@Override
+	public List<ZcOrderDetail> queryByUserCodeAndOrderCodeIsNull(
+			Integer userCode) {
+		// TODO Auto-generated method stub
+		return zcOrderDetailNativeDao.findByUserCodeAndOrderCodeIsNull(userCode);
+	}
 
 
 }
