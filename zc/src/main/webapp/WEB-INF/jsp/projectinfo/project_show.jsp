@@ -12,7 +12,7 @@
   <meta name="description" content="">
   <meta name="keywords" content="">
 
-  <title>Product view</title>
+  <title>产品详细</title>
 
 
 
@@ -95,6 +95,8 @@
 				$.alert("购物提示","请输入购买数量");
 				return;
 			}
+			
+			
 			var cm=$("input[name=radioType]:checked");
 			if(cm.length==0){
 				$.alert("购物提示","请选择尺码");
@@ -108,8 +110,46 @@
 				proCart.initDelete();
 			});
 			//alert("购物数量："+buynum+" 尺码："+cm.val());
-		})
-		
+		});
+		  $("#appraiseSub").click(function(e){
+	   			e.preventDefault();
+	   			var rang = $("input[name='quality1']:checked");
+	   			if(rang.length==0){
+					$.alert("评价提示","请选择分数");
+					return;
+				}
+	   			var remarks = $("#remarks").val();
+	   			if(rang.length==0){
+					$.alert("评价提示","请选择分数");
+					return;
+				}
+	   			
+	   			if(remarks==""){
+	   				$.alert("评价提示","请输入评价内容");
+					return;
+	   				
+	   			}
+	   			var proCode=$("#proCode").val();
+	   			$.post("appraise/beginAddAppraise.xhtml",{appraiseCount:rang.val(),remarks:remarks,proCode:proCode},function(data){
+	   				var d=$.eval2(data);
+	   				if(d.success){
+						$.alert("评论提示","评论成功",function(){
+							url="projectinfo/project_"+d.returnValue+".html";
+							alert(url);
+							if($.browser.msie) {
+								url="../projectinfo/project_"+d.returnValue+".html";
+							}
+							window.location=url;
+						});
+					}else{
+						$.alert("评论提示",d.errorMsgs[0]);
+					}
+	   				
+	   				
+					
+				});
+	   			
+	   		});
 		
 	});
   </script>
@@ -144,6 +184,8 @@
 	      });
        })
   </script>
+
+
 
 </head>
 <body>
@@ -326,11 +368,11 @@
 			<div class="grid_5">
 				<div class="entry_content">
 					<div class="review">
-						<a class="plus" href="#"></a>
-						<a class="plus" href="#"></a>
-						<a class="plus" href="#"></a>
-						<a href="#"></a>
-						<a href="#"></a>
+						<a class="plus" href="javascript:void(0);"></a>
+						<a class="plus" href="javascript:void(0);"></a>
+						<a class="plus" href="javascript:void(0);"></a>
+						<a href="javascript:void(0);"></a>
+						<a href="javascript:void(0);"></a>
 						<span>1 评论</span>
 						<a class="add_review" href="#">评论</a>
 					</div>
@@ -380,133 +422,194 @@
 			<div class="grid_9" >
 				<div id="wrapper_tab" class="tab1">
 					<!--  <a href="#" class="tab1 tab_link">Description</a>-->
-					<a href="#" class="tab1 tab_link">评价</a>
-					<a href="#" class="tab3 tab_link">购买客户</a>
+					<a href="javascript:void(0);" class="tab1 tab_link">评价</a>
+					<a href="javascript:void(0);" class="tab3 tab_link">购买客户</a>
 
 					<div class="clear"></div>
 
-				<!-- 	<div class="tab1 tab_body">
-						<h4>Tables Style</h4>
-						<p>Suspendisse at placerat turpis. Duis luctus erat vel magna pharetra aliquet. Maecenas tincidunt feugiat ultricies. Phasellus et dui risus. Vestibulum adipiscing, eros quis lobortis dictum. Etiam mollis volutpat odio, id euismod justo gravida a. Aliquam erat volutpat. Phasellus faucibus venenatis lorem, vitae commodo elit pretium et. Duis rhoncus lobortis congue. Vestibulum et purus dui, vel porta lectus. Sed vulputate pulvinar adipiscing.</p>
-						<ul>
-							<li>She was walking to the mall.</li>
-							<li>Ted might eat the cake.</li>
-							<li>You must go right now.</li>
-							<li>Words were spoken.</li>
-							<li>The teacher is writing a report.</li>
-						</ul>
-
-						<p>Here are some verb phrase examples where the verb phrase is the predicate of a sentence. In this case, the verb phrase consists of the main verb plus any auxiliary, or helping, verbs. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede.</p>
-						<ol>
-							<li>Shipping & Delivery.</li>
-							<li>Privacy & Security.</li>
-							<li>Returns & Replacements.</li>
-							<li>Payment, Pricing & Promotions.</li>
-							<li>Viewing Orders.</li>
-						</ol>
-
-						<p>Next are some verb phrase examples of verb phrases where the phrase has a single function which means it can act like an adverb or an adjective. The phrase would include the verb and any modifiers, complements, or objects. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis.  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec posuere odio. Proin vel ultrices erat. </p>
-
-						<table>
-							<tr>
-								<th class="bg">First Column</th><th>Second Column</th><th class="bg">Third Column</th><th>Fourth Column</th>
-							</tr>
-							<tr>
-								<td class="bg">One</td><td>no</td><td class="bg">yes</td><td>yes, all</td>
-							</tr>
-							<tr>
-								<td class="bg">Two</td><td>0</td><td class="bg">1</td><td>all</td>
-							</tr>
-							<tr>
-								<td class="bg">Three</td><td>$399</td><td class="bg">$599</td><td>$799</td>
-							</tr>
-							<tr>
-								<td class="bg">Four</td><td><a href="#">Call action</a></td><td class="bg"><a href="#">Call action</a></td><td><a href="#">Call action</a></td>
-							</tr>
-						</table>
-					<div class="clear"></div>
-					</div> --><!-- .tab1 .tab_body -->
+		<!-- .tab1 .tab_body -->
 
 					<div class="tab1 tab_body">
-						<h4>Customer reviews</h4>
+						<!--  <h4>Customer reviews</h4>-->
 						<ul class="comments">
-						
+						 <c:forEach items="${applist}" var="app">
 
 							<li>
-								<div class="autor">Mike Example</div>, <time datetime="2012-11-03">03.11.2012</time>
+								<div class="autor"><c:out value="${app.zcUserInfo.userName }"></c:out></div>, <time datetime="<c:out value="${app.insertTime }"></c:out>"><c:out value="${app.insertTime }"></c:out></time>
 
 								<div class="evaluation">
 									<div class="quality">
-										<strong>Quality</strong>
-										<a class="plus" href="#"></a>
-										<a class="plus" href="#"></a>
-										<a class="plus" href="#"></a>
-										<a class="plus" href="#"></a>
-										<a class="plus_minus" href="#"></a>
+										<strong>评价</strong>
+									 <c:choose>
+		    
+		     <c:when test="${app.appraiseCount=='1'}">
+		     	<label class="plus" ></label>
+		     	<label></label>
+						<label></label>
+						<label></label>
+					<label></label>				
+									<!--  
+										<a class="plus" href="javascript:void(0);"></a>
+										<a class="plus" href="javascript:void(0);"></a>
+										<a class="plus" href="javascript:void(0);"></a>
+										<a class="plus_minus" href="javascript:void(0);"></a>
+		     -->
+		      </c:when>
+		        
+		     <c:when test="${app.appraiseCount=='2'}">
+		     	<label class="plus" ></label>
+		     <label class="plus" ></label>
+				<label></label>
+				<label></label>
+					<label></label>			
+							
+		      </c:when>
+		       <c:when test="${app.appraiseCount=='3'}">
+		     	<label class="plus" ></label>
+		     	<label class="plus" ></label>
+			<label class="plus" ></label>
+			<label></label>
+				<label  ></label>				
+						
+		      </c:when>
+		       <c:when test="${app.appraiseCount=='4'}">
+		     <label class="plus" ></label>
+		     	<label class="plus" ></label>
+				<label class="plus" ></label>
+			<label class="plus" ></label>
+					<label  ></label>		
+					
+		      </c:when>
+		       <c:when test="${app.appraiseCount=='5'}">
+		      
+		      
+		     	<label class="plus" ></label>
+		     	<label class="plus" ></label>
+			<label class="plus" ></label>
+				<label class="plus"  ></label>
+		<label class="plus" ></label>
+								
+		      </c:when>
+		      </c:choose>
+										
+										
+										
 									</div>
-									<div class="price">
-										<strong>Price</strong>
-										<a class="plus" href="#"></a>
-										<a class="plus" href="#"></a>
-										<a class="plus" href="#"></a>
-										<a class="plus" href="#"></a>
-										<a href="#"></a>
-									</div>
-									<div class="clear"></div>
+									
+									
 								</div><!-- .evaluation -->
 
-								<p>ddqdqorta lectus.dqdsdfsd.</p>
+								<p>${app.remarks }</p>
 							</li>
+							
+							</c:forEach>
+							
 						</ul><!-- .comments -->
 
 						<form class="add_comments">
-							<h4>评论</h4>
+							<h4 style="border-top: 1px solid #e0e0e0;line-height: 40px;">评论</h4>
 
 							<div class="evaluation">
-								<div class="quality">
-									<strong>数量</strong><sup class="surely">*</sup>
-									<input class="niceRadio" type="radio" name="quality" value="1" /><span class="eva_num">1</span>
-									<input class="niceRadio" type="radio" name="quality" value="2" /><span class="eva_num">2</span>
-									<input class="niceRadio" type="radio" name="quality" value="3" /><span class="eva_num">3</span>
-									<input class="niceRadio" type="radio" name="quality" value="4" /><span class="eva_num">4</span>
-									<input class="niceRadio" type="radio" name="quality" value="5" /><span class="eva_num">5</span>
+								<div class="quality" >
+									<strong>评价</strong><sup class="surely">*</sup>
+									<input type="radio"  name="quality1" value="1" /><span  class="eva_num">1</span>
+									<input  type="radio"   name="quality1" value="2" /><span class="eva_num">2</span>
+									<input  type="radio"  name="quality1" value="3" /><span class="eva_num">3</span>
+									<input type="radio"  name="quality1" value="4" /><span class="eva_num">4</span>
+									<input type="radio" name="quality1" value="5" /><span class="eva_num">5</span>
 								</div>
-								<div class="price">
-									<strong>价格</strong><sup class="surely">*</sup>
-									<input class="niceRadio" type="radio" name="price" value="1" /><span class="eva_num">1</span>
-									<input class="niceRadio" type="radio" name="price" value="2" /><span class="eva_num">2</span>
-									<input class="niceRadio" type="radio" name="price" value="3" /><span class="eva_num">3</span>
-									<input class="niceRadio" type="radio" name="price" value="4" /><span class="eva_num">4</span>
-									<input class="niceRadio" type="radio" name="price" value="5" /><span class="eva_num">5</span>
-								</div>
+								
 								<div class="clear"></div>
 							</div><!-- .evaluation -->
 
-							<div class="nickname">
+						<!--  	<div class="nickname">
 								<strong>昵称</strong><sup class="surely">*</sup><br/>
 								<input type="text" name="" class="" value="" />
-							</div><!-- .nickname -->
+							</div>--><!-- .nickname -->
 
-							<div class="your_review">
+							<!-- <div class="your_review">
 								<strong>标题</strong><sup class="surely">*</sup><br/>
 								<input type="text" name="" class="" value="" />
-							</div><!-- .your_review -->
+							</div>--><!-- .your_review -->
 
-							<div class="clear"></div>
+							<!-- <div class="clear"></div>-->
 
 							<div class="text_review">
 								<strong>内容</strong><sup class="surely">*</sup><br/>
-								<textarea name="text"></textarea>
-								<i>Note: HTML is not translated!</i>
+								<textarea name="remarks"  id="remarks"></textarea>
+								<i>备注:1000字以内</i>
 							</div><!-- .text_review -->
 
-							<input type="submit" value="提交评论" />
+							<input type=submit  id="appraiseSub" name="appraiseSub" value="提交评论" />
 						</form><!-- .add_comments -->
 					<div class="clear"></div>
 					</div><!-- .tab2 .tab_body -->
 
 					<div class="tab3 tab_body">
-						<h4>购买列表</h4>
+						<!-- <h4>购买列表</h4> -->
+						<table border="0" cellpadding="0" cellspacing="0" class="tableStyle thback">
+          <tbody><tr>
+           <!--   <th>序号</th>-->
+            <th>买家</th>
+             <th>价格</th>
+               <th>购买数量</th>
+            <th>下单时间</th>
+           
+              <th>款式和型号</th>
+            
+            
+          </tr>
+           <c:forEach items="${userlist}" var="user">
+               <tr>
+              <td><c:out value="${user[1]}"></c:out></td>
+              <td><c:out value="${user[7]}"></c:out></td>
+              <td><c:out value="${user[9]}"></c:out></td>
+             
+              <td><c:out value="${user[3]}"></c:out></td>
+             
+              <td>
+              尺码
+<c:choose>
+		    
+		     <c:when test="${user[10]!='0'}">  
+                  	
+	【S】
+                </c:when> 
+               </c:choose>
+                 <c:choose>   <c:when test="${user[11]!='0'}">  
+                  	
+	【M】
+                </c:when> 
+                 </c:choose>
+		        <c:choose>  <c:when test="${user[12]!='0'}">  
+                  	
+	【L】
+                </c:when> 
+                 </c:choose>
+                 <c:choose> <c:when test="${user[13]!='0'}">  
+                  	
+	【XL】
+                </c:when> 
+                 </c:choose>
+                 <c:choose> <c:when test="${user[14]!='0'}">  
+                  	
+	【XXL】
+                </c:when> 
+                  </c:choose> 
+                    <c:choose> <c:when test="${user[15]!='0'}">  
+                  	
+	【XXXL】
+                </c:when> 
+		    </c:choose>
+		     
+
+
+</td>
+            </tr>
+             </c:forEach> 
+          
+                    
+                  </tbody></table>
 					<div class="clear"></div>
 					</div><!-- .tab3 .tab_body -->
 					<div class="clear"></div>
