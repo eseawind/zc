@@ -1793,7 +1793,7 @@ MARGIN-left: 15px;
 	height: 14px;
 	float: left;
 	margin: 0 15px 0 0;
-	border-right: 1px solid #e0e0e0;
+	/*border-right: 1px solid #e0e0e0;*/
 	color: #777;
 	font-size: 12px;
 	line-height: 14px;
@@ -1826,6 +1826,25 @@ MARGIN-left: 15px;
 .evaluation .price a.plus_minus {
 	background-position: 50% 0;
 }
+
+.evaluation .quality label,
+.evaluation .price label {
+	display: block;
+	cursor: pointer;
+	float: left;
+	height: 14px;
+	width: 14px;
+	margin: 0px 2px 0 0;
+	background: url(../images/review.png) no-repeat 0 0;
+}
+.evaluation .quality label.plus,
+.evaluation .price label.plus {
+	background-position: 100% 0;
+}
+.evaluation .quality label.plus_minus,
+.evaluation .price label.plus_minus {
+	background-position: 50% 0;
+}
 .comments li+li{
 	padding: 20px 0 0px 0;
 	border-top: 1px solid #e0e0e0;
@@ -1837,7 +1856,7 @@ MARGIN-left: 15px;
 	height: 17px;
 	float: left;
 	margin: 0 15px 0 0;
-	border-right: 1px solid #e0e0e0;
+	/*border-right: 1px solid #e0e0e0;*/
 	color: #777;
 	font-size: 12px;
 	line-height: 14px;
