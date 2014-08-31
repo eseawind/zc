@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE HTML>
 <html>
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
@@ -110,14 +111,15 @@
 		     <th class="bg subtotal">总价</th>
 		     <th class="close"> </th>
 	      </tr>
-	        <c:forEach items="${ordcart}" var="ord">
+	      <input type="hidden" id="listcount" name="listcount" value="${fn:length(ordcart)}">
+	        <c:forEach items="${ordcart}" var="ord" varStatus="status">
 	      
 	      <tr>
 	   
 		     <td class="images"><a href="projectinfo/project_${ord[0] }.html"><img src="uploadImg/${ord[2] }" alt="Product 6"></a></td>
 		     <td class="bg name">${ord[1] }</td>
 		     <td class="edit"><a title="Edit" href="#">Edit</a></td>
-		     <td class="bg price">${ord[3] }</td>
+		     <td class="bg price"><span id="price_item_<c:out value="${status.count}"/>">￥${ord[3] }</span></td>
 		     <td class="qty"> 	
 		
 		
@@ -128,12 +130,12 @@
 	<div class="p_number">
 		
 		<div class="f_l add_chose">
-			<a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)">
+			<a class="reduce" onClick="setAmount.reduce('#qty_item_S<c:out value="${status.count}"/>','S','<c:out value="${status.count}"/>')" href="javascript:void(0)">
 			-</a>
-			<input type="text" name="qty_item_1" value="${ord[6]}" id="qty_item_1" onKeyUp="setAmount.modify('#qty_item_1')" class="text" style="height: 15px;" />
-			<a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">
+			<input type="text" name="qty_item_S<c:out value="${status.count}"/>" value="${ord[6]}" id="qty_item_S<c:out value="${status.count}"/>" onKeyUp="setAmount.modify('#qty_item_S<c:out value="${status.count}"/>','S','<c:out value="${status.count}"/>')" class="text" style="height: 15px;" />
+			<a class="add" onClick="setAmount.add('#qty_item_S<c:out value="${status.count}"/>','S','<c:out value="${status.count}"/>')" href="javascript:void(0)">
 			+</a>
-		</div></div>
+		</div></div><br>
                 </c:when> 
                </c:choose>
                  <c:choose>   <c:when test="${ord[7]!='0'}">  
@@ -141,12 +143,12 @@
 	<div class="p_number">
 		
 		<div class="f_l add_chose">
-			<a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)">
+			<a class="reduce" onClick="setAmount.reduce('#qty_item_M<c:out value="${status.count}"/>,'M','<c:out value="${status.count}"/>'')" href="javascript:void(0)">
 			-</a>
-			<input type="text" name="qty_item_1" value="${ord[7]}" id="qty_item_1" onKeyUp="setAmount.modify('#qty_item_1')" class="text" style="height: 15px;" />
-			<a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">
+			<input type="text" name="qty_item_M<c:out value="${status.count}"/>" value="${ord[7]}" id="qty_item_M<c:out value="${status.count}"/>" onKeyUp="setAmount.modify('#qty_item_M<c:out value="${status.count}"/>','M','<c:out value="${status.count}"/>')" class="text" style="height: 15px;" />
+			<a class="add" onClick="setAmount.add('#qty_item_M<c:out value="${status.count}"/>','M','<c:out value="${status.count}"/>')" href="javascript:void(0)">
 			+</a>
-		</div></div>
+		</div></div><br>
                 </c:when> 
                  </c:choose>
 		        <c:choose>  <c:when test="${ord[8]!='0'}">  
@@ -154,12 +156,12 @@
 	<div class="p_number">
 		
 		<div class="f_l add_chose">
-			<a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)">
+			<a class="reduce" onClick="setAmount.reduce('#qty_item_L<c:out value="${status.count}"/>','L','<c:out value="${status.count}"/>')" href="javascript:void(0)">
 			-</a>
-			<input type="text" name="qty_item_1" value="${ord[8]}" id="qty_item_1" onKeyUp="setAmount.modify('#qty_item_1')" class="text" style="height: 15px;" />
-			<a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">
+			<input type="text" name="qty_item_L<c:out value="${status.count}"/>" value="${ord[8]}" id="qty_item_L<c:out value="${status.count}"/>" onKeyUp="setAmount.modify('#qty_item_L<c:out value="${status.count}"/>','L','<c:out value="${status.count}"/>')" class="text" style="height: 15px;" />
+			<a class="add" onClick="setAmount.add('#qty_item_L<c:out value="${status.count}"/>','L','<c:out value="${status.count}"/>')" href="javascript:void(0)">
 			+</a>
-		</div></div>
+		</div></div><br>
                 </c:when> 
                  </c:choose>
                  <c:choose> <c:when test="${ord[9]!='0'}">  
@@ -167,12 +169,12 @@
 	<div class="p_number">
 		
 		<div class="f_l add_chose">
-			<a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)">
+			<a class="reduce" onClick="setAmount.reduce('#qty_item_XL<c:out value="${status.count}"/>','XL','<c:out value="${status.count}"/>')" href="javascript:void(0)">
 			-</a>
-			<input type="text" name="qty_item_1" value="${ord[9]}" id="qty_item_1" onKeyUp="setAmount.modify('#qty_item_1')" class="text" style="height: 15px;" />
-			<a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">
+			<input type="text" name="qty_item_XL<c:out value="${status.count}"/>" value="${ord[9]}" id="qty_item_XL<c:out value="${status.count}"/>" onKeyUp="setAmount.modify('#qty_item_XL<c:out value="${status.count}"/>','XL','<c:out value="${status.count}"/>')" class="text" style="height: 15px;" />
+			<a class="add" onClick="setAmount.add('#qty_item_XL<c:out value="${status.count}"/>','XL','<c:out value="${status.count}"/>')" href="javascript:void(0)">
 			+</a>
-		</div></div>
+		</div></div><br>
                 </c:when> 
                  </c:choose>
                  <c:choose> <c:when test="${ord[10]!='0'}">  
@@ -180,12 +182,12 @@
 	<div class="p_number">
 		
 		<div class="f_l add_chose">
-			<a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)">
+			<a class="reduce" onClick="setAmount.reduce('#qty_item_XXL<c:out value="${status.count}"/>','XXL','<c:out value="${status.count}"/>')" href="javascript:void(0)">
 			-</a>
-			<input type="text" name="qty_item_1" value="${ord[10]}" id="qty_item_1" onKeyUp="setAmount.modify('#qty_item_1')" class="text" style="height: 15px;" />
-			<a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">
+			<input type="text" name="qty_item_XXL<c:out value="${status.count}"/>" value="${ord[10]}" id="qty_item_XXL<c:out value="${status.count}"/>" onKeyUp="setAmount.modify('#qty_item_XXL<c:out value="${status.count}"/>','XXL','<c:out value="${status.count}"/>')" class="text" style="height: 15px;" />
+			<a class="add" onClick="setAmount.add('#qty_item_XXL<c:out value="${status.count}"/>','XXL','<c:out value="${status.count}"/>')" href="javascript:void(0)">
 			+</a>
-		</div></div>
+		</div></div><br>
                 </c:when> 
                   </c:choose> 
                     <c:choose> <c:when test="${ord[11]!='0'}">  
@@ -193,12 +195,12 @@
 	<div class="p_number">
 		
 		<div class="f_l add_chose">
-			<a class="reduce" onClick="setAmount.reduce('#qty_item_1')" href="javascript:void(0)">
+			<a class="reduce" onClick="setAmount.reduce('#qty_item_XXXL<c:out value="${status.count}"/>','XXXL','<c:out value="${status.count}"/>')" href="javascript:void(0)">
 			-</a>
-			<input type="text" name="qty_item_1" value="${ord[11]}" id="qty_item_1" onKeyUp="setAmount.modify('#qty_item_1')" class="text" style="height: 15px;" />
-			<a class="add" onClick="setAmount.add('#qty_item_1')" href="javascript:void(0)">
+			<input type="text" name="qty_item_XXXL<c:out value="${status.count}"/>" value="${ord[11]}" id="qty_item_XXXL<c:out value="${status.count}"/>" onKeyUp="setAmount.modify('#qty_item_XXXL<c:out value="${status.count}"/>','XXXL','<c:out value="${status.count}"/>')" class="text" style="height: 15px;" />
+			<a class="add" onClick="setAmount.add('#qty_item_XXXL<c:out value="${status.count}"/>','XXXL','<c:out value="${status.count}"/>')" href="javascript:void(0)">
 			+</a>
-		</div></div>
+		</div></div><br>
                 </c:when> 
 		    </c:choose>
 	
@@ -206,7 +208,10 @@
 
 
 		        </td>
-		     <td class="bg subtotal">${ord[4] }</td>
+		     <td class="bg subtotal">
+		     
+		     <span class="total-font" id="total_item_<c:out value="${status.count}"/>">￥ ${ord[4] }</span>   
+		    </td>
 		     <td class="close">
 		     
 		      <c:choose>
@@ -270,7 +275,9 @@
 		     </tr>
 		     <tr class="grand_total">
 		   
-			    <td>总计</td><td class="price">￥${totalprice} </td>
+			    <td>${totalprice}总计</td><td class="price">
+			 ￥${totalprice}
+			</td>
 		     </tr>
 		     
 		     <tr>
