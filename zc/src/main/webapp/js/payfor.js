@@ -130,7 +130,7 @@ var setAmount = {
         }
         return x;
     },
-    reduce:function(obj) {
+    reduce:function(obj,str,i) {
         var x = this.amount(obj, false);
         if (x >= this.min) {
             $(obj).val(x);
@@ -140,8 +140,10 @@ var setAmount = {
             $(obj).val(1);
             $(obj).focus();
         }
+        $("input[name^=qty_item_"+str+"]").bind("keyup",  recalc(str,i));
+        
     },
-    add:function(obj) {
+    add:function(obj,str,i) {
         var x = this.amount(obj, true);
         if (x <= this.max) {
             $(obj).val(x);
@@ -151,14 +153,20 @@ var setAmount = {
             $(obj).val(999);
             $(obj).focus();
         }
+        $("input[name^=qty_item_"+str+"]").bind("keyup",  recalc(str,i));
+        
+       
     },
-    modify:function(obj) {
+    modify:function(obj,str,i) {
         var x = $(obj).val();
         if (x < this.min || x > this.max || !this.reg(x)) {
             alert("请输入正确的数量！");
             $(obj).val(1);
             $(obj).focus();
+           
         }
+        $("input[name^=qty_item_"+str+"]").bind("keyup",  recalc(str,i));
+        
     }
 }
 
@@ -179,53 +187,92 @@ function BuyUrl(wid) {
 
 /** total_item **/
 $(document).ready(function () {
-    $("input[name^=qty_item_]").bind("keyup", recalc);
-    recalc();
+	
+	
+		
+	for(i=1;i<=$("#listcount").val();i++){
+		$("input[name^=qty_item_S"+i+"]").bind("keyup",   recalc("S",i));
+		$("input[name^=qty_item_M"+i+"]").bind("keyup",   recalc("M",i));
+		$("input[name^=qty_item_L"+i+"]").bind("keyup",   recalc("L",i));
+		$("input[name^=qty_item_XL"+i+"]").bind("keyup",   recalc("XL",i));
+		$("input[name^=qty_item_XXL"+i+"]").bind("keyup",   recalc("XXL",i));
+		$("input[name^=qty_item_XXXL"+i+"]").bind("keyup",   recalc("XXXL",i));
+		  
+		  }
+
+	
+	
+	
+   
 });
 
-function recalc() {
+function recalc(str,i) {
+	
+    //$("input[id^=total_item]").val()
+	var qtytot=0;
+	
+	if($("input[name^=qty_item_M"+i+"]").val()!=undefined){
+		qtytot=parseInt(
+				qtytot)+parseInt($("input[name^=qty_item_M"+i+"]").val());
+	}
+if($("input[name^=qty_item_S"+i+"]").val()!=undefined){
+	qtytot=parseInt(qtytot)+parseInt($("input[name^=qty_item_S"+i+"]").val());
+	}
 
-    $("input[id^=total_item]").val()
+if($("input[name^=qty_item_L"+i+"]").val()!=undefined){
+	qtytot=parseInt(qtytot)+parseInt($("input[name^=qty_item_L"+i+"]").val());
+	}
+if($("input[name^=qty_item_XL"+i+"]").val()!=undefined){
+	qtytot=parseInt(qtytot)+parseInt($("input[name^=qty_item_XL"+i+"]").val());
+	}
+if($("input[name^=qty_item_XXL"+i+"]").val()!=undefined){
+	qtytot=parseInt(qtytot)+parseInt($("input[name^=qty_item_XXL"+i+"]").val());
+	}
+if($("input[name^=qty_item_XXXL"+i+"]").val()!=undefined){
+	qtytot=parseInt(qtytot)+parseInt($("input[name^=qty_item_XXXL"+i+"]").val());
+	}
 
+   
     //产品价格统计
-    $("[id^=total_item]").calc(
+    $("[id^=total_item_"+i+"]").calc(
 
-        "qty * price",
+        "qty* price",
 
         {
-            qty: $("input[name^=qty_item_]"),
-            price: $("[id^=price_item_]")
+            qty: qtytot,
+          
+            price: $("[id^=price_item_"+i+"]")
         },
 
         function (s) {
-
+        	
             return "￥" + s.toFixed(2);
         },
 
         function ($this) {
 
             var sum = $this.sum();
-            $("[id^=total_item]").text(
+            $("[id^=total_item_"+i+"]").text(
                 "￥" + sum.toFixed(2)
             );
-            $("#total_price").val($("[id^=total_item]").text());
+            //$("#total_price").val($("[id^=total_item_"+i+"]").text());
         }
     );
 
-    //产品积分统计
-    $("[id^=total_points]").calc(
-
-        "qty * price",
-
-        {
-            qty: $("input[name^=qty_item_]"),
-            price: $("[id^=price_item_]")
-        },
-
-        function (s) {
-            return "" + s.toFixed(0);
-        }
-
-    );
+//    //产品积分统计
+//    $("[id^=total_points]").calc(
+//
+//        "qty * price",
+//
+//        {
+//            qty: $("input[name^=qty_item_]"),
+//            price: $("[id^=price_item_]")
+//        },
+//
+//        function (s) {
+//            return "" + s.toFixed(0);
+//        }
+//
+//    );
 
 };
