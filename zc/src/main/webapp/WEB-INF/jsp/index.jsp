@@ -73,6 +73,82 @@
   
   <style type="text/css">
   
+
+img{
+	border: 0;
+}
+
+.imgtag{
+	float: left;
+	width: 210px;
+	height:210px;
+	position: relative;
+}
+.tag_item{
+	width: 210px;
+	height: 210px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	overflow: hidden;
+}
+.curr{
+	z-index: 100;
+	box-shadow: 0 0 5px #000;
+	background: rgba(37, 37, 37, 0.65);
+	background: #666 9;
+}
+.curr img{
+	opacity: 1;
+	filter: alpha(opacity = 100);
+}
+.not_curr{
+	opacity: .5;
+	filter: alpha(opacity = 45);
+}
+.taglist{
+	height: 21px;
+	width: 46px;
+	overflow: hidden;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	border-radius: 0 11px 11px 0;
+	background: rgba(37,37,37,0.5);
+}
+.taglist .tags{
+	display: block;
+	list-style: none;
+	color: #f7f7f7;
+	font-size: 12px;
+	height: 21px;
+	width: 300px;
+}
+.tag{
+	display: block;
+	float: left;
+	height: 21px;
+	line-height: 21px;
+	text-align: left;
+	line-height: 22px	9;
+}
+.tag a {
+	color: #f7f7f7;
+	text-decoration: none;
+	display: block;
+	padding: 0 3px;
+}
+.tag1{
+	width: 65px;
+}
+.tag1 a {
+	padding: 0 10px 0 10px;
+	font-weight: bold;
+}
+.tag2 {
+	width: 42px;
+	text-align: center;
+}
  
   </style>
 
@@ -237,11 +313,31 @@
         <div class="list_carousel">
         <ul id="list_product2" class="list_product">
         <c:forEach items="${proInfos }" var="pro">
+        
+        
+        
         	 <li class="">
             <div class="grid_3 product">
+            
+          
+            
+            
+            
               <img class="sale" src="images/sale.png" alt="Sale"/>
               <div class="prev">
-                <a href="projectinfo/project_${pro[0] }.html"><img src="uploadImg/${pro[7]}" alt="" title="" /></a>
+                <a href="projectinfo/project_${pro[0] }.html">
+                  <div class="imgtag">
+		<div class="tag_item">
+			
+			<img style="width:100%" src="uploadImg/${pro[7]}">
+			
+			
+		</div>		
+
+</div>
+                
+                
+             
               </div><!-- .prev -->
              <h3 class="title">${prolike[1] }<br>
                	 目标： ${pro[10] }天 ${pro[3] }件 </h3>
