@@ -22,6 +22,7 @@
 <script type="text/javascript" src="${pageContext['request'].contextPath }/js/order.js"></script>
 <script type="text/javascript" src="${pageContext['request'].contextPath }/js/jquery.JPlaceholder.js"></script>
 <script type="text/javascript" src="${pageContext['request'].contextPath }/js/payfor.js"></script>
+<script type="text/javascript" src="${pageContext['request'].contextPath }/js/jphtml.js"></script>
 
   <script src="${pageContext['request'].contextPath }/js/html5.js" ></script>
   <script src="${pageContext['request'].contextPath }/js/jflow.plus.js" ></script>
