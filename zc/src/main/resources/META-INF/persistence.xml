@@ -4,11 +4,14 @@
 	<persistence-unit name="SimplePU" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>com.zcnation.zc.domain.ZcOrdersInfo</class>
+		<class>com.zcnation.zc.domain.ZcOrderDetail</class>
 		<class>com.zcnation.zc.domain.ZcUserInfo</class>
 		<class>com.zcnation.zc.domain.ZcProjectInfo</class>
 		<class>com.zcnation.zc.domain.ZcResourceInfo</class>
 		<class>com.zcnation.zc.domain.ZcUserInfos</class>
 		<class>com.zcnation.zc.domain.ZcProjectLike</class>
+		<class>com.zcnation.zc.domain.ZcCity</class>
+		<class>com.zcnation.zc.domain.ZcAppraise</class>
 		
 		<properties>
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
