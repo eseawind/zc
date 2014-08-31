@@ -38,11 +38,14 @@ import com.zcnation.zc.common.util.ImageUtil;
 import com.zcnation.zc.common.util.RootLogger;
 import com.zcnation.zc.context.ZcContext;
 import com.zcnation.zc.domain.CartInfo;
+import com.zcnation.zc.domain.ZcAppraise;
 import com.zcnation.zc.domain.ZcOrderDetail;
 import com.zcnation.zc.domain.ZcProjectInfo;
 import com.zcnation.zc.domain.ZcProjectLike;
 import com.zcnation.zc.domain.ZcResourceInfo;
 import com.zcnation.zc.domain.ZcUserInfo;
+import com.zcnation.zc.service.ZcAppraiseNativeService;
+import com.zcnation.zc.service.ZcAppraiseService;
 import com.zcnation.zc.service.ZcOrderDetailNativeService;
 import com.zcnation.zc.service.ZcOrderDetailService;
 import com.zcnation.zc.service.ZcProjecLikeService;
@@ -76,8 +79,17 @@ public class ZcProjectInfoAction {
 	@Autowired
 	private ZcOrderDetailNativeService zcOrderDetailNativeService;
 	
+	
+	@Autowired
+	private ZcAppraiseService zcAppraiseService;
+	
 	@Autowired
 	private ZcOrderDetailService zcOrderDetailService;
+	
+	@Autowired
+	private ZcAppraiseNativeService zcAppraiseNativeService;
+	
+	
 
 	@RequestMapping("/project_add.xhtml")
 	public String to_add(HttpServletRequest request) {
@@ -203,7 +215,18 @@ public class ZcProjectInfoAction {
 		} catch (Exception e) {
 			RootLogger.error(e);
 		}
-		request.setAttribute("zc_title", "我是最好的设计师" + detailId);
+		
+		
+		List<ZcAppraise> applist=new ArrayList<ZcAppraise>();
+		applist=zcAppraiseService.queryByProCode(Integer.parseInt(detailId));
+		
+		List list=new ArrayList();
+		list=zcAppraiseNativeService.queryByProCodeAndOrderCodeIsNotNull(Integer.parseInt(detailId));
+		System.out.println(list.size());
+		
+
+		request.setAttribute("applist", applist);
+		request.setAttribute("userlist", list);
 		return "projectinfo/project_show";
 	}
 
