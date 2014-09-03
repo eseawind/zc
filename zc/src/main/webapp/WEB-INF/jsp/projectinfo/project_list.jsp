@@ -186,103 +186,16 @@
 
   
   
-  <div class="clear"></div>
-  
-  <div class="container_12">
-    <div class="grid_12">
-       <div class="breadcrumbs">
-	      <a href="index.html">首页</a><span>&#8250;</span><a href="projectinfo/project_list.html?proType=${proType}&proFabric=${proFabric}">  <c:choose>  
-               <c:when test="${proType=='1'}">  
-            	   短袖
-                </c:when> 
-                      <c:otherwise>  
-					长袖                       </c:otherwise> 
-                      </c:choose> </a>
 
-                       <c:choose>  
-               <c:when test="${proFabric=='1'}">  
-            	   
-                      <span>&#8250;</span><span class="current">
-                     <a href="projectinfo/project_list.html?proType=${proType}&proFabric=${proFabric}">  麻布 </a></span>
-                </c:when> 
-              <c:when test="${proFabric=='2'}">  
-               
-                      <span>&#8250;</span><span class="current">
-                      	 <a href="projectinfo/project_list.html?proType=${proType}&proFabric=${proFabric}">棉质 </a></span>
-                </c:when> 
-                  <c:when test="${proFabric=='3'}">  
-               
-                      <span>&#8250;</span><span class="current">
-                      	 <a href="projectinfo/project_list.html?proType=${proType}&proFabric=${proFabric}">尼龙 </a></span>
-                </c:when> 
-                    </c:choose>
-                     
-       </div><!-- .breadcrumbs -->
-    </div><!-- .grid_12 -->
-  </div><!-- .container_12 -->
   
-  <div class="clear"></div>
+  
+
   
   <section id="main">
     <div class="container_12">
-       <div id="sidebar" class="grid_3">
-	      <aside id="categories_nav">
-		     <h3>系列</h3>
-		     
-		     <nav class="left_menu">
-			    <ul>
-				   <li><a href="projectinfo/project_list.html?proType=1&proFabric=0">短袖<span>(21)</span></a></li>
-				   <li class="last"><a href="projectinfo/project_list.html?proType=2&proFabric=0">长袖<span> (27)</span></a></li>
-				  
-				  
-			    </ul>
-		     </nav><!-- .left_menu -->
-	      </aside><!-- #categories_nav -->
-	      
-	    
-	     
-	      
-	      <aside id="specials" class="specials">
-		     <h3>作品推荐</h3>
-		     
-		     <ul>
-			    <li>
-				   <div class="prev">
-					  <a href="javascript:void(0);"><img src="images/special1.png" alt="" title="" /></a>
-				   </div>
-				   
-				   <div class="cont">
-					  <a href="javascript:void(0);">Honeysuckle Flameless Luminary Refill</a>
-					  <div class="prise"><span class="old">$177.00</span></div>
-				   </div>   
-			    </li>
-			    
-			    <li>
-				   <div class="prev">
-					  <a href="javascript:void(0);"><img src="images/special2.png" alt="" title="" /></a>
-				   </div>
-				   
-				   <div class="cont">
-					  <a href="javascript:void(0);">Honeysuckle Flameless Luminary Refill</a>
-					  <div class="prise"><span class="old">$177.00</span></div>
-				   </div>   
-			    </li>
-		     </ul>
-	      </aside><!-- #specials -->
-	      
-	      <aside id="newsletter_signup">
-		     <h3>Newsletter Signup</h3>
-		     <p>Phasellus vel ultricies felis. Duis 
-		     rhoncus risus eu urna pretium.</p>
-		     
-		     <form class="newsletter">
-			    <input type="email" name="newsletter" class="your_email" value="" placeholder="Enter your email address..."/>
-			    <input type="submit" id="submit" value="Subscribe" />
-		     </form>
-	      </aside><!-- #newsletter_signup -->
-       </div><!-- .sidebar -->
+    
       
-       <div id="content" class="grid_9">
+       <div id="content" class="grid_12">
 	      <h1 class="page_title">作品列表</h1>
 	      
 	      <div class="options">
@@ -332,99 +245,51 @@
 		     </div><!-- .sort -->
 	      </div><!-- .options -->
 	      
-	      <div class="listing_product">
 	      
-	      
+	    <div class="grid_product">
+	    
 	      <c:forEach items="${proinfos}" var="pro">
 	      
 	      
-			<div class="product_li">
-				<div class="grid_3">
-					<img class="sale" src="images/new.png" alt="New"/>
-					<div class="prev">
-						<a href="projectinfo/project_${pro[0] }.html"><img src="uploadImg/${pro[7] }" width="115px" height="189px" alt="" title="" /></a>
-					</div><!-- .prev -->
-				</div><!-- .grid_3 -->
-				
-				<div class="grid_4">
-					<div class="entry_content">
-					<a href="projectinfo/project_${pro[0] }.html"><h3 class="title">${pro[1] }</h3></a>  
-						<!-- <div style="margin-left: 160px;margin-top: -40px;"><a href="/u/105/" class="avatar" target="_blank">
-						<img src="http://imgcdn.guoku.com/avatar/small_105_18f2d4b100ffb4c38b352f7d6cb5a53f.gif" width="30" height="30"></a>
-						<a href="/u/105/" class="nickname" target="_blank">
-                拜拜北鼻
-            </a></div> -->
-						<!-- <div class="review"> -->
-						<hr style="">
-							<!-- <a class="plus" href="#"></a>
-							<a class="plus" href="#"></a>
-							<a class="plus" href="#"></a>
-							<a href="#"></a>
-							<a href="#"></a>
-							<span>1 REVIEW(S)</span> -->
-						<!--</div> -->
-						<p style="line-height:20px" title="${pro[9] }">
-						<c:if test="${fn:length(pro[9])>50 }">${ fn:substring(pro[9],0,50)} ...</c:if>
- <c:if test="${fn:length(pro[9])<=50 }">${  pro[9] }</c:if>
-						
-					</p>
-						
-						<a class="more"  style="margin-left: 260px;" href="projectinfo/project_${pro[0] }.html" >更多</a>
-						<hr style="">
-						<p style="line-height: 18px"><span>截止时间：</span>${pro[13]}</p>
-						<p style="line-height: 8px"><span>剩余时间：</span>82天23小时</p>
-						
-						 <c:choose>  
+	        <div class="grid_3 product">
+			    <div class="prev">
+				  <a href="projectinfo/project_${pro[0] }.html"><img src="uploadImg/${pro[7] }" width="210px" height="210px" alt="" title="" /></a>
+			    </div><!-- .prev -->
+			    <h3 class="title">${pro[1] }	 目标： ${pro[14] }天 ${pro[3] }件 </h3>
+                
+              <c:choose>  
                <c:when test="${empty pro[11]}">  
                   <div class="progress-bar" title="已售卖了0件，完成目标的0%"> 
-                <span class="progress bg-red" style="width:0%;" ></span>(0%)
+                <span class="progress bg-red" style="width:0%;" ></span>
                 	</div>
                 </c:when> 
                       <c:otherwise>  
-                <div class="progress-bar" title="已售卖了${pro[12]}件，完成目标的${pro[11]}"> 
-                <span class="progress bg-red" style="width:${pro[11]};" ></span>(${pro[11]})
+                       <div class="progress-bar" title="已售卖了${pro[12]}件，完成目标的${pro[11]}"> 
+                <span class="progress bg-red" style="width:${pro[11]};" ></span>
                 	</div>
                          
                        </c:otherwise> 
                       </c:choose> 
+              
+			    <div class="cart">
+				   <div class="price">
+					  <div class="vert">
+						 <div class="price_new">￥<c:out value="${pro[5] }"></c:out></div>
 						
-					</div><!-- .entry_content -->
-				</div><!-- .grid_4 -->
-				
-				<div class="grid_2">
-					<div class="cart">
-						<div class="price">
-							<div class="price_new">￥<c:out value="${pro[5] }"></c:out> </div>
-						
-						</div>
-						<a href="projectinfo/project_${pro[0] }.html" class="bay">购买</a>
-						<a href="javascript:void(0);" class="obn"></a>
-						
-						
-						 <c:if test="${pro[8] =='0'}">
-            
-           		<a href="javascript:void(0);" title="我喜欢" class="like" id="btnLike${pro[0] }" name="btnLike${pro[0] }" onclick="ajax_webserviceHello(${pro[0] });">
-				
-              </c:if>
-						<c:if test="${pro[8]>='1'}">
-            
-           		<a href="javascript:void(0);" title="我喜欢" class="likeed" id="btnLike${pro[0] }" name="btnLike${pro[0] }" onclick="ajax_webserviceHello(${pro[0] });">
-				
-              </c:if>
-						
-				
-				</a>
-						
-					</div><!-- .cart -->
-				</div><!-- .grid_2 -->
-				
-				<div class="clear"></div>
-			</div><!-- .article -->
-			
-			
-			  </c:forEach>
-		
-				
+					  </div>
+				   </div>
+				   <a href="#" class="obn"></a>
+				   <a href="#" class="like"></a>
+				   <a href="#" class="bay"></a>
+			    </div><!-- .cart -->
+		     </div><!-- .grid_3 -->
+	      
+	      
+	      </c:forEach>
+	    
+		   
+		     
+	   
 			
 			
 			
