@@ -173,12 +173,25 @@
         
           <li class="">
             <div class="grid_3 product">
-              <img class="sale" src="images/sale.png" alt="Sale"/>
-              <div class="prev">
-                <a href="projectinfo/project_${prolike[0]}.html"><img src="uploadImg/${prolike[7]}" alt="" title="" /></a>
+            
+            
+                <a href="projectinfo/project_${prolike[0] }.html">
+                 
+                 <div class="imgtag">
+		<div class="tag_item">
+		<img style="width:100%" src="uploadImg/${prolike[7]}">
+			
+		</div>
+                 
+			
+	     </a>
+	     
+            
+            
+            
               </div><!-- .prev -->
               <h3 class="title">${prolike[1] }<br>
-               	 目标： ${prolike[10] }天 ${prolike[3] }件 </h3>
+               	 目标： ${prolike[11] }天 ${prolike[3] }件 </h3>
               <c:choose>  
                <c:when test="${empty prolike[9]}">  
                   <div class="progress-bar" title="已售卖了0件，完成目标的0%"> 
@@ -255,15 +268,15 @@
 		<div class="tag_item">
 		<img style="width:100%" src="uploadImg/${pro[7]}">
 			
-		</div></div>
+		</div>
                  
 			
 	     </a>
 	     
                 
              <!-- .prev -->
-             <h3 class="title">${prolike[1] }<br>
-               	 目标： ${pro[10] }天 ${pro[3] }件 </h3>
+             <h3 class="title">${pro[1] }</h3><br>
+               	 目标： ${pro[10] }天 ${pro[3] }件 
                 
               <c:choose>  
                <c:when test="${empty pro[9]}">  
@@ -272,8 +285,8 @@
                 	</div>
                 </c:when> 
                       <c:otherwise>  
-                       <div class="progress-bar" title="已售卖了${pro[9]}件，完成目标的${pro[8]}"> 
-                <span class="progress bg-red" style="width:${pro[8]};" ></span>
+                       <div class="progress-bar" title="已售卖了${pro[9]}件，完成目标的${pro[11]}"> 
+                <span class="progress bg-red" style="width:${pro[11]};" ></span>
                 	</div>
                          
                        </c:otherwise> 
