@@ -137,7 +137,7 @@ public class ZcProjectInfoAction {
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("sortSele", sortSele);
 		request.setAttribute("sortBy", sortBy);
-		request.setAttribute("pagesize",getpagenum.getpagenum (zcProjectInfoNativeService.queryTtotalByProShStatusAndPage( Integer.parseInt(sortSele), Integer.parseInt( sortBy), Integer.parseInt( proType),  Integer.parseInt(proFabric)),4));
+		request.setAttribute("pagesize",getpagenum.getpagenum (zcProjectInfoNativeService.queryTtotalByProShStatusAndPage( Integer.parseInt(sortSele), Integer.parseInt( sortBy), Integer.parseInt( proType),  Integer.parseInt(proFabric)),16));
 		request.setAttribute("proType", proType);
 		request.setAttribute("proFabric", proFabric);
 		
