@@ -210,216 +210,32 @@
 </div>
 <!-- -购物车  end -->
 
-  <div class="clear"></div>
-
-  <div class="container_12">
-    <div class="grid_12">
-       <div class="breadcrumbs">
-	      <a href="index.html">首页</a><span>&#8250;</span><a href="#">长袖</a><span>&#8250;</span><span class="current">长袖</span>
-       </div><!-- .breadcrumbs -->
-    </div><!-- .grid_12 -->
-  </div><!-- .container_12 -->
+  
 
   <div class="clear"></div>
 
   <section id="main">
     <div class="container_12">
-       <div id="sidebar" class="grid_3">
-	      <aside id="categories_nav">
-		     <h3>系列</h3>
+     
 
-		     <nav class="left_menu">
-			    <ul>
-				   <li><a href="projectinfo/project_list.html?proType=1&proFabric=0">短袖<span>(21)</span></a></li>
-				   <li class="last"><a href="projectinfo/project_list.html?proType=2&proFabric=0">长袖<span> (27)</span></a></li>
-				  
-				  
-			    </ul>
-		     </nav><!-- .left_menu -->
-	      </aside><!-- #categories_nav -->
-
-	      <aside id="specials" class="specials">
-		     <h3>推荐</h3>
-
-		     <ul>
-			    <li>
-				   <div class="prev">
-					  <a href="#"><img src="images/special1.png" alt="" title="" /></a>
-				   </div>
-
-				   <div class="cont">
-					  <a href="#">xxxxx长袖</a>
-					  <div class="prise"><span class="old">$177.00</span>$75.00</div>
-				   </div>
-			    </li>
-
-			     <li>
-				   <div class="prev">
-					  <a href="#"><img src="images/special2.png" alt="" title="" /></a>
-				   </div>
-
-				   <div class="cont">
-					  <a href="#">我我我我我我</a>
-					  <div class="prise"><span class="old">$177.00</span>$75.00</div>
-				   </div>
-			    </li>
-		     </ul>
-	      </aside><!-- #specials -->
-
-	      <aside id="newsletter_signup">
-		     <h3>kkkk</h3>
-		     <p>hjkhjkjhkjkkl.</p>
-
-		     <form class="newsletter">
-			    <input type="email" name="newsletter" class="your_email" value="" placeholder="Enter your email address..."/>
-			    <input type="submit" id="submit" value="Subscribe" />
-		     </form>
-	      </aside><!-- #newsletter_signup -->
-
-	      <aside id="banners">
-		<a id="ban_next" class="next arows" href="#"><span>Next</span></a>
-		<a id="ban_prev" class="prev arows" href="#"><span>Prev</span></a>
-
-		<h3>Banners</h3>
-
-		<div class="list_carousel">
-			<ul id="list_banners">
-				<li class="banner"><a href="#">
-					<div class="prev">
-						<img src="images/banner.png" alt="" title="" />
-					</div><!-- .prev -->
-
-					<h2>New smells</h2>
-
-					<p>in the next series</p>
- 			        </a></li>
-
-				<li class="banner"><a href="#">
-					<div class="prev">
-						<img src="images/banner.png" alt="" title="" />
-					</div><!-- .prev -->
-
-					<h2>New smells</h2>
-
-					<p>in the next series</p>
- 			        </a></li>
-
-				<li class="banner"><a href="#">
-					<div class="prev">
-						<img src="images/banner.png" alt="" title="" />
-					</div><!-- .prev -->
-
-					<h2>New smells</h2>
-
-					<p>in the next series</p>
- 			        </a></li>
-
-			</ul>
-		</div><!-- .list_carousel -->
-	      </aside><!-- #banners -->
-
-	      <aside id="tags">
-		     <h3>标签</h3>
-		     <a class="t1" href="#">长袖</a>
-		     <a class="t2" href="#">特色</a>
-		     <a class="t3" href="#">仅有</a>
-		     <a class="t4" href="#">特殊t</a>
-		     <a class="t5" href="#">chicago</a>
-		     <a class="t6" href="#">christmas</a>
-		     <a class="t7" href="#">mars</a>
-		     <a class="t8" href="#">church</a>
-		     <a class="t9" href="#">city</a>
-		     <a class="t10" href="#">居家</a>
-		     <a class="t11" href="#">color</a>
-		     <a class="t12" href="#">concert</a>
-		     <a class="t13" href="#">dance</a>
-		     <a class="t14" href="#">day</a>
-		     <a class="t15" href="#">dog</a>
-		     <a class="t16" href="#">england</a>
-		     <a class="t17" href="#">europe</a>
-	      </aside><!-- #community_poll -->
-       </div><!-- .sidebar -->
-
-       <div id="content" class="grid_9">
+       <div id="content" class="grid_7">
 	      <h1 class="page_title"><span id="proSpanName"><c:out value="${infoPro.proName }"></c:out></span> </h1>
 
 		<div class="product_page">
-			<div class="grid_4 img_slid" id="products">
-				<img class="sale" src="images/sale.png" alt="Sale"/>
-				<div class="preview slides_container">
-					<div class="prev_bg">
-						<a href="uploadImg/${infoPro.resourceInfo.resourceName }" class="jqzoom" rel='gal1' title="">
-							<img src="uploadImg/${infoPro.resourceInfo.resourceName }"  title="" alt="" id="proImg"/>
-						</a>
-					</div>
-				</div><!-- .prev -->
+		 
+                 
+                
+		<img style="width:500px;height: 300px;" src="uploadImg/${infoPro.resourceInfo.resourceName }">
+		
+		
+		
 
-				<ul class="pagination clearfix" id="thumblist">
-					<li><a class="zoomThumbActive" href='javascript:void(0);' rel="{gallery: 'gal1', smallimage: './images/ts.png',largeimage: './images/ts.png'}"><img src='uploadImg/${infoPro.resourceInfo.resourceName }' alt=""></a></li>
+			<!-- .grid_4 -->
 
-				</ul>
-
-				<div class="next_prev">
-					<a id="img_prev" class="arows" href="#"><span>Prev</span></a>
-					<a id="img_next" class="arows" href="#"><span>Next</span></a>
-				</div><!-- . -->
-			</div><!-- .grid_4 -->
-
-			<div class="grid_5">
-				<div class="entry_content">
-					<div class="review">
-						<a class="plus" href="javascript:void(0);"></a>
-						<a class="plus" href="javascript:void(0);"></a>
-						<a class="plus" href="javascript:void(0);"></a>
-						<a href="javascript:void(0);"></a>
-						<a href="javascript:void(0);"></a>
-						<span>1 评论</span>
-						<a class="add_review" href="#">评论</a>
-					</div>
-					<!-- pro -->
-					<input type="hidden" value="${infoPro.proCode }" id="proCode">
-					<p><c:out value="${infoPro.proRemarks }"></c:out></p>
-					<div class="ava_price">
-						<div class="availability_sku">
-							<div id="radio">
-								<input type="radio" id="radio1" name="radioType" value="S"/><label for="radio1">S</label>
-								<input type="radio" id="radio2" name="radioType" value="M"/><label for="radio2">M</label>
-								<input type="radio" id="radio3" name="radioType" value="L"/><label for="radio3">L</label>
-								<input type="radio" id="radio4" name="radioType" value="XL"/><label for="radio4">XL</label>
-								<input type="radio" id="radio5" name="radioType" value="XXL"/><label for="radio5">XXL</label>
-								<input type="radio" id="radio6" name="radioType" value="XXXL"/><label for="radio6">XXXL</label>
-							</div>
-							<script type="text/javascript">
-							$( "#radio" ).buttonset();
-							</script>
-						</div><!-- .availability_sku -->
-
-						<div class="price">
-							<div class="price_new">￥<span id="proSpanUnit"><c:out value="${infoPro.proUnit }"></c:out></span> </div>
-						</div><!-- .price -->
-					</div><!-- .ava_price -->
-
-					<div class="block_cart">
-						<div class="obn_like">
-							<div class="like"><a href="#" class="like">喜欢</a></div>
-						</div>
-
-						<div class="cart">
-							<a href="javascript:void(0)" class="bay" id="btnBuy">加入购物车</a>
-							<input type="text" name="" class="number" id="buyNumber" value="1" />
-							<span>数量:</span>
-						</div>
-						<div class="clear"></div>
-					</div><!-- .block_cart -->
-				<div class="bdsharebuttonbox" style="float: right;"><A class=bds_more href="#" data-cmd="more"></A><A class=bds_qzone title=分享到QQ空间 href="#" data-cmd="qzone"></A><A class=bds_tsina title=分享到新浪微博 href="#" data-cmd="tsina"></A><A class=bds_tqq title=分享到腾讯微博 href="#" data-cmd="tqq"></A><A class=bds_renren title=分享到人人网 href="#" data-cmd="renren"></A><A class=bds_weixin title=分享到微信 href="#" data-cmd="weixin"></A></div>
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-				</div><!-- .entry_content -->
-
-			</div><!-- .grid_5 -->
-
+		
 			<div class="clear"></div>
 
-			<div class="grid_9" >
+			<div class="grid_7" >
 				<div id="wrapper_tab" class="tab1">
 					<!--  <a href="#" class="tab1 tab_link">Description</a>-->
 					<a href="javascript:void(0);" class="tab1 tab_link">评价</a>
@@ -536,7 +352,7 @@
 
 							<div class="text_review">
 								<strong>内容</strong><sup class="surely">*</sup><br/>
-								<textarea name="remarks"  id="remarks"></textarea>
+								<textarea name="remarks"  id="remarks" cols="50" rows="10" ></textarea>
 								<i>备注:1000字以内</i>
 							</div><!-- .text_review -->
 
@@ -617,111 +433,77 @@
 				<div class="clear"></div>
 			</div><!-- .grid_9 -->
 
-			<div class="clear"></div>
-
-			<div class="related">
-				<div class="c_header">
-					<div class="grid_7">
-						<h2>相似推荐</h2>
-					</div><!-- .grid_7 -->
-
-					<div class="grid_2">
-						<a id="next_c1" class="next arows" href="#"><span>Next</span></a>
-						<a id="prev_c1" class="prev arows" href="#"><span>Prev</span></a>
-					</div><!-- .grid_2 -->
-				</div><!-- .c_header -->
-
-				<div class="list_carousel">
-
-				<ul id="list_product" class="list_product">
-					<li class="">
-						<div class="grid_3 product">
-							<img class="sale" src="images/sale.png" alt="Sale"/>
-							<div class="prev">
-								<a href="javascript:void(0);"><img src="images/product_1.png" alt="" title="" /></a>
-							</div><!-- .prev -->
-							<h3 class="title">我我我我</h3>
-							<div class="cart">
-								<div class="price">
-									<div class="vert">
-										<div class="price_new">$550.00</div>
-									
-									</div>
-								</div>
-								<a href="#" class="obn"></a>
-								<a href="#" class="like"></a>
-								<a href="#" class="bay"></a>
-							</div><!-- .cart -->
-						</div><!-- .grid_3 -->
-					</li>
-
-					<li class="">
-						<div class="grid_3 product">
-							<div class="prev">
-								<a href="javascript:void(0);"><img src="images/product_2.png" alt="" title="" /></a>
-							</div><!-- .prev -->
-							<h3 class="title">灌灌灌灌</h3>
-							<div class="cart">
-								<div class="price">
-									<div class="vert">
-										<div class="price_new">$550.00</div>
-										
-									</div>
-								</div>
-								<a href="#" class="obn"></a>
-								<a href="#" class="like"></a>
-								<a href="#" class="bay"></a>
-							</div><!-- .cart -->
-						</div><!-- .grid_3 -->
-					</li>
-
-					<li class="">
-						<div class="grid_3 product">
-							<div class="prev">
-								<a href="javascript:void(0);"><img src="images/product_3.png" alt="" title="" /></a>
-							</div><!-- .prev -->
-							<h3 class="title">Febreze Air Effects New Zealand Springs</h3>
-							<div class="cart">
-								<div class="price">
-									<div class="vert">
-										<div class="price_new">$550.00</div>
-										
-									</div>
-								</div>
-								<a href="#" class="obn"></a>
-								<a href="#" class="like"></a>
-								<a href="#" class="bay"></a>
-							</div><!-- .cart -->
-						</div><!-- .grid_3 -->
-					</li>
-
-					<li class="">
-						<div class="grid_3 product">
-							<div class="prev">
-								<a href="javascript:void(0);"><img src="images/product_4.png" alt="" title="" /></a>
-							</div><!-- .prev -->
-							<h3 class="title">Febreze Air Effects New Zealand Springs</h3>
-							<div class="cart">
-								<div class="price">
-									<div class="vert">
-										<div class="price_new">$550.00</div>
-										
-									</div>
-								</div>
-								<a href="#" class="obn"></a>
-								<a href="#" class="like"></a>
-								<a href="#" class="bay"></a>
-							</div><!-- .cart -->
-						</div><!-- .grid_3 -->
-					</li>
-			        </ul><!-- #list_product -->
-				</div><!-- .list_carousel -->
-			</div><!-- .carousel -->
+			
+			
 		</div><!-- .product_page -->
 		<div class="clear"></div>
 
        </div><!-- #content -->
+  <div id="sidebar" class="grid_5">
+	      <aside id="categories_nav">
+		     <h3>简介</h3>
 
+		     <nav class="left_menu">
+			   	<div class="grid_5">
+				<div class="entry_content">
+					<div class="review">
+						<a class="plus" href="javascript:void(0);"></a>
+						<a class="plus" href="javascript:void(0);"></a>
+						<a class="plus" href="javascript:void(0);"></a>
+						<a href="javascript:void(0);"></a>
+						<a href="javascript:void(0);"></a>
+						<span>1 评论</span>
+						<a class="add_review" href="#">评论</a>
+					</div>
+					<!-- pro -->
+					<input type="hidden" value="${infoPro.proCode }" id="proCode">
+					<p><c:out value="${infoPro.proRemarks }"></c:out></p>
+					<div class="ava_price">
+						<div class="availability_sku">
+							<div id="radio">
+								<input type="radio" id="radio1" name="radioType" value="S"/><label for="radio1">S</label>
+								<input type="radio" id="radio2" name="radioType" value="M"/><label for="radio2">M</label>
+								<input type="radio" id="radio3" name="radioType" value="L"/><label for="radio3">L</label>
+								<input type="radio" id="radio4" name="radioType" value="XL"/><label for="radio4">XL</label>
+								<input type="radio" id="radio5" name="radioType" value="XXL"/><label for="radio5">XXL</label>
+								<input type="radio" id="radio6" name="radioType" value="XXXL"/><label for="radio6">XXXL</label>
+							</div>
+							<script type="text/javascript">
+							$( "#radio" ).buttonset();
+							</script>
+						</div><!-- .availability_sku -->
+
+						<div class="price">
+							<div class="price_new">￥<span id="proSpanUnit"><c:out value="${infoPro.proUnit }"></c:out></span> </div>
+						</div><!-- .price -->
+					</div><!-- .ava_price -->
+
+					<div class="block_cart">
+						<div class="obn_like">
+							<div class="like"><a href="#" class="like">喜欢</a></div>
+						</div>
+
+						<div class="cart">
+							<a href="javascript:void(0)" class="bay" id="btnBuy">加入购物车</a>
+							<input type="text" name="" class="number" id="buyNumber" value="1" />
+							<span>数量:</span>
+						</div>
+						<div class="clear"></div>
+					</div><!-- .block_cart -->
+				<div class="bdsharebuttonbox" style="float: right;"><A class=bds_more href="#" data-cmd="more"></A><A class=bds_qzone title=分享到QQ空间 href="#" data-cmd="qzone"></A><A class=bds_tsina title=分享到新浪微博 href="#" data-cmd="tsina"></A><A class=bds_tqq title=分享到腾讯微博 href="#" data-cmd="tqq"></A><A class=bds_renren title=分享到人人网 href="#" data-cmd="renren"></A><A class=bds_weixin title=分享到微信 href="#" data-cmd="weixin"></A></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+				</div><!-- .entry_content -->
+
+			</div><!-- .grid_5 -->
+
+		     </nav><!-- .left_menu -->
+	      </aside><!-- #categories_nav -->
+
+	     
+	   
+	     
+
+       </div><!-- .sidebar -->
       <div class="clear"></div>
 
     </div><!-- .container_12 -->
