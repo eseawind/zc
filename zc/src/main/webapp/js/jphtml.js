@@ -11,8 +11,8 @@ $(function(){
 				width: "248px"
 			}, "normal");
 			$(target).animate({
-				width: "192px",
-				height: "141px",
+				width: "240px",
+				height: "220px",
 				top: "-20px",
 				left: "-24px"
 			}, "normal");
@@ -27,8 +27,8 @@ $(function(){
 				width: "46px"
 			}, "normal");
 			$(target).animate({
-				width: "210px",
-				height: "210px",
+				width: "220px",
+				height: "220px",
 				top: "0",
 				left: "0"
 			}, "normal");
