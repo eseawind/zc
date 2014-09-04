@@ -225,7 +225,7 @@
 		 
                  
                 
-		<img style="width:500px;height: 300px;" src="uploadImg/${infoPro.resourceInfo.resourceName }">
+		<img  id="proImg" name="proImg" style="width:500px;height: 300px;" src="uploadImg/${infoPro.resourceInfo.resourceName }">
 		
 		
 		
