@@ -20,11 +20,12 @@ public interface ZcUserInfosDao extends Repository<ZcUserInfos, Integer>,CrudRep
 	 
 	 public List<ZcUserInfos> findAll();
 	 
+	 
 	 public ZcUserInfos findByUserCode(int userCode);
 	 
 	 public void deleteByUserCode(int userCode);
 
 	 public void delete(ZcUserInfos zcUserInfos);
-	
+	 public List<ZcUserInfos> findByUserCode(Integer userCode);
 	 
 }

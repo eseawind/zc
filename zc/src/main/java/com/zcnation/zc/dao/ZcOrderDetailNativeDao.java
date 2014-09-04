@@ -16,5 +16,6 @@ public interface ZcOrderDetailNativeDao {
 	
 	public int updateZcOrderDetail(Integer proNumber,Integer detId);
 	public List<ZcOrderDetail> findByUserCodeAndOrderCodeIsNull(Integer userCode);
+	public void updateOrderCodeByUserCodeAndOrderCodeIsNull(Integer userCode,Integer orderCode);
 	
 }
