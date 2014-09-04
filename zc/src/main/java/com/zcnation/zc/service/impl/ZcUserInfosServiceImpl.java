@@ -71,5 +71,12 @@ Sort s=new Sort("userCode");
 		
 	}
 
+
+	@Override
+	public List<ZcUserInfos> queyByUserCode(Integer userCode) {
+		// TODO Auto-generated method stub
+		return zcUserInfosDao.findByUserCode(userCode);
+	}
+
 	
 }

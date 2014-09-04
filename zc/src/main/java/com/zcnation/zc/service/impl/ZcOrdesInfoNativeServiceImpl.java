@@ -21,5 +21,11 @@ public class ZcOrdesInfoNativeServiceImpl implements ZcOrdesInfoNativeService {
 		// TODO Auto-generated method stub
 	return	zcOrdersInfoNativeDao.findByUserCodeAndOrderCodeAndOrderStatus(userCode, orderCode, orderStatus);
 	}
+	@Override
+	public void deleteByUserCodeAndProCodOAndProTypeAndOrderCodeIsNull(
+			Integer userCode, Integer proCode, String proType) {
+		// TODO Auto-generated method stub
+		zcOrdersInfoNativeDao.deleteByUserCodeAndProCodOAndProTypeAndOrderCodeIsNull(userCode, proCode, proType);
+	}
 
 }

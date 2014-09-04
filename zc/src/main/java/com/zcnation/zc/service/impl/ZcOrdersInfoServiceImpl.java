@@ -76,5 +76,10 @@ public class ZcOrdersInfoServiceImpl implements ZcOrdersInfoService {
 		System.out.println(df.format(r.nextInt(99999)));
 		System.out.println(df.format(new Random().nextInt(99999)));
 	}
+	@Override
+	public ZcOrdersInfo save(ZcOrdersInfo info) {
+		// TODO Auto-generated method stub
+		return zcOrdersInfoDao.save(info);
+	}
 
 }
