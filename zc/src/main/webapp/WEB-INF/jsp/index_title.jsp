@@ -99,7 +99,7 @@ $(document).ready(function () {
               </li>
 	      <li class="no_border">
 		<a href="order/order_cart.xhtml" class="view_cart">查看购物车</a>
-		<a href="checkout.html" class="checkout">结账</a>
+		<a href="order/order_balance.xhtml" class="checkout">结账</a>
 	      </li>
             </ul>
           </li>
