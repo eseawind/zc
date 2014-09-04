@@ -116,9 +116,9 @@ $("#usercheck").click(function(e){
        
        
 
-       <table class="cart_product">
+       <table>
         <tr>
-		    <td colspan="4" align="left" valign="middle" style="background-color: #F7F7F7">
+		    <td colspan="4" align="left" valign="middle" style="background-color: #F7F7F7;margin-top: 10px;">
 		    确认收货人
 		    </td>
 		     <td colspan="3" align="right" valign="middle" style="background-color: #F7F7F7">
