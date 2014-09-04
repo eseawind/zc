@@ -29,5 +29,8 @@ public interface ZcUserInfosService {
 	 public void delete(ZcUserInfos zcUserInfos);
 	 
 	 public ZcUserInfos queryOne(int usercode);
+	 
+	 
+	 public List<ZcUserInfos> queyByUserCode(Integer userCode);
 
 }
