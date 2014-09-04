@@ -9,6 +9,7 @@ import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.zcnation.zc.common.util.RootLogger;
 import com.zcnation.zc.dao.ZcOrdersInfoNativeDao;
 import com.zcnation.zc.domain.ZcOrdersInfo;
 
@@ -45,6 +46,28 @@ public class ZcOrdersInfoNativeDaoImpl implements ZcOrdersInfoNativeDao{
 		}
 		return list;
 	}
+	@Override
+	public void deleteByUserCodeAndProCodOAndProTypeAndOrderCodeIsNull(
+			Integer userCode, Integer proCode, String proType) {
+		// TODO Auto-generated method stub
+	
+	
+		try {
+			String sql="delete from zc_order_detail where pro_code='"+proCode+"' and user_code='"+userCode+"' and pro_type='"+proType+"' and order_code is null ";
+			EntityManager em=entityManagerFactory.createEntityManager();
+			em.getTransaction().begin();
+			Query query=em.createNativeQuery(sql);
+			query.executeUpdate();
+			em.getTransaction().commit();
+		} catch (Exception e) {
+		
+			RootLogger.error(e.getMessage());
+			// TODO: handle exception
+		}
+		
+	}
+				
+	}
 	
 
-}
+

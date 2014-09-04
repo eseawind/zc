@@ -66,6 +66,23 @@ String sql="select  t. PRO_CODE,zpi.pro_name,zri.RESOURCE_NAME,t.pro_unit, t.pro
 		}
 		return list;
 	}
+	@Override
+	public void updateOrderCodeByUserCodeAndOrderCodeIsNull(Integer userCode,Integer orderCode) {
+		// TODO Auto-generated method stub
+		try {
+			String sql="update   zc_order_detail t set t.ORDER_CODE='"+orderCode+"' where t.user_Code='"+userCode+"' and t.ORDER_CODE is null";
+			EntityManager em=entityManagerFactory.createEntityManager();
+			em.getTransaction().begin();
+			Query query=em.createNativeQuery(sql);
+			query.executeUpdate();
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			
+			RootLogger.error(e.getMessage());
+			// TODO: handle exception
+		}
+		
+	}
 	
 
 
