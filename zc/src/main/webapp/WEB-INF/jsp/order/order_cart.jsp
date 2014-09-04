@@ -143,7 +143,7 @@
 	<div class="p_number">
 		
 		<div class="f_l add_chose">
-			<a class="reduce" onClick="setAmount.reduce('#qty_item_M<c:out value="${status.count}"/>,'M','<c:out value="${status.count}"/>'')" href="javascript:void(0)">
+			<a class="reduce" onClick="setAmount.reduce('#qty_item_M<c:out value="${status.count}"/>','M','<c:out value="${status.count}"/>')" href="javascript:void(0)">
 			-</a>
 			<input type="text" name="qty_item_M<c:out value="${status.count}"/>" value="${ord[7]}" id="qty_item_M<c:out value="${status.count}"/>" onKeyUp="setAmount.modify('#qty_item_M<c:out value="${status.count}"/>','M','<c:out value="${status.count}"/>')" class="text" style="height: 15px;" />
 			<a class="add" onClick="setAmount.add('#qty_item_M<c:out value="${status.count}"/>','M','<c:out value="${status.count}"/>')" href="javascript:void(0)">
@@ -217,33 +217,32 @@
 		      <c:choose>
 		    
 		     <c:when test="${ord[6]!='0'}">  
-                  	
-	 <a title="close" class="close" href="#"></a><br>
+           <a href="order/beginDeleOrder_${ord[0] }_S.xhtml" class="blue" onclick="return confirm('确定要删除吗？');">删除</a>         	
+	<br>
                 </c:when> 
                </c:choose>
                  <c:choose>   <c:when test="${ord[7]!='0'}">  
                   	
-	 <a title="close" class="close" href="#"></a><br>
+	  <a href="order/beginDeleOrder_${ord[0] }_M.xhtml" class="blue" onclick="return confirm('确定要删除吗？');">删除</a> <br>
                 </c:when> 
                  </c:choose>
 		        <c:choose>  <c:when test="${ord[8]!='0'}">  
                   	
-	 <a title="close" class="close" href="#"></a><br>
+	 <a href="order/beginDeleOrder_${ord[0] }_L.xhtml" class="blue" onclick="return confirm('确定要删除吗？');">删除</a> <br>
                 </c:when> 
                  </c:choose>
                  <c:choose> <c:when test="${ord[9]!='0'}">  
-                  	
-	 <a title="close" class="close" href="#"></a><br>
+     <a href="order/beginDeleOrder_${ord[0] }_XL.xhtml" class="blue" onclick="return confirm('确定要删除吗？');">删除</a> <br>
                 </c:when> 
                  </c:choose>
                  <c:choose> <c:when test="${ord[10]!='0'}">  
                   	
-	 <a title="close" class="close" href="#"></a><br>
+	  <a href="order/beginDeleOrder_${ord[0] }_XXL.xhtml" class="blue" onclick="return confirm('确定要删除吗？');">删除</a> <br>
                 </c:when> 
                   </c:choose> 
                     <c:choose> <c:when test="${ord[11]!='0'}">  
                   	
-	 <a title="close" class="close" href="#"></a>
+	  <a href="order/beginDeleOrder_${ord[0] }_XXXL.xhtml" class="blue" onclick="return confirm('确定要删除吗？');">删除</a>
                 </c:when> 
 		    </c:choose>
 		     
@@ -284,7 +283,7 @@
 		     <td ><span class="jifen">购买商品可获得：<b id="total_points">350</b>积分</span></td>
 		     </tr>
 	      </table>
-	    <button class="checkout">去结算中心</button>
+	    <button class="checkout" >去结算中心</button>
            
           </div><!-- .total -->
         </div><!-- .grid_4 -->
@@ -295,126 +294,7 @@
 
       <div class="clear"></div>
 
-      <div class="carousel" id="following">
-        <div class="c_header">
-          <div class="grid_10">
-            <h5>Based on your selection, you may be interested in the following item:</h5>
-          </div><!-- .grid_10 -->
-
-          <div class="grid_2">
-            <a id="next_c1" class="next arows" href="#"><span>Next</span></a>
-            <a id="prev_c1" class="prev arows" href="#"><span>Prev</span></a>
-           </div><!-- .grid_2 -->
-        </div><!-- .c_header -->
-
-        <div class="list_carousel">
-
-        <ul id="list_product" class="list_product">
-          <li class="">
-            <div class="grid_3 product">
-              <img class="sale" src="images/sale.png" alt="Sale"/>
-              <div class="prev">
-                <a href="product_page.html"><img src="images/product_1.png" alt="" title="" /></a>
-              </div><!-- .prev -->
-              <h3 class="title">Febreze Air Effects New Zealand Springs</h3>
-              <div class="cart">
-                <div class="price">
-                <div class="vert">
-                  <div class="price_new">$550.00</div>
-                  <div class="price_old">$725.00</div>
-                </div>
-                </div>
-                <a href="#" class="obn"></a>
-                <a href="#" class="like"></a>
-                <a href="#" class="bay"></a>
-              </div><!-- .cart -->
-            </div><!-- .grid_3 -->
-          </li>
-
-          <li class="">
-            <div class="grid_3 product">
-              <img class="sale" src="images/sale.png" alt="Sale"/>
-              <div class="prev">
-                <a href="product_page.html"><img src="images/product_2.png" alt="" title="" /></a>
-              </div><!-- .prev -->
-              <h3 class="title">Febreze Air Effects New Zealand Springs</h3>
-              <div class="cart">
-                <div class="price">
-                <div class="vert">
-                  <div class="price_new">$550.00</div>
-                  <div class="price_old">$725.00</div>
-                </div>
-                </div>
-                <a href="#" class="obn"></a>
-                <a href="#" class="like"></a>
-                <a href="#" class="bay"></a>
-              </div><!-- .cart -->
-            </div><!-- .grid_3 -->
-          </li>
-
-          <li class="">
-            <div class="grid_3 product">
-              <div class="prev">
-                <a href="product_page.html"><img src="images/product_3.png" alt="" title="" /></a>
-              </div><!-- .prev -->
-              <h3 class="title">Febreze Air Effects New Zealand Springs</h3>
-              <div class="cart">
-                <div class="price">
-                <div class="vert">
-                  <div class="price_new">$550.00</div>
-                </div>
-                </div>
-                <a href="#" class="obn"></a>
-                <a href="#" class="like"></a>
-                <a href="#" class="bay"></a>
-              </div><!-- .cart -->
-            </div><!-- .grid_3 -->
-          </li>
-
-          <li class="">
-            <div class="grid_3 product">
-              <img class="sale" src="images/sale.png" alt="Sale"/>
-              <div class="prev">
-                <a href="product_page.html"><img src="images/product_4.png" alt="" title="" /></a>
-              </div><!-- .prev -->
-              <h3 class="title">Febreze Air Effects New Zealand Springs</h3>
-              <div class="cart">
-                <div class="price">
-                <div class="vert">
-                  <div class="price_new">$550.00</div>
-                  <div class="price_old">$725.00</div>
-                </div>
-                </div>
-                <a href="#" class="obn"></a>
-                <a href="#" class="like"></a>
-                <a href="#" class="bay"></a>
-              </div><!-- .cart -->
-            </div><!-- .grid_3 -->
-          </li>
-
-          <li class="">
-            <div class="grid_3 product">
-              <div class="prev">
-                <a href="product_page.html"><img src="images/product_5.png" alt="" title="" /></a>
-              </div><!-- .prev -->
-              <h3 class="title">Febreze Air Effects New Zealand Springs</h3>
-              <div class="cart">
-                <div class="price">
-                <div class="vert">
-                  <div class="price_new">$550.00</div>
-                  <div class="price_old">$725.00</div>
-                </div>
-                </div>
-                <a href="#" class="obn"></a>
-                <a href="#" class="like"></a>
-                <a href="#" class="bay"></a>
-              </div><!-- .cart -->
-            </div><!-- .grid_3 -->
-          </li>
-
-        </ul><!-- #list_product -->
-        </div><!-- .list_carousel -->
-      </div><!-- .carousel -->
+     
 
     </div><!-- .container_12 -->
   </section><!-- #main -->
