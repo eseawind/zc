@@ -9,7 +9,7 @@
  font-family: Bitter;
  src: url(../fonts/Bitter.ttf);
 }
-@font-face {
+/*********@font-face {
  font-family: Bitter-Bold;
  src: url(../fonts/Bitter-Bold.eot)
 }
@@ -49,7 +49,7 @@
  font-family: Segoeui-Italic;
  src: url(../fonts/Segoeui-Italic.ttf);
 }
-
+ *********/
 *{padding:0;margin:0; border:0 none;}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -119,21 +119,23 @@ h6{font-size: 14px;}
 /*** select ***/
 select,
 .selectBox {
-	display: inline-block;
+	/***display: inline-block;
 	position: relative;
 	height: 33px;
 	padding-left: 10px;
 	font:normal 12px/33px Segoeui, Arial, Verdana, serif;
 	color: #444;
 	text-decoration: none!important;
-	background: #fff;
+	background: #fff; ***/
+	
 	border: 1px solid #ccc;
-	border-radius: 2px;
+	/***border-radius: 2px;
 	-moz-border-radius: 2px;
 	-khtml-border-radius: 2px;
-	behavior: url(PIE.htc);
+	behavior: url(PIE.htc);***/
 }
-.selectBox:hover {
+
+/***.selectBox:hover {
 	color: #000;
 	text-decoration: none;
 }
@@ -149,9 +151,9 @@ select,
 	height: 33px;
 	overflow: hidden;
 	cursor: pointer;
-	background: url(../images/select-button.png) 50% 50% no-repeat #f5f7f9;
+	
 }
-.selectBox-arrow:hover {background: url(../images/select-button.png) 50% 50% no-repeat #eff7ff;}
+.selectBox-arrow:hover {}
 .selectBox-dropdown-menu {
 	position: absolute;
 	list-style: none;
@@ -178,8 +180,30 @@ select,
 	color: #444;
 	text-decoration: none;
 	background: #eff7ff;
-}
+}***/
 /*** button ***/
+.button{
+	width:140px;
+	line-height:38px;
+	text-align:center;
+	font-weight:bold;
+	color:#fff;
+	text-shadow:1px 1px 1px #333;
+	border-radius:5px;
+	margin:0 20px 20px 0;
+	position:relative;
+	overflow:hidden;
+	float:right;display:inline;
+}
+.button:nth-child(6n){margin-right:0;}
+.button.blue{
+	border:1px solid #1e7db9;
+	box-shadow:0 1px 2px #8fcaee inset,0 -1px 0 #497897 inset,0 -2px 3px #8fcaee inset;
+	background:-webkit-linear-gradient(top,#42a4e0,#2e88c0);
+	background:-moz-linear-gradient(top,#42a4e0,#2e88c0);
+	background:linear-gradient(top,#42a4e0,#2e88c0);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#42a4e0', endColorstr='#2e88c0'); /*  IE */
+}
 button,
 input[type="submit"]{
 	height: 35px;
