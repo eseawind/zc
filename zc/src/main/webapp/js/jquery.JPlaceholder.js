@@ -33,10 +33,12 @@ function initPlaceHolders(){
         }
     };
     if(document.addEventListener){//ie
+    
         document.addEventListener('focus',focusFn, true);
         document.addEventListener('blur', blurFn, true);
     }
     else{
+    
         document.attachEvent('onfocusin',focusFn);
         document.attachEvent('onfocusout',blurFn);
     }
@@ -54,6 +56,7 @@ function initPlaceHolders(){
                 emptyHintEl.className='emptyhint';
                 emptyHintEl.onclick=function (el){return function(){try{el.focus();}catch(ex){}}}(el);
                 if(el.value) emptyHintEl.style.display='none';
+               
                 el.parentNode.insertBefore(emptyHintEl,el);
                 el.__emptyHintEl=emptyHintEl;
             }

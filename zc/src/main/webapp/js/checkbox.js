@@ -107,3 +107,19 @@ catch(e)
 
     return true;
 }
+
+
+function onlyNum() { 
+    if(!(event.keyCode==46)&&!(event.keyCode==8)&&!(event.keyCode==37)&&!(event.keyCode==39)) 
+	if(!((event.keyCode>=48&&event.keyCode<=57)||(event.keyCode>=96&&event.keyCode<=105))) 
+	event.returnValue=false; 
+}
+
+//只能真金钱格式
+function validatePices(o) {
+    var pice = o.value.replace(/^([1-9][0-9]{0,5}|[0-9])((\.[0-9]{0,2}){0,1})$/, '');
+    if (pice.length > 0) {
+        o.value = o.value.substring(0, o.value.length - 1);
+        validatePices(o);
+    }
+} 

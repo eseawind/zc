@@ -276,3 +276,4 @@ if($("input[name^=qty_item_XXXL"+i+"]").val()!=undefined){
 //    );
 
 };
+
