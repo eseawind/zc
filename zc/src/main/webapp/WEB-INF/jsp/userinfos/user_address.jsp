@@ -111,107 +111,11 @@
        </div><!-- .sidebar -->
 
        <div id="content" class="grid_9">
-	      <h1 class="page_title">收货地址</h1>
+	      <h1 class="page_title">收货地址<span style="padding-left: 490px;"><a href="userinfos/address_add.xhtml" style="font-size: 12px;cursor: pointer;">添加常用收货人</a></span></h1>
 	      
 	      
 	      
-	        <div class="rightcontent">
-      <div class="incPadBox">
-        <dl class="findBox clearfix">
-          <dt><a class="buthui new" href="#" >添加常用收货人</a></dt>
-        </dl>
-        
-
- 
-<div style="display: none; z-index: 1002; outline: 0px; height: auto; width: 803px; top: 0px; left: 273px;">
-<div ><span >&nbsp;</span><a href="#"  role="button"><span>close</span></a>
-</div><div id="addressd" scrolltop="0" scrollleft="0" style="display: block; width: auto; min-height: 150px; height: auto;">
-  <span></span>
-  <h5 align="center"><strong>使用新收货地址</strong></h5>
-   <FORM class=added method=post action="" id="addForm">
-		
-  				<div  style="line-height: 50px;">
-					<strong>收货人姓名:</strong><sup class="surely">*</sup>
-					&nbsp;<input id=userName style="COLOR: rgb(51,51,51)" class=inputBg1   type=text name=userName class="" value="" />
-					<DIV id=validName class=Validform_checktip></DIV>
-				
-				</div>
-				
-				
-				<div  style="line-height:50px;">
-					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地区:</strong><sup class="surely">*</sup>
-					&nbsp;<select name="userProvince" id="userProvince" style="width: 150px;" class="">
-									<option >请选择省份</option>
-									<option selected="selected" value="浙江省">浙江省</option>
-																	
-																	</select>
-								<select name="userCity" id="userCity"  style="width: 150px;"  class="" >
-									<option >请选择城市</option>
-									<option selected="selected" value="杭州市">杭州市</option>
-									<option value="宁波市">宁波市</option>
-																	</select>
-																	
-																	<select name="userArea" id="userArea"  style="width: 150px;"  class="" >
-									<option >请选择城市区域</option>
-									<option selected="selected" value="海曙区">海曙区</option>
-									<option value="上城区">上城区</option>
-																	</select>
-					<DIV id=validPoint class=Validform_checktip  > </DIV>
-				
-				</div>
-				
-				
-				<div style="line-height: 50px;">
-					<strong>&nbsp;&nbsp;&nbsp;&nbsp;详细地址:</strong><sup class="surely">*</sup>
-					&nbsp;<input id=userAddress   type=text name=userAddress class="" value="" />
-					<DIV id=validAddress class=Validform_checktip></DIV>
-				
-				</div>
-				
-				<div  style="line-height: 50px;">
-					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮编:</strong><sup class="surely">*</sup>
-					&nbsp;<input id=userZip maxlength="6"  onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  type=text name=userZip class="" value="" />
-					<DIV id=validZip class=Validform_checktip></DIV>
-				
-				</div>
-				
-				
-				<div style="line-height: 50px;">
-					<strong>&nbsp;&nbsp;&nbsp;&nbsp;手机号码:</strong><sup class="surely">*</sup>
-					&nbsp;<input id=userMobilephone onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"   type=text name=userMobilephone class="" value="" />
-					<DIV id=validMobilephone class=Validform_checktip></DIV>
-				
-				</div>
-				
-				<div style="line-height: 50px;">
-					<strong>&nbsp;&nbsp;&nbsp;&nbsp;固定电话:</strong><sup class="surely">*</sup>
-					&nbsp;<input id=userTelephone   type=text name=userTelephone class="" value="" />
-					<DIV id=validTelephone class=Validform_checktip></DIV>
-				
-				</div>
-				
-				
-				
-				
-				<div  style="line-height: 50px;">
-					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱:</strong><sup class="surely">*</sup>
-					&nbsp;<input id=userEmail   type=text name=userEmail class="" value="" />
-					<DIV id=validEmail class=Validform_checktip></DIV>
-				
-				</div>
-				
-				<div class="submit">										
-					<SPAN style="CURSOR: pointer ;margin-left:10px;" 
-  id=reg>
-  <a href="javascript:void(0)" id=btnAdd class="bay">保存</a>
-  
-  </SPAN>
-				</div>
-				</FORM>
-</div></div>
-</div></div>
-	      
-
+	    
  <table border="0" cellpadding="0" cellspacing="0" class="tableStyle thback">
           <tbody><tr>
             <th>序号</th>
@@ -222,13 +126,13 @@
             <th>E-mail</th>
             <th>操作</th>
           </tr>
-             <c:forEach items="${userInfos}" var="user">
+             <c:forEach items="${userInfos}" var="user" varStatus="status">
                <tr>
-              <td><c:out value="${user.userCode }"></c:out></td>
+              <td><c:out value="${status.count}"/></td>
               <td><c:out value="${user.userName}"></c:out></td>
               <td><c:out value="${user.userMobilephone}"></c:out></td>
               <td>
-          <c:out value="${user.userAddress}"></c:out>            </td>
+         <c:out value="${user.userProvince}"></c:out><c:out value="${user.userCity}"></c:out><c:out value="${user.userArea}"></c:out><c:out value="${user.userAddress}"></c:out>            </td>
               <td>   <c:out value="${user.userZip}"></c:out>   </td>
               <td><c:out value="${user.userEmail}"></c:out> </td>
               <td>
