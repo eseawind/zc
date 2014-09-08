@@ -9,19 +9,32 @@
 
 <title>用户登录</title>
  <style type="text/css">
-
+.option-box select {
+/* width: 100px; */
+/* height: 26px; */
+/* line-height: 26px; */
+/* border: 1px solid #9c9c9c; */
+/* border-radius: 3px; */
+/* color: #555; */
+/* margin-right: 5px; */
+}
+.fl {
+float: left;
+}
  </style>
 
 <script type="text/javascript">
 	$(function(){
-		var emailRegex=/^[a-z0-9_\-]+(\.[_a-z0-9\-]+)*@([_a-z0-9\-]+\.)+([a-z]{2}|aero|arpa|biz|com|coop|edu|gov|info|int|jobs|mil|museum|name|nato|net|org|pro|travel)$/;
-		var phoneRegex=/^((13[0-9])|(15[0-9])|(18[0-9]))[0-9]{8}$/;
+		var targetRegex=/^([1-4][0-9][0-9]|500)$/;
+		var daysRegex=/^(([1-9])|(1\d)|(2\d)|(3[0]))$/;
 		var register={};
 		register={
 				initButtonRegister:function(){
 					//提交
 					$("#btnAdd").bind('click',function(e){
 						e.preventDefault();
+						if(register.checkRegForm()){
+						
 						//projectinfo/beginAdd.do
 						 //表单验证
 						 //提交表单
@@ -42,6 +55,7 @@
 								 }
 							 }
 						 })
+						}
 					});
 					
 					//图片上传
@@ -69,7 +83,226 @@
 					
 					
 					
-				} 
+				} ,
+				checkRegForm:function(){//验证表单
+					if(!register.validateInput($("#proName"), "validName", "请输入您的作品名称", "请输入6-20位作品名称", true, 6, 20, false)){
+						
+						return false;
+					}else if(!register.validateInput($("#proTarget"), "validTarget", "请输入您的目标", "请输入100~500以内", false, 0, 0, targetRegex)){
+						
+						return false;
+					}else if(!register.validateInput($("#proDays"), "validDays", "请输入您的筹集天数", "请输入10~30天以内", false, 0, 0, daysRegex)){
+							return false;
+					}else if($("#proType").val()==0){
+						$("#validType").addClass("Validform_wrong").html("请选择类别");
+						$("#validType").show();
+						$("#proType").addClass("Validform_error");
+						return false;
+					}else if($("#proFabric").val()==0){
+						$("#validFabric").addClass("Validform_wrong").html("请选择面料");
+						$("#validFabric").show();
+						$("#proFabric").addClass("Validform_error");
+						return false;
+					}else if($("#proSample").val()==0){
+						$("#validSample").addClass("Validform_wrong").html("请选择打样");
+						$("#validSample").show();
+						$("#proSample").addClass("Validform_error");
+						return false;
+					}else if($("#proCity").val()==0||$('#proProvince').val()==0){
+						$("#validPoint").addClass("Validform_wrong").html("请选择项目地点");
+						$("#validPoint").show();
+						if($("#proCity").val()==0){
+							$("#proCity").addClass("Validform_error");
+						}
+						
+						if($("#proProvince").val()==0){
+							$("#proProvince").addClass("Validform_error");
+						}
+						return false;
+					}
+					return true;
+				},
+				blurInput:function(){
+					register.commonBlurInput($("#proName"), "validName", "请输入您的作品名称", "请输入6-20位作品名称", true, 6, 20, false);
+					register.commonBlurInput($("#proTarget"), "validTarget", "请输入您的目标", "请输入100~500以内", false, 0, 0, targetRegex);
+					register.commonBlurInput($("#proDays"), "validDays", "请输入您的筹集天数", "请输入10~30天以内", false, 0, 0, daysRegex);
+					
+					$("#proType").click(function(){
+						var that=$(this);
+						if(that.val()==0){
+							$("#validType").addClass("Validform_wrong").html("请选择类别");
+							$("#validType").show();
+							that.addClass("Validform_error");
+						}else{
+							$("#validType").hide();
+							that.removeClass("Validform_error");
+						}
+						
+					});
+					
+					$("#proFabric").blur(function(){
+						var that=$(this);
+						if(that.val()==0){
+							$("#validFabric").addClass("Validform_wrong").html("请选择面料");
+							$("#validFabric").show();
+							that.addClass("Validform_error");
+						}else{
+							$("#validFabric").hide();
+							that.removeClass("Validform_error");
+						}
+						
+					});
+					
+					$("#proSample").blur(function(){
+						var that=$(this);
+						if(that.val()==0){
+							$("#validSample").addClass("Validform_wrong").html("请选择打样");
+							$("#validSample").show();
+							that.addClass("Validform_error");
+						}else{
+							$("#validSample").hide();
+							that.removeClass("Validform_error");
+						}
+						
+					});
+					
+					
+					
+					
+					$("#proProvince").blur(function(){
+						var that=$(this);
+						var city=$('#proCity');
+						
+						if(that.val()=='0'||city.val()=='0'){
+							$("#validPoint").addClass("Validform_wrong").html("请选择项目地点");
+							$("#validPoint").show();
+							that.addClass("Validform_error");
+						}else{
+							$("#validPoint").hide();
+							that.removeClass("Validform_error");
+						}
+						
+					});
+					
+					$("#proCity").blur(function(){
+						var that=$(this);
+						var province=$('#proProvince');
+						if(that.val()=='0'||province.val()=='0'){
+							$("#validPoint").addClass("Validform_wrong").html("请选择项目地点");
+							$("#validPoint").show();
+							that.addClass("Validform_error");
+						}else{
+							$("#validPoint").hide();
+							that.removeClass("Validform_error");
+						}
+						
+						if(province.val()!='0'){
+							province.removeClass("Validform_error");
+						}
+						
+						
+					});
+					
+				
+					
+
+					$("#proRemarks").blur(function(){
+						var that=$(this);
+						if(that.val()==0){
+							$("#validRemarks").addClass("Validform_wrong").html("请输入作品简介");
+							$("#validRemarks").show();
+							that.addClass("Validform_error");
+						}else{
+							$("#validRemarks").hide();
+							that.removeClass("Validform_error");
+						}
+						
+					});
+					
+					
+				},
+				/**
+				* obj:注册blur事件对象
+				* validateId:验证信息id
+				* errmsg1：错误信息1
+				* errmsg2：错误信息2
+ 				**/
+				commonBlurInput:function(obj,validateId,nullerrMsg,errMsg2,isvalidateLen,minlen,maxlen,regex){
+					var t=$(obj);
+					t.blur(function(){
+						var that=$(this);
+						if(!that.val()){
+							$("#"+validateId+"").addClass("Validform_wrong").html(nullerrMsg);
+							$("#"+validateId+"").show();
+							that.addClass("Validform_error");
+						}else{
+							if(isvalidateLen){//验证长度
+								var len=that.val().length;
+								if(len<minlen||len>maxlen){
+									$("#"+validateId+"").addClass("Validform_wrong").html(errMsg2);
+									$("#"+validateId+"").show();
+									that.addClass("Validform_error");
+								}else{
+									$("#"+validateId+"").hide();
+									that.removeClass("Validform_error");
+								}
+							}else{
+								if(regex){
+									if(!regex.test(that.val())){
+										$("#"+validateId+"").addClass("Validform_wrong").html(errMsg2);
+										$("#"+validateId+"").show();
+										that.addClass("Validform_error");
+									}else{
+										$("#"+validateId+"").hide();
+										that.removeClass("Validform_error");
+									}
+								}else{
+									$("#"+validateId+"").hide();
+									that.removeClass("Validform_error");
+								}
+							}
+						}
+					})
+				},validateInput:function(obj,validateId,nullerrMsg,errMsg2,isvalidateLen,minlen,maxlen,regex){
+					var that=$(obj);
+					if(!that.val()){
+						$("#"+validateId+"").addClass("Validform_wrong").html(nullerrMsg);
+						$("#"+validateId+"").show();
+						that.addClass("Validform_error");
+						return false;
+					}else{
+						if(isvalidateLen){//验证长度
+							var len=that.val().length;
+							if(len<minlen||len>maxlen){
+								$("#"+validateId+"").addClass("Validform_wrong").html(errMsg2);
+								$("#"+validateId+"").show();
+								that.addClass("Validform_error");
+								return false;
+							}else{
+								$("#"+validateId+"").hide();
+								that.removeClass("Validform_error");
+								return true;
+							}
+						}else{
+							if(regex){
+								if(!regex.test(that.val())){
+									$("#"+validateId+"").addClass("Validform_wrong").html(errMsg2);
+									$("#"+validateId+"").show();
+									that.addClass("Validform_error");
+									return false;
+								}else{
+									$("#"+validateId+"").hide();
+									that.removeClass("Validform_error");
+									return true;
+								}
+							}else{
+								$("#"+validateId+"").hide();
+								that.removeClass("Validform_error");
+								return true;
+							}
+						}
+					}
+				}
 		};
 		//附带不用修改浏览器安全配置的javascript代码，兼容ie， firefox全系列
 
@@ -97,7 +330,7 @@
 		function main(){
 			//注册事件
 			register.initButtonRegister();
-			//register.blurInput();
+			register.blurInput();
 		}
 		
 		main();
@@ -106,7 +339,7 @@
 </script>
 <script>
 	$(document).ready(function() {
-		$("select").selectBox();
+		
 	});
   </script>
 
@@ -125,6 +358,8 @@
 			auto: true	
 		});
 	});
+	
+	
   </script>
   
 	
@@ -141,7 +376,7 @@
 		</div><!-- .grid_12 -->
 		
 		
-		<div class="grid_7">
+		<div class="grid_7" >
 		<img id="loading" src="images/loading.gif" style="display:none;">
 		 <FORM class=registed method=post action="projectinfo/beginAdd.xhtml"   name="addForm" id="addForm" 	enctype="multipart/form-data">
 		
@@ -151,32 +386,32 @@
 				
 				<div class="email">
 					<strong>项目名称:</strong><sup class="surely">*</sup>
-					<input type="text" id="proName" name="proName" class="" value="" /><span id=validName class=Validform_checktip  > </span>
+					<input type="text" id="proName" name="proName" class="" value=""  placeholder="请输入6-20位作品名称"   /><span id=validName class=Validform_checktip  > </span>
 				</div><!-- .email -->
 							
 				<div class="password">
 					<strong>目&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;标:</strong><sup class="surely">*</sup>
-					<input id=proTarget onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  type=text name=proTarget class="" value="" />
+					<input id=proTarget placeholder="请输入100~500以内"  onkeydown="onlyNum();"  style="ime-mode:Disabled"  type=text name=proTarget class="" value="" />
 					<span id=validTarget class=Validform_checktip></span>
 				
 				</div><!-- .password -->
 							
 				<div class="password">
 					<strong>单&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价:</strong><sup class="surely">*</sup>
-					<input id=proUnit onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')"  type=text name=proUnit class="" value="" />
+					<input id=proUnit onkeyup="validatePices(this);" onblur="validatePices(this);" style="ime-mode:Disabled"  type=text name=proUnit class="" value="" />
 					 <span id=validUnit class=Validform_checktip> </span>
 				
 				</div><!-- .password -->
 				
 				<div class="password">
 					<strong>筹集天数:</strong><sup class="surely">*</sup>
-					<input id=proDays  type=text name=proDays onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" class="" value="" /> 
+					<input id=proDays     placeholder="请输入10~30以内" type=text name=proDays onkeydown="onlyNum();"  style="ime-mode:Disabled" class="" value="" /> 
 					 <span id=validDays class=Validform_checktip></span>
 				
 				</div>
 				
 			
-			<div class="password">
+			<div class="password" style="line-height: 40px;">
 					<strong>类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:</strong><sup class="surely">*</sup>
 					<select name="proType" id="proType"  class=""  style="width: 120px">
 									<option value="0">请选择类别</option>
@@ -188,7 +423,7 @@
 				 <span id=validType class=Validform_checktip></span> 
 				</div>
 				
-					<div class="password">
+					<div class="password"  style="line-height: 40px;">
 					<strong>面&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;料:</strong><sup class="surely">*</sup>
 					<select name="proFabric" id="proFabric"  class="" style="width: 120px" >
 									<option value="0">请选择面料</option>
@@ -201,7 +436,7 @@
 				
 				
 				
-					<div class="password">
+					<div class="password"  style="line-height: 40px;">
 					<strong>打&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;样:</strong><sup class="surely">*</sup>
 					<select name="proSample" id="proSample"  class="" style="width: 120px" >
 									<option value="0">请选择打样</option>
@@ -221,36 +456,38 @@
 				</div><!-- .email -->
 				
 				
-				<div class="email">
+				<div class="email"  style="line-height: 40px;">
 					<strong>项目地点:</strong><sup class="surely">*</sup>
 					<select name="proProvince" id="proProvince" class="" style="width: 120px">
-									<option >请选择省份</option>
-									<option selected="selected" value="浙江省">浙江省</option>
+									<option  value="0">请选择省份</option>
+									<option  value="浙江省">浙江省</option>
 																	
 																	</select>
 								<select name="proCity" id="proCity"   class="" style="width: 120px" >
-									<option >请选择城市</option>
-									<option selected="selected" value="杭州市">杭州市</option>
+									<option value="0">请选择城市</option>
+									<option  value="杭州市">杭州市</option>
 									<option value="宁波市">宁波市</option>
 																	</select>
 					 <span id=validPoint class=Validform_checktip  > </span>
 				</div>
 			
 			
-			<div class="email">
+			<div class="email" >
 					<strong>项目简介:</strong><sup class="surely">*</sup>
-					<textarea style="width:70%;height:40px;" id="proRemarks"  name="proRemarks"  maxlength="75"></textarea>
+					<textarea style="width:50%;height:60px;" id="proRemarks"  name="proRemarks"  maxlength="800"></textarea>
 					<span id=validRemarks class=Validform_checktip  > </span>
 				</div><!-- .email -->
 			
-				<div class="email">
-					<strong>标&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;签:</strong><sup class="surely">*</sup>
+				<div class="email" style="height: 53px;" >
+					<strong>标&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;签:</strong>&nbsp;&nbsp;&nbsp;<!-- <sup class="surely">*</sup> -->
 					<input type="text" id="proTag" name="proTag" class="" value="" /><DIV id=validName class=Validform_checktip  > </DIV>
 					<DIV id=validTag class=Validform_checktip  > </DIV>
 				</div><!-- .email -->
 				
-				<div class="submit">										
-					<button class="account" id="btnAdd">发布作品</button>
+				<div class="submit">	
+				  <button type="button" id="btnAdd" class="button blue">发布作品</button>
+													
+					<!--<button class="account" id="btnAdd">发布作品</button>-->
 				</div><!-- .submit -->
 				
 			</form><!-- .registed -->
@@ -279,10 +516,13 @@
       </div>
       </div>
       
-     
-
-
-    </div>
+      <div class="tabBoxR ">
+       <span>友情提示</span>
+          <br>
+      </div>
+        1.ssss的范德萨发是的范德萨范德萨发送到<br>
+         2.zxjkhzvdsjfhsdkf的粉红色的<br>
+          3.的时间发动机是粉红色的和福克斯的合肥市接口的<br>
                 </div><!-- .grid_6 -->
       <div class="clear"></div>
     </div><!-- .container_12 -->
