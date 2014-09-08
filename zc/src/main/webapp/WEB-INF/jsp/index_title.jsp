@@ -13,6 +13,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>T恤众筹平台</title>
 </head>
+ <style>    span.emptyhint {color:#999;position:absolute;padding:15px;}    </style>
+
 <script type="text/javascript">
 
 $(document).ready(function () {  
@@ -45,12 +47,16 @@ $(document).ready(function () {
 			 }
 		   	
 		       }); 
+	   initPlaceHolders();
 
 	  });  
 
 
 
 </script>
+
+
+
 <body>
  <div class="container_12">
    
