@@ -170,12 +170,7 @@
 	})
 </script>
 <style type="text/css">
-.registerform table{
-width: 550px;
-}
-.registerform table td{
-height: 55px;text-align: right;
-}
+
 
 </style>
 </head>

@@ -103,7 +103,7 @@
 		
 		
 		
-		$("select").selectBox();
+		//$("select").selectBox();
 	});
   </script>
 </head>
@@ -155,31 +155,26 @@
 
        <div id="content" class="grid_9">
 	      <h1 class="page_title">资料修改</h1>
-	      
-	      
-	      
-	      
-	      
-	      
+	        
  <FORM class=registed method=post action=""  name="updateForm" id="updateForm" >
 		
 				
 				<div class="email">
 					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户名:</strong><sup class="surely">*</sup>
-					&nbsp;<input type="text" id="userName" name="userName" class="" value="${sessionScope.USER_INFO.userName }" readonly="readonly"/><DIV id=validName class=Validform_checktip  > </DIV>
+					&nbsp;<input type="text" id="userName" name="userName" class="" value="${sessionScope.USER_INFO.userName }" readonly="readonly"/><span id=validName class=Validform_checktip  > </span>
 				</div><!-- .email -->
 							
 				<div class="password">
 					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱:</strong><sup class="surely">*</sup>
 					&nbsp;<input id=email   type=text name=email class="" value="${sessionScope.USER_INFO.email }" />
-					<DIV id=validEmail class=Validform_checktip></DIV>
+					<span id=validEmail class=Validform_checktip></span>
 				
 				</div><!-- .password -->
 							
 				<div class="password">
 					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;手机号:</strong><sup class="surely">*</sup>
 					&nbsp;<input id=userPhone onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')"  type=text name=userPhone class="" value="${sessionScope.USER_INFO.userPhone }" />
-					 <DIV id=validPhone class=Validform_checktip></DIV>
+					 <span id=validPhone class=Validform_checktip></span>
 				
 				</div><!-- .password -->
 				
@@ -217,7 +212,7 @@
 									<option  value="杭州市">杭州市</option>
 									<option value="宁波市">宁波市</option>
 																	</select>
-					<DIV id=validPoint class=Validform_checktip  > </DIV>
+					<span id=validPoint class=Validform_checktip  > </span>
 					
 					<input type="hidden" id="userProvinceValue" name="userProvinceValue" value="${sessionScope.USER_INFO.userProvince }"> 
 					<input type="hidden" id="userCityValue" name="userCityValue" value="${sessionScope.USER_INFO.userCity }"> 
@@ -227,18 +222,24 @@
 			<div class="email">
 					<strong>个人说明:</strong><sup class="surely">*</sup>
 					&nbsp;<textarea style="width:70%;height:40px;" id="userIntroduce"  name="userIntroduce"  maxlength="75"><c:out value="${sessionScope.USER_INFO.userIntroduce }"></c:out> </textarea>
-					<DIV id=validIntroduce class=Validform_checktip  > </DIV>
+					<span id=validIntroduce class=Validform_checktip  > </span>
 				</div><!-- .email -->
 			
-				<div class="email">
+				<div class="submit">
 					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QQ:</strong><sup class="surely">&nbsp;*</sup>
 					&nbsp;<input type="text" id="userQq" name="userQq" class="" value="${sessionScope.USER_INFO.userQq }" /><DIV id=validName class=Validform_checktip  > </DIV>
-					<DIV id=validQq class=Validform_checktip  > </DIV>
+					<span id=validQq class=Validform_checktip  > </span>
 				</div><!-- .email -->
 				
-				<div class="submit" style=" margin-left:480px;">										
-					<button class="account" id="btnUpdate">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-				</div><!-- .submit -->
+				
+				<div class="submit">	
+				  <button type="button" id="btnUpdate" class="button blue">发布作品</button>
+													
+					<!--<button class="account" id="btnAdd">发布作品</button>-->
+				</div>
+													
+					<!--  <button class="account" id="btnUpdate">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>-->
+				<!-- .submit -->
 			</form>
 		<div class="clear"></div>
 

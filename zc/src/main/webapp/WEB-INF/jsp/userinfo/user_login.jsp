@@ -236,12 +236,12 @@ $("#btnLogin").click();
 							
 				<div class="email">
 					<strong>用户名:</strong><sup class="surely">*</sup>
-					<input type="text" id="userName" name="userName" class="" value="" /><span  id=validAccount class="Validform_checktip"   ></span>
+					<input type="text" id="userName" name="userName" class="" placeholder="请输入6-20位用户名" value="" /><span  id=validAccount class="Validform_checktip"   ></span>
 				</div><!-- .email -->
 							
 				<div class="password">
 					<strong>密&nbsp;&nbsp;&nbsp;码:</strong><sup class="surely">*</sup>
-					<input id=password  type=password name=password class="" value="" /><span class="Validform_checktip"   id=validPassword ></span>
+					<input id=password  type=password name=password class="" value=""  placeholder="请输入6-20位密码"/><span class="Validform_checktip"   id=validPassword ></span>
 					
 				</div><!-- .password -->
 				
