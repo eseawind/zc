@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 
 
 
+
 import org.apache.commons.lang.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -39,6 +40,12 @@ public class ZcUserInfosAction {
 		request.setAttribute("userInfos", list);
 		System.out.println(list.size());
 		return "userinfos/user_address";
+	}
+	
+	
+	@RequestMapping("/address_add.xhtml")
+	public String to_add(HttpServletRequest request) {
+		return "userinfos/address_add";
 	}
 	
 
