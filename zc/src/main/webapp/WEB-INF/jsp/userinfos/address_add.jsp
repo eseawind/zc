@@ -24,6 +24,7 @@
 $(function(){
 	var emailRegex=/^[a-z0-9_\-]+(\.[_a-z0-9\-]+)*@([_a-z0-9\-]+\.)+([a-z]{2}|aero|arpa|biz|com|coop|edu|gov|info|int|jobs|mil|museum|name|nato|net|org|pro|travel)$/;
 	var phoneRegex=/^((13[0-9])|(15[0-9])|(18[0-9]))[0-9]{8}$/;
+	var gudingRegex=/^(0[1-9]{2})-\d{8}$|^(0[1-9]{3}-(\d{7,8}))$/;
 	var register={};
 	register={
 			initButtonRegister:function(){
@@ -31,6 +32,7 @@ $(function(){
 					//阻止默认事件发生,会出现 刷新页面的请求
 					e.preventDefault();
 					//表单验证。。
+					if(register.checkRegForm()){
 					var formJson=$("#addForm").serializeArray();
 					$.post("userinfos/beginAdd.html",formJson,function(data){
 						var d=$.eval2(data);
@@ -45,19 +47,20 @@ $(function(){
 							$.alert("添加提示",d.errorMsgs[0]);
 						}
 					});
+					}
 				});
 				
 				
 			},
 			checkRegForm:function(){//验证表单
-				if(!register.validateInput($("#userName"), "validAccount", "请输入您的用户名", "请输入6-20位用户名", true, 6, 20, false)){
+				if(!register.validateInput($("#userName"), "validName", "请输入收货人姓名", "请输入2-20位收货人姓名", true, 2, 20, false)){
 					
 					return false;
 				}
-				else if(!register.validateInput($("#email"), "validEmail", "请输入您的邮箱", "邮箱格式不正确", false, 0, 0, emailRegex)){
+				else if(!register.validateInput($("#userEmail"), "validEmail", "请输入收货人的邮箱", "邮箱格式不正确", false, 0, 0, emailRegex)){
 					return false;
 				}
-				else if(!register.validateInput($("#userPhone"), "validPhone", "请输入您的手机号", "手机格式不正确", false, 0, 0, phoneRegex)){
+				else if(!register.validateInput($("#userMobilephone"), "validMobilephone", "请输入收货人的手机号", "手机格式不正确", false, 0, 0, phoneRegex)){
 					return false;
 				}
 				else if(!register.validateInput($("#password"), "validPassword", "请输入密码", "请输入6-20位密码", true, 6, 20, false)){
@@ -71,22 +74,36 @@ $(function(){
 				return true;
 			},
 			blurInput:function(){
-				register.commonBlurInput($("#userName"), "validName", "请输入收货人姓名", "请输入2-20字符收货人姓名", true, 2, 20, false);
-				register.commonBlurInput($("#email"), "validEmail", "请输入您的邮箱", "邮箱格式不正确", false, 0, 0, emailRegex);
-				register.commonBlurInput($("#userPhone"), "validPhone", "请输入您的手机号", "手机格式不正确", false, 0, 0, phoneRegex);
-				register.commonBlurInput($("#password"), "validPassword", "请输入密码", "请输入6-20位密码", true, 6, 20, false);
-				$("#passwordagin").blur(function(){
-					var that=$(this);
-					if(that.val()!=$("#password").val()){
-						$("#validpasswordAgain").addClass("Validform_wrong").html("两次密码输入不一致");
-						$("#validpasswordAgain").show();
-						that.addClass("Validform_error");
-					}else{
-						$("#validpasswordAgain").hide();
-						that.removeClass("Validform_error");
-					}
+				register.commonBlurInput($("#userName"), "validName", "请输入收货人姓名", "请输入2-20位收货人姓名", true, 2, 20, false);
+				register.commonBlurInput($("#userEmail"), "validEmail", "请输入收货人的邮箱", "邮箱格式不正确", false, 0, 0, emailRegex);
+				register.commonBlurInput($("#userMobilephone"), "validMobilephone", "请输入收货人的手机号", "手机格式不正确", false, 0, 0, phoneRegex);
+				
+				
+				$("#userTelephone").blur(function(){
 					
-				})
+					if($("#userTelephone").val()!=''){
+						
+						 if(!gudingRegex.test($("#userTelephone").val())){
+							
+							 $("#validTelephone").addClass("Validform_wrong").html("固定电话格式不正确");
+								$("#validTelephone").show();
+								$("#userTelephone").addClass("Validform_error");
+						
+						//register.commonBlurInput($("#userTelephone"), "validTelephone", "请输入收货人的固定电话", "固定电话格式不正确", false, 0, 0, gudingRegex);
+					}else{
+						$("#validTelephone").hide();
+						$("#userTelephone").removeClass("Validform_error");
+					}
+						 }else{
+						
+						$("#validTelephone").hide();
+						$("#userTelephone").removeClass("Validform_error");
+					
+					}
+				});
+				
+				
+				
 			},
 			/**
 			* obj:注册blur事件对象
@@ -246,19 +263,19 @@ $(function(){
 				<div class="password">
 					<strong >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地区:</strong><sup class="surely">*</sup>
 					&nbsp;<select name="userProvince" id="userProvince" style="width: 150px;" class="">
-									<option >请选择省份</option>
-									<option selected="selected" value="浙江省">浙江省</option>
+									<option value="请选择省份">请选择省份</option>
+									<option  value="浙江省">浙江省</option>
 																	
 																	</select>
 								<select name="userCity" id="userCity"  style="width: 150px;"  class="" >
-									<option >请选择城市</option>
-									<option selected="selected" value="杭州市">杭州市</option>
+									<option value="请选择城市">请选择城市</option>
+									<option value="杭州市">杭州市</option>
 									<option value="宁波市">宁波市</option>
 																	</select>
 																	
 																	<select name="userArea" id="userArea"  style="width: 150px;"  class="" >
-									<option >请选择城市区域</option>
-									<option selected="selected" value="海曙区">海曙区</option>
+									<option value="请选择城市区域">请选择城市区域</option>
+									<option value="海曙区">海曙区</option>
 									<option value="上城区">上城区</option>
 																	</select>
 					<span id=validPoint class=Validform_checktip  > </span>
@@ -282,14 +299,14 @@ $(function(){
 				
 				<div class="email">
 					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮编:</strong><sup class="surely">*</sup>
-					<input id=userZip maxlength="6"  onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  type=text name=userZip class="" value="" />
+					<input id=userZip maxlength="6"  onkeydown="onlyNum();"  style="ime-mode:Disabled"  type=text name=userZip class="" value="" />
 					<span id=validZip class=Validform_checktip></span>
 				</div>
 			
 			
 				<div class="email">
 					<strong>&nbsp;&nbsp;&nbsp;&nbsp;手机号码:</strong><sup class="surely">*</sup>
-					<input id=userMobilephone onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"   type=text name=userMobilephone class="" value="" />
+					<input id=userMobilephone onkeydown="onlyNum();"  style="ime-mode:Disabled"   type=text name=userMobilephone class="" value="" />
 					<span id=validMobilephone class=Validform_checktip></span>
 				</div>
 				
