@@ -22,6 +22,9 @@
 </style>
 <script type="text/javascript">
 	$(function(){
+		var emailRegex=/^[a-z0-9_\-]+(\.[_a-z0-9\-]+)*@([_a-z0-9\-]+\.)+([a-z]{2}|aero|arpa|biz|com|coop|edu|gov|info|int|jobs|mil|museum|name|nato|net|org|pro|travel)$/;
+		var phoneRegex=/^((13[0-9])|(15[0-9])|(18[0-9]))[0-9]{8}$/;
+		var qqreRegex=/^\d{5,10}$/;
 		var register={};
 		register={
 				initButtonRegister:function(){
@@ -29,6 +32,7 @@
 						//阻止默认事件发生,会出现 刷新页面的请求
 						e.preventDefault();
 						//表单验证。。
+						if(register.checkRegForm()){
 						var formJson=$("#updateForm").serializeArray();
 						$.post("userinfo/beginUpdate.xhtml",formJson,function(data){
 							var d=$.eval2(data);
@@ -40,14 +44,195 @@
 								$.alert("修改提示",d.errorMsgs[0]);
 							}
 						});
+					
+						}
 					});
 					
-				} 
+				} ,
+				checkRegForm:function(){//验证表单
+					if(!register.validateInput($("#userName"), "validAccount", "请输入您的用户名", "请输入6-20位用户名", true, 6, 20, false)){
+						
+						return false;
+					}
+					else if(!register.validateInput($("#email"), "validEmail", "请输入您的邮箱", "邮箱格式不正确", false, 0, 0, emailRegex)){
+						return false;
+					}
+					else if(!register.validateInput($("#userPhone"), "validPhone", "请输入您的手机号", "手机格式不正确", false, 0, 0, phoneRegex)){
+						return false;
+					}else if($("#userProvince").val()=='请选择省份'||$('#userCity').val()=='请选择城市'){
+						$("#validPoint").addClass("Validform_wrong").html("请选择项目地点");
+						$("#validPoint").show();
+						if($("#userCity").val()==0){
+							$("#userCity").addClass("Validform_error");
+						}
+						
+						if($("#userProvince").val()==0){
+							$("#userProvince").addClass("Validform_error");
+						}
+						return false;
+					}else if($("#userIntroduce").val()==''){
+						$("#validIntroduce").addClass("Validform_wrong").html("请输入个人说明");
+						$("#validIntroduce").show();
+						$("#userIntroduce").addClass("Validform_error");
+						return false;
+					}
+					
+					return true;
+				},
+				blurInput:function(){
+					register.commonBlurInput($("#userName"), "validAccount", "请输入您的用户名", "请输入6-20位用户名", true, 6, 20, false);
+					register.commonBlurInput($("#email"), "validEmail", "请输入您的邮箱", "邮箱格式不正确", false, 0, 0, emailRegex);
+					register.commonBlurInput($("#userPhone"), "validPhone", "请输入您的手机号", "手机格式不正确", false, 0, 0, phoneRegex);
+					//register.commonBlurInput($("#userQq"), "validQq", "请输入您的QQ号", "QQ格式不正确", false, 0, 0, qqreRegex);
+
+					$("#userProvince").blur(function(){
+						var that=$(this);
+						var city=$('#userCity');
+						if(that.val()=='请选择省份'||city.val()=='请选择城市'){
+							$("#validPoint").addClass("Validform_wrong").html("请选择所在区域");
+							$("#validPoint").show();
+							that.addClass("Validform_error");
+							
+							if(city.val()=='请选择城市'){
+								city.addClass("Validform_error");
+							}
+							
+							
+						}else{
+							$("#validPoint").hide();
+							that.removeClass("Validform_error");
+							if(city.val()!='请选择城市'){
+								city.removeClass("Validform_error");
+							}
+						}
+						
+					});
+					
+					$("#userCity").blur(function(){
+						var that=$(this);
+						var province=$('#userProvince');
+						if(that.val()=='请选择城市'||province.val()=='请选择省份'){
+							$("#validPoint").addClass("Validform_wrong").html("请选择所在区域");
+							$("#validPoint").show();
+							that.addClass("Validform_error");
+							if(province.val()=='请选择省份'){
+								province.addClass("Validform_error");
+							}
+							
+						}else{
+							$("#validPoint").hide();
+							that.removeClass("Validform_error");
+							if(province.val()!='请选择省份'){
+								province.removeClass("Validform_error");
+							}
+						}
+						
+					});
+					
+					$("#userIntroduce").blur(function(){
+						var that=$(this);
+						if(that.val()==''){
+							$("#validIntroduce").addClass("Validform_wrong").html("请输入个人说明");
+							$("#validIntroduce").show();
+							that.addClass("Validform_error");
+						}else{
+							$("#validIntroduce").hide();
+							that.removeClass("Validform_error");
+						}
+						
+					});
+					
+					
+				},
+				/**
+				* obj:注册blur事件对象
+				* validateId:验证信息id
+				* errmsg1：错误信息1
+				* errmsg2：错误信息2
+ 				**/
+				commonBlurInput:function(obj,validateId,nullerrMsg,errMsg2,isvalidateLen,minlen,maxlen,regex){
+					var t=$(obj);
+					t.blur(function(){
+						var that=$(this);
+						if(!that.val()){
+							$("#"+validateId+"").addClass("Validform_wrong").html(nullerrMsg);
+							$("#"+validateId+"").show();
+							that.addClass("Validform_error");
+						}else{
+							if(isvalidateLen){//验证长度
+								var len=that.val().length;
+								if(len<minlen||len>maxlen){
+									$("#"+validateId+"").addClass("Validform_wrong").html(errMsg2);
+									$("#"+validateId+"").show();
+									that.addClass("Validform_error");
+								}else{
+									$("#"+validateId+"").hide();
+									that.removeClass("Validform_error");
+								}
+							}else{
+								if(regex){
+									if(!regex.test(that.val())){
+										$("#"+validateId+"").addClass("Validform_wrong").html(errMsg2);
+										$("#"+validateId+"").show();
+										that.addClass("Validform_error");
+									}else{
+										$("#"+validateId+"").hide();
+										that.removeClass("Validform_error");
+									}
+								}else{
+									$("#"+validateId+"").hide();
+									that.removeClass("Validform_error");
+								}
+							}
+						}
+					})
+				},validateInput:function(obj,validateId,nullerrMsg,errMsg2,isvalidateLen,minlen,maxlen,regex){
+					var that=$(obj);
+					if(!that.val()){
+						$("#"+validateId+"").addClass("Validform_wrong").html(nullerrMsg);
+						$("#"+validateId+"").show();
+						that.addClass("Validform_error");
+						return false;
+					}else{
+						if(isvalidateLen){//验证长度
+							var len=that.val().length;
+							if(len<minlen||len>maxlen){
+								$("#"+validateId+"").addClass("Validform_wrong").html(errMsg2);
+								$("#"+validateId+"").show();
+								that.addClass("Validform_error");
+								return false;
+							}else{
+								$("#"+validateId+"").hide();
+								that.removeClass("Validform_error");
+								return true;
+							}
+						}else{
+							if(regex){
+								if(!regex.test(that.val())){
+									$("#"+validateId+"").addClass("Validform_wrong").html(errMsg2);
+									$("#"+validateId+"").show();
+									that.addClass("Validform_error");
+									return false;
+								}else{
+									$("#"+validateId+"").hide();
+									that.removeClass("Validform_error");
+									return true;
+								}
+							}else{
+								$("#"+validateId+"").hide();
+								that.removeClass("Validform_error");
+								return true;
+							}
+						}
+					}
+				}
+		
 		};
+		
 		function main(){
 			//注册事件
 			register.initButtonRegister();
-			//register.blurInput();
+			register.blurInput();
 		}
 		
 		main();
@@ -173,7 +358,7 @@
 							
 				<div class="password">
 					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;手机号:</strong><sup class="surely">*</sup>
-					&nbsp;<input id=userPhone onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')"  type=text name=userPhone class="" value="${sessionScope.USER_INFO.userPhone }" />
+					&nbsp;<input id=userPhone  placeholder="请输入您的手机号" onkeydown="onlyNum();"  style="ime-mode:Disabled" type=text name=userPhone class="" value="${sessionScope.USER_INFO.userPhone }" />
 					 <span id=validPhone class=Validform_checktip></span>
 				
 				</div><!-- .password -->
@@ -200,7 +385,7 @@
 				
 			
 				
-				<div class="email">
+				<div class="email" style="line-height: 40px;">
 					<strong>&nbsp;&nbsp;&nbsp;&nbsp;所在地:</strong><sup class="surely">*</sup>
 					<select name="userProvince" id="userProvince" class="" style="width:120px">
 									<option value="请选择省份">请选择省份</option>
@@ -221,19 +406,19 @@
 			
 			<div class="email">
 					<strong>个人说明:</strong><sup class="surely">*</sup>
-					&nbsp;<textarea style="width:70%;height:40px;" id="userIntroduce"  name="userIntroduce"  maxlength="75"><c:out value="${sessionScope.USER_INFO.userIntroduce }"></c:out> </textarea>
+					&nbsp;<textarea style="width:50%;height:40px;" id="userIntroduce"  name="userIntroduce" ><c:out value="${sessionScope.USER_INFO.userIntroduce }"></c:out></textarea>
 					<span id=validIntroduce class=Validform_checktip  > </span>
 				</div><!-- .email -->
 			
-				<div class="submit">
-					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QQ:</strong><sup class="surely">&nbsp;*</sup>
-					&nbsp;<input type="text" id="userQq" name="userQq" class="" value="${sessionScope.USER_INFO.userQq }" /><DIV id=validName class=Validform_checktip  > </DIV>
+				<div class="email" style="height: 50px;" >
+					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QQ:</strong><sup class="surely">&nbsp;&nbsp;</sup>
+					&nbsp;<input type="text" onkeydown="onlyNum();"  style="ime-mode:Disabled" id="userQq" name="userQq" class="" value="${sessionScope.USER_INFO.userQq }" />
 					<span id=validQq class=Validform_checktip  > </span>
 				</div><!-- .email -->
 				
 				
 				<div class="submit">	
-				  <button type="button" id="btnUpdate" class="button blue">发布作品</button>
+				  <button type="button" id="btnUpdate" class="button blue">资料修改</button>
 													
 					<!--<button class="account" id="btnAdd">发布作品</button>-->
 				</div>

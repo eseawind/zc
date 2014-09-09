@@ -16,6 +16,7 @@
 		register={
 				initButtonRegister:function(){
 					$("#btnRegister").bind('click',function(){
+						e.preventDefault();
 						if(register.checkRegForm()){
 							var formJson=$("#regForm").serializeArray();
 							
@@ -213,25 +214,25 @@
 							
 				<div class="email">
 					<strong>用户&nbsp;&nbsp;&nbsp;名:</strong><sup class="surely">*</sup>
-					<input type="text" id="userName" name="userName" class="" value="" /><span id=validAccount class=Validform_checktip  > </span>
+					<input type="text" id="userName"  placeholder="请输入您的用户名" name="userName" class="" value="" /><span id=validAccount class=Validform_checktip  > </span>
 				</div><!-- .email -->
 							
 							
 				<div class="password">
 					<strong>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱:</strong><sup class="surely">*</sup>
-					<input id=email  type=text name=email class="" value="" /><span id=validEmail class=Validform_checktip></span>
+					<input id=email  type=text name=email  placeholder="请输入您的邮箱" class="" value="" /><span id=validEmail class=Validform_checktip></span>
 				
 				</div><!-- .password -->
 							
 				<div class="password">
 					<strong>手机号码:</strong><sup class="surely">*</sup>
-					<input id=userPhone  type=text name=userPhone class="" value="" /> <span id=validPhone class=Validform_checktip></span> 
+					<input id=userPhone placeholder="请输入您的手机号" onkeydown="onlyNum();"  style="ime-mode:Disabled"  type=text name=userPhone class="" value="" /> <span id=validPhone class=Validform_checktip></span> 
 				
 				</div><!-- .password -->
 				
 				<div class="password">
 					<strong>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:</strong><sup class="surely">*</sup>
-					<input id=password  type=password name=password class="" value="" /> <span id=validPassword class=Validform_checktip></span>
+					<input id=password  placeholder="请输入密码" type=password name=password class="" value="" /> <span id=validPassword class=Validform_checktip></span>
 				
 				</div>
 				
