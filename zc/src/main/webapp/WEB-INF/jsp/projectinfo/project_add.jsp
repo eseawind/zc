@@ -51,7 +51,8 @@ float: left;
 										 }
 									 });
 								 }else{
-									 $.alert("发布作品",$.errorMsgs[0]);
+									
+									 $.alert("发布作品",d.errorMsgs[0]);
 								 }
 							 }
 						 })
@@ -93,6 +94,11 @@ float: left;
 						return false;
 					}else if(!register.validateInput($("#proDays"), "validDays", "请输入您的筹集天数", "请输入10~30天以内", false, 0, 0, daysRegex)){
 							return false;
+					}else if($("#proUnit").val()==''){
+						$("#validUnit").addClass("Validform_wrong").html("请输入单价");
+						$("#validUnit").show();
+						$("#proUnit").addClass("Validform_error");
+						return false;
 					}else if($("#proType").val()==0){
 						$("#validType").addClass("Validform_wrong").html("请选择类别");
 						$("#validType").show();
@@ -119,6 +125,11 @@ float: left;
 							$("#proProvince").addClass("Validform_error");
 						}
 						return false;
+					}else if($("#proRemarks").val()==''){
+						$("#validRemarks").addClass("Validform_wrong").html("请输入作品简介");
+						$("#validRemarks").show();
+						$("#validRemarks").addClass("Validform_error");
+						return false;
 					}
 					return true;
 				},
@@ -126,6 +137,7 @@ float: left;
 					register.commonBlurInput($("#proName"), "validName", "请输入您的作品名称", "请输入6-20位作品名称", true, 6, 20, false);
 					register.commonBlurInput($("#proTarget"), "validTarget", "请输入您的目标", "请输入100~500以内", false, 0, 0, targetRegex);
 					register.commonBlurInput($("#proDays"), "validDays", "请输入您的筹集天数", "请输入10~30天以内", false, 0, 0, daysRegex);
+					
 					
 					$("#proType").click(function(){
 						var that=$(this);
@@ -204,11 +216,22 @@ float: left;
 					});
 					
 				
-					
+					$("#proUnit").blur(function(){
+						var that=$(this);
+						if(that.val()==''){
+							$("#validUnit").addClass("Validform_wrong").html("请输入单价");
+							$("#validUnit").show();
+							that.addClass("Validform_error");
+						}else{
+							$("#validUnit").hide();
+							that.removeClass("Validform_error");
+						}
+						
+					});
 
 					$("#proRemarks").blur(function(){
 						var that=$(this);
-						if(that.val()==0){
+						if(that.val()==''){
 							$("#validRemarks").addClass("Validform_wrong").html("请输入作品简介");
 							$("#validRemarks").show();
 							that.addClass("Validform_error");
@@ -398,7 +421,7 @@ float: left;
 							
 				<div class="password">
 					<strong>单&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价:</strong><sup class="surely">*</sup>
-					<input id=proUnit onkeyup="validatePices(this);" onblur="validatePices(this);" style="ime-mode:Disabled"  type=text name=proUnit class="" value="" />
+					<input id=proUnit placeholder="请参考建议价格" onkeyup="validatePices(this);" onblur="validatePices(this);" style="ime-mode:Disabled"  type=text name=proUnit class="" value="" />
 					 <span id=validUnit class=Validform_checktip> </span>
 				
 				</div><!-- .password -->
@@ -478,8 +501,8 @@ float: left;
 					<span id=validRemarks class=Validform_checktip  > </span>
 				</div><!-- .email -->
 			
-				<div class="email" style="height: 53px;" >
-					<strong>标&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;签:</strong>&nbsp;&nbsp;&nbsp;<!-- <sup class="surely">*</sup> -->
+				<div class="email" style="height: 60px;" >
+					<strong>标&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;签:</strong>&nbsp;&nbsp;&nbsp;<!-- <sup class="surely">*</sup> -->
 					<input type="text" id="proTag" name="proTag" class="" value="" /><DIV id=validName class=Validform_checktip  > </DIV>
 					<DIV id=validTag class=Validform_checktip  > </DIV>
 				</div><!-- .email -->
