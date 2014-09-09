@@ -143,4 +143,32 @@ public class ZcUserInfoServiceImpl implements ZcUserInfoService {
 		return zcUserInfoDao.findByUserCode(userCode);
 	}
 
+	@Override
+	public List<ZcUserInfo> queryByUserPhone(String userPhone) {
+		// TODO Auto-generated method stub
+		return zcUserInfoDao.findByUserPhone(userPhone);
+	}
+
+	@Override
+	public List<ZcUserInfo> queryByEmail(String email) {
+		// TODO Auto-generated method stub
+		return zcUserInfoDao.findByEmail(email);
+	}
+
+	@Override
+	public List<ZcUserInfo> queryByUserPhoneAndUserCodeNotIn(String userPhone,
+			Integer userCode) {
+		// TODO Auto-generated method stub
+		return zcUserInfoDao.findByUserPhoneAndUserCodeNotIn(userPhone, userCode);
+	}
+
+	@Override
+	public List<ZcUserInfo> queryByEmailAndUserCodeNotIn(String email,
+			Integer userCode) {
+		// TODO Auto-generated method stub
+		return zcUserInfoDao.findByEmailAndUserCodeNotIn(email, userCode);
+	}
+
+	
+
 }

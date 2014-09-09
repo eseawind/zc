@@ -58,6 +58,11 @@ public class ZcProjectInfoServiceImpl implements ZcProjectInfoService{
 		return zcProjectInfoDao.findByUserCodeAndProNameLike(userCode,proName);
 		
 	}
+	@Override
+	public ZcProjectInfo queryByProName(String proName) {
+		// TODO Auto-generated method stub
+		return zcProjectInfoDao.findByProName(proName);
+	}
 
 	
 
