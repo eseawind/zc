@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -170,23 +172,43 @@ public class ZcUserInfoAction {
 	
 	@RequestMapping("/beginUpdate.xhtml")
 	@ResponseBody
-	public String beginUpdate(HttpServletRequest request,@ModelAttribute ZcUserInfo zcUserInfo,@RequestParam(value="userName") String userName){
+	public String beginUpdate(HttpServletRequest request,@ModelAttribute ZcUserInfo zcUserInfo,@RequestParam(value="userName") String userName,@RequestParam(value="userIntroduce") String userIntroduce,@RequestParam(value="email") String email,@RequestParam(value="userPhone") String userPhone){
 		Result r=new Result();
+		ZcUserInfo sezcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
 		//zcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
 		//zcUserInfoService.update(userName,zcUserInfo.getUserCode());
-		ZcUserInfo sezcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
-		//用户主键id不存在页面隐藏域中，防止被看见
-		zcUserInfo.setUserCode(sezcUserInfo.getUserCode());
-		zcUserInfo.setPassword(sezcUserInfo.getPassword());
-		zcUserInfo.setRegIp(sezcUserInfo.getRegIp());
-		zcUserInfo.setRegTime(sezcUserInfo.getRegTime());
-		System.out.println("用户编号："+zcUserInfo.getUserCode());
-		int a=zcUserInfoService.update(zcUserInfo);
-		if (a>0) {
-			r.setSuccess(true);
-			ThreadLocalSession.getLocal_session().removeAttribute(ZcContext.LOGIN_USER_KEY);
-			ThreadLocalSession.getLocal_session().setAttribute(ZcContext.LOGIN_USER_KEY, zcUserInfo);
-		}
+		 List<ZcUserInfo>  listemail=new ArrayList<ZcUserInfo>();
+		listemail=zcUserInfoService.queryByEmailAndUserCodeNotIn(email, sezcUserInfo.getUserCode());
+		 List<ZcUserInfo>  listuserphone=new ArrayList<ZcUserInfo>();
+		 listuserphone=zcUserInfoService.queryByUserPhoneAndUserCodeNotIn(userPhone, sezcUserInfo.getUserCode());
+		 if(listemail.size()>0){
+			 	r.setSuccess(false);
+				r.getErrorMsgs().add("邮箱已被使用");
+				RootLogger.error("邮箱已被使用.");
+		 }else if(listuserphone.size()>0){
+			 r.setSuccess(false);
+				r.getErrorMsgs().add("手机号码已被使用");
+				RootLogger.error("手机号码已被使用.");
+		 }else{
+
+				
+				//用户主键id不存在页面隐藏域中，防止被看见
+				zcUserInfo.setUserIntroduce(userIntroduce.trim());
+				zcUserInfo.setUserCode(sezcUserInfo.getUserCode());
+				zcUserInfo.setPassword(sezcUserInfo.getPassword());
+				zcUserInfo.setRegIp(sezcUserInfo.getRegIp());
+				zcUserInfo.setRegTime(sezcUserInfo.getRegTime());
+				System.out.println("用户编号："+zcUserInfo.getUserCode());
+				int a=zcUserInfoService.update(zcUserInfo);
+				if (a>0) {
+					r.setSuccess(true);
+					ThreadLocalSession.getLocal_session().removeAttribute(ZcContext.LOGIN_USER_KEY);
+					ThreadLocalSession.getLocal_session().setAttribute(ZcContext.LOGIN_USER_KEY, zcUserInfo);
+				}
+			 
+		 }
+		
+		
 		return r.toJson();
 	}
 	

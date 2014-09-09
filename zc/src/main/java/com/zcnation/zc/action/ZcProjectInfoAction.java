@@ -241,76 +241,92 @@ public class ZcProjectInfoAction {
 				.getSession().getServletContext());
 		MultipartHttpServletRequest mulreq = resolver.resolveMultipart(request);
 		System.out.println("名称：" + mulreq.getParameter("proName"));
-		// 单文件
-		MultipartFile file = mulreq.getFile("fileupload");
-		// List<MultipartFile> fileupload=mulreq.getFiles("fileupload");
-		RootLogger.info("上传文件名称：" + file.getOriginalFilename());
-		String fileName = file.getOriginalFilename();
+		
+		 ZcProjectInfo zInfo=new ZcProjectInfo();
+		 zInfo=zcProjectInfoService.queryByProName( mulreq.getParameter("proName"));
+		 
+		 if(zInfo.getProCode()!=0){
+			 rs.setSuccess(false);
+				rs.getErrorMsgs().add("作品名字已被使用");
+				RootLogger.error("项目名称有重复.");
+				
+				//throw new NotValidateCorrectException("项目名称有重复");
+		 }else{
+			// 单文件
+				MultipartFile file = mulreq.getFile("fileupload");
+				// List<MultipartFile> fileupload=mulreq.getFiles("fileupload");
+				RootLogger.info("上传文件名称：" + file.getOriginalFilename());
+				String fileName = file.getOriginalFilename();
 
-		String realPath = request.getSession().getServletContext()
-				.getRealPath(IMAGE_DIR);
-		File realFile = new File(realPath);
-		if (!realFile.exists()) {
-			realFile.mkdirs();
-		}
-
-		FileOutputStream fos = null;
-		InputStream ins = null;
-		try {
-			if (!file.isEmpty()) {
-				Result r = validateUpload(mulreq, file);
-				if (r.isSuccess()) {
-					ZcProjectInfo pinfo = (ZcProjectInfo) r.getReturnValue();
-					// 上传文件
-					String imageType = StringUtils.substring(fileName,
-							StringUtils.lastIndexOf(fileName, "."));
-					Date uploadDate = Calendar.getInstance().getTime();
-					String uploadTime = DateFormatUtils.format(uploadDate,
-							"yyyyMMddHHmmss");
-					String targetFileName = genaretorTargeFileName(uploadTime,
-							imageType);
-					System.out.println("目标文件名称：" + targetFileName);
-					File targetFile = new File(realFile, targetFileName);
-
-					ins = file.getInputStream();
-					fos = new FileOutputStream(targetFile);
-					byte[] b = new byte[1024 * 1024];
-					int flag;
-					while ((flag = ins.read(b)) != -1) {
-						fos.write(b, 0, flag);
-						fos.flush();
-					}
-					// 水印输出
-					String srcFile = request.getSession().getServletContext()
-							.getRealPath("/images")
-							+ "/6_front.jpg";
-					ImageUtil.pressImage(srcFile, targetFile.getAbsolutePath(),
-							targetFile.getAbsolutePath());
-					ZcResourceInfo zr = new ZcResourceInfo();
-					zr.setUptDate(uploadDate);
-					zr.setUptIp(request.getRemoteAddr());
-					zr.setResourceUrl(targetFile.getAbsolutePath());
-					zr.setResourceName(targetFile.getName());
-
-					ZcResourceInfo saveZr = zcResourceInfoService
-							.saveResourceInfo(zr);
-					pinfo.setResourceInfo(saveZr);
-					// pinfo.setResourceCode(saveZr.getResourceCode());
-					zcProjectInfoService.save(pinfo);
-					rs.setSuccess(true);
-					RootLogger.info("图片上传成功...");
+				String realPath = request.getSession().getServletContext()
+						.getRealPath(IMAGE_DIR);
+				File realFile = new File(realPath);
+				if (!realFile.exists()) {
+					realFile.mkdirs();
 				}
-			}
-		} catch (IOException e) {
-			rs.setSuccess(false);
-			rs.getErrorMsgs().add(e.getMessage());
-			RootLogger.error("上传图片出错.");
-			RootLogger.error(e);
-			throw new NotValidateCorrectException("上传项目出错");
-		} finally {
-			IOUtils.closeQuietly(ins);
-			IOUtils.closeQuietly(fos);
-		}
+
+				FileOutputStream fos = null;
+				InputStream ins = null;
+				try {
+					if (!file.isEmpty()) {
+						Result r = validateUpload(mulreq, file);
+						if (r.isSuccess()) {
+							ZcProjectInfo pinfo = (ZcProjectInfo) r.getReturnValue();
+							// 上传文件
+							String imageType = StringUtils.substring(fileName,
+									StringUtils.lastIndexOf(fileName, "."));
+							Date uploadDate = Calendar.getInstance().getTime();
+							String uploadTime = DateFormatUtils.format(uploadDate,
+									"yyyyMMddHHmmss");
+							String targetFileName = genaretorTargeFileName(uploadTime,
+									imageType);
+							System.out.println("目标文件名称：" + targetFileName);
+							File targetFile = new File(realFile, targetFileName);
+
+							ins = file.getInputStream();
+							fos = new FileOutputStream(targetFile);
+							byte[] b = new byte[1024 * 1024];
+							int flag;
+							while ((flag = ins.read(b)) != -1) {
+								fos.write(b, 0, flag);
+								fos.flush();
+							}
+							// 水印输出
+							String srcFile = request.getSession().getServletContext()
+									.getRealPath("/images")
+									+ "/6_front.jpg";
+							ImageUtil.pressImage(srcFile, targetFile.getAbsolutePath(),
+									targetFile.getAbsolutePath());
+							ZcResourceInfo zr = new ZcResourceInfo();
+							zr.setUptDate(uploadDate);
+							zr.setUptIp(request.getRemoteAddr());
+							zr.setResourceUrl(targetFile.getAbsolutePath());
+							zr.setResourceName(targetFile.getName());
+
+							ZcResourceInfo saveZr = zcResourceInfoService
+									.saveResourceInfo(zr);
+							pinfo.setResourceInfo(saveZr);
+							// pinfo.setResourceCode(saveZr.getResourceCode());
+							zcProjectInfoService.save(pinfo);
+							rs.setSuccess(true);
+							RootLogger.info("图片上传成功...");
+						}
+					}
+				} catch (IOException e) {
+					rs.setSuccess(false);
+					rs.getErrorMsgs().add(e.getMessage());
+					RootLogger.error("上传图片出错.");
+					RootLogger.error(e);
+					throw new NotValidateCorrectException("上传项目出错");
+				} finally {
+					IOUtils.closeQuietly(ins);
+					IOUtils.closeQuietly(fos);
+				} 
+			 
+		 }
+		
+		
+		
 
 		return rs.toJson();
 		// return zcProjectInfoService.save(zcProjectInfo);
