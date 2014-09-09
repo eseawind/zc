@@ -43,4 +43,6 @@ public interface ZcProjectInfoService {
 	
 	public List<ZcProjectInfo> queryByUserCodeAndProNameLike(Integer userCode,String proName);
 
+	 public  ZcProjectInfo queryByProName(String proName);
+	
 }

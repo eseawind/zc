@@ -7,6 +7,8 @@
  **********************************************/
 package com.zcnation.zc.service;
 
+import java.util.List;
+
 import com.zcnation.zc.common.Result;
 import com.zcnation.zc.domain.ZcUserInfo;
 
@@ -45,4 +47,14 @@ public interface ZcUserInfoService {
 	public int gengxinByUserCode(int userCode);
 	
 	public ZcUserInfo queryOne(int userCode);
+	
+	
+	
+	 public List<ZcUserInfo> queryByUserPhone(String userPhone);
+	 public List<ZcUserInfo> queryByEmail(String email);
+	 
+	 
+ public List<ZcUserInfo> queryByUserPhoneAndUserCodeNotIn(String userPhone,Integer userCode);
+	 
+	 public List<ZcUserInfo> queryByEmailAndUserCodeNotIn(String email,Integer userCode);
 }
