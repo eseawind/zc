@@ -83,8 +83,8 @@ public interface ZcUserInfoDao extends Repository<ZcUserInfo, Integer>,CrudRepos
 	 public int gengxinByUserCode(int userCode);
 
 
-
+	 public List<ZcUserInfo> findByUserPhoneAndUserCodeNotIn(String userPhone,Integer userCode);
 	 
-	 
+	 public List<ZcUserInfo> findByEmailAndUserCodeNotIn(String email,Integer userCode);
 	 
 }

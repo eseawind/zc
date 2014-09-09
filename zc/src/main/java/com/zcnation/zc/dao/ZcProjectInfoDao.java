@@ -28,6 +28,8 @@ public interface ZcProjectInfoDao extends JpaRepository<ZcProjectInfo, Integer>,
 	 public Page<ZcProjectInfo> findAll(Pageable page);
 	 
 	 public List<ZcProjectInfo> findByUserCodeAndProNameLike(Integer userCode,String proName);
+	 
+	 public  ZcProjectInfo findByProName(String proName);
 	
 	 
 }
