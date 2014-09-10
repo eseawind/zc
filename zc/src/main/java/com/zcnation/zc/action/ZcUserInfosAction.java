@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 
 
 
+
+
 import org.apache.commons.lang.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,8 +23,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.zcnation.zc.common.Result;
 import com.zcnation.zc.common.util.RootLogger;
+import com.zcnation.zc.context.ZcContext;
 import com.zcnation.zc.domain.ZcProjectInfo;
+import com.zcnation.zc.domain.ZcUserInfo;
 import com.zcnation.zc.domain.ZcUserInfos;
 import com.zcnation.zc.service.ZcUserInfosService;
 
@@ -53,6 +58,10 @@ public class ZcUserInfosAction {
 	@RequestMapping("/beginAdd.html")
 	@ResponseBody
 	public String beginRegister(HttpServletRequest request,@ModelAttribute ZcUserInfos zcUserInfos){
+		
+		ZcUserInfo sezcUserInfo = (ZcUserInfo) request.getSession()
+				.getAttribute(ZcContext.LOGIN_USER_KEY);
+		zcUserInfos.setZcUserInfo(sezcUserInfo);
 		return zcUserInfosService.save(zcUserInfos);
 	}
 	
