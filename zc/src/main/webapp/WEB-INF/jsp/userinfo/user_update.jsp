@@ -60,7 +60,7 @@
 					else if(!register.validateInput($("#userPhone"), "validPhone", "请输入您的手机号", "手机格式不正确", false, 0, 0, phoneRegex)){
 						return false;
 					}else if($("#userProvince").val()=='请选择省份'||$('#userCity').val()=='请选择城市'){
-						$("#validPoint").addClass("Validform_wrong").html("请选择项目地点");
+						$("#validPoint").addClass("Validform_wrong").html("请选择所在区域");
 						$("#validPoint").show();
 						if($("#userCity").val()==0){
 							$("#userCity").addClass("Validform_error");
