@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 @Entity(name="zc_user_infos")
 public class ZcUserInfos implements Serializable {
@@ -44,6 +47,21 @@ public class ZcUserInfos implements Serializable {
 	
 	@Column(name="ISDEFAULT")
 	private String isDefault;
+	
+
+	
+	@ManyToOne
+	@JoinColumn(name="USER_OWNER",referencedColumnName="USER_CODE")
+	private ZcUserInfo zcUserInfo;
+
+	public ZcUserInfo getZcUserInfo() {
+		return zcUserInfo;
+	}
+
+
+	public void setZcUserInfo(ZcUserInfo zcUserInfo) {
+		this.zcUserInfo = zcUserInfo;
+	}
 
 
 	public String getIsDefault() {
