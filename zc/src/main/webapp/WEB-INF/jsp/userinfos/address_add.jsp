@@ -25,6 +25,7 @@ $(function(){
 	var emailRegex=/^[a-z0-9_\-]+(\.[_a-z0-9\-]+)*@([_a-z0-9\-]+\.)+([a-z]{2}|aero|arpa|biz|com|coop|edu|gov|info|int|jobs|mil|museum|name|nato|net|org|pro|travel)$/;
 	var phoneRegex=/^((13[0-9])|(15[0-9])|(18[0-9]))[0-9]{8}$/;
 	var gudingRegex=/^(0[1-9]{2})-\d{8}$|^(0[1-9]{3}-(\d{7,8}))$/;
+	var postRegex=/^[1-9]\d{5}$/;
 	var register={};
 	register={
 			initButtonRegister:function(){
@@ -56,28 +57,55 @@ $(function(){
 				if(!register.validateInput($("#userName"), "validName", "请输入收货人姓名", "请输入2-20位收货人姓名", true, 2, 20, false)){
 					
 					return false;
+				}else if($("#userProvince").val()=='请选择省份'||$('#userCity').val()=='请选择城市'||$('#userArea').val()=='请选择区域'){
+					$("#validPoint").addClass("Validform_wrong").html("请选择收货人所在地区");
+					$("#validPoint").show();
+					if($("#userCity").val()=='请选择城市'){
+						$("#userCity").addClass("Validform_error");
+					}
+					
+					if($("#userProvince").val()=='请选择省份'){
+						$("#userProvince").addClass("Validform_error");
+					}
+					if($("#userArea").val()=='请选择区域'){
+						$("#userArea").addClass("Validform_error");
+					}
+					return false;
+				}else if($("#userAddress").val()==''){
+					$("#validAddress").addClass("Validform_wrong").html("请输入收货人地址");
+					$("#validAddress").show();
+					$("#userAddress").addClass("Validform_error");
+					return false;
+				}else if(!register.validateInput($("#userZip"), "validZip", "请输入6位邮编", "邮编格式不正确", false, 0, 0, postRegex)){
+					return false;
+				}else if(!register.validateInput($("#userMobilephone"), "validMobilephone", "请输入收货人的手机号", "手机格式不正确", false, 0, 0, phoneRegex)){
+					return false;
 				}
 				else if(!register.validateInput($("#userEmail"), "validEmail", "请输入收货人的邮箱", "邮箱格式不正确", false, 0, 0, emailRegex)){
 					return false;
 				}
-				else if(!register.validateInput($("#userMobilephone"), "validMobilephone", "请输入收货人的手机号", "手机格式不正确", false, 0, 0, phoneRegex)){
-					return false;
-				}
-				else if(!register.validateInput($("#password"), "validPassword", "请输入密码", "请输入6-20位密码", true, 6, 20, false)){
-					return false;
-				}else if($("#passwordagin").val()!=$("#password").val()){
-					$("#validpasswordAgain").addClass("Validform_wrong").html("两次密码输入不一致");
-					$("#validpasswordAgain").show();
-					$("#passwordagin").addClass("Validform_error");
-					return false;
-				}
+				
+				
 				return true;
 			},
 			blurInput:function(){
 				register.commonBlurInput($("#userName"), "validName", "请输入收货人姓名", "请输入2-20位收货人姓名", true, 2, 20, false);
-				register.commonBlurInput($("#userEmail"), "validEmail", "请输入收货人的邮箱", "邮箱格式不正确", false, 0, 0, emailRegex);
+				register.commonBlurInput($("#userEmail"), "validEmail", "请输入收货人邮箱", "邮箱格式不正确", false, 0, 0, emailRegex);
 				register.commonBlurInput($("#userMobilephone"), "validMobilephone", "请输入收货人的手机号", "手机格式不正确", false, 0, 0, phoneRegex);
+				register.commonBlurInput($("#userZip"), "validZip", "请输入6位邮编", "邮编格式不正确", false, 0, 0, postRegex);
 				
+				$("#userAddress").blur(function(){
+					var that=$(this);
+					if(that.val()==''){
+						$("#validAddress").addClass("Validform_wrong").html("请输入收货人地址");
+						$("#validAddress").show();
+						that.addClass("Validform_error");
+					}else{
+						$("#validAddress").hide();
+						that.removeClass("Validform_error");
+					}
+					
+				});
 				
 				$("#userTelephone").blur(function(){
 					
@@ -102,7 +130,105 @@ $(function(){
 					}
 				});
 				
+				$("#userProvince").blur(function(){
+					var that=$(this);
+					var city=$('#userCity');
+					var area=$('#userArea');
+					if(that.val()=='请选择省份'||city.val()=='请选择城市'||area.val()=='请选择区域'){
+						$("#validPoint").addClass("Validform_wrong").html("请选择所在区域");
+						$("#validPoint").show();
+						that.addClass("Validform_error");
+						
+						if(that.val()!='请选择省份'){
+							that.removeClass("Validform_error");
+						}
+						
+						if(city.val()=='请选择城市'){
+							city.addClass("Validform_error");
+						}
+						if(area.val()=='请选择区域'){
+							area.addClass("Validform_error");
+						}
+						
+						
+					}else{
+						$("#validPoint").hide();
+						that.removeClass("Validform_error");
+						if(city.val()!='请选择城市'){
+							city.removeClass("Validform_error");
+						}
+						if(area.val()!='请选择区域'){
+							area.removeClass("Validform_error");
+						}
+					}
+					
+				});
 				
+				$("#userCity").blur(function(){
+					var that=$(this);
+					var province=$('#userProvince');
+					var area=$('#userArea');
+					if(that.val()=='请选择城市'||province.val()=='请选择省份'||area.val()=='请选择区域'){
+						$("#validPoint").addClass("Validform_wrong").html("请选择所在区域");
+						$("#validPoint").show();
+						that.addClass("Validform_error");
+						
+						if(that.val()!='请选择省份'){
+							that.removeClass("Validform_error");
+						}
+						if(province.val()=='请选择省份'){
+							province.addClass("Validform_error");
+						}
+						
+						if(area.val()=='请选择区域'){
+							area.addClass("Validform_error");
+						}
+						
+					}else{
+						$("#validPoint").hide();
+						that.removeClass("Validform_error");
+						if(province.val()!='请选择省份'){
+							province.removeClass("Validform_error");
+						}
+						if(area.val()!='请选择区域'){
+							area.removeClass("Validform_error");
+						}
+					}
+					
+				});
+				
+				$("#userArea").blur(function(){
+					var that=$(this);
+					var province=$('#userProvince');
+					var city=$('#userCity');
+					if(that.val()=='请选择区域'||province.val()=='请选择省份'||city.val()=='请选择城市'){
+						$("#validPoint").addClass("Validform_wrong").html("请选择所在区域");
+						$("#validPoint").show();
+						that.addClass("Validform_error");
+						
+						if(that.val()!='请选择区域'){
+							that.removeClass("Validform_error");
+						}
+						if(province.val()=='请选择省份'){
+							province.addClass("Validform_error");
+						}
+						
+						if(city.val()=='请选择城市'){
+							city.addClass("Validform_error");
+						}
+						
+					}else{
+						$("#validPoint").hide();
+						that.removeClass("Validform_error");
+						if(province.val()!='请选择省份'){
+							province.removeClass("Validform_error");
+						}
+						if(city.val()!='请选择城市'){
+							city.removeClass("Validform_error");
+						}
+					}
+					
+				});
 				
 			},
 			/**
@@ -255,26 +381,26 @@ $(function(){
 							
 				<div class="email">
 					<strong>收货人姓名:</strong><sup class="surely">*</sup>
-					&nbsp;<input id=userName style="COLOR: rgb(51,51,51)" class=inputBg1   type=text name=userName class="" value="" />
+					&nbsp;<input id=userName style="COLOR: rgb(51,51,51)" placeholder="请输入收货人姓名" class=inputBg1   type=text name=userName class="" value="" />
 					<span id=validName class=Validform_checktip></span>
 				
 				</div><!-- .password -->
 							
-				<div class="password">
+				<div class="password" style="line-height: 40px;">
 					<strong >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地区:</strong><sup class="surely">*</sup>
-					&nbsp;<select name="userProvince" id="userProvince" style="width: 150px;" class="">
+					&nbsp;<select name="userProvince" id="userProvince"  class="">
 									<option value="请选择省份">请选择省份</option>
 									<option  value="浙江省">浙江省</option>
 																	
 																	</select>
-								<select name="userCity" id="userCity"  style="width: 150px;"  class="" >
+								<select name="userCity" id="userCity"   class="" >
 									<option value="请选择城市">请选择城市</option>
 									<option value="杭州市">杭州市</option>
 									<option value="宁波市">宁波市</option>
 																	</select>
 																	
-																	<select name="userArea" id="userArea"  style="width: 150px;"  class="" >
-									<option value="请选择城市区域">请选择城市区域</option>
+																	<select name="userArea" id="userArea"    class="" >
+									<option value="请选择区域">请选择区域</option>
 									<option value="海曙区">海曙区</option>
 									<option value="上城区">上城区</option>
 																	</select>
@@ -286,7 +412,7 @@ $(function(){
 					<strong>&nbsp;&nbsp;&nbsp;详细地址:</strong><sup class="surely">*</sup>
 					
 					
-							&nbsp;<input id=userAddress   type=text name=userAddress class="" value="" />
+							&nbsp;<input id=userAddress placeholder="请输入收货人地址，省市区不用填写"   type=text name=userAddress class="" value="" />
 					<span id=validAddress class=Validform_checktip></span>
 				</div>
 				
@@ -299,27 +425,27 @@ $(function(){
 				
 				<div class="email">
 					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮编:</strong><sup class="surely">*</sup>
-					<input id=userZip maxlength="6"  onkeydown="onlyNum();"  style="ime-mode:Disabled"  type=text name=userZip class="" value="" />
+					<input id=userZip maxlength="6" placeholder="请输入6位邮编"  onkeydown="onlyNum();"  style="ime-mode:Disabled"  type=text name=userZip class="" value="" />
 					<span id=validZip class=Validform_checktip></span>
 				</div>
 			
 			
 				<div class="email">
 					<strong>&nbsp;&nbsp;&nbsp;&nbsp;手机号码:</strong><sup class="surely">*</sup>
-					<input id=userMobilephone onkeydown="onlyNum();"  style="ime-mode:Disabled"   type=text name=userMobilephone class="" value="" />
+					<input id=userMobilephone onkeydown="onlyNum();" placeholder="请输入11位有效收货人手机号码"  style="ime-mode:Disabled"   type=text name=userMobilephone class="" value="" />
 					<span id=validMobilephone class=Validform_checktip></span>
 				</div>
 				
 				<div class="email">
-					<strong>&nbsp;&nbsp;&nbsp;&nbsp;固定电话:</strong><sup class="surely">*</sup>
-					<input id=userTelephone   type=text name=userTelephone class="" value="" />
+					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;固定电话:</strong><sup class="surely"></sup>
+					<input id=userTelephone  placeholder="请输入收货人固定电话"  type=text name=userTelephone class="" value="" />
 					<span id=validTelephone class=Validform_checktip></span>
 				
 				</div>
 				
 				<div class="email">
 					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱:</strong><sup class="surely">*</sup>
-					<input id=userEmail   type=text name=userEmail class="" value="" />
+					<input id=userEmail placeholder="请输入收货人邮箱"  type=text name=userEmail class="" value="" />
 					<span id=validEmail class=Validform_checktip></span>
 				
 				</div>
