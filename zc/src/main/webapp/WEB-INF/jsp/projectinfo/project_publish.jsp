@@ -12,151 +12,8 @@
   <meta name="description" content="">
   <meta name="keywords" content="">
 
-  <title>Product view</title>
+  <title>我发表的作品</title>
 
-
-<style type="text/css">
-
-.user-fun {
-width: 100%;
-height: 32px;
-}
-.user-fun h2 {
-font-size: 24px;
-line-height: 32px;
-color: #000;
-float: left;
-padding-right: 10px;
-}
-.user-fun .btn-base {
-margin: 6px 0px;
-color: #FFF;
-}
-.btn-red-h20 {
-background-position: -223px 0px;
-height: 20px;
-line-height: 20px;
-}
-.btn-base {
-display: inline-block;
-zoom: 1;
-padding-left: 5px;
-color: #FFF;
-}
-.common-sprite {
-background-image: url('images/icon_sprite.png');
-background-repeat: no-repeat;
-}
-.user-fun .btn-base span {
-padding: 0px 8px 0px 2px;
-margin-right: 8px;
-}
-.btn-red-h20 span {
-background-position: 100% -263px;
-height: 20px;
-line-height: 20px;
-}
-.btn-base span {
-display: inline-block;
-zoom: 1;
-padding-right: 5px;
-float: left;
-}
-.icon-set {
-background-position: -45px -75px;
-}
-.icon-set, .icon-msg, .icon-info {
-width: 16px;
-height: 16px;
-line-height: 0px;
-font-size: 0px;
-display: inline-block;
-vertical-align: middle;
-_margin-top: 3px;
-}
-
-i, em {
-font-style: normal;
-}
-user agent stylesheeti, cite, em, var, address, dfn {
-font-style: italic;
-}
-.user-info {
-padding:20px 110px 110px 0px;
-}
-p {
-display: block;
--webkit-margin-before: 1em;
--webkit-margin-after: 1em;
--webkit-margin-start: 0px;
--webkit-margin-end: 0px;
-}
-
-
-
- .content .findBox {
-margin: 12px 20px 16px;
-zoom: 1;
-}
-.content .findBox dt {
-float: left;
-}
-* {
-margin: 0;
-padding: 0;
-}
-.content .findBox select {
-margin-right: 6px;
-}
-.content .findBox dd {
-float: right;
-}
-.content .findBox input, .userCenter .findBox select {
-color: #7e7e7e;
-}
-.incInput {
-height: 26px;
-border: 1px solid #e7e7e7;
-padding: 0 10px;
-line-height: 26px;
-}
-
-a.buthui {
-background: #f2f2f2;
-color: #7e7e7e;
-font-size: 12px;
-padding: 5px 15px 4px;
-border: 1px solid #d7d7d7;
-margin-left: 7px;
-vertical-align: middle;
-display: inline-block;
-}
-
-</style><script>
-	$(document).ready(function() {
-		$("select").selectBox();
-	});
-  </script>
-
-  <script>
-	$(document).ready(function(){
-	    $("#myController").jFlow({
-			controller: ".control", // must be class, use . sign
-			slideWrapper : "#jFlowSlider", // must be id, use # sign
-			slides: "#slider",  // the div where all your sliding divs are nested in
-			selectedWrapper: "jFlowSelected",  // just pure text, no sign
-			width: "984px",  // this is the width for the content-slider
-			height: "480px",  // this is the height for the content-slider
-			duration: 400,  // time in miliseconds to transition one slide
-			prev: ".slidprev", // must be class, use . sign
-			next: ".slidnext", // must be class, use . sign
-			auto: true	
-		});
-	});
-  </script>
-<script type="text/javascript">
-
-</script>
 
 </head>
 <body>
@@ -210,10 +67,12 @@ display: inline-block;
 	      <h1 class="page_title">发表的作品</h1>
 	      <FORM method=post action="projectinfo/project_publish.xhtml" id="searchForm">
 		
-	      <dl class="findBox clearfix">
-          <dt>
-       
-                    <select  id="proShStatus" name="proShStatus" style="width: 150px;">
+		   <table style="border-top: 0px;">
+           <tr>
+           <td> <input type="text" placeholder="请输入作品名称" class="incInput" name="proName" value="${proName }" size="36" id="proName"></td>
+            <td> 
+           
+             <select  id="proShStatus" name="proShStatus" style="  height:33px;">
                         <option value="-1" selected="selected">全部</option>
                                   <option value="0">审核中</option>
                                     <option value="1">众筹中</option>
@@ -221,19 +80,24 @@ display: inline-block;
                                      <option value="3">已失败</option>
                                     
                       </select>
-          </dt>
-          <dd>
-            <input type="text" class="incInput" name="proName" value="${proName }" size="36" id="proName">
-         <input type="submit"value="查询">
-          </dd>
-        </dl>
+                    
+                     </td>
+                     <td>
+                      <input type="hidden" id="proStatusSelect" name="proStatusSelect" value="${proShStatus }">
+                        
+                        <button type="submit" class="button blue">查询</button></td>
+           </tr>
+           </table>
+		
+		
+		
 	      </FORM>
 	      
 
- <table border="0" cellpadding="0" cellspacing="0" class="tableStyle thback">
+ <table border="0" cellpadding="0" cellspacing="0">
           <tbody><tr>
-           <!--   <th>序号</th>-->
-            <th>作品名称</th>
+            <th>序号</th>
+            <th >作品名称</th>
             <th>发布日期</th>
              <th>截止日期</th>
               <th>目标</th>
@@ -241,12 +105,12 @@ display: inline-block;
             <th>状态</th>
             
           </tr>
-           <c:forEach items="${proinfos}" var="pro">
+           <c:forEach items="${proinfos}" var="pro" varStatus="status">
                <tr>
-             
-               <td align="left"><img src="uploadImg/<c:out value="${pro[6]}"></c:out>" width="60" height="43" alt="" title="" />
+                  <td><c:out value="${status.count}"/></td>
+               <td align="left"><a href="projectinfo/project_<c:out value="${pro[0]}"></c:out>.html"> <img src="uploadImg/<c:out value="${pro[6]}"></c:out>" width="100" height="100" style="cursor: pointer;" alt="" title="" /></a>
                
-             <span style="vertical-align: top;">  <c:out value="${pro[1]}"></c:out></span>
+             <span style="vertical-align: top;"> <a href="projectinfo/project_<c:out value="${pro[0]}"></c:out>.html">  <c:out value="${pro[1]}"></c:out></a></span>
                </td>
              
               <td><c:out value="${pro[0]}"></c:out></td>
