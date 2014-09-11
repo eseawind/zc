@@ -10,6 +10,9 @@ package com.zcnation.zc.service;
 import java.util.List;
 
 
+
+
+import com.zcnation.zc.domain.ZcUserInfo;
 import com.zcnation.zc.domain.ZcUserInfos;
 
 
@@ -32,5 +35,5 @@ public interface ZcUserInfosService {
 	 
 	 
 	 public List<ZcUserInfos> queyByUserCode(Integer userCode);
-
+	 public List<ZcUserInfos>  queyByZcUserInfo(ZcUserInfo zcUserInfo);
 }
