@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.Repository;
 
+import com.zcnation.zc.domain.ZcUserInfo;
 import com.zcnation.zc.domain.ZcUserInfos;
 
 
@@ -27,5 +28,6 @@ public interface ZcUserInfosDao extends Repository<ZcUserInfos, Integer>,CrudRep
 
 	 public void delete(ZcUserInfos zcUserInfos);
 	 public List<ZcUserInfos> findByUserCode(Integer userCode);
+	 public List<ZcUserInfos> findByZcUserInfo(ZcUserInfo zcUserInfo);
 	 
 }
