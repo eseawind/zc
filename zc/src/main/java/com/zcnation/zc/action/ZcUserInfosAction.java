@@ -40,9 +40,13 @@ public class ZcUserInfosAction {
 	
 	@RequestMapping("/address.xhtml")
 	public String to_address(HttpServletRequest request) {
+		ZcUserInfo sezcUserInfo = (ZcUserInfo) request.getSession()
+				.getAttribute(ZcContext.LOGIN_USER_KEY);
 		List<ZcUserInfos> list=new ArrayList<ZcUserInfos>();
-		list=zcUserInfosService.queyAll();
-		request.setAttribute("userInfos", list);
+		System.out.println(sezcUserInfo.getUserCode());
+		list=zcUserInfosService.queyByZcUserInfo(sezcUserInfo);
+		//list=zcUserInfosService.queyAll();
+		request.setAttribute("userInfos",list);
 		System.out.println(list.size());
 		return "userinfos/user_address";
 	}
@@ -58,6 +62,10 @@ public class ZcUserInfosAction {
 	@RequestMapping("/beginAdd.html")
 	@ResponseBody
 	public String beginRegister(HttpServletRequest request,@ModelAttribute ZcUserInfos zcUserInfos){
+		
+		
+		
+		
 		
 		ZcUserInfo sezcUserInfo = (ZcUserInfo) request.getSession()
 				.getAttribute(ZcContext.LOGIN_USER_KEY);
