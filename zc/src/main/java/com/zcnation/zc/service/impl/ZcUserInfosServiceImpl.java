@@ -25,6 +25,7 @@ import com.zcnation.zc.common.Result;
 
 import com.zcnation.zc.dao.ZcUserInfosDao;
 import com.zcnation.zc.domain.ZcProjectInfo;
+import com.zcnation.zc.domain.ZcUserInfo;
 import com.zcnation.zc.domain.ZcUserInfos;
 import com.zcnation.zc.service.ZcUserInfosService;
 
@@ -76,6 +77,13 @@ Sort s=new Sort("userCode");
 	public List<ZcUserInfos> queyByUserCode(Integer userCode) {
 		// TODO Auto-generated method stub
 		return zcUserInfosDao.findByUserCode(userCode);
+	}
+
+
+	@Override
+	public List<ZcUserInfos> queyByZcUserInfo(ZcUserInfo zcUserInfo) {
+		// TODO Auto-generated method stub
+		return zcUserInfosDao.findByZcUserInfo(zcUserInfo);
 	}
 
 	
