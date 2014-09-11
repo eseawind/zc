@@ -216,18 +216,21 @@ display: block;
 
  <table border="0" cellpadding="0" cellspacing="0" class="tableStyle thback">
           <tbody><tr>
-             
+                <th>序号</th>
             <th>作品名称</th>
             <th>日期</th>
             <th>操作</th>
             
           </tr>
-             <c:forEach items="${prolikes}" var="pro">
+             <c:forEach items="${prolikes}" var="pro" varStatus="status">
                <tr>
-            
-               <td><img src="uploadImg/<c:out value="${pro.zcProjectInfo.resourceInfo.resourceName}"></c:out>" width="60" height="43" alt="" title="" />
+             <td><c:out value="${status.count}"/></td>
+               <td align="left">
                
-             <span style="vertical-align: top;">  <c:out value="${pro.zcProjectInfo.proName}"></c:out></span>
+               
+               <a href="projectinfo/project_<c:out value="${pro.zcProjectInfo.proCode}"></c:out>.html"><img src="uploadImg/<c:out value="${pro.zcProjectInfo.resourceInfo.resourceName}"></c:out>" width="100" height="100" style="cursor: pointer;" alt="" title="" /></a>
+            
+             <span style="vertical-align: top;"> <a href="projectinfo/project_<c:out value="${pro.zcProjectInfo.proCode}"></c:out>.html"> <c:out value="${pro.zcProjectInfo.proName}"></c:out></a></span>
                </td>
              
               <td><c:out value="${pro.likeTime}"></c:out></td>
