@@ -65,8 +65,8 @@ $(document).ready(function () {
     <header id="branding">
       <div class="grid_3">
         <hgroup>
-          <h1 id="site_logo" ><a href="index.html" title=""><img src="images/logo.png" alt="设计师网上设计平台"/></a></h1>
-          <h2 id="site_description">设计师网上设计平台</h2>
+          <h1 id="site_logo" ><a href="index.html" title=""><img src="images/logo1.png" alt=""/></a></h1>
+         <!--  <h2 id="site_description">设计师网上设计平台</h2> -->
         </hgroup>
       </div><!-- .grid_3 -->
 
