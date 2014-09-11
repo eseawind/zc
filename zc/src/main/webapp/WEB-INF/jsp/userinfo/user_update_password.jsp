@@ -12,90 +12,9 @@
   <meta name="description" content="">
   <meta name="keywords" content="">
 
-  <title>Product view</title>
+  <title>用户中心-修改密码</title>
 
 
-<style type="text/css">
-
-.user-fun {
-width: 100%;
-height: 32px;
-}
-.user-fun h2 {
-font-size: 24px;
-line-height: 32px;
-color: #000;
-float: left;
-padding-right: 10px;
-}
-.user-fun .btn-base {
-margin: 6px 0px;
-color: #FFF;
-}
-.btn-red-h20 {
-background-position: -223px 0px;
-height: 20px;
-line-height: 20px;
-}
-.btn-base {
-display: inline-block;
-zoom: 1;
-padding-left: 5px;
-color: #FFF;
-}
-.common-sprite {
-background-image: url('images/icon_sprite.png');
-background-repeat: no-repeat;
-}
-.user-fun .btn-base span {
-padding: 0px 8px 0px 2px;
-margin-right: 8px;
-}
-.btn-red-h20 span {
-background-position: 100% -263px;
-height: 20px;
-line-height: 20px;
-}
-.btn-base span {
-display: inline-block;
-zoom: 1;
-padding-right: 5px;
-float: left;
-}
-.icon-set {
-background-position: -45px -75px;
-}
-.icon-set, .icon-msg, .icon-info {
-width: 16px;
-height: 16px;
-line-height: 0px;
-font-size: 0px;
-display: inline-block;
-vertical-align: middle;
-_margin-top: 3px;
-}
-
-i, em {
-font-style: normal;
-}
-user agent stylesheeti, cite, em, var, address, dfn {
-font-style: italic;
-}
-.user-info {
-padding:20px 110px 110px 0px;
-}
-p {
-display: block;
--webkit-margin-before: 1em;
--webkit-margin-after: 1em;
--webkit-margin-start: 0px;
--webkit-margin-end: 0px;
-}
-
-
-
-
-</style>
 
 <script type="text/javascript">
 	$(function(){
@@ -311,32 +230,27 @@ display: block;
 				<div class="email">
 					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;旧密码:</strong><sup class="surely">*</sup>
 					&nbsp;<input type="password" id="userOldPassowrd" name="userOldPassowrd" class="" value="" />
-					<DIV id=validOldPassowrd class=Validform_checktip style="margin-right: 100px;"  > </DIV>
+					<span id=validOldPassowrd class=Validform_checktip style="margin-right: 100px;"  > </span>
 				</div><!-- .email -->
 							
 							<div class="password">
 					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码:</strong><sup class="surely">*</sup>
 					<input id=password  type=password name=password class="" value="" />
 					
-					 <DIV id=validPassword class=Validform_checktip style="margin-right: 135px;"></DIV>
+					 <span id=validPassword class=Validform_checktip style="margin-right: 135px;"></span>
 				
 				</div>
 				
 				<div class="password">
 					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;确认密码:</strong><sup class="surely">*</sup>
 					<input id=passwordagin  type=password name=passwordagin class="" value="" /> 
-					<DIV id=validpasswordAgain class=Validform_checktip style="margin-right: 100px;"></DIV>
+					<span id=validpasswordAgain class=Validform_checktip style="margin-right: 100px;"></span>
 				
 				</div>
 							
-				
-			
-				
-			
-			
-		
 				<div class="submit">										
-					<button class="account" id="btnUpdate">&nbsp;&nbsp;保存&nbsp;&nbsp;</button>
+					 
+                        <button type="submit" class="button blue">保存</button>
 				</div><!-- .submit -->
 			</form>
 		<div class="clear"></div>
