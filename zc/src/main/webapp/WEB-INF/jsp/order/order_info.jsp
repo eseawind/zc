@@ -16,7 +16,7 @@
 
 
 <style type="text/css">
-
+  
 </style>
 <script>
 	$(document).ready(function() {
@@ -115,11 +115,13 @@
 	      
 	      <FORM method=post action="order/order_info.xhtml" id="searchForm">
 		
-	      <div style="margin-top: 20px;">
-       
-               <input type="text"  class="incInput" name="orderCode" value="${orderCode }" size="36" id="orderCode">
-               &nbsp;  &nbsp;  &nbsp;&nbsp;  &nbsp;  &nbsp;&nbsp;  &nbsp;  &nbsp;
-                     <select  id="orderStatus" name="orderStatus" style="width: 150px;">
+	          
+           <table style="border-top: 0px;">
+           <tr>
+           <td><input type="text" placeholder="请输入要查的订单号"  class="incInput" name="orderCode" value="${orderCode }" size="36" id="orderCode"></td>
+            <td> 
+           
+             <select  id="orderStatus" name="orderStatus" style="  height:33px;">
                         <option value="-1" selected="selected">全部</option>
                                  <option value="0" >已提交</option>
                                    <option value="1" >已取消</option>
@@ -131,18 +133,21 @@
 
                                     
                       </select>
+                    
+                     </td>
+                     <td>
                       <input type="hidden" id="orderStatusSelect" name="orderStatusSelect" value="${orderStatus }">
                         
-                        <button type="submit" class="button blue">查询</button>
-                  </div>      
-         
+                        <button type="submit" class="button blue">查询</button></td>
+           </tr>
+           </table>
 	      </FORM>
 	     
 
  <table border="0" cellpadding="0" cellspacing="0" class="tableStyle thback">
           <tbody><tr>
            <!--   <th>序号</th>-->
-            <th>订单ID</th>
+            <th>序号</th>
              <th>订单号</th>
                <th>下单时间</th>
             <th>订单金额</th>
@@ -152,10 +157,10 @@
            
             
           </tr>
-           <c:forEach items="${ordinfos}" var="ord">
+           <c:forEach items="${ordinfos}" var="ord" varStatus="status">
                <tr>
-              <td><c:out value="${ord[0]}"></c:out></td>
-              <td><c:out value="${ord[1]}"></c:out></td>
+              <td><c:out value="${status.count}"/></td>
+              <td ><c:out value="${ord[1]}"></c:out></td>
               <td><c:out value="${ord[4]}"></c:out></td>
              
               <td><c:out value="${ord[5]}"></c:out></td>
