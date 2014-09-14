@@ -270,10 +270,10 @@
 			
 	     </a>
 	     
-                
+                </div>
              <!-- .prev -->
-             <h3 class="title">${pro[1] }</h3><br>
-               	 目标： ${pro[10] }天 ${pro[3] }件 
+             <h3 class="title">${pro[1] }<br>
+               	 目标： ${pro[10] }天 ${pro[3] }件 </h3>
                 
               <c:choose>  
                <c:when test="${empty pro[9]}">  

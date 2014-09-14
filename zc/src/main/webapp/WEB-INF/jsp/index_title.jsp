@@ -118,7 +118,7 @@ $(document).ready(function () {
           
             <li><a href="projectinfo/project_add.xhtml">发布作品</a></li>
 		<li class="separator">|</li>
-            <li><a href="userinfo/show.xhtml">个人中心</a></li>
+            <li><a href="projectinfo/project_like.xhtml">我的收藏</a></li>
 		<li class="separator">|</li>
 		
 		<c:if test="${empty sessionScope.USER_INFO }">
