@@ -20,7 +20,7 @@ public class ZcOrdersInfoNativeDaoImpl implements ZcOrdersInfoNativeDao{
 	@Autowired private EntityManagerFactory entityManagerFactory;
 	public List<ZcOrdersInfo> findByUserCodeAndOrderCodeAndOrderStatus(Integer userCode,String orderCode,String orderStatus) {
 		// TODO Auto-generated method stub
-		String sql="select    zoi.ocodes,zoi.order_code, zoi.user_code,zoi.order_status,zoi.order_time ,(select sum(zod.order_number*zod.pro_unit)from zc_order_detail zod where zod.order_code in( zoi.order_code) ) as total  from zc_orders_info zoi where 1=1 ";
+		String sql="select    zoi.ocodes,zoi.order_code, zoi.user_code,zoi.order_status,zoi.order_time ,(select sum(zod.order_number*zod.pro_unit)from zc_order_detail zod where zod.order_code in( zoi.ocodes) ) as total  from zc_orders_info zoi where 1=1 ";
 		
 		if(userCode!=0){
 		 sql=sql+"  and  zoi.USER_CODE="+userCode+"";

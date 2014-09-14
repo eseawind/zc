@@ -69,6 +69,8 @@ String sql="select  t. PRO_CODE,zpi.pro_name,zri.RESOURCE_NAME,t.pro_unit, t.pro
 	@Override
 	public void updateOrderCodeByUserCodeAndOrderCodeIsNull(Integer userCode,Integer orderCode) {
 		// TODO Auto-generated method stub
+		System.out.println(userCode);
+		System.out.println(orderCode);
 		try {
 			String sql="update   zc_order_detail t set t.ORDER_CODE='"+orderCode+"' where t.user_Code='"+userCode+"' and t.ORDER_CODE is null";
 			EntityManager em=entityManagerFactory.createEntityManager();
