@@ -81,5 +81,10 @@ public class ZcOrdersInfoServiceImpl implements ZcOrdersInfoService {
 		// TODO Auto-generated method stub
 		return zcOrdersInfoDao.save(info);
 	}
+	@Override
+	public ZcOrdersInfo queryByOcodes(Integer ocodes) {
+		// TODO Auto-generated method stub
+		return zcOrdersInfoDao.findByOcodes(ocodes);
+	}
 
 }
