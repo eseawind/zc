@@ -204,7 +204,7 @@
 			   <a class="list curent" href="index.html"><span>img</span></a>
 		     </div><!-- .grid-list -->
 		     
-		     <div class="show">
+		     <div class="show" style="margin-top: 17px;">
 			   转到
 			    <select id="currentPage" name="currentPage" >
 			    
@@ -220,7 +220,24 @@
 			   页
 		     </div><!-- .show -->
 		     
-		     <div class="sort">
+		     <div class="show" style="margin-top: 17px;">
+			状态
+			    <select id="stateSele" name="stateSele">
+			      <option value="-1">所有项目</option>
+				   <option value="0">众筹中</option>
+				   <option value="1">众筹结束</option>
+				 <option value="2">众筹失败</option>
+			     </select>
+			    <input type="hidden" id="stateSeleSelect" name="stateSeleSelect" value="${stateSele }">
+			    
+			    
+			   
+			    
+			  
+			   
+		     </div><!-- .sort -->
+		     
+		      <div class="sort">
 			   排序
 			    <select id="sortSele" name="sortSele">
 				   <option value="0">价格</option>

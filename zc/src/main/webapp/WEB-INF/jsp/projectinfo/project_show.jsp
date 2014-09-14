@@ -57,7 +57,8 @@
 							$.post("projectinfo/beginDelecart.xhtml",{proCode:proCode,tshirtShort:ttype},function(data){
 								var d=$.eval2(data);
 								if(d.success){
-									proCart.getCartHtml();
+									///proCart.getCartHtml();
+									 $.alert("购物车提示","加入成功");
 								}
 							});
 						});
@@ -106,8 +107,14 @@
 			var proImg=$("#proImg").attr("src");
 			var proCode=$("#proCode").val();
 			$.post("projectinfo/addCart.xhtml",{proCode:proCode,cartNumber:buynum,tshirtShort:cm.val(),imageUrl:proImg,proName:$("#proSpanName").html(),proUnit:$("#proSpanUnit").html()},function(data){
-				$( "#cartDivDialog" ).html("").html(data).dialog( "open" );
-				proCart.initDelete();
+				
+				var d=$.eval2(data);
+				if(d.success){
+					///proCart.getCartHtml();
+					 $.alert("购物车提示","加入成功");
+				}
+				//$( "#cartDivDialog" ).html("").html(data).dialog( "open" );
+				//proCart.initDelete();
 			});
 			//alert("购物数量："+buynum+" 尺码："+cm.val());
 		});
@@ -223,10 +230,10 @@
 
 		<div class="product_page">
 		 
-                 
+        <span style="margin-left: 120px;">       
                 
-		<img  id="proImg" name="proImg" style="width:500px;height: 300px;" src="uploadImg/${infoPro.resourceInfo.resourceName }">
-		
+		<img  id="proImg" name="proImg" style="width:319px;height:319px;" src="uploadImg/${infoPro.resourceInfo.resourceName }">
+		</span>  
 		
 		
 
@@ -328,7 +335,7 @@
 							<div class="evaluation">
 								<div class="quality" >
 									<strong>评价</strong><sup class="surely">*</sup>
-									<input type="radio"  name="quality1" value="1" /><span  class="eva_num">1</span>
+									<input type="radio"  name="quality1" value="1" />		<span  class="eva_num">1</span>
 									<input  type="radio"   name="quality1" value="2" /><span class="eva_num">2</span>
 									<input  type="radio"  name="quality1" value="3" /><span class="eva_num">3</span>
 									<input type="radio"  name="quality1" value="4" /><span class="eva_num">4</span>
