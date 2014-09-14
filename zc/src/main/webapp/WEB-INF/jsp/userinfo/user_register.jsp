@@ -15,7 +15,7 @@
 		var register={};
 		register={
 				initButtonRegister:function(){
-					$("#btnRegister").bind('click',function(){
+					$("#btnRegister").bind('click',function(e){
 						e.preventDefault();
 						if(register.checkRegForm()){
 							var formJson=$("#regForm").serializeArray();
