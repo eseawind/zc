@@ -175,7 +175,7 @@
                        </td>
                        
                        
-                        <td>详情    取消</td>
+                        <td> <a href="order/order_${ord[0]}.xhtml">详情</a>    取消</td>
             </tr>
              </c:forEach> 
           

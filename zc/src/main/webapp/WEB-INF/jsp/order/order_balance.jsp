@@ -13,7 +13,7 @@
   <meta name="description" content="">
   <meta name="keywords" content="">
 
-  <title>Product view</title>
+  <title>结算中心</title>
 
 
 <style type="text/css">
@@ -62,7 +62,8 @@ $(function(){
 					//阻止默认事件发生,会出现 刷新页面的请求
 					e.preventDefault();
 					//表单验证。。
-					$.post("order/putOrder.xhtml",{},function(data){
+					var cm=$("input[name=usercheck]:checked");
+					$.post("order/putOrder.xhtml",{addressCode:cm.val()},function(data){
 						var d=$.eval2(data);
 						if(d.success){
 							$.alert("订单提示","下单成功");
@@ -88,10 +89,10 @@ $(function(){
 $("#usercheck").click(function(e){
 	var cm=$("input[name=usercheck]:checked");
 	
-	$("#namelast").html($("#username"+cm.val()).html());
-	$("#provincelast").html($("#useraddress"+cm.val()).html());
-	$("#mobilelast").html($("#usermobile"+cm.val()).html());
-	$("#ziplast").html($("#userzip"+cm.val()).html());
+	//$("#namelast").html($("#username"+cm.val()).html());
+	//$("#provincelast").html($("#useraddress"+cm.val()).html());
+	//$("#mobilelast").html($("#usermobile"+cm.val()).html());
+	//$("#ziplast").html($("#userzip"+cm.val()).html());
 		});
 
 	});
@@ -122,7 +123,7 @@ $("#usercheck").click(function(e){
 		    确认收货人
 		    </td>
 		     <td colspan="3" align="right" valign="middle" style="background-color: #F7F7F7">
-		    管理我的收货人
+		<a href="userinfos/address.xhtml">管理我的收货人</a>
 		    </td>
 	      </tr>
        
@@ -130,11 +131,26 @@ $("#usercheck").click(function(e){
 	       <tr style="text-align: center;">
         
         
+        
+        
 		    <td  align="left" valign="middle" >
-	<input type="radio" name="usercheck" id="usercheck" value="<c:out value="${users.userCode}"></c:out>">	 <span id="username<c:out value="${users.userCode}"></c:out>"> <c:out value="${users.userName}"></span></c:out>
+		      <c:choose>
+		    
+		     <c:when test="${users.isDefault!='0'}">
+		     <input type="radio" name="usercheck" checked="checked" id="usercheck" value="<c:out value="${users.userCode}"></c:out>">	 <span id="username<c:out value="${users.userCode}"></c:out>"> <c:out value="${users.userName}"></span></c:out>
+		     
+		      </c:when>
+		       <c:otherwise> 
+		       <input type="radio" name="usercheck" id="usercheck" value="<c:out value="${users.userCode}"></c:out>">	 <span id="username<c:out value="${users.userCode}"></c:out>"> <c:out value="${users.userName}"></span></c:out>
+		       
+		        </c:otherwise>
+		     
+		     </c:choose>
+		    
+	
 		    </td>
 		    <td  align="left" valign="middle" >
-		  <span id="useraddress<c:out value="${users.userCode}"></c:out>"> <c:out value="${users.userAddress}"></c:out>     </span>
+		  <span id="useraddress<c:out value="${users.userCode}"></c:out>"><c:out value="${users.userProvince}"></c:out><c:out value="${users.userCity}"></c:out><c:out value="${users.userArea}"></c:out> <c:out value="${users.userAddress}"></c:out>     </span>
 		    </td>
 		    <td  align="left" valign="middle" >
 		<span id="usermobile<c:out value="${users.userCode}"></c:out>"><c:out value="${users.userMobilephone}"></c:out></span>
@@ -144,7 +160,7 @@ $("#usercheck").click(function(e){
 		    </td>
 		    
 		    <td  align="right" colspan="3" valign="middle" >
-		修改这个地址
+		&nbsp;
 		    </td>
 		    
 	      </tr>
@@ -152,6 +168,14 @@ $("#usercheck").click(function(e){
 	      
 	      </c:forEach>
        
+        <tr>
+		    <td colspan="4" align="left" valign="middle" style="background-color: #F7F7F7;margin-top: 10px;">
+		    确认配送方式
+		    </td>
+		     <td colspan="3" align="right" valign="middle" style="background-color: #F7F7F7">
+		
+		    </td>
+	      </tr>
        
        
 	      <tr>
@@ -168,7 +192,7 @@ $("#usercheck").click(function(e){
 	      
 	      <tr>
 	   
-		     <td class="images"><a href="projectinfo/project_${ord[0] }.html"><img src="uploadImg/${ord[2] }" alt="Product 6"></a></td>
+		     <td class="images"><a href="projectinfo/project_${ord[0] }.html"><img src="uploadImg/${ord[2] }" width="110px" height="110px;" alt=""></a></td>
 		     <td class="bg name">${ord[1] }</td>
 		     <td class="edit"><a title="Edit" href="#">Edit</a></td>
 		     <td class="bg price"><span id="price_item_<c:out value="${status.count}"/>">￥${ord[3] }</span></td>
@@ -247,11 +271,11 @@ $("#usercheck").click(function(e){
 	      <tr>
 		     <td  >
 			    配送方式：
-		     </td><td colspan="5" align="left">
-			 <strong>上述商品生产时间是:2014-12-31 14:00</strong>
+		     </td><td colspan="5" align="left" >
+			<input name="payment" type="radio" weight="120" value="0" checked="checked">快递，全国免运费。
 		     </td>
 	      </tr>
-	       <tr>
+	     <!--   <tr>
 		   
 			 <td  align="left" valign="middle" >
 	<input type="radio" checked="checked"  readonly="readonly"><span id="namelast">熊会洋</span>	
@@ -270,10 +294,10 @@ $("#usercheck").click(function(e){
 		&nbsp;
 		    </td>
 		   
-	      </tr>
+	      </tr> -->
 	      
 	      <tr>
-	      <td colspan="6" align="right">   <a class="butLarge" id="btnJs" style="text-decoration: none;" href="#">提交订单</a> <br>&nbsp;</td>
+	      <td colspan="6" align="right">&nbsp;<br>   <a class="butLarge" id="btnJs" style="text-decoration: none;" href="#">提交订单</a> <br>&nbsp;</td>
 	      
 	      </tr>
 	      

@@ -13,7 +13,7 @@
   <meta name="description" content="">
   <meta name="keywords" content="">
 
-  <title>Product view</title>
+  <title>购物车</title>
 
 
 <style type="text/css">
@@ -62,11 +62,36 @@
 		
 		 
 		
-			$("select").selectBox();
+			//$("select").selectBox();
 			
-
-
-	
+		 $("#gotoBalance").click(function(){
+	    	  
+	    	  
+	    	  if(window.ActiveXObject){
+	    		  window.location=("../order/order_balance.xhtml");  
+				 }else{
+					 window.location=("order/order_balance.xhtml");  
+				 }
+	    	
+	    	  
+	    	  
+	    	 
+		      }); 
+	      
+		 $("#continue").click(function(){
+	    	  
+	    	  
+	    	  if(window.ActiveXObject){
+	    		  window.location=("../projectinfo/project_list.html?proType=1&proFabric=0");  
+				 }else{
+					 window.location=("projectinfo/project_list.html?proType=1&proFabric=0");  
+				 }
+	    	
+	    	  
+	    	  
+	    	 
+		      }); 
+		 
 	});
   </script>
 
@@ -251,8 +276,8 @@
 	      </c:forEach>
 	      <tr>
 		     <td colspan="7" class="cart_but">
-			    <button class="continue"><span>icon</span>继续购买</button>
-			    <button class="update"><span>icon</span>更新购物车</button>
+			    <button class="continue" id="continue"><span>icon</span>继续购买</button>
+			   <!-- <button class="update"><span>icon</span>更新购物车</button> --> 
 		     </td>
 	      </tr>
        </table>
@@ -283,7 +308,7 @@
 		     <td ><span class="jifen">购买商品可获得：<b id="total_points">350</b>积分</span></td>
 		     </tr>
 	      </table>
-	    <button class="checkout" >去结算中心</button>
+	    <button class="checkout" id="gotoBalance" >去结算中心</button>
            
           </div><!-- .total -->
         </div><!-- .grid_4 -->
