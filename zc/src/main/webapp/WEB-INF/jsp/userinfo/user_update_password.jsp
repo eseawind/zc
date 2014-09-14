@@ -229,13 +229,13 @@
 				
 				<div class="email">
 					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;旧密码:</strong><sup class="surely">*</sup>
-					&nbsp;<input type="password" id="userOldPassowrd" name="userOldPassowrd" class="" value="" />
+					&nbsp;<input type="password" placeholder="请输入您的旧密码" id="userOldPassowrd" name="userOldPassowrd" class="" value="" />
 					<span id=validOldPassowrd class=Validform_checktip style="margin-right: 100px;"  > </span>
 				</div><!-- .email -->
 							
 							<div class="password">
 					<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码:</strong><sup class="surely">*</sup>
-					<input id=password  type=password name=password class="" value="" />
+					<input id=password placeholder="请输入新密码"  type=password name=password class="" value="" />
 					
 					 <span id=validPassword class=Validform_checktip style="margin-right: 135px;"></span>
 				
