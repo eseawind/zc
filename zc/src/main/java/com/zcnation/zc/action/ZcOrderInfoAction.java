@@ -20,6 +20,7 @@ import java.util.Random;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.ObjectUtils;
+import org.apache.commons.lang.math.NumberUtils;
 import org.apache.commons.lang.time.DateFormatUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -63,14 +64,31 @@ public class ZcOrderInfoAction {
 	@RequestMapping("/putOrder.xhtml")
 	@ResponseBody
 	public String beginAddOrderInfo(HttpServletRequest request,
-			@ModelAttribute ZcAppraise zcAppraise, String proCode) {
+			@ModelAttribute ZcAppraise zcAppraise, String proCode,String addressCode) {
 		System.out.println("dddddddddddddddddddddddddddddddddd");
 		Result rs = new Result();
+		
+		ZcUserInfos  zUserInfos=new ZcUserInfos();
+		
+		zUserInfos=zcUserInfosService.queryOne(Integer.parseInt(addressCode));
+		
+		
 
 		ZcUserInfo info=(ZcUserInfo)ThreadLocalSession.getLocal_session().getAttribute(ZcContext.LOGIN_USER_KEY);
 
 		Calendar ordtime=Calendar.getInstance();
 		ZcOrdersInfo orderinfo=new ZcOrdersInfo();
+		
+		orderinfo.setUserAddress(zUserInfos.getUserAddress());
+		orderinfo.setUserProvince(zUserInfos.getUserProvince());
+		orderinfo.setUserCity(zUserInfos.getUserCity());
+		orderinfo.setUserArea(zUserInfos.getUserArea());
+		orderinfo.setUserZip(zUserInfos.getUserZip());
+		orderinfo.setUserMobilephone(zUserInfos.getUserMobilephone());
+		orderinfo.setUserTelephone(zUserInfos.getUserTelephone());
+		orderinfo.setUserEmail(zUserInfos.getUserEmail());
+		
+		
 		orderinfo.setOrderStatus(String.valueOf(ZcContext.ORDER_STATUS_FIRST));
 		orderinfo.setOrderTime(Calendar.getInstance().getTime());
 		orderinfo.setUserCode(info.getUserCode());
@@ -105,7 +123,36 @@ public class ZcOrderInfoAction {
 	}
 	
 	
-	
+	@RequestMapping("/order_{detailid}.xhtml")
+	public String to_show(@PathVariable("detailid") String detailId,
+			HttpServletRequest request) {
+		System.out.println("detailid:" + detailId);
+		
+		 ZcOrdersInfo zcOrdersInfo=new ZcOrdersInfo();
+		 zcOrdersInfo=zcOrdersInfoService.queryByOcodes(Integer.parseInt(detailId));
+		
+//		try {
+//			int preCode = NumberUtils.toInt(detailId);
+//			ZcProjectInfo info = zcProjectInfoService.queryOne(preCode);
+//			request.setAttribute("infoPro", info);
+//		} catch (Exception e) {
+//			RootLogger.error(e);
+//		}
+//		
+//		
+//		List<ZcAppraise> applist=new ArrayList<ZcAppraise>();
+//		applist=zcAppraiseService.queryByProCode(Integer.parseInt(detailId));
+//		
+//		List list=new ArrayList();
+//		list=zcAppraiseNativeService.queryByProCodeAndOrderCodeIsNotNull(Integer.parseInt(detailId));
+//		System.out.println(list.size());
+//		
+//
+//		request.setAttribute("applist", applist);
+//		request.setAttribute("userlist", list);
+		 request.setAttribute("zcOrdersInfo", zcOrdersInfo);
+		return "order/order_detail";
+	}
 	
 	@RequestMapping("/order_info.xhtml")
 	public String to_publish(HttpServletRequest request, String  orderCode, String orderStatus) {
