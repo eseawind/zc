@@ -11,4 +11,5 @@ public interface ZcOrdersInfoService {
 	 */
 	public Result process();
 	public ZcOrdersInfo save(ZcOrdersInfo info);
+	public ZcOrdersInfo  queryByOcodes(Integer ocodes);
 }
