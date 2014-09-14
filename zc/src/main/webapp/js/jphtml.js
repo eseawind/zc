@@ -11,10 +11,10 @@ $(function(){
 				width: "248px"
 			}, "normal");
 			$(target).animate({
-				width: "240px",
+				width: "230px",
 				height: "220px",
 				top: "-20px",
-				left: "-24px"
+				left: "-12px"
 			}, "normal");
 		});
 		$(target).mouseleave(function(e){
@@ -28,7 +28,7 @@ $(function(){
 			}, "normal");
 			$(target).animate({
 				width: "220px",
-				height: "220px",
+				height: "230px",
 				top: "0",
 				left: "0"
 			}, "normal");
