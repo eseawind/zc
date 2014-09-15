@@ -44,7 +44,18 @@ public class ZcUserInfo implements Serializable {
 	private String regIp;
 	@Column(name="USER_INTRODUCE")
 	private String userIntroduce;
+	@Column(name="USER_RANDOMCODE")
+	private String userRandomCode;
 	
+	
+	public String getUserRandomCode() {
+		return userRandomCode;
+	}
+
+	public void setUserRandomCode(String userRandomCode) {
+		this.userRandomCode = userRandomCode;
+	}
+
 	@OneToOne
 	@JoinColumn(name="RESOURCE_CODE",referencedColumnName="RESOURCE_CODE")
 	private ZcResourceInfo resourceInfo;
