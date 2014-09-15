@@ -242,10 +242,10 @@ public class ZcProjectInfoAction {
 		MultipartHttpServletRequest mulreq = resolver.resolveMultipart(request);
 		System.out.println("名称：" + mulreq.getParameter("proName"));
 		
-		 ZcProjectInfo zInfo=new ZcProjectInfo();
-		 zInfo=zcProjectInfoService.queryByProName( mulreq.getParameter("proName").trim());
+		 ZcProjectInfo zInfo =zcProjectInfoService.queryByProName( mulreq.getParameter("proName").trim());
 		 
-		 if(zInfo.getProCode()!=0){
+		
+		 if(zInfo!=null){
 			 rs.setSuccess(false);
 				rs.getErrorMsgs().add("作品名字已被使用");
 				RootLogger.error("项目名称有重复.");
