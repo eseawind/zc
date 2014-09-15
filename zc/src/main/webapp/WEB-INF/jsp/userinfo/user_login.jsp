@@ -253,7 +253,7 @@ $("#btnLogin").click();
 				<div class="submit" style="margin-left:30px;">										
 				
 					<input type="button" value="登   录" id="btnLogin"  style="width: 266px;height: 37px;border-radius:5px 6px 7px 8px;background: url(images/btn.png);color: white;font-family: 微软雅黑;font-size: 16px;"/>
-					<a class="forgot" href="#">忘记密码?</a>
+					<a class="forgot" href="userinfo/reset_password.html">忘记密码?</a>
 				</div><!-- .submit -->
 			</form><!-- .registed -->
                 </div><!-- .grid_6 -->
