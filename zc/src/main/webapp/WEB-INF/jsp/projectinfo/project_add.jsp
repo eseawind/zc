@@ -8,6 +8,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <title>用户登录</title>
+<!-- 图片预览 -->
+<script type="text/javascript" src="js/imgPreview/CJL.0.1.min.js"></script>
+<script type="text/javascript" src="js/imgPreview/QuickUpload.js"></script>
+<script type="text/javascript" src="js/imgPreview/ImagePreviewd.js"></script>
  <style type="text/css">
 .option-box select {
 /* width: 100px; */
@@ -58,6 +62,11 @@ float: left;
 						 })
 						}
 					});
+					var ip = new ImagePreview( $$("fileuploada"), $$("imgBox"), {
+						maxWidth: 128, maxHeight: 128
+					});
+					ip.img.src = ImagePreview.TRANSPARENT;
+					//ip.file.onchange = function(){ ip.preview(); };
 					
 					//图片上传
 					$("#fileuploada").bind('change',function(){
@@ -73,12 +82,13 @@ float: left;
 									//$("#imgDivBox").css("background-image","url("+this.result+")");
 								}
 							}
-						}else{
-							var p=getPath($(this)[0]);
+						}else{ //ie
+							ip.preview();
+							/**var p=getPath($(this)[0]);
 							//var obj=$("#imgDivBox")[0];
 							//obj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = p;
 							$("#imgDivBox").html('<div style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src=\'' + p + '\')"></div>');
-							alert($("#imgDivBox").html());
+							alert($("#imgDivBox").html());**/
 						}
 					});
 					
@@ -552,7 +562,6 @@ float: left;
   </section><!-- #main -->
   
   <div class="clear"></div>
-    
   <footer>
     <div class="f_navigation">
       <div class="container_12">
