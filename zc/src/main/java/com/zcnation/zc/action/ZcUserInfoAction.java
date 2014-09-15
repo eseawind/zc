@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -80,10 +81,17 @@ public class ZcUserInfoAction {
 		return "userinfo/user_update";
 	}
 	
+	
+	@RequestMapping("/reset_password.html")
+	public String to_reset_password(HttpServletRequest request) {
+		return "userinfo/reset_password";
+	}
+	
 	 
 	@RequestMapping("/beginRegister.html")
 	@ResponseBody
 	public String beginRegister(HttpServletRequest request,@ModelAttribute ZcUserInfo userinfo,@RequestParam(value="passwordagin") String passwordagin){
+		      userinfo.setUserRandomCode(UUID.randomUUID().toString());
 		return zcUserInfoService.save(userinfo, passwordagin, request.getRemoteAddr());
 	}
 	
