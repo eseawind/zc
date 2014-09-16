@@ -16,6 +16,59 @@
 
 <title>密码找回</title>
 <style type="text/css">
+.find-ways {
+border: 1px solid #D4D4D4;
+list-style: none;
+background: #FFF;
+}.find-ways .way--last {
+border-bottom: none;
+}
+.find-ways .way__content {
+position: relative;
+margin: 0 auto;
+padding: 32px 0 32px 100px;
+height: 36px;
+width: 410px;
+font-family: '宋体';
+font-size: 12px;
+}
+.find-ways .way__content .immi-retrieve {
+float: right;
+}
+
+.find-ways .way__content .icon--email {
+background-position: 0 -62px;
+}
+.find-ways .way__content .icon {
+position: absolute;
+left: 20px;
+top: 25px;
+width: 50px;
+height: 50px;
+background: url(images/sp-retrieve-24.vb2c25215.png) 0 -60px;
+_background: url(images/sp-retrieve.v7ca37be3.png) 0 -60px;
+}
+
+.find-ways .way__content .title {
+display: block;
+font-size: 14px;
+font-weight: 700;
+color: #333;
+}
+
+li {
+list-style: none;
+}
+
+.find-ways .way__content .description {
+display: block;
+width: 270px;
+font-size: 12px;
+font-weight: 400;
+color: #999;
+}
+
+
 
 
 </style>
@@ -25,85 +78,22 @@
 	$(function(){
 		var login={};
 		login={
-			validate:function(){
-					//验证用户名
-					var userName=$("#userName");
-					var passwd=$("#password");
-					if(!userName.val()){
-						$("#validAccount").addClass("Validform_wrong").html("用户名不能为空");
-						$("#validAccount").show();
-						userName.addClass("Validform_error");
-						return false;
-					}else{
-						var len=userName.val().length;
-						if(len<6||len>20){
-							$("#validAccount").addClass("Validform_wrong").html("请输入6-20位用户名");
-							$("#validAccount").show();
-							passwd.addClass("Validform_error");
-							return false;
-						}else{
-						
-						userName.removeClass("Validform_error");	
-						$("#validAccount").hide();
-						}
-						return true;
-					}
-					
-					
-				},commonBlurInput:function(obj,validateId,nullerrMsg,errMsg2,isvalidateLen,minlen,maxlen,regex){
-					var t=$(obj);
-					t.blur(function(){
-						var that=$(this);
-						if(!that.val()){
-							$("#"+validateId+"").addClass("Validform_wrong").html(nullerrMsg);
-							$("#"+validateId+"").show();
-							that.addClass("Validform_error");
-						}else{
-							if(isvalidateLen){//验证长度
-								var len=that.val().length;
-								if(len<minlen||len>maxlen){
-									$("#"+validateId+"").addClass("Validform_wrong").html(errMsg2);
-									$("#"+validateId+"").show();
-									that.addClass("Validform_error");
-								}else{
-									$("#"+validateId+"").hide();
-									that.removeClass("Validform_error");
-								}
-							}else{
-								if(regex){
-									if(!regex.test(that.val())){
-										$("#"+validateId+"").addClass("Validform_wrong").html(errMsg2);
-										$("#"+validateId+"").show();
-										that.addClass("Validform_error");
-									}else{
-										$("#"+validateId+"").hide();
-										that.removeClass("Validform_error");
-									}
-								}else{
-									$("#"+validateId+"").hide();
-									that.removeClass("Validform_error");
-								}
-							}
-						}
-					})
-				},
+			
 				initlogin:function(){
 					//登录
 					$("#btnNext").bind('click',function(){
-						if(login.validate()){
+						
 							var formJson=$("#loginForm").serializeArray();
-							$.post("userinfo/beginNext.html",formJson,function(data){
+							$.post("userinfo/beginSend.html",formJson,function(data){
 								var d=$.eval2(data);
 								if(d.success){
 									//login success;
-									url="userinfo/choose_email.html?userName="+d.returnValue;
-								
+									url="userinfo/send_email.html";
 									if($.browser.msie) {
-										url="../userinfo/choose_email.html?userName="+d.returnValue;
+										url="../userinfo/send_email.html";
 									}
 									var href=window.location;
-								
-									if(/^.*reset_password.*/.test(href)){
+									if(/^.*choose_email.*/.test(href)){
 										window.location=url;
 									}else{
 									window.location.reload();
@@ -111,16 +101,15 @@
 									}
 									//window.location=url;
 								}else{
-									$.alert("找回密码提示",d.errorMsgs[0]);
+									$.alert("找回密码提示","参数有误");
 								}
 							});
-						}
+						
 					});
 				}
 		};
 		
 		function main(){
-			login.commonBlurInput($("#userName"), "validAccount", "请输入用户名", "请输入6-20位用户名", true, 6, 20, false);
 			
 			login.initlogin();
 		}
@@ -152,14 +141,14 @@ $("#btnNext").click();
 		
 		<div class="grid_12">
 		<ul class="steps-bar steps-bar--dark cf" >
-            <li class="step step--first step--current" style="z-index:4;margin-left: -50px;">
+            <li class="step step--pre" style="z-index:4;margin-left: -50px;">
                 <span class="step__num">1.</span>
                 <span>确认账号</span>
                 
                 <span class="arrow__background"></span>
                 <span class="arrow__foreground"></span>
             </li>
-            <li class="step step--pre" style="z-index:3">
+            <li class="step step--first step--current" style="z-index:3">
                 <span class="step__num">2.</span>
                 <span>选择验证方式</span>
                 
@@ -180,24 +169,21 @@ $("#btnNext").click();
             </li>
         </ul>
       
-      
+      <h3 class="retrieve-tips">您正在为账户<em>${userName }</em>重置登录密码，请选择找回方式：</h3>
       
   
-          <FORM class=registed method=post action="" id="loginForm">
-           <br> <br>
-               <div class="email" style="margin-left: 300px;">
-                  <strong>用户名:</strong><sup class="surely">*</sup>
-                  <input type="text" id="userName" name="userName" class="" placeholder="请输入6-20位用户名" value="" />
-                  <span  id=validAccount class="Validform_checktip"   ></span>
-                   
-                </div>
-            
-              <div class="email" style="margin-right: 360px;line-height: 150px;">
-                    <button type="button" id="btnNext" class="button blue">下一步</button>
-                </div>
-                 <br>
-         <br> <br> <br>
-            </form>
+        <ul class="find-ways">
+            <li class="way way--last">
+                <form class="way__content cf" method="POST">
+                    
+                    <input  type="button" id="btnNext" class="button blue" style="height: 35px;" value="立即找回">
+                 
+                    <i class="icon icon--email"></i>
+                    <span class="title">通过绑定的邮箱</span>
+                    <span class="description">安全链接将发送到您绑定的邮箱</span>
+                </form>
+            </li>
+        </ul>
        
                 </div><!-- .grid_6 -->
 		
