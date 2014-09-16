@@ -169,6 +169,12 @@ public class ZcUserInfoServiceImpl implements ZcUserInfoService {
 		return zcUserInfoDao.findByEmailAndUserCodeNotIn(email, userCode);
 	}
 
+	@Override
+	public ZcUserInfo queryByUserName(String userName) {
+		// TODO Auto-generated method stub
+		return zcUserInfoDao.findByUserName(userName);
+	}
+
 	
 
 }
