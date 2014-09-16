@@ -3241,3 +3241,25 @@ margin: 0 5px;
 .orderProgress {
 margin: 16px 25px 30px;
 }
+.steps-bar{margin-bottom:30px;font-size:0;line-height:0;background:#eee;border-radius:3px;overflow:hidden;white-space:nowrap}
+.steps-bar .step{position:relative;display:inline-block;*display:inline;width:235px;font-size:14px;line-height:30px;_line-height:29px;text-align:center;color:#666;*zoom:1;*vertical-align:top}
+.steps-bar .step--post{color:#999}
+.steps-bar .step--current{color:#fff;background:#ff8900}
+.steps-bar .step--current .arrow__foreground{border-left-color:#ff8900}
+.steps-bar .step--last .icon--complete{position:absolute;width:17px;height:17px;top:9px;left:88px;}
+.steps-bar .step__num{font-size:18px;font-weight:700;font-family:Arial}
+.steps-bar .arrow__background,.steps-bar .arrow__foreground{position:absolute;top:0;_top:-1px;right:-15px;width:0;height:0;border-width:15px 0 15px 15px;border-style:dashed dashed dashed solid;border-color:transparent transparent transparent #eee;font-size:0;line-height:0;z-index:1}
+.steps-bar .arrow__background{right:-17px;top:-2px;_top:-3px;border-left-color:#FFF;border-width:17px 0 17px 17px}
+.steps-bar--dark{background:#dedede}
+.steps-bar--dark .arrow__foreground{border-color:transparent transparent transparent #dedede}
+.retrieve-tips {
+margin: 15px 0 7px;
+font-size: 14px;
+font-weight: 400;
+font-family: 'ËÎÌו';
+color: #333;
+}
+.retrieve-tips em {
+color: #F71208;
+}
+
