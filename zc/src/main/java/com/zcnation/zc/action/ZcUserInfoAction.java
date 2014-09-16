@@ -87,6 +87,20 @@ public class ZcUserInfoAction {
 		return "userinfo/reset_password";
 	}
 	
+	@RequestMapping("/choose_email.html")
+	public String to_choose_email(HttpServletRequest request, String userName) {
+		request.setAttribute("userName", userName);
+		return "userinfo/choose_email";
+	}
+	
+	@RequestMapping("/send_email.html")
+	public String to_send_email(HttpServletRequest request, String userName) {
+		request.setAttribute("userName", userName);
+		return "userinfo/send_email";
+	}
+	
+	
+	
 	 
 	@RequestMapping("/beginRegister.html")
 	@ResponseBody
@@ -177,6 +191,123 @@ public class ZcUserInfoAction {
 		ThreadLocalSession.getLocal_session().removeAttribute(ZcContext.LOGIN_USER_KEY);
 		return "redirect:/index.html";
 	}
+	
+	
+	@RequestMapping("/beginSend.html")
+	@ResponseBody
+	public String beginSend(HttpServletRequest request,@ModelAttribute ZcUserInfo zcUserInfo){
+		Result r=new Result();
+		ZcUserInfo sezcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
+		 r.setSuccess(true);
+//		System.out.println(userName);
+//		 ZcUserInfo userInfo=zcUserInfoService.queryByUserName(userName);
+//		 if(userInfo!=null){
+//			 r.setSuccess(true);
+//			 RootLogger.error("此用户存在.");
+//		 }else{
+//			 r.setSuccess(false);
+//				r.getErrorMsgs().add("此用户不存在");
+//				RootLogger.error("此用户不存在.");
+//		 }
+//		  r.setReturnValue(userName);
+//	
+		
+		//zcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
+		//zcUserInfoService.update(userName,zcUserInfo.getUserCode());
+		// List<ZcUserInfo>  listemail=new ArrayList<ZcUserInfo>();
+		//listemail=zcUserInfoService.queryByEmailAndUserCodeNotIn(email, sezcUserInfo.getUserCode());
+//		 List<ZcUserInfo>  listuserphone=new ArrayList<ZcUserInfo>();
+//		 listuserphone=zcUserInfoService.queryByUserPhoneAndUserCodeNotIn(userPhone, sezcUserInfo.getUserCode());
+//		 if(listemail.size()>0){
+//			 	r.setSuccess(false);
+//				r.getErrorMsgs().add("邮箱已被使用");
+//				RootLogger.error("邮箱已被使用.");
+//		 }
+//		 }else if(listuserphone.size()>0){
+//			 r.setSuccess(false);
+//				r.getErrorMsgs().add("手机号码已被使用");
+//				RootLogger.error("手机号码已被使用.");
+//		 }else{
+//
+//				
+//				//用户主键id不存在页面隐藏域中，防止被看见
+//				zcUserInfo.setUserIntroduce(userIntroduce.trim());
+//				zcUserInfo.setUserCode(sezcUserInfo.getUserCode());
+//				zcUserInfo.setPassword(sezcUserInfo.getPassword());
+//				zcUserInfo.setRegIp(sezcUserInfo.getRegIp());
+//				zcUserInfo.setRegTime(sezcUserInfo.getRegTime());
+//				System.out.println("用户编号："+zcUserInfo.getUserCode());
+//				int a=zcUserInfoService.update(zcUserInfo);
+//				if (a>0) {
+//					r.setSuccess(true);
+//					ThreadLocalSession.getLocal_session().removeAttribute(ZcContext.LOGIN_USER_KEY);
+//					ThreadLocalSession.getLocal_session().setAttribute(ZcContext.LOGIN_USER_KEY, zcUserInfo);
+//				}
+//			 
+//		 }
+		
+		
+		return r.toJson();
+	}
+	
+	
+	@RequestMapping("/beginNext.html")
+	@ResponseBody
+	public String beginNext(HttpServletRequest request,@ModelAttribute ZcUserInfo zcUserInfo,@RequestParam(value="userName") String userName){
+		Result r=new Result();
+		ZcUserInfo sezcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
+		System.out.println(userName);
+		 ZcUserInfo userInfo=zcUserInfoService.queryByUserName(userName);
+		 if(userInfo!=null){
+			 r.setSuccess(true);
+			 RootLogger.error("此用户存在.");
+		 }else{
+			 r.setSuccess(false);
+				r.getErrorMsgs().add("此用户不存在");
+				RootLogger.error("此用户不存在.");
+		 }
+		  r.setReturnValue(userName);
+	
+		
+		//zcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
+		//zcUserInfoService.update(userName,zcUserInfo.getUserCode());
+		// List<ZcUserInfo>  listemail=new ArrayList<ZcUserInfo>();
+		//listemail=zcUserInfoService.queryByEmailAndUserCodeNotIn(email, sezcUserInfo.getUserCode());
+//		 List<ZcUserInfo>  listuserphone=new ArrayList<ZcUserInfo>();
+//		 listuserphone=zcUserInfoService.queryByUserPhoneAndUserCodeNotIn(userPhone, sezcUserInfo.getUserCode());
+//		 if(listemail.size()>0){
+//			 	r.setSuccess(false);
+//				r.getErrorMsgs().add("邮箱已被使用");
+//				RootLogger.error("邮箱已被使用.");
+//		 }
+//		 }else if(listuserphone.size()>0){
+//			 r.setSuccess(false);
+//				r.getErrorMsgs().add("手机号码已被使用");
+//				RootLogger.error("手机号码已被使用.");
+//		 }else{
+//
+//				
+//				//用户主键id不存在页面隐藏域中，防止被看见
+//				zcUserInfo.setUserIntroduce(userIntroduce.trim());
+//				zcUserInfo.setUserCode(sezcUserInfo.getUserCode());
+//				zcUserInfo.setPassword(sezcUserInfo.getPassword());
+//				zcUserInfo.setRegIp(sezcUserInfo.getRegIp());
+//				zcUserInfo.setRegTime(sezcUserInfo.getRegTime());
+//				System.out.println("用户编号："+zcUserInfo.getUserCode());
+//				int a=zcUserInfoService.update(zcUserInfo);
+//				if (a>0) {
+//					r.setSuccess(true);
+//					ThreadLocalSession.getLocal_session().removeAttribute(ZcContext.LOGIN_USER_KEY);
+//					ThreadLocalSession.getLocal_session().setAttribute(ZcContext.LOGIN_USER_KEY, zcUserInfo);
+//				}
+//			 
+//		 }
+		
+		
+		return r.toJson();
+	}
+	
+	
 	
 	@RequestMapping("/beginUpdate.xhtml")
 	@ResponseBody
