@@ -87,4 +87,10 @@ public interface ZcUserInfoDao extends Repository<ZcUserInfo, Integer>,CrudRepos
 	 
 	 public List<ZcUserInfo> findByEmailAndUserCodeNotIn(String email,Integer userCode);
 	 
+	 
+	 
+	
+	 public ZcUserInfo findByUserName(String userName);
+	 
+	 
 }
