@@ -57,4 +57,7 @@ public interface ZcUserInfoService {
  public List<ZcUserInfo> queryByUserPhoneAndUserCodeNotIn(String userPhone,Integer userCode);
 	 
 	 public List<ZcUserInfo> queryByEmailAndUserCodeNotIn(String email,Integer userCode);
+
+	 public ZcUserInfo queryByUserName(String userName);
+
 }
