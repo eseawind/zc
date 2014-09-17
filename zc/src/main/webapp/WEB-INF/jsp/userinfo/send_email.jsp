@@ -282,11 +282,11 @@ $("#btnNext").click();
             <div class="retrieve__title">
                 <label class="icon tip-status tip-status--large tip-status--large--success"></label>
                 <h3 class="title">邮件已发送</h3>
-                <h4 class="sub-title">请到<a href="http://mail.163.com/" target="_blank">xhy***@163.com</a>查阅来自美团的邮件，<br>点击邮件中的链接重设您的登录密码</h4>
+                <h4 class="sub-title">请到<a href="${emailUrl }" target="_blank">xhy***@163.com</a>查阅来自美团的邮件，<br>点击邮件中的链接重设您的登录密码</h4>
             </div>
             <div class="form-field">
-                <a class="btn next-step" href="http://mail.163.com/" target="_blank">去邮箱收信</a>
-                <a href="/account/retrievepassword/choosemethod">上一步</a>
+                <a class="btn next-step" href="${emailUrl }" target="_blank">去邮箱收信</a>
+                <a href="javascript:history.go(-1)">上一步</a>
             </div>
             <div class="resend-tip">
                 <h4 class="resend-tip__head">没有收到邮件？</h4>
@@ -295,7 +295,8 @@ $("#btnNext").click();
                         <div class="J-resend-error-tip resend-error-tip" style="display:none;" id="yui_3_16_0_1_1410907845110_189"><span class="tip-status tip-status--error"></span><span class="J-content"></span></div>
                         <input type="button" value="重新发送邮件" class="btn-normal btn-small resend-email-button J-resend-email-button" href="javascript:void(0);">
                     </li>
-                    <li>还是没收到？请选择<a href="/account/retrievepassword/choosemethod">其他找回方式</a></li>
+                   <!--<li>还是没收到？请选择<a href="#">其他找回方式</a></li>  --> 
+                   <li>还是没收到？请联系客服</a></li>
                 </ul>
             </div>
         </div>

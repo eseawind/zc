@@ -174,8 +174,8 @@ $("#btnNext").click();
   
         <ul class="find-ways">
             <li class="way way--last">
-                <form class="way__content cf" method="POST">
-                    
+                <form class="way__content cf" method="POST" id="loginForm">
+                    <input type="hidden" id="userName" name="userName" value="${userName }">
                     <input  type="button" id="btnNext" class="button blue" style="height: 35px;" value="立即找回">
                  
                     <i class="icon icon--email"></i>
