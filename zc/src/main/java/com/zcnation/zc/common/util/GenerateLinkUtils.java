@@ -20,7 +20,7 @@ public class GenerateLinkUtils {
 	 * 生成帐户激活链接
 	 */
 	public static String generateActivateLink(ZcUserInfo zcUserInfo) {
-		return "http://http://localhost:9191/zc/activateAccount?id=" 
+		return "http://localhost:9191/zc/activateAccount?id=" 
 				+ zcUserInfo.getUserCode() + "&" + CHECK_CODE + "=" + generateCheckcode(zcUserInfo);
 	}
 	
@@ -28,7 +28,7 @@ public class GenerateLinkUtils {
 	 * 生成重设密码的链接
 	 */
 	public static String generateResetPwdLink(ZcUserInfo zcUserInfo) {
-		return "http://http://localhost:9191/zc/resetPasswordUI?userName=" 
+		return "http://localhost:9191/zc/resetPasswordUI?userName=" 
 				+ zcUserInfo.getUserName() + "&" + CHECK_CODE + "=" + generateCheckcode(zcUserInfo);
 	}
 	

@@ -48,12 +48,21 @@ public class EmailUtils {
 	public static void sendResetPasswordEmail(ZcUserInfo zcUserInfo) {
 		Session session = getSession();
 		MimeMessage message = new MimeMessage(session);
+//		hi xhymmc,
+//
+//		您在美团网申请了验证邮箱，请点击下面的链接，然后根据页面提示完成验证：
+//
+//
+//		http://passport.meituan.com/account/retrievepassword/verifyresult?verifyinfo13=vwBApPRlExariJGtXkpc1wJAdEI1U-If
+//
+//		--
+//		美团网 
 		try {
 			message.setSubject("找回您的帐户与密码");
 			message.setSentDate(new Date());
 			message.setFrom(new InternetAddress(FROM));
 			message.setRecipient(RecipientType.TO, new InternetAddress(zcUserInfo.getEmail()));
-			message.setContent("要使用新的密码, 请使用以下链接启用密码:<br/><a href='" + GenerateLinkUtils.generateResetPwdLink(zcUserInfo) +"'>点击重新设置密码</a>","text/html;charset=utf-8");
+			message.setContent("hi "+zcUserInfo.getUserName()+",<br/>您在小众派申请了验证邮箱，请点击下面的链接，然后根据页面提示完成验证：:<br/><a href='" + GenerateLinkUtils.generateResetPwdLink(zcUserInfo) +"'>"+GenerateLinkUtils.generateResetPwdLink(zcUserInfo)+"</a><br>--<br>小众派","text/html;charset=utf-8");
 			// 发送邮件
 			Transport.send(message);
 		} catch (Exception e) {
