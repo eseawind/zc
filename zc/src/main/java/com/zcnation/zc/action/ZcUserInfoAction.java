@@ -33,6 +33,7 @@ import com.zcnation.zc.common.Result;
 import com.zcnation.zc.common.ThreadLocalSession;
 import com.zcnation.zc.common.exception.NotValidateCorrectException;
 import com.zcnation.zc.common.security.MD5;
+import com.zcnation.zc.common.util.EmailUtils;
 import com.zcnation.zc.common.util.IsSameDay;
 import com.zcnation.zc.common.util.RootLogger;
 import com.zcnation.zc.common.util.UrlHelp;
@@ -195,57 +196,58 @@ public class ZcUserInfoAction {
 	
 	@RequestMapping("/beginSend.html")
 	@ResponseBody
-	public String beginSend(HttpServletRequest request,@ModelAttribute ZcUserInfo zcUserInfo){
+	public String beginSend(HttpServletRequest request,@ModelAttribute ZcUserInfo zcUserInfo,@RequestParam(value="userName") String userName){
 		Result r=new Result();
-		ZcUserInfo sezcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
-		 r.setSuccess(true);
-//		System.out.println(userName);
-//		 ZcUserInfo userInfo=zcUserInfoService.queryByUserName(userName);
-//		 if(userInfo!=null){
-//			 r.setSuccess(true);
-//			 RootLogger.error("此用户存在.");
-//		 }else{
-//			 r.setSuccess(false);
-//				r.getErrorMsgs().add("此用户不存在");
-//				RootLogger.error("此用户不存在.");
-//		 }
-//		  r.setReturnValue(userName);
-//	
-		
-		//zcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
-		//zcUserInfoService.update(userName,zcUserInfo.getUserCode());
-		// List<ZcUserInfo>  listemail=new ArrayList<ZcUserInfo>();
-		//listemail=zcUserInfoService.queryByEmailAndUserCodeNotIn(email, sezcUserInfo.getUserCode());
-//		 List<ZcUserInfo>  listuserphone=new ArrayList<ZcUserInfo>();
-//		 listuserphone=zcUserInfoService.queryByUserPhoneAndUserCodeNotIn(userPhone, sezcUserInfo.getUserCode());
-//		 if(listemail.size()>0){
-//			 	r.setSuccess(false);
-//				r.getErrorMsgs().add("邮箱已被使用");
-//				RootLogger.error("邮箱已被使用.");
-//		 }
-//		 }else if(listuserphone.size()>0){
-//			 r.setSuccess(false);
-//				r.getErrorMsgs().add("手机号码已被使用");
-//				RootLogger.error("手机号码已被使用.");
-//		 }else{
-//
-//				
-//				//用户主键id不存在页面隐藏域中，防止被看见
-//				zcUserInfo.setUserIntroduce(userIntroduce.trim());
-//				zcUserInfo.setUserCode(sezcUserInfo.getUserCode());
-//				zcUserInfo.setPassword(sezcUserInfo.getPassword());
-//				zcUserInfo.setRegIp(sezcUserInfo.getRegIp());
-//				zcUserInfo.setRegTime(sezcUserInfo.getRegTime());
-//				System.out.println("用户编号："+zcUserInfo.getUserCode());
-//				int a=zcUserInfoService.update(zcUserInfo);
-//				if (a>0) {
-//					r.setSuccess(true);
-//					ThreadLocalSession.getLocal_session().removeAttribute(ZcContext.LOGIN_USER_KEY);
-//					ThreadLocalSession.getLocal_session().setAttribute(ZcContext.LOGIN_USER_KEY, zcUserInfo);
-//				}
-//			 
-//		 }
-		
+	//ZcUserInfo sezcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
+		    zcUserInfo=zcUserInfoService.queryByUserName(userName);
+		    
+		     String emailUrl="";
+		    
+		    
+		    if(zcUserInfo!=null){
+		    	 String emailTmp=zcUserInfo.getEmail();
+		    	 
+		    	 if(emailTmp!=null){
+		    		if( emailTmp.substring(emailTmp.lastIndexOf("@")+1, emailTmp.lastIndexOf(".")).toLowerCase()=="163"){
+		    			emailUrl="http://mail.163.com";
+		    		}else if (emailTmp.substring(emailTmp.lastIndexOf("@")+1, emailTmp.lastIndexOf(".")).toLowerCase()=="126") {
+		    			emailUrl="http://mail.126.com";
+					}else if (emailTmp.substring(emailTmp.lastIndexOf("@")+1, emailTmp.lastIndexOf(".")).toLowerCase()=="qq") {
+		    			emailUrl="http://mail.qq.com";
+					}else if (emailTmp.substring(emailTmp.lastIndexOf("@")+1, emailTmp.lastIndexOf(".")).toLowerCase()=="sina") {
+		    			emailUrl="http://mail.sina.com";
+					}else if (emailTmp.substring(emailTmp.lastIndexOf("@")+1, emailTmp.lastIndexOf(".")).toLowerCase()=="sohu") {
+		    			emailUrl="http://mail.sohu.com";
+					}else if (emailTmp.substring(emailTmp.lastIndexOf("@")+1, emailTmp.lastIndexOf(".")).toLowerCase()=="yahoo") {
+		    			emailUrl="http://mail.yahoo.com";
+					}else if (emailTmp.substring(emailTmp.lastIndexOf("@")+1, emailTmp.lastIndexOf(".")).toLowerCase()=="tom") {
+		    			emailUrl="http://mail.tom.com";
+					}else if (emailTmp.substring(emailTmp.lastIndexOf("@")+1, emailTmp.lastIndexOf(".")).toLowerCase()=="139") {
+		    			emailUrl="http://mail.10086.cn";
+					}else if (emailTmp.substring(emailTmp.lastIndexOf("@")+1, emailTmp.lastIndexOf(".")).toLowerCase()=="21cn") {
+		    			emailUrl="http://mail.21cn.com";
+					}else if (emailTmp.substring(emailTmp.lastIndexOf("@")+1, emailTmp.lastIndexOf(".")).toLowerCase()=="21cn") {
+		    			emailUrl="http://mail.21cn.com";
+					}else if (emailTmp.substring(emailTmp.lastIndexOf("@")+1, emailTmp.lastIndexOf(".")).toLowerCase()=="263") {
+		    			emailUrl="http://mail.263.com";
+					}
+		    		
+
+		    	 }
+		    	
+		    	
+		    	  EmailUtils.sendResetPasswordEmail(zcUserInfo);  
+		    	 r.setSuccess(true);
+		    	 request.setAttribute("emailUrl",emailUrl);
+		    	 request.setAttribute("zcUserInfo",zcUserInfo);
+					//throw new NotValidateCorrectException("项目名称有重复");
+			 }else{
+				 r.setSuccess(false);
+					r.getErrorMsgs().add("用户不存在");
+					RootLogger.error("用户不存在.");
+			 }
+		    
+
 		
 		return r.toJson();
 	}
@@ -268,41 +270,7 @@ public class ZcUserInfoAction {
 		 }
 		  r.setReturnValue(userName);
 	
-		
-		//zcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
-		//zcUserInfoService.update(userName,zcUserInfo.getUserCode());
-		// List<ZcUserInfo>  listemail=new ArrayList<ZcUserInfo>();
-		//listemail=zcUserInfoService.queryByEmailAndUserCodeNotIn(email, sezcUserInfo.getUserCode());
-//		 List<ZcUserInfo>  listuserphone=new ArrayList<ZcUserInfo>();
-//		 listuserphone=zcUserInfoService.queryByUserPhoneAndUserCodeNotIn(userPhone, sezcUserInfo.getUserCode());
-//		 if(listemail.size()>0){
-//			 	r.setSuccess(false);
-//				r.getErrorMsgs().add("邮箱已被使用");
-//				RootLogger.error("邮箱已被使用.");
-//		 }
-//		 }else if(listuserphone.size()>0){
-//			 r.setSuccess(false);
-//				r.getErrorMsgs().add("手机号码已被使用");
-//				RootLogger.error("手机号码已被使用.");
-//		 }else{
-//
-//				
-//				//用户主键id不存在页面隐藏域中，防止被看见
-//				zcUserInfo.setUserIntroduce(userIntroduce.trim());
-//				zcUserInfo.setUserCode(sezcUserInfo.getUserCode());
-//				zcUserInfo.setPassword(sezcUserInfo.getPassword());
-//				zcUserInfo.setRegIp(sezcUserInfo.getRegIp());
-//				zcUserInfo.setRegTime(sezcUserInfo.getRegTime());
-//				System.out.println("用户编号："+zcUserInfo.getUserCode());
-//				int a=zcUserInfoService.update(zcUserInfo);
-//				if (a>0) {
-//					r.setSuccess(true);
-//					ThreadLocalSession.getLocal_session().removeAttribute(ZcContext.LOGIN_USER_KEY);
-//					ThreadLocalSession.getLocal_session().setAttribute(ZcContext.LOGIN_USER_KEY, zcUserInfo);
-//				}
-//			 
-//		 }
-		
+	
 		
 		return r.toJson();
 	}
