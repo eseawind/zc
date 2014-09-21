@@ -84,7 +84,7 @@ var el = el,
 	radioTab = el.attr("tabindex");
 	radioValue = el.attr("value");
 	if(radioChecked)
-		el.after("<span class='niceRadio radioChecked'>"+
+		el.after("<span name='2' class='niceRadio radioChecked'>"+
 			"<input type='radio'"+
 			"name='"+radioName+"'"+
 			"id='"+radioId+"'"+
@@ -92,7 +92,7 @@ var el = el,
 			"tabindex='"+radioTab+"'"+
             "value='"+radioValue+"' /></span>");
 	else
-		el.after("<span class='niceRadio'>"+
+		el.after("<span name='2' class='niceRadio'>"+
 			"<input type='radio'"+
 			"name='"+radioName+"'"+
 			"id='"+radioId+"'"+
