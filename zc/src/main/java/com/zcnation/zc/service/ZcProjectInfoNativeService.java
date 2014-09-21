@@ -15,4 +15,5 @@ public interface ZcProjectInfoNativeService {
 
 	public List<ZcProjectInfo> queryByProShStatusAndPage(Integer currentPage,Integer sortSele,Integer sortBy,Integer proType,Integer proFabric,Integer userCode);
 	public Integer queryTtotalByProShStatusAndPage(Integer sortSele,Integer sortBy,Integer proType,Integer proFabric);
+	  public int updateProCanceTimeByProCode(Integer proCode);
 }

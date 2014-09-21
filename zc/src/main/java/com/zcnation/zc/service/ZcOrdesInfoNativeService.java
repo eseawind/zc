@@ -11,5 +11,5 @@ public interface ZcOrdesInfoNativeService {
 	public  List<ZcOrdersInfo> queryByUserCodeAndOrderCodeAndOrderStatus(Integer userCode,String orderCode,String orderStatus);
 	
 	  public void  deleteByUserCodeAndProCodOAndProTypeAndOrderCodeIsNull(Integer userCode,Integer proCode,String proType);
-
+	  public int updateOrderCanceTimeByOCodes(Integer oCodes);
 }
