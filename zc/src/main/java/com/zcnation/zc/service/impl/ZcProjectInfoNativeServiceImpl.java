@@ -40,5 +40,10 @@ public class ZcProjectInfoNativeServiceImpl implements ZcProjectInfoNativeServic
 		// TODO Auto-generated method stub
 		return zcProjectInfoNativeDao.findTotalByProShStatusAndPage(sortSele, sortBy, proType, proFabric);
 	}
+	@Override
+	public int updateProCanceTimeByProCode(Integer proCode) {
+		// TODO Auto-generated method stub
+		return zcProjectInfoNativeDao.updateProCanceTimeByProCode(proCode);
+	}
 
 }

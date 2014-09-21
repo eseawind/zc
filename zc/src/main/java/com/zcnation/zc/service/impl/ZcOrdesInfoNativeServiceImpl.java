@@ -27,5 +27,10 @@ public class ZcOrdesInfoNativeServiceImpl implements ZcOrdesInfoNativeService {
 		// TODO Auto-generated method stub
 		zcOrdersInfoNativeDao.deleteByUserCodeAndProCodOAndProTypeAndOrderCodeIsNull(userCode, proCode, proType);
 	}
+	@Override
+	public int updateOrderCanceTimeByOCodes(Integer oCodes) {
+		// TODO Auto-generated method stub
+		return zcOrdersInfoNativeDao.updateOrderCanceTimeByOCodes(oCodes);
+	}
 
 }
