@@ -11,6 +11,8 @@ public interface ZcOrdersInfoNativeDao {
 	
    public void  deleteByUserCodeAndProCodOAndProTypeAndOrderCodeIsNull(Integer userCode,Integer proCode,String proType);
    
+   public int updateOrderCanceTimeByOCodes(Integer oCodes);
+   
   // public int updateResourceInfo(ZcResourceInfo info);
 	
 

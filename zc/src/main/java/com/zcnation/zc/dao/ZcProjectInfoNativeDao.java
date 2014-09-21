@@ -21,6 +21,6 @@ public interface ZcProjectInfoNativeDao {
 	
 	public Integer findTotalByProShStatusAndPage(Integer sortSele,Integer sortBy,Integer proType,Integer proFabric);
 	
-	
+	  public int updateProCanceTimeByProCode(Integer proCode);
 
 }
