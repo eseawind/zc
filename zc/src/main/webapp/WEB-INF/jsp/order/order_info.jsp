@@ -71,7 +71,7 @@
  
   <section id="main">
     <div class="container_12">
-       <div id="sidebar" class="grid_3">
+       <div id="sidebar" class="grid_2">
 	      <aside id="categories_nav">
 		     <h3>个人设置</h3>
 
@@ -93,9 +93,9 @@
 
 		     <nav class="left_menu">
 			    <ul>
-				   <li><a href="projectinfo/project_like.xhtml">我喜欢的作品<span>(21)</span></a></li>
+				   <li><a href="projectinfo/project_like.xhtml">我喜欢的作品<span></span></a></li>
 				 <!--  <li><a href="#">我关注的作品<span> (27)</span></a></li> --> 
-				   <li><a href="projectinfo/project_publish.xhtml">我发表的作品<span>(33)</span></a></li>
+				   <li><a href="projectinfo/project_publish.xhtml">我发表的作品<span></span></a></li>
 			    </ul>
 		     </nav><!-- .left_menu -->
 	      </aside>
@@ -108,7 +108,7 @@
        </div><!-- .sidebar -->
 
 
-       <div id="content" class="grid_9">
+       <div id="content" class="grid_10">
 	      <h1 class="page_title">我的订单</h1>
 	        
 	      
@@ -121,7 +121,7 @@
            <td><input type="text" placeholder="请输入要查的订单号"  class="incInput" name="orderCode" value="${orderCode }" size="36" id="orderCode"></td>
             <td> 
            
-             <select  id="orderStatus" name="orderStatus" style="  height:33px;">
+             <select  id="orderStatus" name="orderStatus" style="height:33px;">
                         <option value="-1" selected="selected">全部</option>
                                  <option value="0" >已提交</option>
                                    <option value="1" >已取消</option>
@@ -144,7 +144,7 @@
 	      </FORM>
 	     
 
- <table border="0" cellpadding="0" cellspacing="0" class="tableStyle thback">
+ <table border="0" cellpadding="0" cellspacing="0" class="tableStyle thback" >
           <tbody><tr>
            <!--   <th>序号</th>-->
             <th>序号</th>
@@ -170,12 +170,21 @@
             
            		已提交
               </c:if>
-                   
+                        <c:if test="${ord[3]=='1' }">
+            
+           		已取消
+              </c:if>
                 
                        </td>
                        
                        
-                        <td> <a href="order/order_${ord[0]}.xhtml">详情</a>    取消</td>
+                        <td> <a href="order/order_${ord[0]}.xhtml">详情</a>  
+                        
+                          <c:if test="${ord[3]!='1' }">
+            
+           		 <a href="order/order_cancel${ord[0]}.xhtml" class="blue" onclick="return confirm('确定要取消该订单吗？');">取消</a>
+              </c:if>
+                             </td>
             </tr>
              </c:forEach> 
           

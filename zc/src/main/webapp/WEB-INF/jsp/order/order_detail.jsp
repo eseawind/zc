@@ -30,7 +30,7 @@
   
   <section id="main">
     <div class="container_12">
-       <div id="sidebar" class="grid_3">
+       <div id="sidebar" class="grid_2">
 	      <aside id="categories_nav">
 		     <h3>个人设置</h3>
 
@@ -52,9 +52,9 @@
 
 		     <nav class="left_menu">
 			    <ul>
-				   <li><a href="projectinfo/project_like.xhtml">我喜欢的作品<span>(21)</span></a></li>
+				   <li><a href="projectinfo/project_like.xhtml">我喜欢的作品<span></span></a></li>
 				 <!--  <li><a href="#">我关注的作品<span> (27)</span></a></li> --> 
-				   <li><a href="projectinfo/project_publish.xhtml">我发表的作品<span>(33)</span></a></li>
+				   <li><a href="projectinfo/project_publish.xhtml">我发表的作品<span></span></a></li>
 			    </ul>
 		     </nav><!-- .left_menu -->
 	      </aside>
@@ -66,7 +66,7 @@
 	   
        </div><!-- .sidebar -->
 
-       <div id="content" class="grid_9">
+       <div id="content" class="grid_10">
 	      <h1 class="page_title">订单详细<span style="padding-left: 500px;"> <a href="order/order_info.xhtml" style="font-size: 12px;cursor: pointer;">返回订单列表</a></span> </h1>
 	        
 
@@ -74,12 +74,27 @@
 <div class="incPadBox" style="margin-top: 15px;">
         <h6 class="marall1" style="height: 30px;">
           <p>
-                                          <a href="/payments/pay_orders?order_ids=50254" class="buthui">立即支付</a>
+            <c:if test="${zcOrdersInfo.orderStatus!='1' }">
+            
+           		  <a href="/payments/pay_orders?order_ids=50254" class="buthui">立即支付</a>
                                                                     <a href="#" class="buthui for_cancel" oid="50254">取消订单</a>
                                                           <a href="/orders/modify_order/50254" class="buthui">修改订单</a>
+              </c:if>
+          
+                                        
                                         </p>
           订单号：${zcOrdersInfo.orderCode }          <span class="marLet18">状态：</span>
-          <span class="fontred">已提交</span>
+          <span class="fontred">
+    <c:if test="${zcOrdersInfo.orderStatus =='0' }">
+            
+           		已提交
+              </c:if>     
+ <c:if test="${zcOrdersInfo.orderStatus =='1' }">
+            
+           		已取消
+              </c:if>      
+          
+        </span>
         </h6>
      <div class="orderProgress">
      
