@@ -302,7 +302,7 @@
   
   <section id="main">
     <div class="container_12">
-       <div id="sidebar" class="grid_3">
+       <div id="sidebar" class="grid_2">
 	      <aside id="categories_nav">
 		     <h3>个人设置</h3>
 
@@ -324,9 +324,9 @@
 
 		     <nav class="left_menu">
 			    <ul>
-				   <li><a href="projectinfo/project_like.xhtml">我喜欢的作品<span>(21)</span></a></li>
+				   <li><a href="projectinfo/project_like.xhtml">我喜欢的作品<span></span></a></li>
 				 <!--  <li><a href="#">我关注的作品<span> (27)</span></a></li> --> 
-				   <li><a href="projectinfo/project_publish.xhtml">我发表的作品<span>(33)</span></a></li>
+				   <li><a href="projectinfo/project_publish.xhtml">我发表的作品<span></span></a></li>
 			    </ul>
 		     </nav><!-- .left_menu -->
 	      </aside>
@@ -338,7 +338,7 @@
 	   
        </div><!-- .sidebar -->
 
-       <div id="content" class="grid_9">
+       <div id="content" class="grid_10">
 	      <h1 class="page_title">资料修改</h1>
 	        
  <FORM class=registed method=post action=""  name="updateForm" id="updateForm" >

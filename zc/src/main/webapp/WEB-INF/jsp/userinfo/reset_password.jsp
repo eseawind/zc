@@ -89,7 +89,8 @@
 				},
 				initlogin:function(){
 					//登录
-					$("#btnNext").bind('click',function(){
+					$("#btnNext").bind('click',function(e){
+						e.preventDefault();
 						if(login.validate()){
 							var formJson=$("#loginForm").serializeArray();
 							$.post("userinfo/beginNext.html",formJson,function(data){

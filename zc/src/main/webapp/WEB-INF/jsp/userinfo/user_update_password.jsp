@@ -30,7 +30,9 @@
 							var formJson=$("#updateForm").serializeArray();
 							
 							$.post("userinfo/beginUpdatePssword.xhtml",formJson,function(data){
+								
 								var d=$.eval2(data);
+							
 								if(d.success){
 									$.alert("修改提示","修改成功");
 								}else{
@@ -201,9 +203,9 @@
 
 		     <nav class="left_menu">
 			    <ul>
-				   <li><a href="projectinfo/project_like.xhtml">我喜欢的作品<span>(21)</span></a></li>
+				   <li><a href="projectinfo/project_like.xhtml">我喜欢的作品<span></span></a></li>
 				 <!--  <li><a href="#">我关注的作品<span> (27)</span></a></li> --> 
-				   <li><a href="projectinfo/project_publish.xhtml">我发表的作品<span>(33)</span></a></li>
+				   <li><a href="projectinfo/project_publish.xhtml">我发表的作品<span></span></a></li>
 			    </ul>
 		     </nav><!-- .left_menu -->
 	      </aside>
@@ -250,7 +252,7 @@
 							
 				<div class="submit">										
 					 
-                        <button type="submit" class="button blue">保存</button>
+                        <button type="submit" class="button blue" id="btnUpdate">保存</button>
 				</div><!-- .submit -->
 			</form>
 		<div class="clear"></div>
