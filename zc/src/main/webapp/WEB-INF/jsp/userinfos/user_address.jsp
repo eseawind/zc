@@ -74,7 +74,7 @@
    
   <section id="main">
     <div class="container_12">
-       <div id="sidebar" class="grid_3">
+       <div id="sidebar" class="grid_2">
 	      <aside id="categories_nav">
 		     <h3>个人设置</h3>
 
@@ -96,9 +96,9 @@
 
 		     <nav class="left_menu">
 			    <ul>
-				   <li><a href="projectinfo/project_like.xhtml">我喜欢的作品<span>(21)</span></a></li>
+				   <li><a href="projectinfo/project_like.xhtml">我喜欢的作品<span></span></a></li>
 				 <!--  <li><a href="#">我关注的作品<span> (27)</span></a></li> --> 
-				   <li><a href="projectinfo/project_publish.xhtml">我发表的作品<span>(33)</span></a></li>
+				   <li><a href="projectinfo/project_publish.xhtml">我发表的作品<span></span></a></li>
 			    </ul>
 		     </nav><!-- .left_menu -->
 	      </aside>
@@ -110,14 +110,14 @@
 	   
        </div><!-- .sidebar -->
 
-       <div id="content" class="grid_9">
-	      <h1 class="page_title">收货地址<span style="padding-left: 490px;"><a href="userinfos/address_add.xhtml" style="font-size: 12px;cursor: pointer;">添加常用收货人</a></span></h1>
+       <div id="content" class="grid_10">
+	      <h1 class="page_title" style="border-bottom: 0px;"><span style="padding-left:20px;">收货地址</span><span style="padding-left:520px;"><a href="userinfos/address_add.xhtml" style="font-size: 12px;cursor: pointer;">添加常用收货人</a></span></h1>
 	      
 	      
 	      
 	    
  <table border="0" cellpadding="0" cellspacing="0" class="tableStyle thback">
-          <tbody><tr>
+          <tbody><tr >
             <th>序号</th>
             <th>姓名</th>
             <th>联系电话</th>
