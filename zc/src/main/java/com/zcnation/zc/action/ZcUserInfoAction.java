@@ -305,6 +305,9 @@ public class ZcUserInfoAction {
 				zcUserInfo.setPassword(sezcUserInfo.getPassword());
 				zcUserInfo.setRegIp(sezcUserInfo.getRegIp());
 				zcUserInfo.setRegTime(sezcUserInfo.getRegTime());
+				zcUserInfo.setUserScore(sezcUserInfo.getUserScore());
+				zcUserInfo.setUserRandomCode(sezcUserInfo.getUserRandomCode());
+				zcUserInfo.setLoginTime(sezcUserInfo.getLoginTime());
 				System.out.println("用户编号："+zcUserInfo.getUserCode());
 				int a=zcUserInfoService.update(zcUserInfo);
 				if (a>0) {

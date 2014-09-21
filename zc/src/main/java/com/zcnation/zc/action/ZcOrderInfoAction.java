@@ -79,6 +79,7 @@ public class ZcOrderInfoAction {
 		Calendar ordtime=Calendar.getInstance();
 		ZcOrdersInfo orderinfo=new ZcOrdersInfo();
 		
+		orderinfo.setUserName(zUserInfos.getUserName());
 		orderinfo.setUserAddress(zUserInfos.getUserAddress());
 		orderinfo.setUserProvince(zUserInfos.getUserProvince());
 		orderinfo.setUserCity(zUserInfos.getUserCity());
@@ -251,6 +252,29 @@ public class ZcOrderInfoAction {
 		
 		
 			return "redirect:../order/order_cart.xhtml";
+
+	}
+	
+	
+	@RequestMapping("/order_cancel{oCodes}.xhtml")
+	public String to_cancel(@PathVariable("oCodes") String oCodes,
+			HttpServletRequest request) {
+		System.out.println("userCode:" + oCodes);
+		zcOrdesInfoNativeService.updateOrderCanceTimeByOCodes(Integer.parseInt(oCodes));
+
+		try {
+//			ZcProjectLike zcProjectLike = zcProjecLikeService.queryOne(Integer
+//					.parseInt(userCode));
+			//zcProjecLikeService.delete(zcProjectLike);
+			// ZcUserInfos zcUserInfos=
+			// zcUserInfosService.queryOne(Integer.parseInt(userCode));
+			// zcUserInfosService.delete(zcUserInfos);
+			// zcProjecLikeService.deleteByLikeCode((Integer.parseInt(userCode)));
+		} catch (Exception e) {
+			RootLogger.error(e);
+		}
+
+		return "redirect:../order/order_info.xhtml";
 
 	}
 

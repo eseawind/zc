@@ -40,6 +40,7 @@ import com.zcnation.zc.context.ZcContext;
 import com.zcnation.zc.domain.CartInfo;
 import com.zcnation.zc.domain.ZcAppraise;
 import com.zcnation.zc.domain.ZcOrderDetail;
+import com.zcnation.zc.domain.ZcOrdersInfo;
 import com.zcnation.zc.domain.ZcProjectInfo;
 import com.zcnation.zc.domain.ZcProjectLike;
 import com.zcnation.zc.domain.ZcResourceInfo;
@@ -599,8 +600,62 @@ public class ZcProjectInfoAction {
 		r.setSuccess(true);
 		return r.toJson();
 	}
+	@RequestMapping("/project_{detailid}.xhtml")
+	public String to_detail(@PathVariable("detailid") String detailId,
+			HttpServletRequest request) {
+		//System.out.println("detailid:" + detailId);
+		ZcProjectInfo zcProjectInfo=zcProjectInfoService.queryOne(Integer.parseInt(detailId));
+		
+		
+		
+//		try {
+//			int preCode = NumberUtils.toInt(detailId);
+//			ZcProjectInfo info = zcProjectInfoService.queryOne(preCode);
+//			request.setAttribute("infoPro", info);
+//		} catch (Exception e) {
+//			RootLogger.error(e);
+//		}
+//		
+//		
+//		List<ZcAppraise> applist=new ArrayList<ZcAppraise>();
+//		applist=zcAppraiseService.queryByProCode(Integer.parseInt(detailId));
+//		
+//		List list=new ArrayList();
+//		list=zcAppraiseNativeService.queryByProCodeAndOrderCodeIsNotNull(Integer.parseInt(detailId));
+//		System.out.println(list.size());
+//		
+//
+//		request.setAttribute("applist", applist);
+//		request.setAttribute("userlist", list);
+		request.setAttribute("zcProjectInfo", zcProjectInfo);
+		return "projectinfo/project_detail";
+	}
 
+	
+	@RequestMapping("/project_cancel{proCode}.xhtml")
+	public String to_cancel(@PathVariable("proCode") String proCode,
+			HttpServletRequest request) {
+		System.out.println("proCode:" + proCode);
+		zcProjectInfoNativeService.updateProCanceTimeByProCode(Integer.parseInt(proCode));
 
+		try {
+//			ZcProjectLike zcProjectLike = zcProjecLikeService.queryOne(Integer
+//					.parseInt(userCode));
+			//zcProjecLikeService.delete(zcProjectLike);
+			// ZcUserInfos zcUserInfos=
+			// zcUserInfosService.queryOne(Integer.parseInt(userCode));
+			// zcUserInfosService.delete(zcUserInfos);
+			// zcProjecLikeService.deleteByLikeCode((Integer.parseInt(userCode)));
+		} catch (Exception e) {
+			RootLogger.error(e);
+		}
+
+		return "redirect:../projectinfo/project_publish.xhtml";
+
+	}
+
+	
+	
 	public static void main(String[] args) {
 		System.out.println("ddd");
 	}
