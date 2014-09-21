@@ -120,6 +120,15 @@
 		});
 		  $("#appraiseSub").click(function(e){
 	   			e.preventDefault();
+	   			
+	   			$.each($("span[name='2']"),function(){
+	   				alert($(this).attr("class"));
+	   			
+	   				}
+	   			)
+	   			return;
+	   			
+	   			
 	   			var rang = $("input[name='quality1']:checked");
 	   			if(rang.length==0){
 					$.alert("评价提示","请选择分数");
@@ -136,6 +145,8 @@
 					return;
 	   				
 	   			}
+	   			
+	   			return;
 	   			var proCode=$("#proCode").val();
 	   			$.post("appraise/beginAddAppraise.xhtml",{appraiseCount:rang.val(),remarks:remarks,proCode:proCode},function(data){
 	   				var d=$.eval2(data);
@@ -335,11 +346,11 @@
 							<div class="evaluation">
 								<div class="quality" >
 									<strong>评价</strong><sup class="surely">*</sup>
-									<input type="radio"  name="quality1" value="1" />		<span  class="eva_num">1</span>
-									<input  type="radio"   name="quality1" value="2" /><span class="eva_num">2</span>
-									<input  type="radio"  name="quality1" value="3" /><span class="eva_num">3</span>
-									<input type="radio"  name="quality1" value="4" /><span class="eva_num">4</span>
-									<input type="radio" name="quality1" value="5" /><span class="eva_num">5</span>
+									<input type="radio" class="niceRadio"  name="quality1" value="1" /><span name="1"  class="eva_num">1</span>
+									<input  type="radio" class="niceRadio"  name="quality1" value="2" /><span name="1" class="eva_num">2</span>
+									<input  type="radio" class="niceRadio"  name="quality1" value="3" /><span name="1" class="eva_num">3</span>
+									<input type="radio" class="niceRadio" name="quality1" value="4" /><span name="1" class="eva_num">4</span>
+									<input type="radio" class="niceRadio" name="quality1" value="5" /><span name="1" class="eva_num">5</span>
 								</div>
 								
 								<div class="clear"></div>

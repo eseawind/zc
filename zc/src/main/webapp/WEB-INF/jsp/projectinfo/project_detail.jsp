@@ -12,8 +12,12 @@
   <meta name="description" content="">
   <meta name="keywords" content="">
 
-  <title>我发表的作品</title>
+  <title>订单详细</title>
 
+<style type="text/css">
+
+
+</style>
 
 </head>
 <body>
@@ -62,93 +66,102 @@
 	   
        </div><!-- .sidebar -->
 
-
        <div id="content" class="grid_10">
-	      <h1 class="page_title">发表的作品</h1>
-	      <FORM method=post action="projectinfo/project_publish.xhtml" id="searchForm">
-		
-		   <table style="border-top: 0px;">
-           <tr>
-           <td> <input type="text" placeholder="请输入作品名称" class="incInput" name="proName" value="${proName }" size="36" id="proName"></td>
-            <td> 
-           
-             <select  id="proShStatus" name="proShStatus" style="  height:33px;">
-                        <option value="-1" selected="selected">全部</option>
-                                  <option value="0">审核中</option>
-                                  <option value="1">取消作品</option>
-                                     <option value="2">审核成功</option>
-                                    <option value="3">众筹中</option>
-                                    <option value="4">众筹成功</option>
-                                     <option value="4">众筹失败</option>
-                                    
-                      </select>
-                    
-                     </td>
-                     <td>
-                      <input type="hidden" id="proStatusSelect" name="proStatusSelect" value="${proShStatus }">
-                        
-                        <button type="submit" class="button blue">查询</button></td>
-           </tr>
-           </table>
-		
-		
-		
-	      </FORM>
-	      
+	      <h1 class="page_title">作品详细<span style="padding-left: 530px;"> <a href="projectinfo/project_publish.xhtml" style="font-size: 12px;cursor: pointer;">返回作品列表</a></span> </h1>
+	        
 
-<table border="0" cellpadding="0" cellspacing="0" class="tableStyle thback"  style="width: 100%">
-          <tbody><tr>
-            <th>序号</th>
-            <th >作品名称</th>
-            <th>发布日期</th>
-             <th>截止日期</th>
-              <th>目标</th>
-              <th>天数</th>
-            <th>状态</th>
-              <th>操作</th>
-          </tr>
-           <c:forEach items="${proinfos}" var="pro" varStatus="status">
-               <tr>
-                  <td><c:out value="${status.count}"/></td>
-               <td align="left"><a href="projectinfo/project_<c:out value="${pro[0]}"></c:out>.html"> <img src="uploadImg/<c:out value="${pro[6]}"></c:out>" width="100" height="100" style="cursor: pointer;" alt="" title="" /></a>
-               
-             <span style="vertical-align: top;line-height: 30px;"> <a href="projectinfo/project_<c:out value="${pro[0]}"></c:out>.html">  <c:out value="${pro[1]}"></c:out></a></span>
-               </td>
-             
-              <td><c:out value="${pro[7]}"></c:out></td>
-             
-              <td><c:out value="${pro[8]}"></c:out></td>
-               <td><c:out value="${pro[3]}"></c:out></td>
-                <td><c:out value="${pro[9]}"></c:out></td>
-              <td>
-              
-                
-                 
-              <c:if test="${pro[2]=='0' }">
+
+<div class="incPadBox" style="margin-top: 15px;">
+        <h6 class="marall1" style="height: 30px;">
+          <p>
+            <c:if test="${zcOrdersInfo.orderStatus!='1' }">
             
-           		   审核中
+           		<!--  <a href="/payments/pay_orders?order_ids=50254" class="buthui">立即支付</a>-->  
+                                                                    <a href="#" class="buthui for_cancel" oid="50254">取消作品</a>
+                                                       <!--   <a href="/orders/modify_order/50254" class="buthui">修改订单</a>-->  
               </c:if>
-                   
-                  <c:if test="${pro[2]=='1' }">
-            
-           		 已取消
-              </c:if>
-              <c:if test="${pro[2]=='2' }">
-            
-           		审核成功
-              </c:if>
-                   
-                       </td>
-                        <td><a href="projectinfo/project_<c:out value="${pro[0]}"></c:out>.xhtml">详情</a>  
-                         <a href="projectinfo/project_cancel${pro[0]}.xhtml" class="blue" onclick="return confirm('确定要取消该作品吗？');">取消</a></td>
-                       
-            </tr>
-             </c:forEach> 
           
-                    
-                  </tbody></table>
+                                        
+                                        </p>
+          作品名字：${zcProjectInfo.proName }          <span class="marLet18">状态：</span>
+          <span class="fontred">
+    <c:if test="${zcProjectInfo.proShStatus =='0' }">
+            
+           		审核中
+              </c:if>     
+ <c:if test="${zcProjectInfo.proShStatus =='1' }">
+            
+           		已取消
+              </c:if>      
+          
+        </span>
+        </h6>
+     <div class="orderProgress">
+     
+      <p style="padding-left: 220px;">
+           <img  id="proImg" name="proImg" style="width:319px;height:319px;" src="uploadImg/${zcProjectInfo.resourceInfo.resourceName }"> </p></div>
+     
+             
+     
+      </div>
 
 
+
+
+		<div class="incPadBox">
+        <h6 class="marall1">基本信息</h6>
+        <div class="orderTracking">
+          <dl class="clearfix hui">
+            <dd>作品名称：${zcProjectInfo.proName }   </dd>
+             <dd>目标：${zcProjectInfo.proTarget } </dd>
+                 <dd>单价：${zcProjectInfo.proUnit } 元</dd>
+                <dd>筹集天数：${zcProjectInfo.proDays } </dd>
+                   <dd>类别： <c:if test="${zcProjectInfo.proType =='1' }">
+           		短袖
+              </c:if>   
+               <c:if test="${zcProjectInfo.proType =='2' }">
+           		长袖
+              </c:if>   
+                </dd>
+                 <dd>面料：<c:if test="${zcProjectInfo.proFabric =='1' }">
+           		尼龙
+              </c:if>   
+               <c:if test="${zcProjectInfo.proFabric =='2' }">
+           		棉布
+</c:if>
+</dd>
+ <dd>打样：<c:if test="${zcProjectInfo.proSample =='1' }">
+           		是
+              </c:if>   
+               <c:if test="${zcProjectInfo.proSample =='2' }">
+           		否
+</c:if>
+</dd>
+   <dd>项目地点：${zcProjectInfo.proProvince } ,${zcProjectInfo.proCity } </dd>
+    <dd>作品简介：${zcProjectInfo.proRemarks } </dd>
+     <dd>标签：${zcProjectInfo.proTag} </dd>
+          
+                                  </dl>
+                              
+        </div>
+        
+      </div>
+      
+      <div class="incPadBox">
+        <h6 class="marall1">审核意见</h6>
+        <div class="orderTracking">
+          <dl class="clearfix hui">
+            <dd>不错粗不粗粗粗吃醋醋醋醋</dd>
+          </dl>
+                  
+                  </div>
+      </div>
+      
+     
+      
+      
+      
+      
 		<div class="clear"></div>
 
        </div><!-- #content -->
@@ -212,9 +225,7 @@
       </div><!-- .container_12 -->
     </div><!-- .f_navigation -->
 
-   
   </footer>
 
-<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
 </body>
 </html>

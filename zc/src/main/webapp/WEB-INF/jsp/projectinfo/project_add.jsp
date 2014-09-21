@@ -553,9 +553,8 @@ float: left;
        <span>友情提示</span>
           <br>
       </div>
-        1.ssss的范德萨发是的范德萨范德萨发送到<br>
-         2.zxjkhzvdsjfhsdkf的粉红色的<br>
-          3.的时间发动机是粉红色的和福克斯的合肥市接口的<br>
+        1. 图案分为正反两面。<br>
+         2.单色图案建议价格:40;2-4色图案建议价格:50
                 </div><!-- .grid_6 -->
       <div class="clear"></div>
     </div><!-- .container_12 -->
