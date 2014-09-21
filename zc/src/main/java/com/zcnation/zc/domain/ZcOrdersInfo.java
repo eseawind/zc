@@ -58,6 +58,14 @@ public class ZcOrdersInfo implements Serializable {
 	@Column(name="USER_EMAIL")
 	private String userEmail;
 	
+	@Column(name="ORDER_CANCELTIME")
+	private Date orderCancelTime;
+	
+	@Column(name="ORDER_PAYTIME")
+	private Date orderPayTime;
+	
+	@Column(name="ORDER_SUCCESSTIME")
+	private Date orderSuccessTime;
 
 	public String getUserAddress() {
 		return userAddress;
@@ -169,6 +177,30 @@ public class ZcOrdersInfo implements Serializable {
 
 	public void setOrderTime(Date orderTime) {
 		this.orderTime = orderTime;
+	}
+
+	public Date getOrderCancelTime() {
+		return orderCancelTime;
+	}
+
+	public void setOrderCancelTime(Date orderCancelTime) {
+		this.orderCancelTime = orderCancelTime;
+	}
+
+	public Date getOrderPayTime() {
+		return orderPayTime;
+	}
+
+	public void setOrderPayTime(Date orderPayTime) {
+		this.orderPayTime = orderPayTime;
+	}
+
+	public Date getOrderSuccessTime() {
+		return orderSuccessTime;
+	}
+
+	public void setOrderSuccessTime(Date orderSuccessTime) {
+		this.orderSuccessTime = orderSuccessTime;
 	}
 
 	 

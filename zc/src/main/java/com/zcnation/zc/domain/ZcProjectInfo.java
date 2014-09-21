@@ -71,6 +71,11 @@ public class ZcProjectInfo implements Serializable {
 	
 	@Column(name="PRO_ENDTIME")
 	private Date proEndTime;
+	@Column(name="PRO_CANCELTIME")
+	private Date proCancelTime;
+	
+	
+	
 	
 	@OneToOne
 	@JoinColumn(name="RESOURCE_CODE",referencedColumnName="RESOURCE_CODE")
@@ -234,6 +239,14 @@ public class ZcProjectInfo implements Serializable {
 
 	public void setProEndTime(Date proEndTime) {
 		this.proEndTime = proEndTime;
+	}
+
+	public Date getProCancelTime() {
+		return proCancelTime;
+	}
+
+	public void setProCancelTime(Date proCancelTime) {
+		this.proCancelTime = proCancelTime;
 	}
 	
 	
