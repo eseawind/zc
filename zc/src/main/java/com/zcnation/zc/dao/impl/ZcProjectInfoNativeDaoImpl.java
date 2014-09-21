@@ -1,5 +1,7 @@
 package com.zcnation.zc.dao.impl;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -26,7 +28,7 @@ public class ZcProjectInfoNativeDaoImpl implements ZcProjectInfoNativeDao{
 	public List<ZcProjectInfo> findByUserCodeAndProShStatusAndProNameAndProShStatus(Integer userCode,
 			String proName,String proShStatus) {
 		// TODO Auto-generated method stub
-		String sql="select zpi.PRO_CODE,zpi.PRO_NAME,zpi.PRO_SH_STATUS,zpi.PRO_TARGET,zpi.RESOURCE_CODE as zpircode,zri.RESOURCE_CODE as zrircode,zri.RESOURCE_NAME from zc_project_info zpi left JOIN zc_resource_info zri on zpi.RESOURCE_CODE=zri.RESOURCE_CODE where 1=1 ";
+		String sql="select zpi.PRO_CODE,zpi.PRO_NAME,zpi.PRO_SH_STATUS,zpi.PRO_TARGET,zpi.RESOURCE_CODE as zpircode,zri.RESOURCE_CODE as zrircode,zri.RESOURCE_NAME,zpi.PRO_STARTTIME,zpi.PRO_ENDTIME,zpi.PRO_DAYS from zc_project_info zpi left JOIN zc_resource_info zri on zpi.RESOURCE_CODE=zri.RESOURCE_CODE where 1=1 ";
 		
 		if(userCode!=0){
 		 sql=sql+"  and  zpi.USER_CODE="+userCode+"";
@@ -45,11 +47,11 @@ public class ZcProjectInfoNativeDaoImpl implements ZcProjectInfoNativeDao{
 		EntityManager em=entityManagerFactory.createEntityManager();
 		Query query=em.createNativeQuery(sql);
 		List list=query.getResultList();
-		for (Object object : list) {
-			//这个object应该是个数组
-			Object[] oj=(Object[])object;
-			System.out.println("项目名称："+oj[0]+" 资源名称："+oj[1]);
-		}
+//		for (Object object : list) {
+//			//这个object应该是个数组
+//			Object[] oj=(Object[])object;
+//			System.out.println("项目名称："+oj[0]+" 资源名称："+oj[1]);
+//		}
 		return list;
 	}
 	/**
@@ -179,6 +181,21 @@ public class ZcProjectInfoNativeDaoImpl implements ZcProjectInfoNativeDao{
 			 Query query = em.createNativeQuery(sql); 
 			 Integer total = query.getResultList().size();  
 		return total;
+	}
+	@Override
+	public int updateProCanceTimeByProCode(Integer proCode) {
+		// TODO Auto-generated method stub
+		String sql="update   zc_project_info t set t.PRO_CANCELTIME='"+new Timestamp(
+		        Calendar.getInstance().getTimeInMillis())+"', t.PRO_SH_STATUS='1' where t.PRO_CODE='"+proCode+"'";
+		System.out.println(sql);
+		EntityManager em=entityManagerFactory.createEntityManager();
+		em.getTransaction().begin();
+		Query query=em.createNativeQuery(sql);
+		int flag= query.executeUpdate();
+	
+		em.getTransaction().commit();
+		
+		return 0;
 	}
 	
 	

@@ -1,5 +1,7 @@
 package com.zcnation.zc.dao.impl;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -65,6 +67,22 @@ public class ZcOrdersInfoNativeDaoImpl implements ZcOrdersInfoNativeDao{
 			// TODO: handle exception
 		}
 		
+	}
+	@Override
+	public int updateOrderCanceTimeByOCodes(Integer oCodes) {
+		// TODO Auto-generated method stub
+		
+		String sql="update   zc_orders_info t set t.ORDER_CANCELTIME='"+new Timestamp(
+		        Calendar.getInstance().getTimeInMillis())+"', t.ORDER_STATUS='1' where t.OCODES='"+oCodes+"'";
+		System.out.println(sql);
+		EntityManager em=entityManagerFactory.createEntityManager();
+		em.getTransaction().begin();
+		Query query=em.createNativeQuery(sql);
+		int flag= query.executeUpdate();
+	
+		em.getTransaction().commit();
+		
+		return 0;
 	}
 				
 	}
