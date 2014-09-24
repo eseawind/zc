@@ -1,6 +1,6 @@
 /* �������?��ͷ�� www.datouwang.com */
 $(function(){
-	$(".tag_item").each(function(i, target){
+	/***$(".tag_item").each(function(i, target){
 		$(target).mouseenter(function(e){
 			//stop current animation.
 			$(target).stop();
@@ -33,5 +33,5 @@ $(function(){
 				left: "0"
 			}, "normal");
 		});
-	})
+	})***/
 });

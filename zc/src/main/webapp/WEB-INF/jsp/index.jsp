@@ -11,8 +11,8 @@
 <head>
   <meta charset="UTF-8">
 
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <meta name="description" content="T恤众筹平台，打造属于自己的style">
+  <meta name="keywords" content="小众派">
 
   <title>Home</title>
 

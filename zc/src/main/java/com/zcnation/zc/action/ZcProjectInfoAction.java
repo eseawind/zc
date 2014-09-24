@@ -73,24 +73,21 @@ public class ZcProjectInfoAction {
 	private ZcProjecLikeService zcProjecLikeService;
 	@Autowired
 	private ZcProjectInfoNativeService zcProjectInfoNativeService;
-	
+
 	@Autowired
 	private ZcProjectLikeNativeService zcProjectLikeNativeService;
-	
+
 	@Autowired
 	private ZcOrderDetailNativeService zcOrderDetailNativeService;
-	
-	
+
 	@Autowired
 	private ZcAppraiseService zcAppraiseService;
-	
+
 	@Autowired
 	private ZcOrderDetailService zcOrderDetailService;
-	
+
 	@Autowired
 	private ZcAppraiseNativeService zcAppraiseNativeService;
-	
-	
 
 	@RequestMapping("/project_add.xhtml")
 	public String to_add(HttpServletRequest request) {
@@ -99,21 +96,20 @@ public class ZcProjectInfoAction {
 
 	@RequestMapping("/project_list.html")
 	public String to_list(HttpServletRequest request, String currentPage,
-			String sortSele, String sortBy,String proType,String proFabric) {
-		   Getpagenum getpagenum=new Getpagenum();
-		
+			String sortSele, String sortBy, String proType, String proFabric) {
+		Getpagenum getpagenum = new Getpagenum();
+
 		ZcUserInfo sezcUserInfo = (ZcUserInfo) request.getSession()
 				.getAttribute(ZcContext.LOGIN_USER_KEY);
-	
-		Integer userCode=0;
-		
-		if(sezcUserInfo==null||sezcUserInfo.equals("")){
-		}else{
-			
-			userCode=sezcUserInfo.getUserCode();
+
+		Integer userCode = 0;
+
+		if (sezcUserInfo == null || sezcUserInfo.equals("")) {
+		} else {
+
+			userCode = sezcUserInfo.getUserCode();
 		}
-		
-		
+
 		if (currentPage == null || currentPage.equals("")) {
 
 			currentPage = "1";
@@ -128,20 +124,25 @@ public class ZcProjectInfoAction {
 			sortBy = "0";
 		}
 
-	
 		List<ZcProjectInfo> prolist = new ArrayList<ZcProjectInfo>();
 		prolist = zcProjectInfoNativeService.queryByProShStatusAndPage(
 				Integer.parseInt(currentPage), Integer.parseInt(sortSele),
-				Integer.parseInt(sortBy),Integer.parseInt(proType),Integer.parseInt(proFabric),userCode);
-		
+				Integer.parseInt(sortBy), Integer.parseInt(proType),
+				Integer.parseInt(proFabric), userCode);
+
 		request.setAttribute("proinfos", prolist);
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("sortSele", sortSele);
 		request.setAttribute("sortBy", sortBy);
-		request.setAttribute("pagesize",getpagenum.getpagenum (zcProjectInfoNativeService.queryTtotalByProShStatusAndPage( Integer.parseInt(sortSele), Integer.parseInt( sortBy), Integer.parseInt( proType),  Integer.parseInt(proFabric)),16));
+		request.setAttribute("pagesize",
+				getpagenum.getpagenum(zcProjectInfoNativeService
+						.queryTtotalByProShStatusAndPage(
+								Integer.parseInt(sortSele),
+								Integer.parseInt(sortBy),
+								Integer.parseInt(proType),
+								Integer.parseInt(proFabric)), 16));
 		request.setAttribute("proType", proType);
 		request.setAttribute("proFabric", proFabric);
-		
 
 		return "projectinfo/project_list";
 	}
@@ -216,15 +217,14 @@ public class ZcProjectInfoAction {
 		} catch (Exception e) {
 			RootLogger.error(e);
 		}
-		
-		
-		List<ZcAppraise> applist=new ArrayList<ZcAppraise>();
-		applist=zcAppraiseService.queryByProCode(Integer.parseInt(detailId));
-		
-		List list=new ArrayList();
-		list=zcAppraiseNativeService.queryByProCodeAndOrderCodeIsNotNull(Integer.parseInt(detailId));
+
+		List<ZcAppraise> applist = new ArrayList<ZcAppraise>();
+		applist = zcAppraiseService.queryByProCode(Integer.parseInt(detailId));
+
+		List list = new ArrayList();
+		list = zcAppraiseNativeService
+				.queryByProCodeAndOrderCodeIsNotNull(Integer.parseInt(detailId));
 		System.out.println(list.size());
-		
 
 		request.setAttribute("applist", applist);
 		request.setAttribute("userlist", list);
@@ -242,48 +242,52 @@ public class ZcProjectInfoAction {
 				.getSession().getServletContext());
 		MultipartHttpServletRequest mulreq = resolver.resolveMultipart(request);
 		System.out.println("名称：" + mulreq.getParameter("proName"));
-		
-		 ZcProjectInfo zInfo =zcProjectInfoService.queryByProName( mulreq.getParameter("proName").trim());
-		 
-		
-		 if(zInfo!=null){
-			 rs.setSuccess(false);
-				rs.getErrorMsgs().add("作品名字已被使用");
-				RootLogger.error("项目名称有重复.");
-				
-				//throw new NotValidateCorrectException("项目名称有重复");
-		 }else{
-			// 单文件
-				MultipartFile file = mulreq.getFile("fileupload");
-				// List<MultipartFile> fileupload=mulreq.getFiles("fileupload");
-				RootLogger.info("上传文件名称：" + file.getOriginalFilename());
-				String fileName = file.getOriginalFilename();
 
-				String realPath = request.getSession().getServletContext()
-						.getRealPath(IMAGE_DIR);
-				File realFile = new File(realPath);
-				if (!realFile.exists()) {
-					realFile.mkdirs();
-				}
+		ZcProjectInfo zInfo = zcProjectInfoService.queryByProName(mulreq
+				.getParameter("proName").trim());
 
-				FileOutputStream fos = null;
-				InputStream ins = null;
-				try {
-					if (!file.isEmpty()) {
-						Result r = validateUpload(mulreq, file);
-						if (r.isSuccess()) {
-							ZcProjectInfo pinfo = (ZcProjectInfo) r.getReturnValue();
+		if (zInfo != null) {
+			rs.setSuccess(false);
+			rs.getErrorMsgs().add("作品名字已被使用");
+			RootLogger.error("项目名称有重复.");
+
+			// throw new NotValidateCorrectException("项目名称有重复");
+		} else {
+			// 多文件
+			List<MultipartFile> listfiles = mulreq.getFiles("fileupload");
+			Result r = validateUpload(mulreq);
+			if (r.isSuccess()) {
+				ZcProjectInfo pinfo = (ZcProjectInfo) r.getReturnValue();
+				for (int i = 0; i < listfiles.size(); i++) {
+					// 单文件
+					// MultipartFile file = mulreq.getFile("fileupload");
+					MultipartFile file = listfiles.get(i);
+					// List<MultipartFile>
+					// fileupload=mulreq.getFiles("fileupload");
+					RootLogger.info("上传文件名称：" + file.getOriginalFilename());
+					String fileName = file.getOriginalFilename();
+
+					String realPath = request.getSession().getServletContext()
+							.getRealPath(IMAGE_DIR);
+					File realFile = new File(realPath);
+					if (!realFile.exists()) {
+						realFile.mkdirs();
+					}
+
+					FileOutputStream fos = null;
+					InputStream ins = null;
+					try {
+						if (!file.isEmpty()) {
 							// 上传文件
 							String imageType = StringUtils.substring(fileName,
 									StringUtils.lastIndexOf(fileName, "."));
 							Date uploadDate = Calendar.getInstance().getTime();
-							String uploadTime = DateFormatUtils.format(uploadDate,
-									"yyyyMMddHHmmss");
-							String targetFileName = genaretorTargeFileName(uploadTime,
-									imageType);
+							String uploadTime = DateFormatUtils.format(
+									uploadDate, "yyyyMMddHHmmss");
+							String targetFileName = genaretorTargeFileName(
+									uploadTime, imageType);
 							System.out.println("目标文件名称：" + targetFileName);
 							File targetFile = new File(realFile, targetFileName);
-
 							ins = file.getInputStream();
 							fos = new FileOutputStream(targetFile);
 							byte[] b = new byte[1024 * 1024];
@@ -293,10 +297,11 @@ public class ZcProjectInfoAction {
 								fos.flush();
 							}
 							// 水印输出
-							String srcFile = request.getSession().getServletContext()
-									.getRealPath("/images")
+							String srcFile = request.getSession()
+									.getServletContext().getRealPath("/images")
 									+ "/6_front.jpg";
-							ImageUtil.pressImage(srcFile, targetFile.getAbsolutePath(),
+							ImageUtil.pressImage(srcFile,
+									targetFile.getAbsolutePath(),
 									targetFile.getAbsolutePath());
 							ZcResourceInfo zr = new ZcResourceInfo();
 							zr.setUptDate(uploadDate);
@@ -308,26 +313,25 @@ public class ZcProjectInfoAction {
 									.saveResourceInfo(zr);
 							pinfo.setResourceInfo(saveZr);
 							// pinfo.setResourceCode(saveZr.getResourceCode());
-							zcProjectInfoService.save(pinfo);
+							if (i==0) {//正面
+								zcProjectInfoService.save(pinfo);
+							}
 							rs.setSuccess(true);
 							RootLogger.info("图片上传成功...");
 						}
+					} catch (IOException e) {
+						rs.setSuccess(false);
+						rs.getErrorMsgs().add(e.getMessage());
+						RootLogger.error("上传图片出错.");
+						RootLogger.error(e);
+						throw new NotValidateCorrectException("上传项目出错");
+					} finally {
+						IOUtils.closeQuietly(ins);
+						IOUtils.closeQuietly(fos);
 					}
-				} catch (IOException e) {
-					rs.setSuccess(false);
-					rs.getErrorMsgs().add(e.getMessage());
-					RootLogger.error("上传图片出错.");
-					RootLogger.error(e);
-					throw new NotValidateCorrectException("上传项目出错");
-				} finally {
-					IOUtils.closeQuietly(ins);
-					IOUtils.closeQuietly(fos);
-				} 
-			 
-		 }
-		
-		
-		
+				}
+			}
+		}
 
 		return rs.toJson();
 		// return zcProjectInfoService.save(zcProjectInfo);
@@ -338,24 +342,20 @@ public class ZcProjectInfoAction {
 	public String beginAddProjectLike(HttpServletRequest request,
 			@ModelAttribute ZcProjectLike zcProjectLike, String proCode) {
 		Result rs = new Result();
-		
-		
-		
 
 		ZcUserInfo sezcUserInfo = (ZcUserInfo) request.getSession()
 				.getAttribute(ZcContext.LOGIN_USER_KEY);
 		zcProjectLike.setUserCode(sezcUserInfo.getUserCode());
-		
-		List<ZcProjectLike> zProjectLikeval=new ArrayList<ZcProjectLike>();
-		zProjectLikeval=zcProjectLikeNativeService.queryByUserCodeAndproCode  (sezcUserInfo.getUserCode(), Integer.parseInt(proCode));
-		if(zProjectLikeval.size()==0){
+
+		List<ZcProjectLike> zProjectLikeval = new ArrayList<ZcProjectLike>();
+		zProjectLikeval = zcProjectLikeNativeService.queryByUserCodeAndproCode(
+				sezcUserInfo.getUserCode(), Integer.parseInt(proCode));
+		if (zProjectLikeval.size() == 0) {
 			ZcProjectInfo projectInfo = new ZcProjectInfo();
 			projectInfo.setProCode(Integer.parseInt(proCode));
 			zcProjectLike.setZcProjectInfo(projectInfo);
 			zcProjecLikeService.save(zcProjectLike);
 		}
-		
-		
 
 		rs.setReturnValue(proCode);
 		rs.setSuccess(true);
@@ -365,68 +365,62 @@ public class ZcProjectInfoAction {
 		// return zcProjectInfoService.save(zcProjectInfo);
 	}
 
-	private Result validateUpload(MultipartHttpServletRequest req,
-			MultipartFile file) {
+	private Result validateUpload(MultipartHttpServletRequest req) {
 		ZcProjectInfo proinfo = new ZcProjectInfo();
 		Result r = new Result();
-		if (!file.isEmpty()) {
-			// 项目名称、目标、单价、筹集天数、类别、面料、打样、省份、城市、简介、标签
-			String proName = req.getParameter("proName");
-			String proTarget = req.getParameter("proTarget");
-			String proUnit = req.getParameter("proUnit");
-			String proDays = req.getParameter("proDays");
-			String proType = req.getParameter("proType");
-			String proFabric = req.getParameter("proFabric");
-			String proSample = req.getParameter("proSample");
-			String proProvince = req.getParameter("proProvince");
-			String proCity = req.getParameter("proCity");
-			String proRemarks = req.getParameter("proRemarks");
-			String proTag = req.getParameter("proTag");
-			if (StringUtils.isBlank(proName)) {
-				throw new NotValidateCorrectException("项目名称不能为空");
-			}
-			if (StringUtils.isBlank(proTarget)) {
-				throw new NotValidateCorrectException("项目目标不能为空");
-			}
-			if (StringUtils.isBlank(proUnit)) {
-				throw new NotValidateCorrectException("单价不能为空");
-			}
-			if (StringUtils.isBlank(proDays)) {
-				throw new NotValidateCorrectException("筹集天数不能为空");
-			}
-			if (StringUtils.isBlank(proType)) {
-
-				throw new NotValidateCorrectException("请选择类型");
-			}
-			if (StringUtils.isBlank(proFabric)) {
-				throw new NotValidateCorrectException("请选择面料");
-			}
-			if (StringUtils.isBlank(proProvince)) {
-				throw new NotValidateCorrectException("请选择省份");
-			}
-			if (StringUtils.isBlank(proCity)) {
-				throw new NotValidateCorrectException("请选择城市");
-			}
-			r.setSuccess(true);
-			proinfo.setProName(proName);
-			proinfo.setProTarget(NumberUtils.toInt(proTarget));
-			proinfo.setProUnit(NumberUtils.toDouble(proUnit));
-			proinfo.setProDays(NumberUtils.toInt(proDays));
-			proinfo.setProType(NumberUtils.toInt(proType));
-			proinfo.setProFabric(NumberUtils.toInt(proFabric));
-			proinfo.setProSample(NumberUtils.toInt(proSample));
-			proinfo.setProProvince(proProvince);
-			proinfo.setProCity(proCity);
-			proinfo.setProRemarks(proRemarks);
-			proinfo.setProTag(proTag);
-			ZcUserInfo info = (ZcUserInfo) ThreadLocalSession
-					.getLocal_session().getAttribute(ZcContext.LOGIN_USER_KEY);
-			proinfo.setUserCode(info.getUserCode());
-			r.setReturnValue(proinfo);
-		} else {
-			r.setSuccess(false);
-			r.getErrorMsgs().add("文件不能为空!!!");
+		// 项目名称、目标、单价、筹集天数、类别、面料、打样、省份、城市、简介、标签
+		String proName = req.getParameter("proName");
+		String proTarget = req.getParameter("proTarget");
+		String proUnit = req.getParameter("proUnit");
+		String proDays = req.getParameter("proDays");
+		String proType = req.getParameter("proType");
+		String proFabric = req.getParameter("proFabric");
+		String proSample = req.getParameter("proSample");
+		String proProvince = req.getParameter("proProvince");
+		String proCity = req.getParameter("proCity");
+		String proRemarks = req.getParameter("proRemarks");
+		String proTag = req.getParameter("proTag");
+		if (StringUtils.isBlank(proName)) {
+			throw new NotValidateCorrectException("项目名称不能为空");
 		}
+		if (StringUtils.isBlank(proTarget)) {
+			throw new NotValidateCorrectException("项目目标不能为空");
+		}
+		if (StringUtils.isBlank(proUnit)) {
+			throw new NotValidateCorrectException("单价不能为空");
+		}
+		if (StringUtils.isBlank(proDays)) {
+			throw new NotValidateCorrectException("筹集天数不能为空");
+		}
+		if (StringUtils.isBlank(proType)) {
+
+			throw new NotValidateCorrectException("请选择类型");
+		}
+		if (StringUtils.isBlank(proFabric)) {
+			throw new NotValidateCorrectException("请选择面料");
+		}
+		if (StringUtils.isBlank(proProvince)) {
+			throw new NotValidateCorrectException("请选择省份");
+		}
+		if (StringUtils.isBlank(proCity)) {
+			throw new NotValidateCorrectException("请选择城市");
+		}
+		r.setSuccess(true);
+		proinfo.setProName(proName);
+		proinfo.setProTarget(NumberUtils.toInt(proTarget));
+		proinfo.setProUnit(NumberUtils.toDouble(proUnit));
+		proinfo.setProDays(NumberUtils.toInt(proDays));
+		proinfo.setProType(NumberUtils.toInt(proType));
+		proinfo.setProFabric(NumberUtils.toInt(proFabric));
+		proinfo.setProSample(NumberUtils.toInt(proSample));
+		proinfo.setProProvince(proProvince);
+		proinfo.setProCity(proCity);
+		proinfo.setProRemarks(proRemarks);
+		proinfo.setProTag(proTag);
+		ZcUserInfo info = (ZcUserInfo) ThreadLocalSession.getLocal_session()
+				.getAttribute(ZcContext.LOGIN_USER_KEY);
+		proinfo.setUserCode(info.getUserCode());
+		r.setReturnValue(proinfo);
 		return r;
 	}
 
@@ -458,66 +452,68 @@ public class ZcProjectInfoAction {
 		Result r = new Result();
 		ZcUserInfo user = (ZcUserInfo) ThreadLocalSession.getLocal_session()
 				.getAttribute(ZcContext.LOGIN_USER_KEY);
-		        List<ZcOrderDetail> listzcd=new ArrayList<ZcOrderDetail>();
-		        System.out.println(tshirtShort);
-		        System.out.println(proCode);
-		        System.out.println(user.getUserCode());
-		        listzcd= zcOrderDetailService.queryByProCodeAndProTypeAndUserCodeAndOrderCodeIsNull(proCode,tshirtShort,user.getUserCode());
-		       
-		        ZcOrderDetail zd=new ZcOrderDetail();
-				
-				zd.setProCode(proCode);
-				zd.setProNumber(cartNumber);
-				zd.setProUnit(new BigDecimal(proUnit));
-				zd.setProType(tshirtShort);
-				zd.setUserCode(user.getUserCode());
-		        if(listzcd.size()==0){
-		        	
-		        	
-		        	zcOrderDetailService.save(zd);
-		        	
-		        }	else{
-		        int dd=	zcOrderDetailNativeService.updateZcOrderDetail(listzcd.get(0).getProNumber()+cartNumber,listzcd.get(0).getDetId());
-		        }	        
-		
-		
-//		CartInfo ci = new CartInfo();
-//		ci.setCartNumber(cartNumber);
-//		ci.setTshirtShort(tshirtShort);
-//		ci.setProCode(proCode);
-//		ci.setUserCode(user.getUserCode());
-//		ci.setImageUrl(imageUrl);
-//		ci.setProUnit(proUnit);
-//		ci.setProName(proName);
+		List<ZcOrderDetail> listzcd = new ArrayList<ZcOrderDetail>();
+		System.out.println(tshirtShort);
+		System.out.println(proCode);
+		System.out.println(user.getUserCode());
+		listzcd = zcOrderDetailService
+				.queryByProCodeAndProTypeAndUserCodeAndOrderCodeIsNull(proCode,
+						tshirtShort, user.getUserCode());
+
+		ZcOrderDetail zd = new ZcOrderDetail();
+
+		zd.setProCode(proCode);
+		zd.setProNumber(cartNumber);
+		zd.setProUnit(new BigDecimal(proUnit));
+		zd.setProType(tshirtShort);
+		zd.setUserCode(user.getUserCode());
+		if (listzcd.size() == 0) {
+
+			zcOrderDetailService.save(zd);
+
+		} else {
+			int dd = zcOrderDetailNativeService.updateZcOrderDetail(listzcd
+					.get(0).getProNumber() + cartNumber, listzcd.get(0)
+					.getDetId());
+		}
+
+		// CartInfo ci = new CartInfo();
+		// ci.setCartNumber(cartNumber);
+		// ci.setTshirtShort(tshirtShort);
+		// ci.setProCode(proCode);
+		// ci.setUserCode(user.getUserCode());
+		// ci.setImageUrl(imageUrl);
+		// ci.setProUnit(proUnit);
+		// ci.setProName(proName);
 		// 取当前购物车
-//		Object obj = ThreadLocalSession.getLocal_session().getAttribute(
-//				ObjectUtils.toString(user.getUserCode()));
-//		if (obj == null) {// 购物车为空
-//			List<CartInfo> list = new ArrayList<CartInfo>();
-//
-//			list.add(ci);
-//			ThreadLocalSession.getLocal_session().setAttribute(
-//					ObjectUtils.toString(user.getUserCode()), list);
-//		} else {
-//			List<CartInfo> list = (List<CartInfo>) obj;
-//			// 当前购物车中有产品
-//			if (list.contains(ci)) {
-//				// 包含该产品，数量累计
-//				int index = list.indexOf(ci);
-//				CartInfo newC = list.get(index);
-//				int num = newC.getCartNumber() + ci.getCartNumber();
-//				newC.setCartNumber(num);
-//				list.remove(index);
-//				list.add(newC);
-//			} else {
-//				list.add(ci);
-//			}
-//			ThreadLocalSession.getLocal_session().setAttribute(
-//					ObjectUtils.toString(user.getUserCode()), list);
-//		}
+		// Object obj = ThreadLocalSession.getLocal_session().getAttribute(
+		// ObjectUtils.toString(user.getUserCode()));
+		// if (obj == null) {// 购物车为空
+		// List<CartInfo> list = new ArrayList<CartInfo>();
+		//
+		// list.add(ci);
+		// ThreadLocalSession.getLocal_session().setAttribute(
+		// ObjectUtils.toString(user.getUserCode()), list);
+		// } else {
+		// List<CartInfo> list = (List<CartInfo>) obj;
+		// // 当前购物车中有产品
+		// if (list.contains(ci)) {
+		// // 包含该产品，数量累计
+		// int index = list.indexOf(ci);
+		// CartInfo newC = list.get(index);
+		// int num = newC.getCartNumber() + ci.getCartNumber();
+		// newC.setCartNumber(num);
+		// list.remove(index);
+		// list.add(newC);
+		// } else {
+		// list.add(ci);
+		// }
+		// ThreadLocalSession.getLocal_session().setAttribute(
+		// ObjectUtils.toString(user.getUserCode()), list);
+		// }
 		r.setSuccess(true);
 		// 购物车html
-		//String cartHtml = generateCartHtml();
+		// String cartHtml = generateCartHtml();
 		return r.toJson();
 	}
 

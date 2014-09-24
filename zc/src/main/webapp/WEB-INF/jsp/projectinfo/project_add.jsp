@@ -7,7 +7,7 @@
 <%@include file="/WEB-INF/jsp/index_title.jsp" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<title>用户登录</title>
+<title>项目发布</title>
 <!-- 图片预览 -->
 <script type="text/javascript" src="js/imgPreview/CJL.0.1.min.js"></script>
 <script type="text/javascript" src="js/imgPreview/QuickUpload.js"></script>
@@ -32,8 +32,55 @@ float: left;
 		var targetRegex=/^([1-4][0-9][0-9]|500)$/;
 		var daysRegex=/^(([1-9])|(1\d)|(2\d)|(3[0]))$/;
 		var register={};
+		//init图片点击预览事件
+		function initImageChange(){
+			var ip = new ImagePreview( $$("fileuploada"), $$("imgBox"), {
+				maxWidth: 128, maxHeight: 128
+			});
+			ip.img.src = ImagePreview.TRANSPARENT;
+			
+			var fmip=new ImagePreview($$("fileuploadb"),$$("imgBoxb"),{
+				maxWidth:128,maxHeight:128
+			});
+			fmip.img.src=ImagePreview.TRANSPARENT;
+			//ip.file.onchange = function(){ ip.preview(); };
+			
+			//正面图片上传
+			$("#fileuploada").bind('change',function(){
+				if(!window.ActiveXObject){
+					var files=!!this.files?this.files:[];
+					if(!files.length||!window.FileReader)return;
+					if(/^image/.test(files[0].type)){
+						var reader=new FileReader();
+						reader.readAsDataURL(files[0]);
+						reader.onloadend=function(){
+							$("#imgBox").attr("src",this.result);
+						}
+					}
+				}else{ //ie
+					ip.preview();
+				}
+			});
+			//反面图片上传
+			$("#fileuploadb").bind('change',function(){
+				if(!window.ActiveXObject){
+					var files=!!this.files?this.files:[];
+					if(!files.length||!window.FileReader)return;
+					if(/^image/.test(files[0].type)){
+						var reader=new FileReader();
+						reader.readAsDataURL(files[0]);
+						reader.onloadend=function(){
+							$("#imgBoxb").attr("src",this.result);
+						};
+					}
+				}else{ //ie
+					fmip.preview();
+				}
+			});
+		}
 		register={
 				initButtonRegister:function(){
+					initImageChange();
 					//提交
 					$("#btnAdd").bind('click',function(e){
 						e.preventDefault();
@@ -62,35 +109,7 @@ float: left;
 						 })
 						}
 					});
-					var ip = new ImagePreview( $$("fileuploada"), $$("imgBox"), {
-						maxWidth: 128, maxHeight: 128
-					});
-					ip.img.src = ImagePreview.TRANSPARENT;
-					//ip.file.onchange = function(){ ip.preview(); };
 					
-					//图片上传
-					$("#fileuploada").bind('change',function(){
-						if(!window.ActiveXObject){
-							var files=!!this.files?this.files:[];
-							if(!files.length||!window.FileReader)return;
-							if(/^image/.test(files[0].type)){
-								var reader=new FileReader();
-								reader.readAsDataURL(files[0]);
-								reader.onloadend=function(){
-									//$("#bgbox").css("background-image","url("+this.result+")");
-									$("#imgBox").attr("src",this.result);
-									//$("#imgDivBox").css("background-image","url("+this.result+")");
-								}
-							}
-						}else{ //ie
-							ip.preview();
-							/**var p=getPath($(this)[0]);
-							//var obj=$("#imgDivBox")[0];
-							//obj.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = p;
-							$("#imgDivBox").html('<div style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src=\'' + p + '\')"></div>');
-							alert($("#imgDivBox").html());**/
-						}
-					});
 					
 					
 					
@@ -370,11 +389,6 @@ float: left;
 		
 	})
 </script>
-<script>
-	$(document).ready(function() {
-		
-	});
-  </script>
 
   <script>
 	$(document).ready(function(){
@@ -483,11 +497,14 @@ float: left;
 				
 				<div class="email">
 					<strong>封面图片:</strong><sup class="surely">*</sup>
-					
 					<input type="file"  value="上传" id="fileuploada" name="fileupload"/>
 					<span id=validName class=Validform_checktip  > </span>(推荐像素：128*128)
 				</div><!-- .email -->
-				
+				<div class="email">
+					<strong>背面图片:</strong><sup class="surely">*</sup>
+					<input type="file" value="上传"  id="fileuploadb" name="fileupload">
+					<span id=validName class=Validform_checktip  > </span>(推荐像素：228*228)
+				</div>
 				
 				<div class="email"  style="line-height: 40px;">
 					<strong>项目地点:</strong><sup class="surely">*</sup>
@@ -543,11 +560,36 @@ float: left;
           <li side="back"><a href="#">背面</a></li>
         </ul> -->
       </div>
+      <div class="zfm">
+      		<div id="radio">
+				<input type="radio" id="radio1" name="radioType" value="bgbox" fmid="bgboxb" checked="checked"/><label for="radio1">正面</label>
+				<input type="radio" id="radio2" name="radioType" value="bgboxb" fmid="bgbox"/><label for="radio2">反面</label> 
+			</div>
+			<script type="text/javascript">
+				$( "#radio" ).buttonset();
+				$("input[name=radioType]").bind('click',function(e){
+					e.preventDefault();
+					var that=$(this);
+					var id=that.val();
+					var fmid=that.attr("fmid");
+					$("#"+id).show();
+					$("#"+fmid).hide();
+				});
+			</script>
+      </div>
+      <!-- 正面 -->
       <div class="bgbox" style="background: url(images/6_front.jpg) no-repeat transparent;" id="bgbox">
       <div style="width: 128px; height: 128px; margin-left: 95px; margin-top: 90px; border: 1px dashed rgb(0, 0, 0); position: absolute;background-repeat: no-repeat;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale);" id="imgDivBox">
        <img style="border:0px;margin:0px;padding:0px;" id="imgBox" src="images/d.png" width="128" height="128"> 
       </div>
       </div>
+      <!-- 反面 -->
+       <div class="bgbox" style="background: url(images/6_front.jpg) no-repeat transparent;display: none;" id="bgboxb">
+      <div style="width: 128px; height: 128px; margin-left: 95px; margin-top: 90px; border: 1px dashed rgb(0, 0, 0); position: absolute;background-repeat: no-repeat;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale);" id="imgDivBox">
+       <img style="border:0px;margin:0px;padding:0px;" id="imgBoxb" src="images/dd.png" width="128" height="128"> 
+      </div>
+      </div>
+      
       
       <div class="tabBoxR ">
        <span>友情提示</span>
