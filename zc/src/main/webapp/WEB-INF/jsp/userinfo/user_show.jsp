@@ -174,8 +174,8 @@ display: block;
 				    <li><a href="#">头像修改</a></li>
 				   <li><a href="userinfos/address.xhtml">收货地址</a></li>
 				   <li><a href="userinfo/update_password.xhtml">修改密码</a></li>
-				    <li><a href="order/order_info.xhtml">我的订单</a></li>
-				   <li class="last"><a href="#">消息中心</a></li>
+				    <li class="last"><a href="order/order_info.xhtml">我的订单</a></li>
+				 <!--   <li class="last"><a href="#">消息中心</a></li>--> 
 			    </ul>
 		     </nav><!-- .left_menu -->
 	      </aside><!-- #categories_nav -->
@@ -304,12 +304,12 @@ display: block;
 				<div class="entry_content">
 					<div class="user-fun">
 					<h2><c:if test="${sessionScope.USER_INFO!=null }"><c:out value="${sessionScope.USER_INFO.userName }"></c:out></c:if></h2> 
-					<a href="userinfo/update.xhtml" class="btn-red-h20 btn-base common-sprite">
+					<!--<a href="userinfo/update.xhtml" class="btn-red-h20 btn-base common-sprite">
 						<span class="common-sprite"><i class="common-sprite icon-set"></i>个人设置</span>
 					</a>
-					<a href="javascript:void(0);" class="btn-red-h20 btn-base common-sprite">
+					 <a href="javascript:void(0);" class="btn-red-h20 btn-base common-sprite">
 						<span class="common-sprite"><i class="common-sprite icon-info"></i>消息中心</span>
-					</a>
+					</a> -->
 					
 				</div>
 				
