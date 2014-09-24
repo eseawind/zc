@@ -167,7 +167,7 @@
         data: "{}",
         dataType: 'json',
         success: function(data) {
-        
+           
         	$("#btnLike"+data.returnValue).removeClass("like");
         	$("#btnLike"+data.returnValue).addClass("likeed");
         }
@@ -272,7 +272,7 @@
 			    <div class="prev">
 				  <a href="projectinfo/project_${pro[0] }.html"><img src="uploadImg/${pro[7] }" width="210px" height="210px" alt="" title="" /></a>
 			    </div><!-- .prev -->
-			    <h3 class="title">${pro[1] }	 目标： ${pro[14] }天 ${pro[3] }件 </h3>
+			    <h3 class="title">${pro[1] }<br>	 目标： ${pro[14] }天 ${pro[3] }件 </h3>
                 
               <c:choose>  
                <c:when test="${empty pro[11]}">  
@@ -289,29 +289,36 @@
                       </c:choose> 
               
 			    <div class="cart">
-				   <div class="price">
+				   <div class="price" style="width: 97px;">
 					  <div class="vert">
-						 <div class="price_new">￥<c:out value="${pro[5] }"></c:out></div>
+						 <div style="padding-left: 20px;padding-bottom: 12px;">￥<c:out value="${pro[5] }"></c:out></div>
 						
 					  </div>
 				   </div>
-				   <a href="#" class="obn"></a>
-				   <a href="#" class="like"></a>
-				   <a href="#" class="bay"></a>
+				 
+						<a href="projectinfo/project_${pro[0] }.html#pos" class="obn" title="去评论"></a>
+						
+						
+						 <c:if test="${pro[8] =='0'}">
+          
+           		<a href="javascript:void(0);" title="我喜欢" class="like" id="btnLike${pro[0] }" name="btnLike${pro[0] }" onclick="ajax_webserviceHello(${pro[0] });">
+				</a>
+              </c:if>
+						<c:if test="${pro[8]>='1'}">
+            
+           		<a href="javascript:void(0);" title="我喜欢" class="likeed" id="btnLike${pro[0] }" name="btnLike${pro[0] }" onclick="ajax_webserviceHello(${pro[0] });">
+				</a>
+              </c:if>
+						
+				 <a href="projectinfo/project_${pro[0] }.html" class="bay" title="购买"></a>
+				
 			    </div><!-- .cart -->
 		     </div><!-- .grid_3 -->
 	      
 	      
 	      </c:forEach>
 	    
-		   
-		     
-	   
-			
-			
-			
-	    
-	      <div class="clear"></div>
+		
 	      </div><!-- .listing_product -->
 	      
 	      <div class="clear"></div>

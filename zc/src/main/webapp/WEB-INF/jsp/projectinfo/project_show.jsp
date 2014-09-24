@@ -340,7 +340,7 @@
 							
 						</ul><!-- .comments -->
 
-						<form class="add_comments">
+					<a name="pos">	<form class="add_comments">
 							<h4 style="border-top: 1px solid #e0e0e0;line-height: 40px;">评论</h4>
 
 							<div class="evaluation">
@@ -375,7 +375,7 @@
 							</div><!-- .text_review -->
 
 							<input type=submit  id="appraiseSub" name="appraiseSub" value="提交评论" />
-						</form><!-- .add_comments -->
+						</form></a><!-- .add_comments -->
 					<div class="clear"></div>
 					</div><!-- .tab2 .tab_body -->
 
