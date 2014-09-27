@@ -80,6 +80,17 @@ public class ZcProjectInfo implements Serializable {
 	@OneToOne
 	@JoinColumn(name="RESOURCE_CODE",referencedColumnName="RESOURCE_CODE")
 	private ZcResourceInfo resourceInfo;
+	@OneToOne
+	@JoinColumn(name="RESOURCE_CODE1",referencedColumnName="RESOURCE_CODE")
+	private ZcResourceInfo resourceInfo1;
+
+	public ZcResourceInfo getResourceInfo1() {
+		return resourceInfo1;
+	}
+
+	public void setResourceInfo1(ZcResourceInfo resourceInfo1) {
+		this.resourceInfo1 = resourceInfo1;
+	}
 
 	public Integer getProCode() {
 		return proCode;
