@@ -121,24 +121,17 @@
 		  $("#appraiseSub").click(function(e){
 	   			e.preventDefault();
 	   			
-	   			$.each($("span[name='2']"),function(){
-	   				alert($(this).attr("class"));
-	   			
-	   				}
-	   			)
-	   			return;
 	   			
 	   			
-	   			var rang = $("input[name='quality1']:checked");
-	   			if(rang.length==0){
+	   			
+	   			var rang = $("#appraiseValue").val();
+	   			if(rang==''){
 					$.alert("评价提示","请选择分数");
 					return;
 				}
+	   			
 	   			var remarks = $("#remarks").val();
-	   			if(rang.length==0){
-					$.alert("评价提示","请选择分数");
-					return;
-				}
+	   			
 	   			
 	   			if(remarks==""){
 	   				$.alert("评价提示","请输入评价内容");
@@ -146,14 +139,14 @@
 	   				
 	   			}
 	   			
-	   			return;
+	   			
 	   			var proCode=$("#proCode").val();
-	   			$.post("appraise/beginAddAppraise.xhtml",{appraiseCount:rang.val(),remarks:remarks,proCode:proCode},function(data){
+	   			$.post("appraise/beginAddAppraise.xhtml",{appraiseCount:rang,remarks:remarks,proCode:proCode},function(data){
 	   				var d=$.eval2(data);
 	   				if(d.success){
 						$.alert("评论提示","评论成功",function(){
 							url="projectinfo/project_"+d.returnValue+".html";
-							alert(url);
+						
 							if($.browser.msie) {
 								url="../projectinfo/project_"+d.returnValue+".html";
 							}
@@ -241,11 +234,31 @@
 
 		<div class="product_page">
 		 
-        <span style="margin-left: 120px;">       
+        <span style="margin-left: 140px;">       
                 
 		<img  id="proImg" name="proImg" style="width:319px;height:319px;" src="uploadImg/${infoPro.resourceInfo.resourceName }">
 		</span>  
 		
+		<div style="width: 564px;border-top: 1px #E0E0E0 solid; " >
+					<img  id="bgbox" name="bgbox" style="width:100px;height:100px;cursor: pointer;" src="uploadImg/${infoPro.resourceInfo.resourceName }">
+					<img  id="bgboxb" name="bgboxb" style="width:100px;height:100px;cursor: pointer;" src="uploadImg/${infoPro.resourceInfo1.resourceName }">
+				
+				
+				<script type="text/javascript">
+				
+				$("#bgbox").bind('click',function(e){
+					$("#proImg").attr("src",$("#bgbox").attr("src"));
+
+				
+				});
+				
+				$("#bgboxb").bind('click',function(e){
+					$("#proImg").attr("src",$("#bgboxb").attr("src"));
+
+				
+				});
+			</script>
+				</div>
 		
 
 			<!-- .grid_4 -->
@@ -344,15 +357,44 @@
 							<h4 style="border-top: 1px solid #e0e0e0;line-height: 40px;">评论</h4>
 
 							<div class="evaluation">
-								<div class="quality" >
+								<div class="quality" id="menu" name="menu" >
 									<strong>评价</strong><sup class="surely">*</sup>
-									<input type="radio" class="niceRadio"  name="quality1" value="1" /><span name="1"  class="eva_num">1</span>
-									<input  type="radio" class="niceRadio"  name="quality1" value="2" /><span name="1" class="eva_num">2</span>
-									<input  type="radio" class="niceRadio"  name="quality1" value="3" /><span name="1" class="eva_num">3</span>
-									<input type="radio" class="niceRadio" name="quality1" value="4" /><span name="1" class="eva_num">4</span>
-									<input type="radio" class="niceRadio" name="quality1" value="5" /><span name="1" class="eva_num">5</span>
+									<div style="margin-top: -80px;margin-left: 70px;">
+									<label name="appraise1" id="appraise1" fmid="1" ></label>		
+								<label  name="appraise2" id="appraise2" fmid="2"  ></label>		
+						<label  name="appraise3" id="appraise3" fmid="3"  ></label>		
+							<label  name="appraise4" id="appraise4"  fmid="4" ></label>		
+								<label  name="appraise5" id="appraise5" fmid="5"  ></label>	
+								<input type="hidden" id="appraiseValue" name="appraiseValue">
+									</div>
 								</div>
+								<script type="text/javascript">
+				
 								
+								$("#menu label").click(function(e){
+									e.preventDefault();
+									for (var int = 1; int < 6; int++) {
+										$("#appraise"+int).removeClass("plus");
+										
+									}
+									
+									var that=$(this);
+									
+									var fmid=that.attr("fmid");
+									$("#appraiseValue").val(fmid);
+									
+									for (var int = 1; int <= fmid; int++) {
+										
+										$("#appraise"+int).addClass("plus");
+										
+									}
+									
+									
+									
+								});
+								
+				
+			</script>
 								<div class="clear"></div>
 							</div><!-- .evaluation -->
 
@@ -368,7 +410,7 @@
 
 							<!-- <div class="clear"></div>-->
 
-							<div class="text_review">
+							<div class="text_review" style="margin-top: -20px;">
 								<strong>内容</strong><sup class="surely">*</sup><br/>
 								<textarea name="remarks"  id="remarks" cols="50" rows="10" ></textarea>
 								<i>备注:1000字以内</i>
@@ -471,7 +513,7 @@
 						<a href="javascript:void(0);"></a>
 						<a href="javascript:void(0);"></a>
 						<span>1 评论</span>
-						<a class="add_review" href="#">评论</a>
+						<a class="add_review" href="projectinfo/project_<c:out value="${infoPro.proCode }"></c:out>.html#pos">评论</a>
 					</div>
 					<!-- pro -->
 					<input type="hidden" value="${infoPro.proCode }" id="proCode">
@@ -530,76 +572,23 @@
   <div class="clear"></div>
 
   <footer>
-    <div class="f_navigation">
-      <div class="container_12">
-        <div class="grid_3">
-          <h3>Contact Us</h3>
-          <ul class="f_contact">
-            <li>49 Archdale, 2B Charlestone</li>
-            <li>+777 (100) 1234</li>
-            <li>mail@example.com</li>
-          </ul><!-- .f_contact -->
-        </div><!-- .grid_3 -->
+     <div id="footer">
+    <div class="container">
+        <span>浙ICP备11036615号-1 浙公网安备888888888</span>
 
-        <div class="grid_3">
-          <h3>Information</h3>
-          <nav class="f_menu">
-            <ul>
-              <li><a href="#">About As</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms & Conditions</a></li>
-              <li><a href="#">Secure payment</a></li>
-            </ul>
-          </nav><!-- .private -->
-        </div><!-- .grid_3 -->
+        <div class="site-info">
+           
 
-        <div class="grid_3">
-          <h3>Costumer Servise</h3>
-          <nav class="f_menu">
-            <ul>
-              <li><a href="contact_us.html">Contact As</a></li>
-              <li><a href="#">Return</a></li>
-              <li><a href="#">FAQ</a></li>
-              <li><a href="#">Site Map</a></li>
-            </ul>
-          </nav><!-- .private -->
-        </div><!-- .grid_3 -->
-
-        <div class="grid_3">
-          <h3>My Account</h3>
-          <nav class="f_menu">
-            <ul>
-              <li><a href="#">My Account</a></li>
-              <li><a href="#">Order History</a></li>
-              <li><a href="#">Wish List</a></li>
-              <li><a href="#">Newsletter</a></li>
-            </ul>
-          </nav><!-- .private -->
-        </div><!-- .grid_3 -->
-
-        <div class="clear"></div>
-      </div><!-- .container_12 -->
-    </div><!-- .f_navigation -->
-
-    <div class="f_info">
-      <div class="container_12">
-        <div class="grid_6">
-          <p class="copyright">Copyright &copy; 2014.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
-        </div><!-- .grid_6 -->
-
-        <div class="grid_6">
-          <div class="soc">
-            <a class="google" href="#"></a>
-            <a class="twitter" href="#"></a>
-            <a class="facebook" href="#"></a>
-          </div><!-- .soc -->
-        </div><!-- .grid_6 -->
-
-        <div class="clear"></div>
-      </div><!-- .container_12 -->
-    </div><!-- .f_info -->
+            <a href="mailto:xhymmc@163.com" alt="Keep in touch :)">邮件反馈</a>
+            <a href="#">关于我们</a>
+            <a href="userinfo/protocol.html">用户协议</a>
+            <span>© 2014 小众派</span>
+        </div>
+    </div>
+</div>
+   
   </footer>
 
-<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
+
 </body>
 </html>

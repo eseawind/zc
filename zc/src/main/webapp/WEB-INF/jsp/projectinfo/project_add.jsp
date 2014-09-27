@@ -560,7 +560,7 @@ float: left;
           <li side="back"><a href="#">背面</a></li>
         </ul> -->
       </div>
-      <div class="zfm">
+      <div class="zfm" style="line-height: 50px;">
       		<div id="radio">
 				<input type="radio" id="radio1" name="radioType" value="bgbox" fmid="bgboxb" checked="checked"/><label for="radio1">正面</label>
 				<input type="radio" id="radio2" name="radioType" value="bgboxb" fmid="bgbox"/><label for="radio2">反面</label> 
@@ -584,7 +584,7 @@ float: left;
       </div>
       </div>
       <!-- 反面 -->
-       <div class="bgbox" style="background: url(images/6_front.jpg) no-repeat transparent;display: none;" id="bgboxb">
+       <div class="bgbox" style="background: url(images/6_back.jpg) no-repeat transparent;display: none;" id="bgboxb">
       <div style="width: 128px; height: 128px; margin-left: 95px; margin-top: 90px; border: 1px dashed rgb(0, 0, 0); position: absolute;background-repeat: no-repeat;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale);" id="imgDivBox">
        <img style="border:0px;margin:0px;padding:0px;" id="imgBoxb" src="images/dd.png" width="128" height="128"> 
       </div>
@@ -604,61 +604,24 @@ float: left;
   
   <div class="clear"></div>
   <footer>
-    <div class="f_navigation">
-      <div class="container_12">
-        <div class="grid_3">
-          <h3>Contact Us</h3>
-          <ul class="f_contact">
-            <li>49 Archdale, 2B Charlestone</li>
-            <li>+777 (100) 1234</li>
-            <li>mail@example.com</li>
-          </ul><!-- .f_contact -->
-        </div><!-- .grid_3 -->
-      
-        <div class="grid_3">
-          <h3>Information</h3>
-          <nav class="f_menu">
-            <ul>
-              <li><a href="#">About As</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Terms & Conditions</a></li>
-              <li><a href="#">Secure payment</a></li>
-            </ul>
-          </nav><!-- .private -->
-        </div><!-- .grid_3 -->
-        
-        <div class="grid_3">
-          <h3>Costumer Servise</h3>
-          <nav class="f_menu">
-            <ul>
-              <li><a href="contact_us.html">Contact As</a></li>
-              <li><a href="#">Return</a></li>
-              <li><a href="#">FAQ</a></li>
-              <li><a href="#">Site Map</a></li>
-            </ul>
-          </nav><!-- .private -->
-        </div><!-- .grid_3 -->
-        
-        <div class="grid_3">
-          <h3>My Account</h3>
-          <nav class="f_menu">
-            <ul>
-              <li><a href="#">My Account</a></li>
-              <li><a href="#">Order History</a></li>
-              <li><a href="#">Wish List</a></li>
-              <li><a href="#">Newsletter</a></li>
-            </ul>
-          </nav><!-- .private -->
-        </div><!-- .grid_3 -->
-        
-        <div class="clear"></div>
-      </div><!-- .container_12 -->
-    </div><!-- .f_navigation -->
-    
+     <div id="footer">
+    <div class="container">
+        <span>浙ICP备11036615号-1 浙公网安备888888888</span>
+
+        <div class="site-info">
+           
+
+            <a href="mailto:xhymmc@163.com" alt="Keep in touch :)">邮件反馈</a>
+            <a href="#">关于我们</a>
+            <a href="userinfo/protocol.html">用户协议</a>
+            <span>© 2014 小众派</span>
+        </div>
+    </div>
+</div>
+   
  
   </footer>
  
-<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
-<script type="text/javascript" src="js/jquery.form.js"></script>
+
 </body>
 </html>
