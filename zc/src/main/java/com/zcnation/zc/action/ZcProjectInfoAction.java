@@ -258,6 +258,7 @@ public class ZcProjectInfoAction {
 			Result r = validateUpload(mulreq);
 			if (r.isSuccess()) {
 				ZcProjectInfo pinfo = (ZcProjectInfo) r.getReturnValue();
+				
 				for (int i = 0; i < listfiles.size(); i++) {
 					// 单文件
 					// MultipartFile file = mulreq.getFile("fileupload");
@@ -281,11 +282,16 @@ public class ZcProjectInfoAction {
 							// 上传文件
 							String imageType = StringUtils.substring(fileName,
 									StringUtils.lastIndexOf(fileName, "."));
-							Date uploadDate = Calendar.getInstance().getTime();
+							Date uploadDate= Calendar.getInstance().getTime();
+							if(i==1){
+								uploadDate=	addSecond(uploadDate,1);
+							}
+							
 							String uploadTime = DateFormatUtils.format(
 									uploadDate, "yyyyMMddHHmmss");
+							System.out.println(uploadTime);
 							String targetFileName = genaretorTargeFileName(
-									uploadTime, imageType);
+									uploadTime+i, imageType);
 							System.out.println("目标文件名称：" + targetFileName);
 							File targetFile = new File(realFile, targetFileName);
 							ins = file.getInputStream();
@@ -297,6 +303,7 @@ public class ZcProjectInfoAction {
 								fos.flush();
 							}
 							// 水印输出
+							if (i==0) {//正面
 							String srcFile = request.getSession()
 									.getServletContext().getRealPath("/images")
 									+ "/6_front.jpg";
@@ -312,9 +319,30 @@ public class ZcProjectInfoAction {
 							ZcResourceInfo saveZr = zcResourceInfoService
 									.saveResourceInfo(zr);
 							pinfo.setResourceInfo(saveZr);
+						
 							// pinfo.setResourceCode(saveZr.getResourceCode());
-							if (i==0) {//正面
+							
 								zcProjectInfoService.save(pinfo);
+							}else{//反面
+								String srcFile = request.getSession()
+										.getServletContext().getRealPath("/images")
+										+ "/6_back.jpg";
+								ImageUtil.pressImage(srcFile,
+										targetFile.getAbsolutePath(),
+										targetFile.getAbsolutePath());
+								ZcResourceInfo zr = new ZcResourceInfo();
+								zr.setUptDate(uploadDate);
+								zr.setUptIp(request.getRemoteAddr());
+								zr.setResourceUrl(targetFile.getAbsolutePath());
+								zr.setResourceName(targetFile.getName());
+
+								ZcResourceInfo saveZr = zcResourceInfoService
+										.saveResourceInfo(zr);
+								pinfo.setResourceInfo1(saveZr);
+							
+								// pinfo.setResourceCode(saveZr.getResourceCode());
+								
+									zcProjectInfoService.save(pinfo);
 							}
 							rs.setSuccess(true);
 							RootLogger.info("图片上传成功...");
@@ -650,7 +678,12 @@ public class ZcProjectInfoAction {
 
 	}
 
-	
+	public static Date addSecond(Date date, int seconds) { 
+		Calendar calendar = Calendar.getInstance(); 
+		calendar.setTime(date); 
+		calendar.add(Calendar.SECOND, seconds); 
+		return calendar.getTime(); 
+		} 
 	
 	public static void main(String[] args) {
 		System.out.println("ddd");

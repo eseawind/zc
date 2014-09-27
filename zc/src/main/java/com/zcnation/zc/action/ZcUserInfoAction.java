@@ -54,12 +54,15 @@ public class ZcUserInfoAction {
 	@Autowired
 	private ZcResourceInfoService zcResourceInfoService;
 
+	@RequestMapping("/protocol.html")
+	public String to_protocol(HttpServletRequest request) {
+		return "userinfo/user_protocol";
+	}
+	
 	@RequestMapping("/register.html")
 	public String to_register(HttpServletRequest request) {
 		return "userinfo/user_register";
 	}
-	
-	
 	
 	
 	@RequestMapping("/login.html")
