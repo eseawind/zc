@@ -70,9 +70,47 @@
     });
 }
 
+       function GetAbsPosition(obj)
+       {
+             var curleft = 0, curtop = 0;
+             do {
+             curleft += obj.offsetLeft;
+             curtop += obj.offsetTop;
+             } while (obj = obj.offsetParent);
+             return [curleft,curtop];       
+       }
+
+       function ShowFloatingImage(image, width, height,obj)
+       {
+           var id = "trailimageid";
+           var newdiv = document.getElementById(id);
+           if(newdiv == null)
+           {
+             newdiv = document.createElement('div');
+             newdiv.setAttribute('id',id);
+             newdiv.setAttribute('onmouseout', "HideElement('"+id+"');");
+             document.body.appendChild(newdiv);
+           }
+           newdiv.innerHTML = '<a href="projectinfo/project_'+obj+'.html"><img src='+image.src+ ' width='+(image.width + width)+' style="cursor: pointer;"' + ' height=' + (image.height + height) + ' /></a>';
+
+           var absPos = GetAbsPosition(image);
+           newdiv.style.position = "absolute";        
+           newdiv.style.posLeft = absPos[0] - width/2;
+           newdiv.style.posTop = absPos[1] - height/2;
+           newdiv.style.display="block";
+       }
+
+       function HideElement(id)
+       {
+           var elem = document.getElementById(id);
+           elem.style.display="none";
+       }
+
   </script>
   
+<style type="text/css">
 
+</style>
 
 </head>
 <body>
@@ -127,27 +165,7 @@
 
   <section id="main" class="home">
     <div class="container_12">
-      <div id="top_button">
-        <div class="grid_4">
-          <a href="#" class="button_block best_price">
-            <img src="images/banner1.png" alt="Banner 1"/>
-          </a><!-- .best_price -->
-        </div><!-- .grid_4 -->
-
-        <div class="grid_4">
-          <a href="#" class="button_block new_smells">
-            <img src="images/banner2.png" alt="Banner 2"/>
-          </a><!-- .new smells -->
-        </div><!-- .grid_4 -->
-
-        <div class="grid_4">
-          <a href="#" class="button_block only_natural">
-            <img src="images/banner3.png" alt="Banner 3"/>
-          </a><!-- .only_natural -->
-        </div><!-- .grid_4 -->
-
-        <div class="clear"></div>
-      </div><!-- #top_button -->
+     
 
       <div class="clear"></div>
 
@@ -177,7 +195,7 @@
                  
                  <div class="imgtag">
 		<div class="tag_item">
-		<img style="width:100%" src="uploadImg/${prolike[7]}">
+		<img style="width:100%" src="uploadImg/${prolike[7]}" onmouseover="ShowFloatingImage(this, 50, 50,${prolike[0] });">
 			
 		</div>
                  
@@ -188,7 +206,7 @@
             
             
               </div><!-- .prev -->
-              <h3 class="title">${prolike[1] }<br>
+              <h3 class="title"><a href="projectinfo/project_${pro[0] }.html">${prolike[1] }</a><br>
                	 目标： ${prolike[11] }天 ${prolike[3] }件 </h3>
               <c:choose>  
                <c:when test="${empty prolike[9]}">  
@@ -216,7 +234,7 @@
                   <div class="price_new">￥<c:out value="${prolike[5]}"></c:out></div>
                 </div>
                 </div>
-              <a href="#" class="obn"></a>
+              <a href="projectinfo/project_${pro[0] }.html#pos" class="obn" title="去评论"></a>
             	<a href="javascript:void(0);" title="我喜欢" class="like" id="btnLike${pro[0] }" name="btnLike${pro[0] }" onclick="ajax_webserviceHello(${prolike[0] });">
                 <a href="projectinfo/project_${prolike[0]}.html" class="bay" title="加入购物车"></a>
               </div><!-- .cart -->
@@ -264,7 +282,7 @@
                  
                  <div class="imgtag">
 		<div class="tag_item">
-		<img style="width:100%" src="uploadImg/${pro[7]}">
+		<img style="width:100%" src="uploadImg/${pro[7]}" onmouseover="ShowFloatingImage(this, 50, 50);">
 			
 		</div>
                  
@@ -273,7 +291,7 @@
 	     
                 </div>
              <!-- .prev -->
-             <h3 class="title">${pro[1] }<br>
+             <h3 class="title"> <a href="projectinfo/project_${pro[0] }.html">${pro[1] }</a><br>
                	 目标： ${pro[10] }天 ${pro[3] }件 </h3>
                 
               <c:choose>  
@@ -322,57 +340,20 @@
   <div class="clear"></div>
 
   <footer>
-    <div class="f_navigation">
-      <div class="container_12">
-        <div class="grid_3">
-          <h3>联系我们</h3>
-          <ul class="f_contact">
-            <li>浙江省杭州市xxx接到</li>
-            <li>+0571-86415126</li>
-            <li>xhymmc@163.com</li>
-          </ul><!-- .f_contact -->
-        </div><!-- .grid_3 -->
+    <div id="footer">
+    <div class="container">
+        <span>浙ICP备11036615号-1 浙公网安备888888888</span>
 
-        <div class="grid_3">
-          <h3>信息中心</h3>
-          <nav class="f_menu">
-            <ul>
-              <li><a href="#">关于我们</a></li>
-              <li><a href="#">隐私政策</a></li>
-              <li><a href="#">条款和条件</a></li>
-              <!-- <li><a href="#">Secure payment</a></li> -->
-            </ul>
-          </nav><!-- .private -->
-        </div><!-- .grid_3 -->
+        <div class="site-info">
+           
 
-        <div class="grid_3">
-          <h3>客户服务</h3>
-          <nav class="f_menu">
-            <ul>
-              <li><a href="contact_us.html">Contact As</a></li>
-              <li><a href="#">Return</a></li>
-              <li><a href="#">FAQ</a></li>
-              <li><a href="#">Site Map</a></li>
-            </ul>
-          </nav><!-- .private -->
-        </div><!-- .grid_3 -->
-
-        <div class="grid_3">
-          <h3>My Account</h3>
-          <nav class="f_menu">
-            <ul>
-              <li><a href="#">个人中心</a></li>
-              <li><a href="#"></a></li>
-              <li><a href="#">我喜欢的作品</a></li>
-              <li><a href="#">我的信息</a></li>
-            </ul>
-          </nav><!-- .private -->
-        </div><!-- .grid_3 -->
-
-        <div class="clear"></div>
-      </div><!-- .container_12 -->
-    </div><!-- .f_navigation -->
-
+            <a href="mailto:xhymmc@163.com" alt="Keep in touch :)">邮件反馈</a>
+            <a href="#">关于我们</a>
+            <a href="userinfo/protocol.html">用户协议</a>
+            <span>© 2014 小众派</span>
+        </div>
+    </div>
+</div>
    
   </footer>
 

@@ -32,6 +32,7 @@
   <script src="${pageContext['request'].contextPath }/js/radio.js"></script>
   <script src="${pageContext['request'].contextPath }/js/selectBox.js"></script>
   <script src="${pageContext['request'].contextPath }/js/jquery.jqzoom-core.js" ></script>
+    <script src="${pageContext['request'].contextPath }/js/jquery.form.js" ></script>
 <!-- jQuery UI -->
 <script type="text/javascript" src="${pageContext['request'].contextPath }/js/jquery-ui-1.9.2.custom.min.js"></script>
 
