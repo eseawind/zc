@@ -3346,3 +3346,19 @@ color: #333;
 color: #F71208;
 }
 
+#footer .container {
+width: 960px;
+margin: 0 auto;
+}
+#footer {
+clear: both;
+padding: 15px 0;
+border-top: 1px solid #dedede;
+font-size: 12px;
+}
+#footer .site-info {
+float: right;
+}
+#footer .site-info a, #footer .site-info span {
+margin-left: 10px;
+}
