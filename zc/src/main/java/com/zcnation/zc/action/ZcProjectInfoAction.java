@@ -365,7 +365,7 @@ public class ZcProjectInfoAction {
 		// return zcProjectInfoService.save(zcProjectInfo);
 	}
 
-	@RequestMapping("/beginAddLike.html")
+	@RequestMapping("/beginAddLike.xhtml")
 	@ResponseBody
 	public String beginAddProjectLike(HttpServletRequest request,
 			@ModelAttribute ZcProjectLike zcProjectLike, String proCode) {
@@ -393,6 +393,30 @@ public class ZcProjectInfoAction {
 		// return zcProjectInfoService.save(zcProjectInfo);
 	}
 
+	@RequestMapping("/beginAddLikeed.xhtml")
+	@ResponseBody
+	public String beginAddProjectLikeed(HttpServletRequest request,
+			@ModelAttribute ZcProjectLike zcProjectLike, String proCode) {
+		Result rs = new Result();
+
+		ZcUserInfo sezcUserInfo = (ZcUserInfo) request.getSession()
+				.getAttribute(ZcContext.LOGIN_USER_KEY);
+		
+		ZcProjectInfo zcProjectInfo=zcProjectInfoService.queryOne(Integer.parseInt(proCode));
+		
+		 zcProjectLike = zcProjecLikeService.queryByUserCodeAndZcProjectInfo(sezcUserInfo.getUserCode(),zcProjectInfo);
+		zcProjecLikeService.delete(zcProjectLike);
+
+		rs.setReturnValue(proCode);
+		rs.setSuccess(true);
+
+		// System.out.println(rs.toJson());
+		return rs.toJson();
+		// return zcProjectInfoService.save(zcProjectInfo);
+	}
+	
+	
+	
 	private Result validateUpload(MultipartHttpServletRequest req) {
 		ZcProjectInfo proinfo = new ZcProjectInfo();
 		Result r = new Result();
