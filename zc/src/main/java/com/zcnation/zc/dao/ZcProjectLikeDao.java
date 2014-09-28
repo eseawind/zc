@@ -1,8 +1,11 @@
 package com.zcnation.zc.dao;
 
 import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
+
+import com.zcnation.zc.domain.ZcProjectInfo;
 import com.zcnation.zc.domain.ZcProjectLike;
 
 
@@ -14,6 +17,5 @@ public interface ZcProjectLikeDao extends JpaRepository<ZcProjectLike, Integer>,
 	 public void delete(ZcProjectLike zcProjectLike);
 	 public ZcProjectLike findByLikeCode(int likeCode);
 	 public ZcProjectLike save(ZcProjectLike zcProjectLike);
-	 
-	 //public ZcProjectLike findByUserCodeAndProCode(Integer userCode,Integer proCode );
+	 public ZcProjectLike findByUserCodeAndZcProjectInfo(Integer userCode,ZcProjectInfo zcProjectInfo );
 }
