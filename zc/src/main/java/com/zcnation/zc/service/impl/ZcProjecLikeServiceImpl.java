@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.zcnation.zc.common.Result;
 import com.zcnation.zc.dao.ZcProjectLikeDao;
+import com.zcnation.zc.domain.ZcProjectInfo;
 import com.zcnation.zc.domain.ZcProjectLike;
 import com.zcnation.zc.service.ZcProjecLikeService;
 @Service(value = "zcProjecLikeService")
@@ -46,11 +47,10 @@ public class ZcProjecLikeServiceImpl implements ZcProjecLikeService {
 		return r.toJson();
 		
 	}
-//	@Override
-//	public ZcProjectLike queryByUserCodeAndProCode(Integer userCode,
-//			Integer proCode) {
-//		// TODO Auto-generated method stub
-//		return zcProjectLikeDao.findByUserCodeAndProCode(userCode, proCode);
-//	}
+	@Override
+	public ZcProjectLike queryByUserCodeAndZcProjectInfo(Integer userCode,ZcProjectInfo zcProjectInfo ) {
+		// TODO Auto-generated method stub
+		return zcProjectLikeDao.findByUserCodeAndZcProjectInfo(userCode, zcProjectInfo);
+	}
 
 }
