@@ -159,11 +159,11 @@
 	
 	
 	
-	function ajax_webserviceHello(proCode) {
+	function ajax_proLikeed(proCode) {
     $.ajax({
         type: "post",
         contentType: "application/json",
-        url: "projectinfo/beginAddLike.html?proCode="+proCode,
+        url: "projectinfo/beginAddLike.xhtml?proCode="+proCode,
         data: "{}",
         dataType: 'json',
         success: function(data) {
@@ -174,6 +174,21 @@
     });
 }
 
+	
+	function ajax_proLike(proCode) {
+	    $.ajax({
+	        type: "post",
+	        contentType: "application/json",
+	        url: "projectinfo/beginAddLikeed.xhtml?proCode="+proCode,
+	        data: "{}",
+	        dataType: 'json',
+	        success: function(data) {
+	           
+	        	$("#btnLike"+data.returnValue).removeClass("likeed");
+	        	$("#btnLike"+data.returnValue).addClass("like");
+	        }
+	    });
+	}
 </script>
 <style type="text/css">
 
@@ -301,12 +316,12 @@
 						
 						 <c:if test="${pro[8] =='0'}">
           
-           		<a href="javascript:void(0);" title="我喜欢" class="like" id="btnLike${pro[0] }" name="btnLike${pro[0] }" onclick="ajax_webserviceHello(${pro[0] });">
+           		<a href="javascript:void(0);" title="我喜欢" class="like" id="btnLike${pro[0] }" name="btnLike${pro[0] }" onclick="ajax_proLikeed(${pro[0] });">
 				</a>
               </c:if>
 						<c:if test="${pro[8]>='1'}">
             
-           		<a href="javascript:void(0);" title="我喜欢" class="likeed" id="btnLike${pro[0] }" name="btnLike${pro[0] }" onclick="ajax_webserviceHello(${pro[0] });">
+           		<a href="javascript:void(0);" title="取消喜欢" class="likeed" id="btnLike${pro[0] }" name="btnLike${pro[0] }" onclick="ajax_proLike(${pro[0] });">
 				</a>
               </c:if>
 						
