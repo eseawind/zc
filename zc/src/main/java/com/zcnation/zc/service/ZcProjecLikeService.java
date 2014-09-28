@@ -29,5 +29,6 @@ public interface ZcProjecLikeService {
 	 public String save(ZcProjectLike zcProjectLike);
 	 
 	 
-	// public ZcProjectLike queryByUserCodeAndProCode(Integer userCode,Integer proCode);
+	 
+	 public ZcProjectLike queryByUserCodeAndZcProjectInfo(Integer userCode,ZcProjectInfo zcProjectInfo );
 }
