@@ -181,10 +181,10 @@ $("#usercheck").click(function(e){
 	      <tr>
 		     <th class="images"></th>
 		     <th class="bg name">作品名字</th>
-		     <th class="edit"> </th>
-		     <th class="bg price">单价</th>
-		     <th class="qty">数量</th>
-		     <th class="bg subtotal">总价</th>
+		    
+		     <th class="price">单价</th>
+		     <th class="bg qty">数量</th>
+		     <th class="subtotal">总价</th>
 		   
 	      </tr>
 	      <input type="hidden" id="listcount" name="listcount" value="${fn:length(ordcart)}">
@@ -194,9 +194,9 @@ $("#usercheck").click(function(e){
 	   
 		     <td class="images"><a href="projectinfo/project_${ord[0] }.html"><img src="uploadImg/${ord[2] }" width="110px" height="110px;" alt=""></a></td>
 		     <td class="bg name">${ord[1] }</td>
-		     <td class="edit"><a title="Edit" href="#">Edit</a></td>
-		     <td class="bg price"><span id="price_item_<c:out value="${status.count}"/>">￥${ord[3] }</span></td>
-		     <td class="qty"> 	
+		   
+		     <td class="price"><span id="price_item_<c:out value="${status.count}"/>">￥${ord[3] }</span></td>
+		     <td class="bg qty"> 	
 		
 		
 		    <c:choose>
@@ -261,7 +261,7 @@ $("#usercheck").click(function(e){
 
 
 		        </td>
-		     <td class="bg subtotal">
+		     <td class="subtotal">
 		     
 		     <span class="total-font" >${ord[5]}*${ord[3]}=${ord[4]}元</span>   
 		    </td>

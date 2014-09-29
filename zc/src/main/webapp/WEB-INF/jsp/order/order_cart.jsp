@@ -17,30 +17,6 @@
 
 
 <style type="text/css">
-.button{
-	width:140px;
-	line-height:38px;
-	text-align:center;
-	font-weight:bold;
-	color:#fff;
-	text-shadow:1px 1px 1px #333;
-	border-radius:5px;
-	margin:0 20px 20px 0;
-	position:relative;
-	overflow:hidden;
-	float:right;display:inline;
-}
-.button:nth-child(6n){margin-right:0;}
-.button.blue{
-	border:1px solid #1e7db9;
-	box-shadow:0 1px 2px #8fcaee inset,0 -1px 0 #497897 inset,0 -2px 3px #8fcaee inset;
-	background:-webkit-linear-gradient(top,#42a4e0,#2e88c0);
-	background:-moz-linear-gradient(top,#42a4e0,#2e88c0);
-	background:linear-gradient(top,#42a4e0,#2e88c0);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#42a4e0', endColorstr='#2e88c0'); /*  IE */
-}
-
-    span.emptyhint {color:#999;position:absolute;padding:3px;}
 
 
 </style>
@@ -130,8 +106,8 @@
 	      <tr>
 		     <th class="images"></th>
 		     <th class="bg name">作品名字</th>
-		     <th class="edit"> </th>
-		     <th class="bg price">单价</th>
+		    
+		     <th class="bg price" >单价</th>
 		     <th class="qty">数量</th>
 		     <th class="bg subtotal">总价</th>
 		     <th class="close"> </th>
@@ -143,7 +119,7 @@
 	   
 		     <td class="images"><a href="projectinfo/project_${ord[0] }.html"><img src="uploadImg/${ord[2] }" alt="Product 6"></a></td>
 		     <td class="bg name">${ord[1] }</td>
-		     <td class="edit"><a title="Edit" href="#">Edit</a></td>
+		    
 		     <td class="bg price"><span id="price_item_<c:out value="${status.count}"/>">￥${ord[3] }</span></td>
 		     <td class="qty"> 	
 		
@@ -157,7 +133,7 @@
 		<div class="f_l add_chose">
 			<a class="reduce" onClick="setAmount.reduce('#qty_item_S<c:out value="${status.count}"/>','S','<c:out value="${status.count}"/>')" href="javascript:void(0)">
 			-</a>
-			<input type="text" name="qty_item_S<c:out value="${status.count}"/>" value="${ord[6]}" id="qty_item_S<c:out value="${status.count}"/>" onKeyUp="setAmount.modify('#qty_item_S<c:out value="${status.count}"/>','S','<c:out value="${status.count}"/>')" class="text" style="height: 15px;" />
+			<input type="text" name="qty_item_S<c:out value="${status.count}"/>" readonly="readonly" value="${ord[6]}" id="qty_item_S<c:out value="${status.count}"/>" onKeyUp="setAmount.modify('#qty_item_S<c:out value="${status.count}"/>','S','<c:out value="${status.count}"/>')" class="text" style="height: 15px;" />
 			<a class="add" onClick="setAmount.add('#qty_item_S<c:out value="${status.count}"/>','S','<c:out value="${status.count}"/>')" href="javascript:void(0)">
 			+</a>
 		</div></div><br>
@@ -170,7 +146,7 @@
 		<div class="f_l add_chose">
 			<a class="reduce" onClick="setAmount.reduce('#qty_item_M<c:out value="${status.count}"/>','M','<c:out value="${status.count}"/>')" href="javascript:void(0)">
 			-</a>
-			<input type="text" name="qty_item_M<c:out value="${status.count}"/>" value="${ord[7]}" id="qty_item_M<c:out value="${status.count}"/>" onKeyUp="setAmount.modify('#qty_item_M<c:out value="${status.count}"/>','M','<c:out value="${status.count}"/>')" class="text" style="height: 15px;" />
+			<input type="text" name="qty_item_M<c:out value="${status.count}"/>" readonly="readonly" value="${ord[7]}" id="qty_item_M<c:out value="${status.count}"/>" onKeyUp="setAmount.modify('#qty_item_M<c:out value="${status.count}"/>','M','<c:out value="${status.count}"/>')" class="text" style="height: 15px;" />
 			<a class="add" onClick="setAmount.add('#qty_item_M<c:out value="${status.count}"/>','M','<c:out value="${status.count}"/>')" href="javascript:void(0)">
 			+</a>
 		</div></div><br>
@@ -183,7 +159,7 @@
 		<div class="f_l add_chose">
 			<a class="reduce" onClick="setAmount.reduce('#qty_item_L<c:out value="${status.count}"/>','L','<c:out value="${status.count}"/>')" href="javascript:void(0)">
 			-</a>
-			<input type="text" name="qty_item_L<c:out value="${status.count}"/>" value="${ord[8]}" id="qty_item_L<c:out value="${status.count}"/>" onKeyUp="setAmount.modify('#qty_item_L<c:out value="${status.count}"/>','L','<c:out value="${status.count}"/>')" class="text" style="height: 15px;" />
+			<input type="text" name="qty_item_L<c:out value="${status.count}"/>" readonly="readonly" value="${ord[8]}" id="qty_item_L<c:out value="${status.count}"/>" onKeyUp="setAmount.modify('#qty_item_L<c:out value="${status.count}"/>','L','<c:out value="${status.count}"/>')" class="text" style="height: 15px;" />
 			<a class="add" onClick="setAmount.add('#qty_item_L<c:out value="${status.count}"/>','L','<c:out value="${status.count}"/>')" href="javascript:void(0)">
 			+</a>
 		</div></div><br>
@@ -196,7 +172,7 @@
 		<div class="f_l add_chose">
 			<a class="reduce" onClick="setAmount.reduce('#qty_item_XL<c:out value="${status.count}"/>','XL','<c:out value="${status.count}"/>')" href="javascript:void(0)">
 			-</a>
-			<input type="text" name="qty_item_XL<c:out value="${status.count}"/>" value="${ord[9]}" id="qty_item_XL<c:out value="${status.count}"/>" onKeyUp="setAmount.modify('#qty_item_XL<c:out value="${status.count}"/>','XL','<c:out value="${status.count}"/>')" class="text" style="height: 15px;" />
+			<input type="text" name="qty_item_XL<c:out value="${status.count}"/>" readonly="readonly" value="${ord[9]}" id="qty_item_XL<c:out value="${status.count}"/>" onKeyUp="setAmount.modify('#qty_item_XL<c:out value="${status.count}"/>','XL','<c:out value="${status.count}"/>')" class="text" style="height: 15px;" />
 			<a class="add" onClick="setAmount.add('#qty_item_XL<c:out value="${status.count}"/>','XL','<c:out value="${status.count}"/>')" href="javascript:void(0)">
 			+</a>
 		</div></div><br>
@@ -209,7 +185,7 @@
 		<div class="f_l add_chose">
 			<a class="reduce" onClick="setAmount.reduce('#qty_item_XXL<c:out value="${status.count}"/>','XXL','<c:out value="${status.count}"/>')" href="javascript:void(0)">
 			-</a>
-			<input type="text" name="qty_item_XXL<c:out value="${status.count}"/>" value="${ord[10]}" id="qty_item_XXL<c:out value="${status.count}"/>" onKeyUp="setAmount.modify('#qty_item_XXL<c:out value="${status.count}"/>','XXL','<c:out value="${status.count}"/>')" class="text" style="height: 15px;" />
+			<input type="text" name="qty_item_XXL<c:out value="${status.count}"/>" readonly="readonly" value="${ord[10]}" id="qty_item_XXL<c:out value="${status.count}"/>" onKeyUp="setAmount.modify('#qty_item_XXL<c:out value="${status.count}"/>','XXL','<c:out value="${status.count}"/>')" class="text" style="height: 15px;" />
 			<a class="add" onClick="setAmount.add('#qty_item_XXL<c:out value="${status.count}"/>','XXL','<c:out value="${status.count}"/>')" href="javascript:void(0)">
 			+</a>
 		</div></div><br>
@@ -222,7 +198,7 @@
 		<div class="f_l add_chose">
 			<a class="reduce" onClick="setAmount.reduce('#qty_item_XXXL<c:out value="${status.count}"/>','XXXL','<c:out value="${status.count}"/>')" href="javascript:void(0)">
 			-</a>
-			<input type="text" name="qty_item_XXXL<c:out value="${status.count}"/>" value="${ord[11]}" id="qty_item_XXXL<c:out value="${status.count}"/>" onKeyUp="setAmount.modify('#qty_item_XXXL<c:out value="${status.count}"/>','XXXL','<c:out value="${status.count}"/>')" class="text" style="height: 15px;" />
+			<input type="text" name="qty_item_XXXL<c:out value="${status.count}"/>" readonly="readonly" value="${ord[11]}" id="qty_item_XXXL<c:out value="${status.count}"/>" onKeyUp="setAmount.modify('#qty_item_XXXL<c:out value="${status.count}"/>','XXXL','<c:out value="${status.count}"/>')" class="text" style="height: 15px;" />
 			<a class="add" onClick="setAmount.add('#qty_item_XXXL<c:out value="${status.count}"/>','XXXL','<c:out value="${status.count}"/>')" href="javascript:void(0)">
 			+</a>
 		</div></div><br>
@@ -235,7 +211,7 @@
 		        </td>
 		     <td class="bg subtotal">
 		     
-		     <span class="total-font" id="total_item_<c:out value="${status.count}"/>">￥ ${ord[4] }</span>   
+		    ￥ <span class="total-font" id="total_item_<c:out value="${status.count}"/>" name="total_item_<c:out value="${status.count}"/>"> ${ord[4] }</span>   
 		    </td>
 		     <td class="close">
 		     
@@ -295,17 +271,17 @@
 		     </tr>
 		     <tr class="grand_total">
 		   
-			    <td>总数</td><td class="price">￥${totalnumber} </td>
+			    <td>总数</td><td class="price"><span id="labletotalnu" name="labletotalnu">${totalnumber}</span> </td>
 		     </tr>
 		     <tr class="grand_total">
 		   
-			    <td>${totalprice}总计</td><td class="price">
-			 ￥${totalprice}
+			    <td>总计</td><td class="price">
+			 ￥<span id="labletotalpri" name="labletotalpri">${totalprice}</span>
 			</td>
 		     </tr>
 		     
-		     <tr>
-		     <td ><span class="jifen">购买商品可获得：<b id="total_points">350</b>积分</span></td>
+		     <tr >
+		     <td>购买商品可获得：</td><td><span id="total_points">350</span>积分</td>
 		     </tr>
 	      </table>
 	    <button class="checkout" id="gotoBalance" >去结算中心</button>
