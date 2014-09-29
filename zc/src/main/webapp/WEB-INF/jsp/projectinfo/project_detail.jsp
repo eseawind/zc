@@ -98,8 +98,10 @@
         </h6>
      <div class="orderProgress">
      
-      <p style="padding-left: 220px;">
-           <img  id="proImg" name="proImg" style="width:319px;height:319px;" src="uploadImg/${zcProjectInfo.resourceInfo.resourceName }"> </p></div>
+      <p style="margin-left: 60px;">
+       <img  id="proImg" name="proImg" style="width:319px;height:319px;" src="uploadImg/${zcProjectInfo.resourceInfo.resourceName }" title="正面"> 
+     
+              <img  id="proImg" name="proImg" style="width:319px;height:319px;" src="uploadImg/${zcProjectInfo.resourceInfo1.resourceName }" title="背面"> </p></div>
      
              
      

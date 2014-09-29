@@ -167,9 +167,9 @@
         data: "{}",
         dataType: 'json',
         success: function(data) {
-           
         	$("#btnLike"+data.returnValue).removeClass("like");
         	$("#btnLike"+data.returnValue).addClass("likeed");
+        	$("#btnLike"+data.returnValue).attr("onclick","ajax_proLike("+data.returnValue+")");
         }
     });
 }
@@ -183,9 +183,9 @@
 	        data: "{}",
 	        dataType: 'json',
 	        success: function(data) {
-	           
 	        	$("#btnLike"+data.returnValue).removeClass("likeed");
 	        	$("#btnLike"+data.returnValue).addClass("like");
+	        	$("#btnLike"+data.returnValue).attr("onclick","ajax_proLikeed("+data.returnValue+")");
 	        }
 	    });
 	}
