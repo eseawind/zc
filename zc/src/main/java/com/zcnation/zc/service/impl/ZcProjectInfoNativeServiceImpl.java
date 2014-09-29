@@ -25,9 +25,9 @@ public class ZcProjectInfoNativeServiceImpl implements ZcProjectInfoNativeServic
 		return zcProjectInfoNativeDao.findByProShStatus();
 	}
 	@Override
-	public List<ZcProjectInfo> queryByProShStatusAndPage(Integer currentPage,Integer sortSele,Integer sortBy,Integer proType,Integer proFabric,Integer userCode) {
+	public List<ZcProjectInfo> queryByProShStatusAndPage(Integer currentPage,Integer sortSele,Integer sortBy,Integer proType,Integer proFabric,Integer stateSele,Integer userCode) {
 		// TODO Auto-generated method stub
-		return zcProjectInfoNativeDao.findByProShStatusAndPage(currentPage,sortSele,sortBy,proType,proFabric,userCode);
+		return zcProjectInfoNativeDao.findByProShStatusAndPage(currentPage,sortSele,sortBy,proType,proFabric,stateSele , userCode);
 	}
 	@Override
 	public List<ZcProjectInfo> queryByProTime() {
@@ -35,10 +35,10 @@ public class ZcProjectInfoNativeServiceImpl implements ZcProjectInfoNativeServic
 		return zcProjectInfoNativeDao.findByProTime();
 	}
 	@Override
-	public Integer queryTtotalByProShStatusAndPage(Integer sortSele,
-			Integer sortBy, Integer proType, Integer proFabric) {
+	public Integer queryTotalByProShStatusAndPage(Integer sortSele,
+			Integer sortBy, Integer proType, Integer proFabric,Integer stateSele) {
 		// TODO Auto-generated method stub
-		return zcProjectInfoNativeDao.findTotalByProShStatusAndPage(sortSele, sortBy, proType, proFabric);
+		return zcProjectInfoNativeDao.findTotalByProShStatusAndPage(sortSele, sortBy, proType, proFabric,stateSele);
 	}
 	@Override
 	public int updateProCanceTimeByProCode(Integer proCode) {
