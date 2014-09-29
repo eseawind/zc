@@ -16,10 +16,10 @@ public interface ZcProjectInfoNativeDao {
 	
 	public List<ZcProjectInfo> findByProTime();
 	
-	public List<ZcProjectInfo> findByProShStatusAndPage(Integer currentPage,Integer sortSele,Integer sortBy,Integer proType,Integer proFabric,Integer userCode);
+	public List<ZcProjectInfo> findByProShStatusAndPage(Integer currentPage,Integer sortSele,Integer sortBy,Integer proType,Integer proFabric,Integer stateSele, Integer userCode);
 	
 	
-	public Integer findTotalByProShStatusAndPage(Integer sortSele,Integer sortBy,Integer proType,Integer proFabric);
+	public Integer findTotalByProShStatusAndPage(Integer sortSele,Integer sortBy,Integer proType,Integer proFabric,Integer stateSele);
 	
 	  public int updateProCanceTimeByProCode(Integer proCode);
 
