@@ -77,7 +77,7 @@
             <c:if test="${zcOrdersInfo.orderStatus!='1' }">
             
            		<!--  <a href="/payments/pay_orders?order_ids=50254" class="buthui">立即支付</a>-->  
-                                                                    <a href="#" class="buthui for_cancel" oid="50254">取消作品</a>
+                                                                    <a href="#" class="buthui for_cancel" oid="50254">取消发布</a>
                                                        <!--   <a href="/orders/modify_order/50254" class="buthui">修改订单</a>-->  
               </c:if>
           

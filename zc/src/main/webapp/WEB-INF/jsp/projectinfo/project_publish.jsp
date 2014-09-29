@@ -14,7 +14,17 @@
 
   <title>我发表的作品</title>
 
-
+<script>
+	$(document).ready(function() {
+		 var proStatusSelect=$("#proStatusSelect").val();
+		if(proStatusSelect==''||proStatusSelect=='-1'){
+			 $("#proShStatus option").filter("[value='-1']").attr("selected", true);//有效！ 
+		}else{
+			 $("#proShStatus option").filter("[value='"+proStatusSelect+"']").attr("selected", true);//有效！ 
+		}
+	});
+  </script>
+  
 </head>
 <body>
 
@@ -72,14 +82,15 @@
            <td> <input type="text" placeholder="请输入作品名称" class="incInput" name="proName" value="${proName }" size="36" id="proName"></td>
             <td> 
            
-             <select  id="proShStatus" name="proShStatus" style="  height:33px;">
+             <select  id="proShStatus" name="proShStatus" style="height:33px;">
                         <option value="-1" selected="selected">全部</option>
                                   <option value="0">审核中</option>
-                                  <option value="1">取消作品</option>
+                                  <option value="1">取消发布</option>
                                      <option value="2">审核成功</option>
-                                    <option value="3">众筹中</option>
-                                    <option value="4">众筹成功</option>
-                                     <option value="4">众筹失败</option>
+                                     <option value="3">审核失败</option>
+                                    <option value="4">众筹中</option>
+                                    <option value="5">众筹成功</option>
+                                     <option value="6">众筹失败</option>
                                     
                       </select>
                     
@@ -110,9 +121,9 @@
            <c:forEach items="${proinfos}" var="pro" varStatus="status">
                <tr>
                   <td><c:out value="${status.count}"/></td>
-               <td align="left"><a href="projectinfo/project_<c:out value="${pro[0]}"></c:out>.html"> <img src="uploadImg/<c:out value="${pro[6]}"></c:out>" width="100" height="100" style="cursor: pointer;" alt="" title="" /></a>
+               <td align="left"><a href="projectinfo/project_<c:out value="${pro[0]}"></c:out>.xhtml"> <img src="uploadImg/<c:out value="${pro[6]}"></c:out>" width="100" height="100" style="cursor: pointer;" alt="" title="" /></a>
                
-             <span style="vertical-align: top;line-height: 30px;"> <a href="projectinfo/project_<c:out value="${pro[0]}"></c:out>.html">  <c:out value="${pro[1]}"></c:out></a></span>
+             <span style="vertical-align: top;line-height: 30px;"> <a href="projectinfo/project_<c:out value="${pro[0]}"></c:out>.xhtml">  <c:out value="${pro[1]}"></c:out></a></span>
                </td>
              
               <td><c:out value="${pro[7]}"></c:out></td>

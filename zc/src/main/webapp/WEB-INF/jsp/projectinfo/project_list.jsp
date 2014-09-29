@@ -22,7 +22,7 @@
 		
 		 var orderStatusSelect=$("#currentPageSelect").val();
 		 var sortSeleSelect=$("#sortSeleSelect").val();
-		 
+		 var stateSeleSelect=$("#stateSeleSelect").val();
 			if(orderStatusSelect==''||orderStatusSelect=='-1'){
 				 $("#currentPage option").filter("[value='-1']").attr("selected", true);//有效！ 
 					
@@ -46,6 +46,17 @@
 					
 			}
 			
+			
+			if(stateSeleSelect==''||stateSeleSelect=='-1'){
+				 $("#stateSele option").filter("[value='-1']").attr("selected", true);//有效！ 
+					
+					
+			}else{
+				
+				 $("#stateSele option").filter("[value='"+stateSeleSelect+"']").attr("selected", true);//有效！ 
+					
+					
+			}
 			//$("select").selectBox();
 			 
 	});
@@ -111,6 +122,20 @@
 	      });
 	      
 	      
+	      $("#stateSele").change(function(){
+	    	  var state=$(this);
+	    	  if(window.ActiveXObject){
+	    		  window.location=("../projectinfo/project_list.html?currentPage=1&stateSele="+state.val()+"&proType=${proType}&proFabric=${proFabric}");  
+				 }else{
+					 window.location=("projectinfo/project_list.html?currentPage=1&stateSele="+state.val()+"&proType=${proType}&proFabric=${proFabric}");  
+				 }
+	    	
+	    	  
+	    	
+	    	 
+	      });
+	      
+	      
 	      $("#sortdown").click(function(){
 	    	  
 	    	  
@@ -127,7 +152,8 @@
 	      
 	      $("#sortup").click(function(){
 	    	  
-	    	  if(window.ActiveXObject){  window.location=("../projectinfo/project_list.html?currentPage=1&sortSele="+$("#sortSele").val()+"&sortBy=0&proType=${proType}&proFabric=${proFabric}"); 
+	    	  if(window.ActiveXObject){  
+	    		  window.location=("../projectinfo/project_list.html?currentPage=1&sortSele="+$("#sortSele").val()+"&sortBy=0&proType=${proType}&proFabric=${proFabric}"); 
 	    	  }else{
 	    		  window.location=("projectinfo/project_list.html?currentPage=1&sortSele="+$("#sortSele").val()+"&sortBy=0&proType=${proType}&proFabric=${proFabric}");  
 	    	  }
@@ -239,9 +265,9 @@
 			状态
 			    <select id="stateSele" name="stateSele">
 			      <option value="-1">所有项目</option>
-				   <option value="0">众筹中</option>
-				   <option value="1">众筹结束</option>
-				 <option value="2">众筹失败</option>
+				   <option value="4">众筹中</option>
+				   <option value="5">众筹成功</option>
+				 <option value="6">众筹失败</option>
 			     </select>
 			    <input type="hidden" id="stateSeleSelect" name="stateSeleSelect" value="${stateSele }">
 			    
