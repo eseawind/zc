@@ -141,7 +141,43 @@ var setAmount = {
             $(obj).focus();
         }
         $("input[name^=qty_item_"+str+"]").bind("keyup",  recalc(str,i));
+        var qtytot=0;
+        var pricetot=0;
+        for(i=1;i<=$("#listcount").val();i++){
+        	if($("input[name^=qty_item_M"+i+"]").val()!=undefined){
+        		qtytot=parseInt(
+        				qtytot)+parseInt($("input[name^=qty_item_M"+i+"]").val());
+        	}
+        if($("input[name^=qty_item_S"+i+"]").val()!=undefined){
+        	qtytot=parseInt(qtytot)+parseInt($("input[name^=qty_item_S"+i+"]").val());
+        	}
+
+        if($("input[name^=qty_item_L"+i+"]").val()!=undefined){
+        	qtytot=parseInt(qtytot)+parseInt($("input[name^=qty_item_L"+i+"]").val());
+        	}
+        if($("input[name^=qty_item_XL"+i+"]").val()!=undefined){
+        	qtytot=parseInt(qtytot)+parseInt($("input[name^=qty_item_XL"+i+"]").val());
+        	}
+        if($("input[name^=qty_item_XXL"+i+"]").val()!=undefined){
+        	qtytot=parseInt(qtytot)+parseInt($("input[name^=qty_item_XXL"+i+"]").val());
+        	}
+        if($("input[name^=qty_item_XXXL"+i+"]").val()!=undefined){
+        	qtytot=parseInt(qtytot)+parseInt($("input[name^=qty_item_XXXL"+i+"]").val());
+        	}
         
+        pricetot=parseFloat(pricetot)+parseFloat($("#total_item_"+i+"").text())
+        
+        }
+      
+       $("#labletotalnu").text(qtytot);
+        $("#labletotalpri").text(pricetot.toFixed(2));
+        if(pricetot>100){
+        	
+       	 $("#total_points").text(Math.floor(pricetot/100)*100/100);
+       }else{
+       	 $("#total_points").text(0);
+       }
+      
     },
     add:function(obj,str,i) {
         var x = this.amount(obj, true);
@@ -155,7 +191,43 @@ var setAmount = {
         }
         $("input[name^=qty_item_"+str+"]").bind("keyup",  recalc(str,i));
         
-       
+          var qtytot=0;
+          var pricetot=0;
+        for(i=1;i<=$("#listcount").val();i++){
+        	if($("input[name^=qty_item_M"+i+"]").val()!=undefined){
+        		qtytot=parseInt(
+        				qtytot)+parseInt($("input[name^=qty_item_M"+i+"]").val());
+        	}
+        if($("input[name^=qty_item_S"+i+"]").val()!=undefined){
+        	qtytot=parseInt(qtytot)+parseInt($("input[name^=qty_item_S"+i+"]").val());
+        	}
+
+        if($("input[name^=qty_item_L"+i+"]").val()!=undefined){
+        	qtytot=parseInt(qtytot)+parseInt($("input[name^=qty_item_L"+i+"]").val());
+        	}
+        if($("input[name^=qty_item_XL"+i+"]").val()!=undefined){
+        	qtytot=parseInt(qtytot)+parseInt($("input[name^=qty_item_XL"+i+"]").val());
+        	}
+        if($("input[name^=qty_item_XXL"+i+"]").val()!=undefined){
+        	qtytot=parseInt(qtytot)+parseInt($("input[name^=qty_item_XXL"+i+"]").val());
+        	}
+        if($("input[name^=qty_item_XXXL"+i+"]").val()!=undefined){
+        	qtytot=parseInt(qtytot)+parseInt($("input[name^=qty_item_XXXL"+i+"]").val());
+        	}
+        pricetot=parseFloat(pricetot)+parseFloat($("#total_item_"+i+"").text())
+      
+        }
+      
+       $("#labletotalnu").text(qtytot);
+        $("#labletotalpri").text(pricetot.toFixed(2));
+        if(pricetot>100){
+        	
+        	 $("#total_points").text(Math.floor(pricetot/100)*100/100);
+        }else{
+        	 $("#total_points").text(0);
+        }
+      
+      
     },
     modify:function(obj,str,i) {
         var x = $(obj).val();
@@ -166,6 +238,42 @@ var setAmount = {
            
         }
         $("input[name^=qty_item_"+str+"]").bind("keyup",  recalc(str,i));
+        var qtytot=0;
+        var pricetot=0;
+        for(i=1;i<=$("#listcount").val();i++){
+        	if($("input[name^=qty_item_M"+i+"]").val()!=undefined){
+        		qtytot=parseInt(
+        				qtytot)+parseInt($("input[name^=qty_item_M"+i+"]").val());
+        	}
+        if($("input[name^=qty_item_S"+i+"]").val()!=undefined){
+        	qtytot=parseInt(qtytot)+parseInt($("input[name^=qty_item_S"+i+"]").val());
+        	}
+
+        if($("input[name^=qty_item_L"+i+"]").val()!=undefined){
+        	qtytot=parseInt(qtytot)+parseInt($("input[name^=qty_item_L"+i+"]").val());
+        	}
+        if($("input[name^=qty_item_XL"+i+"]").val()!=undefined){
+        	qtytot=parseInt(qtytot)+parseInt($("input[name^=qty_item_XL"+i+"]").val());
+        	}
+        if($("input[name^=qty_item_XXL"+i+"]").val()!=undefined){
+        	qtytot=parseInt(qtytot)+parseInt($("input[name^=qty_item_XXL"+i+"]").val());
+        	}
+        if($("input[name^=qty_item_XXXL"+i+"]").val()!=undefined){
+        	qtytot=parseInt(qtytot)+parseInt($("input[name^=qty_item_XXXL"+i+"]").val());
+        	}
+        
+        pricetot=parseFloat(pricetot)+parseFloat($("#total_item_"+i+"").text())
+        
+        }
+      
+       $("#labletotalnu").text(qtytot);
+        $("#labletotalpri").text(pricetot.toFixed(2));
+        if(pricetot>100){
+        	
+       	 $("#total_points").text(Math.floor(pricetot/100)*100/100);
+       }else{
+       	 $("#total_points").text(0);
+       }
         
     }
 }
@@ -188,8 +296,6 @@ function BuyUrl(wid) {
 /** total_item **/
 $(document).ready(function () {
 	
-	
-		
 	for(i=1;i<=$("#listcount").val();i++){
 		$("input[name^=qty_item_S"+i+"]").bind("keyup",   recalc("S",i));
 		$("input[name^=qty_item_M"+i+"]").bind("keyup",   recalc("M",i));
@@ -232,7 +338,6 @@ if($("input[name^=qty_item_XXXL"+i+"]").val()!=undefined){
 	qtytot=parseInt(qtytot)+parseInt($("input[name^=qty_item_XXXL"+i+"]").val());
 	}
 
-   
     //产品价格统计
     $("[id^=total_item_"+i+"]").calc(
 
@@ -246,14 +351,14 @@ if($("input[name^=qty_item_XXXL"+i+"]").val()!=undefined){
 
         function (s) {
         	
-            return "￥" + s.toFixed(2);
+            return "" + s.toFixed(2);
         },
 
         function ($this) {
 
             var sum = $this.sum();
             $("[id^=total_item_"+i+"]").text(
-                "￥" + sum.toFixed(2)
+                "" + sum.toFixed(2)
             );
             //$("#total_price").val($("[id^=total_item_"+i+"]").text());
         }
