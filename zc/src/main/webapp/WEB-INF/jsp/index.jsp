@@ -282,7 +282,7 @@
                  
                  <div class="imgtag">
 		<div class="tag_item">
-		<img style="width:100%" src="uploadImg/${pro[7]}" onmouseover="ShowFloatingImage(this, 50, 50);">
+		<img style="width:100%" src="uploadImg/${pro[7]}" onmouseover="ShowFloatingImage(this, 50, 50,${pro[0] });">
 			
 		</div>
                  
@@ -301,8 +301,8 @@
                 	</div>
                 </c:when> 
                       <c:otherwise>  
-                       <div class="progress-bar" title="已售卖了${pro[9]}件，完成目标的${pro[11]}"> 
-                <span class="progress bg-red" style="width:${pro[11]};" ></span>
+                       <div class="progress-bar" title="已售卖了${pro[9]}件，完成目标的${pro[8]}"> 
+                <span class="progress bg-red" style="width:${pro[8]};" ></span>
                 	</div>
                          
                        </c:otherwise> 
