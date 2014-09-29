@@ -13,7 +13,7 @@ public interface ZcProjectInfoNativeService {
 	public List<ZcProjectInfo> queryByProShStatus();
 	public List<ZcProjectInfo> queryByProTime();
 
-	public List<ZcProjectInfo> queryByProShStatusAndPage(Integer currentPage,Integer sortSele,Integer sortBy,Integer proType,Integer proFabric,Integer userCode);
-	public Integer queryTtotalByProShStatusAndPage(Integer sortSele,Integer sortBy,Integer proType,Integer proFabric);
+	public List<ZcProjectInfo> queryByProShStatusAndPage(Integer currentPage,Integer sortSele,Integer sortBy,Integer proType,Integer proFabric,Integer stateSele,Integer userCode);
+	public Integer queryTotalByProShStatusAndPage(Integer sortSele,Integer sortBy,Integer proType,Integer proFabric,Integer stateSele);
 	  public int updateProCanceTimeByProCode(Integer proCode);
 }
