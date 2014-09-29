@@ -75,7 +75,7 @@ public class ZcProjectInfoNativeDaoImpl implements ZcProjectInfoNativeDao{
 	 * 所有产品分页
 	 */
 	@Override
-	public List<ZcProjectInfo> findByProShStatusAndPage(Integer currentPage,Integer sortSele,Integer sortBy,Integer proType,Integer proFabric,Integer userCode) {
+	public List<ZcProjectInfo> findByProShStatusAndPage(Integer currentPage,Integer sortSele,Integer sortBy,Integer proType,Integer proFabric,Integer stateSele,Integer userCode) {
 		// TODO Auto-generated method stub
 		 int start = (currentPage - 1) * 16;  
 			String sql="select zpi.PRO_CODE,zpi.PRO_NAME,zpi.PRO_SH_STATUS,zpi.PRO_TARGET,zpi.RESOURCE_CODE as zpircode,zpi.pro_unit, zri.RESOURCE_CODE as zrircode,zri.RESOURCE_NAME,(select count(*) from  zc_project_like zpl where zpl.pro_code in(zpi.pro_code) and  zpl.user_code='"+userCode+"') as likecount,zpi.pro_remarks,zpi.pro_time,concat ( ROUND ((select sum(zod.ORDER_NUMBER) from  zc_order_detail zod where zod.pro_code in(zpi.pro_code))  /zpi.PRO_TARGET *100,2),'%') as orderdiscount,(select sum(zod.ORDER_NUMBER) from  zc_order_detail zod where zod.pro_code in(zpi.pro_code)) as ordercount,zpi.pro_endtime,zpi.pro_days from zc_project_info zpi left JOIN zc_resource_info zri on zpi.RESOURCE_CODE=zri.RESOURCE_CODE where 1=1 ";
@@ -91,7 +91,10 @@ public class ZcProjectInfoNativeDaoImpl implements ZcProjectInfoNativeDao{
 				sql=sql+" and zpi.pro_fabric='"+proFabric+"'";
 			}
 				
-			
+			if(stateSele==4||stateSele==5||stateSele==6){
+				
+				sql=sql+" and zpi.PRO_SH_STATUS='"+stateSele+"'";
+			}
 			if(sortSele==0&&sortBy==0){
 				
 				sql=sql+" order by zpi.pro_unit asc ";
@@ -143,7 +146,7 @@ public class ZcProjectInfoNativeDaoImpl implements ZcProjectInfoNativeDao{
 	}
 	@Override
 	public Integer findTotalByProShStatusAndPage(Integer sortSele, Integer sortBy,
-			Integer proType, Integer proFabric) {
+			Integer proType, Integer proFabric,Integer stateSele) {
 		// TODO Auto-generated method stub
 		String sql="select zpi.PRO_CODE,zpi.PRO_NAME,zpi.PRO_SH_STATUS,zpi.PRO_TARGET,zpi.RESOURCE_CODE as zpircode,zpi.pro_unit, zri.RESOURCE_CODE as zrircode,zri.RESOURCE_NAME,(select count(*) from  zc_project_like zpl where zpl.pro_code in(zpi.pro_code)) as likecount,zpi.pro_remarks,zpi.pro_time,concat ( ROUND ((select sum(zod.ORDER_NUMBER) from  zc_order_detail zod where zod.pro_code in(zpi.pro_code))  /zpi.PRO_TARGET *100,2),'%') as orderdiscount,(select sum(zod.ORDER_NUMBER) from  zc_order_detail zod where zod.pro_code in(zpi.pro_code)) as ordercount,zpi.pro_endtime,zpi.pro_days from zc_project_info zpi left JOIN zc_resource_info zri on zpi.RESOURCE_CODE=zri.RESOURCE_CODE where 1=1 ";
 		
@@ -157,7 +160,10 @@ public class ZcProjectInfoNativeDaoImpl implements ZcProjectInfoNativeDao{
 					
 					sql=sql+" and zpi.pro_fabric='"+proFabric+"'";
 				}
+if(stateSele==4||stateSele==5||stateSele==6){
 					
+					sql=sql+" and zpi.PRO_SH_STATUS='"+stateSele+"'";
+				}
 				
 				if(sortSele==0&&sortBy==0){
 					
