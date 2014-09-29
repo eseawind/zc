@@ -96,7 +96,7 @@ public class ZcProjectInfoAction {
 
 	@RequestMapping("/project_list.html")
 	public String to_list(HttpServletRequest request, String currentPage,
-			String sortSele, String sortBy, String proType, String proFabric) {
+			String sortSele, String sortBy, String proType, String proFabric,String stateSele) {
 		Getpagenum getpagenum = new Getpagenum();
 
 		ZcUserInfo sezcUserInfo = (ZcUserInfo) request.getSession()
@@ -123,24 +123,31 @@ public class ZcProjectInfoAction {
 
 			sortBy = "0";
 		}
+		
+		if (stateSele == null || stateSele.equals("")) {
+
+			stateSele = "-1";
+		}
+
 
 		List<ZcProjectInfo> prolist = new ArrayList<ZcProjectInfo>();
 		prolist = zcProjectInfoNativeService.queryByProShStatusAndPage(
 				Integer.parseInt(currentPage), Integer.parseInt(sortSele),
 				Integer.parseInt(sortBy), Integer.parseInt(proType),
-				Integer.parseInt(proFabric), userCode);
+				Integer.parseInt(proFabric), Integer.parseInt(stateSele),userCode);
 
 		request.setAttribute("proinfos", prolist);
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("sortSele", sortSele);
 		request.setAttribute("sortBy", sortBy);
+		request.setAttribute("stateSele", stateSele);
 		request.setAttribute("pagesize",
 				getpagenum.getpagenum(zcProjectInfoNativeService
-						.queryTtotalByProShStatusAndPage(
+						.queryTotalByProShStatusAndPage(
 								Integer.parseInt(sortSele),
 								Integer.parseInt(sortBy),
 								Integer.parseInt(proType),
-								Integer.parseInt(proFabric)), 16));
+								Integer.parseInt(proFabric),Integer.parseInt(stateSele)), 16));
 		request.setAttribute("proType", proType);
 		request.setAttribute("proFabric", proFabric);
 
@@ -194,6 +201,7 @@ public class ZcProjectInfoAction {
 		// list=zcProjectInfoService.queryByUserCodeAndProNameLike(sezcUserInfo.getUserCode(),"%"+proName+"%");
 		request.setAttribute("proinfos", list);
 		request.setAttribute("proName", proName);
+		request.setAttribute("proShStatus", proShStatus);
 		System.out.println(list.size());
 
 		// if(list.size()>0){

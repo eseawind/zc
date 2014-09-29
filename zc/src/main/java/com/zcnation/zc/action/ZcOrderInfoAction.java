@@ -65,7 +65,7 @@ public class ZcOrderInfoAction {
 	@ResponseBody
 	public String beginAddOrderInfo(HttpServletRequest request,
 			@ModelAttribute ZcAppraise zcAppraise, String proCode,String addressCode) {
-		System.out.println("dddddddddddddddddddddddddddddddddd");
+
 		Result rs = new Result();
 		
 		ZcUserInfos  zUserInfos=new ZcUserInfos();
