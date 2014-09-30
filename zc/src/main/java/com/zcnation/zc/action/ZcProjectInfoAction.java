@@ -232,7 +232,7 @@ public class ZcProjectInfoAction {
 		List list = new ArrayList();
 		list = zcAppraiseNativeService
 				.queryByProCodeAndOrderCodeIsNotNull(Integer.parseInt(detailId));
-		System.out.println(list.size());
+		System.out.println("ddddddddddddddddddddddddd"+list.size());
 
 		request.setAttribute("applist", applist);
 		request.setAttribute("userlist", list);
