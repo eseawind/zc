@@ -70,55 +70,65 @@ public class ZcOrderInfoAction {
 		
 		ZcUserInfos  zUserInfos=new ZcUserInfos();
 		
-		zUserInfos=zcUserInfosService.queryOne(Integer.parseInt(addressCode));
-		
-		
+		if (addressCode == null || addressCode.equals("")) {
+			rs.setSuccess(false);
+			rs.getErrorMsgs().add("请维护收货人地址");
+			RootLogger.error("收货地址不存在.");
+			
+		}else{
+			zUserInfos=zcUserInfosService.queryOne(Integer.parseInt(addressCode));
+			System.out.println("Integer.parseInt(addressCode)"+Integer.parseInt(addressCode));
+			
+			
 
-		ZcUserInfo info=(ZcUserInfo)ThreadLocalSession.getLocal_session().getAttribute(ZcContext.LOGIN_USER_KEY);
+			ZcUserInfo info=(ZcUserInfo)ThreadLocalSession.getLocal_session().getAttribute(ZcContext.LOGIN_USER_KEY);
 
-		Calendar ordtime=Calendar.getInstance();
-		ZcOrdersInfo orderinfo=new ZcOrdersInfo();
-		
-		orderinfo.setUserName(zUserInfos.getUserName());
-		orderinfo.setUserAddress(zUserInfos.getUserAddress());
-		orderinfo.setUserProvince(zUserInfos.getUserProvince());
-		orderinfo.setUserCity(zUserInfos.getUserCity());
-		orderinfo.setUserArea(zUserInfos.getUserArea());
-		orderinfo.setUserZip(zUserInfos.getUserZip());
-		orderinfo.setUserMobilephone(zUserInfos.getUserMobilephone());
-		orderinfo.setUserTelephone(zUserInfos.getUserTelephone());
-		orderinfo.setUserEmail(zUserInfos.getUserEmail());
-		
-		
-		orderinfo.setOrderStatus(String.valueOf(ZcContext.ORDER_STATUS_FIRST));
-		orderinfo.setOrderTime(Calendar.getInstance().getTime());
-		orderinfo.setUserCode(info.getUserCode());
-		//订单编号 生成规程 
-		//随机三位数+订单人+订单日期
-		DecimalFormat df=new DecimalFormat("00000");
-		StringBuffer ords=new StringBuffer();
-		ords.append(df.format(new Random().nextInt(99999)))
-		.append(df.format(info.getUserCode()))
-		.append(DateFormatUtils.format(ordtime, "yyyyMMddHHmmss"));
-		orderinfo.setOrderCode(ords.toString());
-		ZcOrdersInfo zoi= zcOrdersInfoService.save(orderinfo);
-		if (zoi.getOcodes()>0) {//保存成功，保存明细
-			zcOrderDetailNativeService.updateOrderCodeByUserCodeAndOrderCodeIsNull(info.getUserCode(), zoi.getOcodes());
-//			for (CartInfo ci : carts) {
-//				ZcOrderDetail zd=new ZcOrderDetail();
-//				zd.setOrderCode(zoi.getOrderCode());
-//				zd.setProCode(ci.getProCode());
-//				zd.setProNumber(ci.getCartNumber());
-//				zd.setProUnit(new BigDecimal(ci.getProUnit()));
-//				zd.setProType(ci.getTshirtShort());
-//				zcOrderDetailDao.save(zd);
-//			}
+			Calendar ordtime=Calendar.getInstance();
+			ZcOrdersInfo orderinfo=new ZcOrdersInfo();
+			
+			orderinfo.setUserName(zUserInfos.getUserName());
+			orderinfo.setUserAddress(zUserInfos.getUserAddress());
+			orderinfo.setUserProvince(zUserInfos.getUserProvince());
+			orderinfo.setUserCity(zUserInfos.getUserCity());
+			orderinfo.setUserArea(zUserInfos.getUserArea());
+			orderinfo.setUserZip(zUserInfos.getUserZip());
+			orderinfo.setUserMobilephone(zUserInfos.getUserMobilephone());
+			orderinfo.setUserTelephone(zUserInfos.getUserTelephone());
+			orderinfo.setUserEmail(zUserInfos.getUserEmail());
+			
+			
+			orderinfo.setOrderStatus(String.valueOf(ZcContext.ORDER_STATUS_FIRST));
+			orderinfo.setOrderTime(Calendar.getInstance().getTime());
+			orderinfo.setUserCode(info.getUserCode());
+			//订单编号 生成规程 
+			//随机三位数+订单人+订单日期
+			DecimalFormat df=new DecimalFormat("00000");
+			StringBuffer ords=new StringBuffer();
+			ords.append(df.format(new Random().nextInt(99999)))
+			.append(df.format(info.getUserCode()))
+			.append(DateFormatUtils.format(ordtime, "yyyyMMddHHmmss"));
+			orderinfo.setOrderCode(ords.toString());
+			ZcOrdersInfo zoi= zcOrdersInfoService.save(orderinfo);
+			if (zoi.getOcodes()>0) {//保存成功，保存明细
+				zcOrderDetailNativeService.updateOrderCodeByUserCodeAndOrderCodeIsNull(info.getUserCode(), zoi.getOcodes());
+//				for (CartInfo ci : carts) {
+//					ZcOrderDetail zd=new ZcOrderDetail();
+//					zd.setOrderCode(zoi.getOrderCode());
+//					zd.setProCode(ci.getProCode());
+//					zd.setProNumber(ci.getCartNumber());
+//					zd.setProUnit(new BigDecimal(ci.getProUnit()));
+//					zd.setProType(ci.getTshirtShort());
+//					zcOrderDetailDao.save(zd);
+//				}
+				rs.setSuccess(true);
+			}
+			  
+
+			rs.setReturnValue(proCode);
 			rs.setSuccess(true);
 		}
-		  
-
-		rs.setReturnValue(proCode);
-		rs.setSuccess(true);
+		
+		
 		return rs.toJson();
 	
 	}
@@ -131,27 +141,24 @@ public class ZcOrderInfoAction {
 		
 		 ZcOrdersInfo zcOrdersInfo=new ZcOrdersInfo();
 		 zcOrdersInfo=zcOrdersInfoService.queryByOcodes(Integer.parseInt(detailId));
+		 	double totalprice=0.00;
+			int totalnumber=0;
+			ZcUserInfo sezcUserInfo=(ZcUserInfo)request.getSession().getAttribute(ZcContext.LOGIN_USER_KEY);
+			List list=zcOrderDetailNativeService.queryByUserCodeAndOCodes(sezcUserInfo.getUserCode(),Integer.parseInt(detailId));
+			
 		
-//		try {
-//			int preCode = NumberUtils.toInt(detailId);
-//			ZcProjectInfo info = zcProjectInfoService.queryOne(preCode);
-//			request.setAttribute("infoPro", info);
-//		} catch (Exception e) {
-//			RootLogger.error(e);
-//		}
-//		
-//		
-//		List<ZcAppraise> applist=new ArrayList<ZcAppraise>();
-//		applist=zcAppraiseService.queryByProCode(Integer.parseInt(detailId));
-//		
-//		List list=new ArrayList();
-//		list=zcAppraiseNativeService.queryByProCodeAndOrderCodeIsNotNull(Integer.parseInt(detailId));
-//		System.out.println(list.size());
-//		
-//
-//		request.setAttribute("applist", applist);
-//		request.setAttribute("userlist", list);
-		 request.setAttribute("zcOrdersInfo", zcOrdersInfo);
+			for (Object object : list) {
+				//这个object应该是个数组
+				Object[] oj=(Object[])object;
+				totalprice=totalprice+Double.valueOf(oj[4].toString());
+				totalnumber=totalnumber+Integer.parseInt(oj[5].toString());
+				System.out.println("总价："+oj[4]+" 总数："+oj[5]);
+			}
+			
+			request.setAttribute("ordcart", list);
+			request.setAttribute("totalprice", totalprice);
+			request.setAttribute("totalnumber", totalnumber);
+			request.setAttribute("zcOrdersInfo", zcOrdersInfo);
 		return "order/order_detail";
 	}
 	
