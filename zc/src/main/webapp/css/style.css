@@ -1299,7 +1299,7 @@ h1.post_title{
 }
 .grid_product .product{
 	margin-bottom: 32px;
-	border:1px solid #e0e0e0;
+	/*border:1px solid #e0e0e0;*/
 	border-radius: 2px;
 	-moz-border-radius: 2px;
 	-khtml-border-radius: 2px;
@@ -1485,7 +1485,7 @@ a.more:hover{text-decoration: underline!important;}
 	height: 41px;
 	text-decoration: none;
 	margin: 0 0 0px 7px;
-	border-right: 1px solid #e0e0e0;
+	/*border-right: 1px solid #e0e0e0;*/
 	background: url(../images/bg_obn.png) no-repeat 50% 50%;
 }
 
@@ -1495,16 +1495,6 @@ a.more:hover{text-decoration: underline!important;}
 .listing_product .product_li .cart a.like:hover{
 	background-color: #EFF7FF;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2716,7 +2706,7 @@ img.sale{
 	margin: 0px;
 	font:normal 12px/18px Bitter, Myriad Pro, Verdana, serif;
 	color:#2e8f9a;
-	border-right: 1px solid #e0e0e0;
+	/*border-right: 1px solid #e0e0e0;*/
 }
 .product .cart .price .vert{
 	height: 40px;
@@ -2741,7 +2731,7 @@ img.sale{
 	float: left;
 	height: 41px;
 	margin: 0px;
-	border-right: 1px solid #e0e0e0;
+	/*border-right: 1px solid #e0e0e0;*/
 }
 .product .cart .obn{background: url(../images/toolkit.png) no-repeat 51% 49%;}
 .product .cart .like{background: url(../images/toolkit.png) no-repeat -8px -94px;}
