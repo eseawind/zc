@@ -76,9 +76,9 @@
           <p>
             <c:if test="${zcOrdersInfo.orderStatus!='1' }">
             
-           		  <a href="/payments/pay_orders?order_ids=50254" class="buthui">立即支付</a>
+           		<!--   <a href="/payments/pay_orders?order_ids=50254" class="buthui">立即支付</a> -->
                                                                     <a href="#" class="buthui for_cancel" oid="50254">取消订单</a>
-                                                          <a href="/orders/modify_order/50254" class="buthui">修改订单</a>
+                                                        <!--   <a href="/orders/modify_order/50254" class="buthui">修改订单</a> -->
               </c:if>
           
                                         
@@ -155,38 +155,103 @@
                  
                 <table cellpadding="0" cellspacing="0" class="tableStyle thback">
           <tbody><tr ><th>商品</th><th>单价</th><th>数量</th><th>小计</th></tr>
+                   
+                   
+                   
+                     <c:forEach items="${ordcart}" var="ord" varStatus="status">
+                     
                       <tr class="hui deepBlue">
               <td>
                 <div class="comBox" style="margin-top: 5px;">
-                  <a href="/stores/buy/6281"><img src="http://pic.teeker.com/p/20140405/6281_567_front_172917_70x70.jpg" width="66" height="66"></a>
+                <a href="projectinfo/project_${ord[0] }.html"><img src="uploadImg/${ord[2] }" width="66px" height="66px;" alt=""></a>
                   <h4><a href="#"></a></h4>
-                  <p>A01-圆领短袖纯棉T恤-女款牙白</p>
+                  <p>${ord[1] }</p>
                 </div>
               </td>
-              <td>69.00元</td>
+              <td><span id="price_item_<c:out value="${status.count}"/>">￥${ord[3] }</span></td>
               <td>
                 <div class="number">
-                                      <span>W-XL:5</span>
-                                        <span>W-M:7</span>
+                
+                  <c:choose>
+		    
+		     <c:when test="${ord[6]!='0'}">  
+                  	
+	<div class="p_number">
+		
+		<div class="f_l add_chose">
+			
+			  <span>S:${ord[6]}</span>
+		</div></div><br>
+                </c:when> 
+               </c:choose>
+                 <c:choose>   <c:when test="${ord[7]!='0'}">  
+                  	
+	<div class="p_number">
+		
+		<div class="f_l add_chose">
+			  <span>M:${ord[7]}</span>
+		</div></div><br>
+                </c:when> 
+                 </c:choose>
+		        <c:choose>  <c:when test="${ord[8]!='0'}">  
+                  	
+	<div class="p_number">
+		
+		<div class="f_l add_chose">
+			  <span>L:${ord[8]}</span>
+		</div></div><br>
+                </c:when> 
+                 </c:choose>
+                 <c:choose> <c:when test="${ord[9]!='0'}">  
+                  	
+	<div class="p_number">
+		
+		<div class="f_l add_chose">
+			  <span>XL:${ord[9]}</span>
+		</div></div><br>
+                </c:when> 
+                 </c:choose>
+                 <c:choose> <c:when test="${ord[10]!='0'}">  
+                  	
+	<div class="p_number">
+		
+		<div class="f_l add_chose">
+		  <span>	XXL:${ord[10]}</span>
+		</div></div><br>
+                </c:when> 
+                  </c:choose> 
+                    <c:choose> <c:when test="${ord[11]!='0'}">  
+                  	
+	<div class="p_number">
+		
+		<div class="f_l add_chose">
+		  <span>XXXL:${ord[11]}</span>
+		</div></div><br>
+                </c:when> 
+		    </c:choose>
+                
+                                  
                                     </div>
               </td>
               <td>
                
                 
                  <div class="number">
-                                      <span>12*69.00=828</span>元
+                                      <span>${ord[5]}*${ord[3]}=${ord[4]}</span>元
                                        
                                     </div>
            
               </td>
             </tr>
             
+	      </c:forEach>
+                   
             
             
                     </tbody></table>
-        <div class="total">商品总金额<strong>828.00</strong>元<span>+
+        <div class="total">商品总金额<strong>${ totalprice}</strong>元<span>+
           </span>运费<strong>0.00</strong>元<span>-</span>优惠
-          <strong>0.00</strong>元<span>=</span><strong>828.00</strong>元
+          <strong>0.00</strong>元<span>=</span><strong>${ totalprice}</strong>元
                                    
                               </div>
       </div>

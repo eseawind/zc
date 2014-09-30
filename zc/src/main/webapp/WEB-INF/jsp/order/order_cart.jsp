@@ -284,7 +284,17 @@
 		     <td>购买商品可获得：</td><td><span id="total_points">350</span>积分</td>
 		     </tr>
 	      </table>
-	    <button class="checkout" id="gotoBalance" >去结算中心</button>
+	     
+	     
+	      <c:choose> <c:when test="${ordcart== null || fn:length(ordcart) == 0}"> 
+	      <button class="checkout" id="gotoBalance" disabled="disabled">去结算中心</button> </c:when>
+	      <c:otherwise>
+	       <button class="checkout" id="gotoBalance" >去结算中心</button> 
+	      </c:otherwise>
+	      </c:choose>
+	     
+	      
+	    
            
           </div><!-- .total -->
         </div><!-- .grid_4 -->
