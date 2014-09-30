@@ -140,9 +140,9 @@
 	    	  
 	    	  
 	    	  if(window.ActiveXObject){
-	    		  window.location=("../projectinfo/project_list.html?currentPage=1&sortSele="+$("#sortSele").val()+"&sortBy=1&proType=${proType}&proFabric=${proFabric}");  
+	    		  window.location=("../projectinfo/project_list.html?currentPage=1&sortSele="+$("#sortSele").val()+"&sortBy=1&proType=${proType}&proFabric=${proFabric}&stateSele=${stateSele}");  
 				 }else{
-					 window.location=("projectinfo/project_list.html?currentPage=1&sortSele="+$("#sortSele").val()+"&sortBy=1&proType=${proType}&proFabric=${proFabric}");  
+					 window.location=("projectinfo/project_list.html?currentPage=1&sortSele="+$("#sortSele").val()+"&sortBy=1&proType=${proType}&proFabric=${proFabric}&stateSele=${stateSele}");  
 				 }
 	    	
 	    	  
@@ -153,9 +153,9 @@
 	      $("#sortup").click(function(){
 	    	  
 	    	  if(window.ActiveXObject){  
-	    		  window.location=("../projectinfo/project_list.html?currentPage=1&sortSele="+$("#sortSele").val()+"&sortBy=0&proType=${proType}&proFabric=${proFabric}"); 
+	    		  window.location=("../projectinfo/project_list.html?currentPage=1&sortSele="+$("#sortSele").val()+"&sortBy=0&proType=${proType}&proFabric=${proFabric}&stateSele=${stateSele}"); 
 	    	  }else{
-	    		  window.location=("projectinfo/project_list.html?currentPage=1&sortSele="+$("#sortSele").val()+"&sortBy=0&proType=${proType}&proFabric=${proFabric}");  
+	    		  window.location=("projectinfo/project_list.html?currentPage=1&sortSele="+$("#sortSele").val()+"&sortBy=0&proType=${proType}&proFabric=${proFabric}&stateSele=${stateSele}");  
 	    	  }
 	    	  
 	    	
