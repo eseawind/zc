@@ -18,4 +18,7 @@ public interface ZcOrderDetailNativeDao {
 	public List<ZcOrderDetail> findByUserCodeAndOrderCodeIsNull(Integer userCode);
 	public void updateOrderCodeByUserCodeAndOrderCodeIsNull(Integer userCode,Integer orderCode);
 	
+	
+	public List<ZcOrderDetail> findByUserCodeAndOCodes(Integer userCode,Integer ocodes);
+	
 }
