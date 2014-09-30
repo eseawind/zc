@@ -94,6 +94,8 @@ public class ZcProjectInfoNativeDaoImpl implements ZcProjectInfoNativeDao{
 			if(stateSele==4||stateSele==5||stateSele==6){
 				
 				sql=sql+" and zpi.PRO_SH_STATUS='"+stateSele+"'";
+			}else if(stateSele==-1){
+				sql=sql+" and zpi.PRO_SH_STATUS in(0,1,2,3,4,5,6)";
 			}
 			if(sortSele==0&&sortBy==0){
 				
@@ -163,6 +165,8 @@ public class ZcProjectInfoNativeDaoImpl implements ZcProjectInfoNativeDao{
 if(stateSele==4||stateSele==5||stateSele==6){
 					
 					sql=sql+" and zpi.PRO_SH_STATUS='"+stateSele+"'";
+				}else if(stateSele==-1){
+					sql=sql+" and zpi.PRO_SH_STATUS in(0,1,2,3,4,5,6)";
 				}
 				
 				if(sortSele==0&&sortBy==0){

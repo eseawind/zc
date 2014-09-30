@@ -26,9 +26,11 @@ String sql="select  t.USER_CODE,zui.USER_NAME,t.ORDER_CODE,zoi.ORDER_TIME, t. PR
 		 sql=sql+"  and  zod.PRO_CODE="+proCode+"";
 			
 		}
-		sql=sql+ " GROUP BY zod.PRO_CODE,zod.pro_unit,zod.USER_CODE,zod.ORDER_CODE)t,zc_project_info zpi,zc_resource_info zri,zc_user_info zui,zc_orders_info zoi  where t.pro_code=zpi.PRO_CODE and zpi.RESOURCE_CODE=zri.RESOURCE_CODE  and t.USER_CODE=zui.USER_CODE  and zoi.ORDER_CODE=t.ORDER_CODE";
+		//sql=sql+ " GROUP BY zod.PRO_CODE,zod.pro_unit,zod.USER_CODE,zod.ORDER_CODE)t,zc_project_info zpi,zc_resource_info zri,zc_user_info zui,zc_orders_info zoi  where t.pro_code=zpi.PRO_CODE and zpi.RESOURCE_CODE=zri.RESOURCE_CODE  and t.USER_CODE=zui.USER_CODE  and zoi.ORDER_CODE=t.ORDER_CODE";
+		sql=sql+ " GROUP BY zod.PRO_CODE,zod.pro_unit,zod.USER_CODE,zod.ORDER_CODE)t,zc_project_info zpi,zc_resource_info zri,zc_user_info zui,zc_orders_info zoi  where t.pro_code=zpi.PRO_CODE and zpi.RESOURCE_CODE=zri.RESOURCE_CODE  and t.USER_CODE=zui.USER_CODE  and zoi.OCODES=t.ORDER_CODE";
 		
 		
+		System.out.println("ssssssssssssssssssssssssssssssssssss"+sql);
 		EntityManager em=entityManagerFactory.createEntityManager();
 		Query query=em.createNativeQuery(sql);
 		List list=query.getResultList();
